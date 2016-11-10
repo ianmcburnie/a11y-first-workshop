@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+.card {
+    background-color: white;
+}
+.collections img,
+.card img {
+    display: block;
+}
+.collections ul[role=list],
+.card ul[role=list] {
+    list-style: none;
+}
+.tile {
+    display: inline-block;
+}
+.clipped {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
