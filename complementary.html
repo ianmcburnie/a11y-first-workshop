@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Tiles - A11Y Workshop</title>
+        <title>Complementary landmarks - A11Y Workshop</title>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/global.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/grid-core.min.css"/>
         <link rel="stylesheet" href="app.css"/>
@@ -13,7 +13,10 @@
             <header role="banner">
                 <h1><img src="images/ebay-hires.png" alt="ebay" /></h1>
             </header>
-            <main role="main">
+            <aside role="complementary">
+                <iframe src="iframe_content.html" title="Advert" scrolling="no"></iframe>
+            </aside>
+            <main role="main" id="mainContent">
                 <h2>Collections</h2>
                 <div class="grid">
                     <ul class="grid__group grid__group--wrap grid__group--no-gutters" role="list">
