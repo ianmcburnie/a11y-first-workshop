@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Images - A11Y Workshop</title>
+        <title>Grid - A11Y Workshop</title>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/global.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/grid-core.min.css"/>
         <link rel="stylesheet" href="app.css"/>
@@ -12,44 +12,46 @@
         <header role="banner">
             <h1><img src="images/ebay-hires.png" alt="ebay" /></h1>
         </header>
+
         <main role="main">
             <h2>Collections</h2>
-            <div class="collections">
-                <ul>
-                    <li>
+            <div class="grid collections">
+                <ul class="grid__group grid__group--wrap grid__group--no-gutters" role="list">
+                    <li class="grid__cell grid__cell--one-half">
                         <img src="images/mix-it-up.jpg" alt="Mix It Up" />
                         Mix It Up
                     </li>
-                    <li>
+                    <li class="grid__cell grid__cell--one-half">
                         <img src="images/at-the-hearth.jpg" alt="At the Hearth" />
                         At the Hearth
                     </li>
-                    <li>
+                    <li class="grid__cell grid__cell--one-half">
                         <img src="images/give-thanks.jpg" alt="Give Thanks" />
                         Give Thanks
                     </li>
-                    <li>
+                    <li class="grid__cell grid__cell--one-half">
                         <img src="images/guests-of-honour.jpg" alt="Guests of Honour" />
                         Guests of Honour
                     </li>
                 </ul>
             </div>
+
             <h2>Daily Deals</h2>
-            <div>
-                <ul>
-                    <li>
+            <div class="grid card">
+                <ul class="grid__group grid__group--no-gutters" role="list">
+                    <li class="grid__cell grid__cell--one-fourth">
                         <img src="images/christmas-socks.jpg" alt="Christmas Socks"/>
                         Christmas Socks
                     </li>
-                    <li>
+                    <li class="grid__cell grid__cell--one-fourth">
                         <img src="images/macbook-air.jpg" alt="MacBook Air"/>
                         MacBook Air
                     </li>
-                    <li>
+                    <li class="grid__cell grid__cell--one-fourth">
                         <img src="images/xbox-one.jpg" alt="Xbox One 500GB"/>
                         Xbox One 500GB
                     </li>
-                    <li>
+                    <li class="grid__cell grid__cell--one-fourth">
                         <img src="images/playstation-pro.jpg" alt="Playstation 4 Pro"/>
                         Playstation 4 Pro
                     </li>

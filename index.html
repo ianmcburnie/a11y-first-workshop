@@ -4,39 +4,79 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>A11Y First - An Accessibility Workshop</title>
+        <title>A11Y First - A Web Accessibility Workshop</title>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/global.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/card.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/grid-core.min.css"/>
         <link rel="stylesheet" href="app.css"/>
+        <style>
+            .grid {
+                margin: 0 auto;
+            }
+            h1 {
+                font-size: 44px;
+                font-weight: 100;
+                margin-bottom: 0;
+            }
+            footer {
+                font-size: 12px;
+                text-align: right;
+            }
+            footer img {
+                width: 100px;
+                vertical-align: middle;
+            }
+        </style>
     </head>
     <body>
-        <h1>A11Y First - An Accessibility Workshop</h1>
-        <h2>Part 1</h2>
-        <ol>
-            <li><a href="meta.html">Meta (the page will be intentionally blank)</a></li>
-            <li><a href="paragraphs.html">Paragraph</a></li>
-            <li><a href="lists.html">List</a></li>
-            <li><a href="headings.html">Heading</a></li>
-            <li><a href="landmarks.html">Landmark</a></li>
-            <li><a href="images.html">Image</a></li>
-        </ol>
-        <h2>Part 2</h2>
-        <ol>
-            <li><a href="links.html">Link</a></li>
-            <li><a href="tiles.html">Tile</a></li>
-            <li><a href="iframe.html">Iframe</a></li>
-            <li><a href="complementary.html">Complementary Landmark</a></li>
-            <li><a href="navigation.html">Navigation Landmark</a></li>
-            <li><a href="skipto.html">Skip to Link</a></li>
-        </ol>
-        <h2>Part 3</h2>
-        <ol>
-            <li><a href="textbox.html">Textbox</a></li>
-            <li><a href="listbox.html">Listbox</a></li>
-            <li><a href="submit.html">Submit Button</a></li>
-            <li><a href="search-landmark.html">Search Landmark</a></li>
-            <li><a href="live-region.html">Live Region</a></li<
-        </ol>
+        <header class="grid">
+            <h1>A11Y First - A Web Accessibility Workshop</h1>
+            <p>Follow this workshop and see how we build a typical eCommerce browse and search page, learning about important accesibility concepts each step of the way.</p>
+            <p>Refer to the <a href="https://github.com/ianmcburnie/a11y-first">README</a> for instructions.</p>
+        </header>
+        <main class="grid">
+            <div class="card">
+                <div class="card__cell">
+                    <h2>Part 1</h2>
+                    <ol>
+                        <li><a href="meta.html">Meta (the page will be intentionally blank)</a></li>
+                        <li><a href="paragraphs.html">Paragraph</a></li>
+                        <li><a href="lists.html">List</a></li>
+                        <li><a href="headings.html">Heading</a></li>
+                        <li><a href="landmarks.html">Landmark</a></li>
+                        <li><a href="images.html">Image</a></li>
+                        <li><a href="grid.html">Grid</a></li>
+                    </ol>
+
+                    <h2>Part 2</h2>
+                    <ol>
+                        <li><a href="links.html">Link</a></li>
+                        <li><a href="tiles.html">Tile</a></li>
+                        <li><a href="iframe.html">Iframe</a></li>
+                        <li><a href="complementary.html">Complementary Landmark</a></li>
+                        <li><a href="navigation.html">Navigation Landmark</a></li>
+                        <li><a href="skipto.html">Skip to Link</a></li>
+                    </ol>
+
+                    <h2>Part 3</h2>
+                    <ol>
+                        <li><a href="textbox.html">Textbox</a></li>
+                        <li><a href="listbox.html">Listbox</a></li>
+                        <li><a href="submit.html">Submit Button</a></li>
+                        <li><a href="search-landmark.html">Search Landmark</a></li>
+                        <li><a href="live-region.html">Live Region</a></li>
+                    </ol>
+
+                    <h2>Part 4</h2>
+                    <ol>
+                        <li>to do</li>
+                    </ol>
+                </div>
+            </div>
+        </main>
+
+        <footer class="grid">
+            <img src="images/ebay-hires.png" alt="ebay" />Copyright © 1995-2016 eBay Inc. All Rights Reserved.
+        </footer>
     </body>
-    <script src="app.js"></script>
 </html>

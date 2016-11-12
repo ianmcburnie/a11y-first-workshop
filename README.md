@@ -99,19 +99,26 @@ Next we move onto introducing the concept of static text.
 
 1. Add following image to banner `<h1><img src="images/ebay-hires.png" /></h1>` (lack of alt text intentional for now)
 1. Demonstrate behaviour of missing alt text in screen reader
-1. Add alt="ebay" to banner image
+1. Add `alt="ebay"` to h1 content image
 1. Demonstrate behaviour of alt text with screen reader
-1. Add class `card` to daily deals div (see CSS below)
 1. Add collection image before each collection title, alt="collection title"
 1. Add daily deal image before each deal title, alt="deal title"
-1. Add `list-type: none` (see CSS below) to the lists and demo screen reader impact
-1. Add `role=list` to the lists to restore list semantics
-1. Add `display: block` to images (see CSS below)
 1. Use spacebar, up arrow, down arrow, page up, page down, home and end keys to scroll page
 
 #### Notes
 
 Note that the image alt text is the same as the title. Technically speaking these images can be classed as presentational, because if the images were not displayed, we still have the same text below (the title text). We leave the alt text in place for now. Yes, it's a redundant/duplicate navigation for screen reader users, but not technically 'non-accessible'. When we convert the item to a tile, in an upcoming step, we will set this value to blank.
+
+### Grid
+
+Demonstrates that in some cases, CSS can effect semantics.
+
+1. Add `list-type: none` (see CSS below) to the lists and demo screen reader impact
+1. Add `role=list` to the lists to restore list semantics
+1. Add `display: block` to images (see CSS below)
+1. Add class `card` to daily deals div (see CSS below)
+
+#### Notes
 
 Adding `list-type: none` to the lists means they are <a href="http://www.456bereastreet.com/archive/201109/screen_readers_list_items_and_list-stylenone/">no longer announced as a list in some screen readers</a>. We fix this issue by applying `role=list` to each list.
 
