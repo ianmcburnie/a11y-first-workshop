@@ -8,12 +8,16 @@ The following sections of this README act as a guide to the live-coding session 
 
 The meta.html page content is left intentionally blank.
 
+#### Steps
+
 1. Add `<html lang="en">`
 1. Add `<meta charset="utf-8" />` to head
 1. Add `<meta name="viewport" content="width=device-width, initial-scale=1">` to head
 1. Test page with screen reader, notice nothing is announced
 1. Add `<title>Meta - A11Y First Workshop</title>` to head
 1. Test page with screen reader, notice title is now announces
+
+#### Notes
 
 We have introduced 4 key pieces of 'meta' data:
 
@@ -23,6 +27,7 @@ We have introduced 4 key pieces of 'meta' data:
     * Not strictly WCAG related (or maybe it is?), but to display an HTML page correctly, a web browser must know which character set (character encoding) to use.
 * Viewport Scale
     * Viewport meta must ensure pinch-to-zoom is **not** disabled. See <a href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-scale">WCAG 1.4.4</a> and <a href="https://ebay.gitbooks.io/mindpatterns/content/antipatterns/disabling_pinch-to-zoom.html">MIND Anti-Pattern: Disabling Pinch-to-Zoom</a>.
+    * Valid use cases for disabling pinch to zoom are mapping applications and video games
 * Title
     * Title ensures the user can orient themselves. See <a href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#navigation-mechanisms-title">WCAG 2.4.2</a>. Titles identify the current location without requiring users to read or interpret page content.
 
@@ -32,79 +37,85 @@ Next we move onto introducing the concept of static text.
 
 ### Paragraphs
 
-Add three paragraphs of content to the page:
+1. Add three paragraphs of content to the page:
+    * `<p>eBay is where the world goes to shop, sell, and give. Our mission is to be the world’s favorite destination for discovering great value and unique selection.</p>`
+    * `<p>For over 20 years, we've been working to create more economic opportunity for everyone. And we're just getting started.</p>`
+    * `<p>Copyright © 1995-2016 eBay Inc. All Rights Reserved.</p>`
+1. Ensure Voiceover web rotor settings include 'Static Text'.
+1. Open Voiceover rotor and explore what it can find on the page (hint: nothing much yet! only the static paragraph text).
 
-* `<p>eBay is where the world goes to shop, sell, and give. Our mission is to be the world’s favorite destination for discovering great value and unique selection.</p>`
-* `<p>For over 20 years, we've been working to create more economic opportunity for everyone. And we're just getting started.</p>`
-* `<p>Copyright © 1995-2016 eBay Inc. All Rights Reserved.</p>`
-
-Ensure Voiceover web rotor settings include 'Static Text'.
+#### Web Rotor Settings
 
 <img src="images/settings-web-rotor.png" alt="Screenshot of the Voiceover Web Rotor settings" />
 
-Open Voiceover rotor and explore what it can find on the page (hint: nothing much yet! only the static paragraph text).
-
 ### Lists
 
-Add two lists to the page.
+1. Add two lists to the page (see markup below)
+1. Ensure Voiceover web rotor settings include 'Lists'.
+1. Explore lists with the screen reader.
 
-The purpose here is to explore them with the screen reader.
+#### HTML
 
-Ensure Voiceover web rotor settings include 'Lists'.
+```html
+<ul>
+    <li>Mix It Up</li>
+    <li>At the Hearth</li>
+    <li>Give Thanks</li>
+    <li>Guests of Honour</li>
+</ul>
+
+<ul>
+    <li>Christmas Socks</li>
+    <li>MacBook Air</li>
+    <li>Xbox One 500GB</li>
+    <li>Playstation Pro 1TB</li>
+</ul>
+```
 
 ### Headings
 
-Adds the following headings:
-
-* `<h1>eBay</h1>`
-* `<h2>Collections</h2>`
-* `<h2>Daily Deals</h2>``
-* `<h2>Legal</h2>``
-
-Use VO+CMD+H to navigate through headings.
-
-Show list of headings in web rotor.
-
-Convert the 'Legal' heading to a screen reader only heading:
-
-* `<h2 class="clipped">Legal</h2>``
-
-Clipped text makes the text invisible to sighted users.
+1. Add headings to page:
+    * `<h1>eBay</h1>`
+    * `<h2>Collections</h2>`
+    * `<h2>Daily Deals</h2>`
+    * `<h2>Legal</h2>`
+1. Use screen reader shortcut to navigate through headings.
+1. Show list of headings in web rotor.
+1. Add `clipped` class to the 'Legal' header
+1. Demo that legal header is now invisible
+1. Demo the legal header is still conveyed to screen reader
 
 ### Landmarks
 
-Adds the following landmarks:
-
-* `<header role="banner">` around h1
-* `<main role="main">` around lists
-* `<footer role="contentinfo">` around legal content
-
-Notice there is no *visual* difference to the page.
+1. Add the following landmarks:
+    * `<header role="banner">` around h1
+    * `<main role="main">` around lists
+    * `<footer role="contentinfo">` around legal content
+1. Notice there is no *visual* difference to the page. This is intentional.
+1. Display landmarks in screen reader landmarks lists
+1. Navigate through landmarks using screen reader shortcuts
 
 ### Images
-
-Added the following images (without alt text for now):
 
 1. Add following image to banner `<h1><img src="images/ebay-hires.png" /></h1>` (lack of alt text intentional for now)
 1. Demonstrate behaviour of missing alt text in screen reader
 1. Add alt="ebay" to banner image
 1. Demonstrate behaviour of alt text with screen reader
-1. Add class `card` to daily deals div
+1. Add class `card` to daily deals div (see CSS below)
 1. Add collection image before each collection title, alt="collection title"
 1. Add daily deal image before each deal title, alt="deal title"
-1. Add `list-type: none` to the lists and demo screen reader impact
-1. Add `list-type: none` to the lists to restore list semantics
-1. Add `display: block` to collection and daily deal images
+1. Add `list-type: none` (see CSS below) to the lists and demo screen reader impact
+1. Add `role=list` to the lists to restore list semantics
+1. Add `display: block` to images (see CSS below)
+1. Use spacebar, up arrow, down arrow, page up, page down, home and end keys to scroll page
 
-Now that we have some below the fold content, we can take our first look at some keyboard accessibility basics. Spacebar, up arrow, down arrow, page up, page down, home and end keys will all scroll the page.
+#### Notes
 
 Note that the image alt text is the same as the title. Technically speaking these images can be classed as presentational, because if the images were not displayed, we still have the same text below (the title text). We leave the alt text in place for now. Yes, it's a redundant/duplicate navigation for screen reader users, but not technically 'non-accessible'. When we convert the item to a tile, in an upcoming step, we will set this value to blank.
 
 Adding `list-type: none` to the lists means they are <a href="http://www.456bereastreet.com/archive/201109/screen_readers_list_items_and_list-stylenone/">no longer announced as a list in some screen readers</a>. We fix this issue by applying `role=list` to each list.
 
-Note that images are inline by default. We must set the collection images and daily deals images to `display: block` so that title text is displayed on it's own line.
-
-New CSS:
+#### CSS
 
 ```css
 .card {
@@ -126,22 +137,18 @@ Now we move away from static text and structure, to interactive controls
 
 ### Links
 
-Added following links:
+1. Add links around collection and daily deals titles
+1. With screen reader disabled, use TAB key to navigate focus through links
+1. Notice that with focus on a link all of the page scroll keys still work.
+1. With screen reader on notice that visited links will be announce as 'visited'.
+1. Add the seller profile static text under each collection
+1. Add price under each daily deal title.
+1. This new static text introduces one extra virtual cursor navigation for screen reader users.
+1. Notice that it would be nice to have the image as a link to the item page too.
 
-* around collection titles
-* around daily deals titles
+#### Discussion
 
-With screen reader on notice that visited links will be announce as 'visited'.
-
-Notice that with focus on a link all of the page scroll keys still work.
-
-Added the static text under each collection and daily deal title.
-
-We have also started introducing some basic style to the page. One extra virtual cursor navigation for screen reader users.
-
-Notice that it would be nice to have image as a link too.
-
-Discussion: Should the title be a heading? I would say it is not strictly necessary, but opinion would be divided here.
+* Should the title be a heading? I would say it is not strictly necessary, but opinion would be divided here.
 
 ### Tiles
 
@@ -149,17 +156,29 @@ We want the collection and deals images to link to the item too.
 
 Rather than create a second link, which would be redundant for keyboard and screen reader users, we can wrap the title and image together in a single anchor.
 
-Notice that we remove the value of the alt attribute on the image to prevent a duplicate link text announcement in screen readers.
+#### Steps
 
-Anchor tags are inline-level elements in CSS by default. This causes some issues with the focus outline. We set `display: inline-block` to fix this.
+1. Remove anchor tag from collection and deals titles and wrap them around the entire contents of list item
+1. Show keyboard focus indicator
+1. Set `display: inline-block` on anchor to fix focus-indicator.
+1. Show fixed focus indicator
+1. Listen to anchor in screen reader and notice that link text is red twice
+1. Set the image alt value to blank
+1. Listen to anchor in screen reader and now link text is only read once
+
+#### Notes
+
+* Anchor tags are inline-level elements in CSS by default. This causes some issues with the focus outline.
+* What happens if we want to make the seller profile a link too?    
+    * A: It can no longer be a tile.
+
+#### CSS
 
 ```css
 .tile {
     display: inline-block;
 }
 ```
-
-Q: What happens if we want to make the seller profile a link too? A: It can no longer be a tile.
 
 ### Iframes
 
@@ -180,18 +199,39 @@ Q: What happens if we want to make the seller profile a link too? A: It can no l
 
 ### Navigation Landmark
 
-We have added a navigation landmark in the banner.
+This is an opportunity to recap, and build upon, headings, landmarks and links.
 
-This is an opportunity to recap, and build upon, three previous topics:
+1. Add `<nav role="navigation">` after banner tag
+1. Add `<h2 class="clipped" id="main-nav">Main Navigation</h2>`
+1. Add list of links (see HTML below) after heading
+1. Demo new navigation landmark in screen reader.
+1. Add `aria-labelledby="main-nav"` to nav tag
+1. Demo labelled navigation landmark in screen reader
 
-* Headings
-    * A clipped heading
-* Landmarks
-    * nav tag and navigation role
-* Links
+#### HTML
+
+```html
+<nav role="navigation">
+    <h2 class="clipped">Main Navigation</h2>
+    <ul>
+        <li><a href="http://www.ebay.com/motors">Motors</a></li>
+        <li><a href="http://www.ebay.com/motors">Fashion</a></li>
+        <li><a href="http://www.ebay.com/motors">Electronics</a></li>
+        <li><a href="http://www.ebay.com/motors">Collectibles &amp; Art</a></li>
+        <li><a href="http://www.ebay.com/motors">Home &amp; Garden</a></li>
+        <li><a href="http://www.ebay.com/motors">Sporting Goods</a></li>
+        <li><a href="http://www.ebay.com/motors">Toys</a></li>
+        <li><a href="http://www.ebay.com/motors">Business &amp; Industrial</a></li>
+        <li><a href="http://www.ebay.com/motors">Music</a></li>
+        <li><a href="http://www.ebay.com/motors">Holiday</a></li>
+    </ul>
+</nav>
+```
+
+#### CSS
 
 ```css
-[role=banner] ul {
+[role=navigation] ul {
     border-bottom: 1px solid #ccc;
     border-top: 1px solid #ccc;
     display: flex;
@@ -199,44 +239,58 @@ This is an opportunity to recap, and build upon, three previous topics:
     margin: 0;
     padding: 1em 0;
 }
-[role=banner] li {
+[role=navigation] li {
     text-align: center;
     width: 128px;
 }
-[role=banner] a {
+[role=navigation] a {
     font-size: 12px;
 }
 ```
 
 ### Skipto Links
 
-1. Add `<a href="#mainContent">Skip to main content</a>` after body tag
-1. Add `id="mainContent"` to main landmark
+1. Add `<a href="#mainContent">Skip to main content</a>` after body tag and `id="mainContent"` to main landmark
 1. Demo keyboard behaviour
-1. Demo how screen reader focus is not set
+1. Demo how screen reader focus does not get set
 1. Add `tabindex="-1"` to main landmark
-1. Demo how scree reader focus now moves also
+1. Demo how screen reader focus is now set
+1. Demo that permanent tabindex on main element causes a focus outline when clicked with mouse or touch.
 1. Add class `clipped clipped--stealth` to skip link
 1. Demo that skip link now only appears on keyboard focus
 
-### Textbox
+#### CSS
 
-Steps:
+```css
+a[href='#mainContent'] {
+    font-size: small;
+    left: 0;
+    top: 0;
+}
+```
+
+#### Notes
+
+* Rather than adding permanent tabindex to main, it would be better to set a temporary tabindex using javascript. The tabindex can be set when the skipto link is clicked (we already know the target id), and the tabindex cn be removed as soon as the target loses focus.
+
+### Textbox
 
 1. Add form tag to banner
 1. Add textbox to form
+1. Demo that textbox is focusable by default
+1. Demo how arrow key behaviour on textbox is different than on link.
+1. Enter search term and press ENTER. ENTER key should always submit form (even with no submit button).
 1. Add placeholder text of 'search' to textbox
 1. Demo placeholder with screen reader
 1. Add label to textbox. Change placeholder text to ('iPhone 7')
 1. Demo textbox and label
-1. Replace label with an aria-label
-    * `<input aria-label="search" type="text" id="_nkw" name="_nkw"/>`
+1. Replace label tag with an aria-label attribute on input
 1. Demo textbox and aria-label
-1. Demo how arrow key behaviour on textbox is different than on link. Talk about 'forms mode' of screen reader.
-1. Enter search term and press ENTER. ENTER key should always submit form (even with no submit button).
-1. Demo that form is a get request by default. A submit button is the only button that should navigate to a new URL in this way.
+1. Talk about arrow key behaviour and 'forms mode' of screen reader.
+1. Screen reader announces control value, label, type
+1. Add `autofocus` attribute to textbox
 
-Add some margin to form:
+#### CSS
 
 ```css
 [role=banner] form {
@@ -252,15 +306,55 @@ Do not call a listbox a 'dropdown'! The term 'dropdown' is too ambiguous. The te
 1. ENTER key does not submit form.
 1. SPACE or ARROW key expands.
 1. ARROW keys highlight options, ENTER or SPACE selects.
+1. Screen reader announces control value, label, type
 
 ### Submit Button
 
-1. Add submit button after Listbox
-1. Add reset button after submit button
+1. Add submit button after listbox
+1. Screen reader announces button value/label and type
+1. Demo SPACEBAR and ENTER key behaviour
+1. Add `action="search_results.html"` to form
+1. Demo that form submits an HTTP GET request by default. A submit button is the only button that should navigate to a new URL in this way.
+1. Demo that keyboard navigation starts from top of new page
+1. Add reset button after submit button and demo it's behaviour
+1. Remove submit button (we don't need it)
 
 ### Search Landmark
 
 1. Add `role=search` to form
+1. Demo new search landmark in screen reader
+1. Add class="grid__group" to header
+
+#### CSS
+
+```CSS
+[role=search] {
+    align-self: center;
+}
+```
+
+### Live Region
+
+1. Duplicate the `search-results.html` page as `search-results-ajax.html`
+1. Add class `searchform` to form
+1. Wrap the `10 results found` paragraph in a div
+1. Add `<script src="app.js"></script>` below body
+1. Update `main.js` to hijax form submission with client-side behaviour (see below)
+1. Using screen reader demonstrate that page updates without notifying user
+1. Add `aria-live="polite"` and `role="status"` to wrapper div
+1. Using screen reader now demonstrate the screen reader can notify user of type of update (not the content that updated)
+
+#### JavaScript
+
+```js
+$(function() {
+    $('.searchform').on('submit', function(e) {
+        e.preventDefault();
+        $('.result-status').html('<p>0 results found</p>');
+        $('main ul').empty();
+    });
+});
+```
 
 ### Buttons
 

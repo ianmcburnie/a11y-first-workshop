@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AJAX Search Results - A11Y First Workshop</title>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/global.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/utility.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/grid-core.min.css"/>
+        <link rel="stylesheet" href="app.css"/>
+    </head>
+    <body>
+        <a href="#mainContent" class="clipped clipped--stealth">Skip to main content</a>
+        <div class="grid">
+            <header class="grid__group grid__group--no-gutters" role="banner">
+                <img src="images/ebay-hires.png" alt="ebay" />
+                <form class="searchform" role="search">
+                    <input aria-label="search" type="text" id="_nkw" name="_nkw"/>
+                    <select aria-label="Category" name="category">
+                        <option value="all">All categories</option>
+                        <option value="antiques">Antiques</option>
+                        <option value="art">Art</option>
+                    </select>
+                    <input type="submit" value="Search" />
+                </form>
+            </header>
+            <main role="main" id="mainContent">
+                <h1>Search Results</h1>
+                <div aria-live="polite" class="result-status" role="status">
+                    <p>10 items found</p>
+                </div>
+                <ul>
+                    <li><a href="http://www.ebay.com">Item 1</a></li>
+                    <li><a href="http://www.ebay.com">Item 2</a></li>
+                    <li><a href="http://www.ebay.com">Item 3</a></li>
+                    <li><a href="http://www.ebay.com">Item 4</a></li>
+                    <li><a href="http://www.ebay.com">Item 5</a></li>
+                    <li><a href="http://www.ebay.com">Item 6</a></li>
+                    <li><a href="http://www.ebay.com">Item 7</a></li>
+                    <li><a href="http://www.ebay.com">Item 8</a></li>
+                    <li><a href="http://www.ebay.com">Item 9</a></li>
+                    <li><a href="http://www.ebay.com">Item 10</a></li>
+                </ul>
+            </main>
+            <footer role="contentinfo">
+                <h2 class="clipped">Legal</h2>
+                <p>Copyright © 1995-2016 eBay Inc. All Rights Reserved.</p>
+            </footer>
+        </div>
+    </body>
+    <script src="app.js"></script>
+</html>
