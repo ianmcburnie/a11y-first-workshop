@@ -6,6 +6,7 @@
         <title>Listbox - A11Y Workshop</title>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/global.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/utility.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/card.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/grid-core.min.css"/>
         <link rel="stylesheet" href="app.css"/>
     </head>
@@ -41,73 +42,92 @@
             <aside role="complementary">
                 <iframe src="iframe_content.html" title="Advert"></iframe>
             </aside>
-            <main role="main" id="mainContent">
+            <main id="mainContent" role="main">
                 <h2>Collections</h2>
-                <div class="grid">
-                    <ul class="grid__group grid__group--wrap grid__group--no-gutters" role="list">
+                <div class="grid collections">
+                    <ul class="grid__group grid__group--wrap" role="list">
                         <li class="grid__cell grid__cell--one-half">
                             <a class="tile" href="http://www.ebay.com/cln/statesidelife/Mix-It-Up/345988657017">
-                                <img src="images/mix-it-up.jpg" alt="" />
-                                <p>Mix It Up</p>
-                                <p>17 items by statesidelife</p>
+                                <div class="card">
+                                    <div class="card__cell">
+                                        <img src="images/mix-it-up.jpg" alt="Mix It Up" />
+                                        <p>Mix It Up</p>
+                                        <p>17 items by statesidelife</p>
+                                    </div>
+                                </div>
                             </a>
                         </li>
                         <li class="grid__cell grid__cell--one-half">
                             <a class="tile" href="http://www.ebay.com/cln/designassembly/At-the-Hearth/348116558018">
-                                <img src="images/at-the-hearth.jpg" alt="" />
-                                <p>At the Hearth</p>
-                                <p>17 items by designassembly</p>
+                                <div class="card">
+                                    <div class="card__cell">
+                                        <img src="images/at-the-hearth.jpg" alt="At the Hearth" />
+                                        <p>At the Hearth</p>
+                                        <p>17 items by designassembly</p>
+                                    </div>
+                                </div>
                             </a>
                         </li>
                         <li class="grid__cell grid__cell--one-half">
                             <a class="tile" href="http://www.ebay.com/cln/ebayhomeeditor/Give-Thanks/348149332018">
-                                <img src="images/give-thanks.jpg" alt="" />
-                                <p>Give Thanks</p>
-                                <p>17 items by ebayhomeeditor</p>
+                                <div class="card">
+                                    <div class="card__cell">
+                                        <img src="images/give-thanks.jpg" alt="Give Thanks" />
+                                        <p>Give Thanks</p>
+                                        <p>17 items by ebayhomeeditor</p>
+                                    </div>
+                                </div>
                             </a>
                         </li>
                         <li class="grid__cell grid__cell--one-half">
                             <a class="tile" href="http://www.ebay.com/cln/ebayhomeeditor/Guests-of-Honor/349082052018">
-                                <img src="images/guests-of-honour.jpg" alt="" />
-                                <h3>Guests of Honour</a>
-                                <p>17 items by ebaydealseditor</p>
+                                <div class="card">
+                                    <div class="card__cell">
+                                        <img src="images/guests-of-honour.jpg" alt="Guests of Honour" />
+                                        <p>Guests of Honour</p>
+                                        <p>17 items by ebaydealseditor</p>
+                                    </div>
+                                </div>
                             </a>
                         </li>
                     </ul>
                 </div>
-
                 <h2>Daily Deals</h2>
-                <div class="grid card">
-                    <ul class="grid__group grid__group--no-gutters" role="list">
-                        <li class="grid__cell grid__cell--one-fourth">
-                            <a class="tile" href="http://deals.ebay.com/6001682636_3_Pairs__Refael_Collection_Christmas_Style_Socks___Size_9_11">
-                                <img src="images/christmas-socks.jpg" alt=""/>
-                                <p>Christmas Socks</p>
-                                <p>$4.99</p>
-                            </a>
-                        </li>
-                        <li class="grid__cell grid__cell--one-fourth">
-                            <a class="tile" href="http://deals.ebay.com/6001738651_Apple_MacBook_Air___13_3__Display___Intel_Core_i5___8GB_Memory_MMGF2LL_A">
-                                <img src="images/macbook-air.jpg" alt=""/>
-                                <p>MacBook Air</p>
-                                <p>$799.99</p>
-                            </a>
-                        </li>
-                        <li class="grid__cell grid__cell--one-fourth">
-                            <a class="tile" href="http://www.ebay.com/itm/Microsoft-Certified-Xbox-One-500GB-Gaming-Console-MATTE-BLACK-EDITION-/262033221416">
-                                <img src="images/xbox-one.jpg" alt=""/>
-                                <p>Xbox One 500GB</p>
-                                <p>$169.99</p>
-                            </a>
-                        </li>
-                        <li class="grid__cell grid__cell--one-fourth">
-                            <a class="tile" href="http://deals.ebay.com/6001738627_Sony_PlayStation_4_Pro___1TB___DualShock_4_Wireless_Controller_Bundle?_trksid=p2057337.m2592&_trkparms=">
-                                <img src="images/playstation-pro.jpg" alt=""/>
-                                <p>Playstation 4 Pro</p>
-                                <p>$419.99</p>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="deals grid">
+                    <div class="card">
+                        <div class="card__cell">
+                            <ul class="grid__group" role="list">
+                                <li class="grid__cell grid__cell--one-fourth">
+                                    <a class="tile" href="http://deals.ebay.com/6001682636_3_Pairs__Refael_Collection_Christmas_Style_Socks___Size_9_11">
+                                        <img src="images/christmas-socks.jpg" alt=""/>
+                                        <p>Christmas Socks</p>
+                                        <p>$4.99</p>
+                                    </a>
+                                </li>
+                                <li class="grid__cell grid__cell--one-fourth">
+                                    <a class="tile" href="http://deals.ebay.com/6001738651_Apple_MacBook_Air___13_3__Display___Intel_Core_i5___8GB_Memory_MMGF2LL_A">
+                                        <img src="images/macbook-air.jpg" alt=""/>
+                                        <p>MacBook Air</p>
+                                        <p>$799.99</p>
+                                    </a>
+                                </li>
+                                <li class="grid__cell grid__cell--one-fourth">
+                                    <a class="tile" href="http://www.ebay.com/itm/Microsoft-Certified-Xbox-One-500GB-Gaming-Console-MATTE-BLACK-EDITION-/262033221416">
+                                        <img src="images/xbox-one.jpg" alt=""/>
+                                        <p>Xbox One 500GB</p>
+                                        <p>$169.99</p>
+                                    </a>
+                                </li>
+                                <li class="grid__cell grid__cell--one-fourth">
+                                    <a class="tile" href="http://deals.ebay.com/6001738627_Sony_PlayStation_4_Pro___1TB___DualShock_4_Wireless_Controller_Bundle?_trksid=p2057337.m2592&_trkparms=">
+                                        <img src="images/playstation-pro.jpg" alt=""/>
+                                        <p>Playstation 4 Pro</p>
+                                        <p>$419.99</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </main>
             <footer role="contentinfo">

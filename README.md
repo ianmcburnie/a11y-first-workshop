@@ -4,11 +4,13 @@ The idea of this project it to run a live-coding session starting with an empty 
 
 The following sections of this README act as a guide to the live-coding session instructor.
 
-## Meta Data
+## Part 1
+
+Part 1 is primarily concerned with static text, page structure and mental model.
+
+### Meta Data
 
 The meta.html page content is left intentionally blank.
-
-#### Steps
 
 1. Add `<html lang="en">`
 1. Add `<meta charset="utf-8" />` to head
@@ -30,10 +32,6 @@ We have introduced 4 key pieces of 'meta' data:
     * Valid use cases for disabling pinch to zoom are mapping applications and video games
 * Title
     * Title ensures the user can orient themselves. See <a href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#navigation-mechanisms-title">WCAG 2.4.2</a>. Titles identify the current location without requiring users to read or interpret page content.
-
-## Static Text
-
-Next we move onto introducing the concept of static text.
 
 ### Paragraphs
 
@@ -82,6 +80,7 @@ Next we move onto introducing the concept of static text.
 1. Use screen reader shortcut to navigate through headings.
 1. Show list of headings in web rotor.
 1. Add `clipped` class to the 'Legal' header
+1. Add `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/utility.min.css"/>`
 1. Demo that legal header is now invisible
 1. Demo the legal header is still conveyed to screen reader
 
@@ -113,39 +112,35 @@ Note that the image alt text is the same as the title. Technically speaking thes
 
 Demonstrates that in some cases, CSS can effect semantics.
 
-1. Add `list-type: none` (see CSS below) to the lists and demo screen reader impact
+1. Add `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/grid-core.min.css"/>`
+1. Wrap each collection item in a `class="grid__cell grid__cell--one-half"`
 1. Add `role=list` to the lists to restore list semantics
 1. Add `display: block` to images (see CSS below)
 1. Add class `card` to daily deals div (see CSS below)
 
 #### Notes
 
-Adding `list-type: none` to the lists means they are <a href="http://www.456bereastreet.com/archive/201109/screen_readers_list_items_and_list-stylenone/">no longer announced as a list in some screen readers</a>. We fix this issue by applying `role=list` to each list.
+Adding `list-type: none` (via grids css) to the lists means they are <a href="http://www.456bereastreet.com/archive/201109/screen_readers_list_items_and_list-stylenone/">no longer announced as a list in some screen readers</a>. We fix this issue by applying `role=list` to each list.
 
 #### CSS
 
 ```css
-.card {
-    background-color: white;
-}
-.collections ul[role=list],
-.card ul[role=list] {
-    list-style: none;
-}
 .collections img,
-.card img {
+.deals img {
     display: block;
+    max-width: 100%;
 }
 ```
 
-## Interactive Controls
+## Part 2
 
-Now we move away from static text and structure, to interactive controls
+Part moves onto links and keyboard focus.
 
 ### Links
 
 1. Add links around collection and daily deals titles
 1. With screen reader disabled, use TAB key to navigate focus through links
+1. Demo different focus outline in Firefox
 1. Notice that with focus on a link all of the page scroll keys still work.
 1. With screen reader on notice that visited links will be announce as 'visited'.
 1. Add the seller profile static text under each collection
@@ -156,6 +151,13 @@ Now we move away from static text and structure, to interactive controls
 #### Discussion
 
 * Should the title be a heading? I would say it is not strictly necessary, but opinion would be divided here.
+
+### Cards
+
+A purely presentation step where we convert each collection item into a card.
+
+1. Add `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/card.min.css"/>`
+1. Wrap each collection item with `<div class="card"><div class="card__cell">...</div></div>`
 
 ### Tiles
 
@@ -190,15 +192,25 @@ Rather than create a second link, which would be redundant for keyboard and scre
 ### Iframes
 
 1. Add iframe between header and main (without a title attribute for now)
-    * `<iframe src="iframe_content.html" scrolling="no"></iframe>`
+1. Demo that iframe is keyboard focusable in Firefox
 1. Add image link to iframe_content.html
-    * `<a href="http://www.ebay.com/rpp/holidays/?&_trkparms=%26clkid%3D368520364132448429" target="_parent"><img src="images/advert-gift.jpg" alt="It's the gift they've been eyeing all year. Find it here." /></a>`
-1. Demonstrate iframe with keyboard
-    * Iframe body margin can cause a problem with focus indicator
-1. Demonstrate iframe with screen reader
-    * No idea what the iframe contains or is about
+1. Demonstrate iframe taborder with keyboard
+1. Demonstrate focus indicator issue with iframe content (iframes usually have body margin set to 0 which causes problem)
+1. Demonstrate untitled iframe with screen reader
 1. Add `title="Advert"` to iframe and demo with screen reader
     * This is the only recommended use of `title` attribute! (i.e. do not use it as a 'tooltip' on links)
+
+#### HTML
+
+```html
+`<iframe src="iframe_content.html" scrolling="no"></iframe>`
+```
+
+```html
+<a href="http://www.ebay.com/rpp/holidays/?&_trkparms=%26clkid%3D368520364132448429" target="_parent">
+    <img src="images/advert-gift.jpg" alt="It's the gift they've been eyeing all year. Find it here." />
+</a>
+```
 
 ### Complementary landmark
 
@@ -279,6 +291,8 @@ a[href='#mainContent'] {
 #### Notes
 
 * Rather than adding permanent tabindex to main, it would be better to set a temporary tabindex using javascript. The tabindex can be set when the skipto link is clicked (we already know the target id), and the tabindex cn be removed as soon as the target loses focus.
+
+### Part 3
 
 ### Textbox
 
@@ -363,6 +377,8 @@ $(function() {
 });
 ```
 
+## Part 4
+
 ### Buttons
 
 ### Faux Buttons
@@ -377,7 +393,7 @@ $(function() {
 * Profile
 * my Ebay
 
-## ARIA Widgets
+## Part 5
 
 Next we move onto controls that cannot be created with HTML alone. These controls require ARIA, CSS and JavaScript.
 
