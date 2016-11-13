@@ -6,22 +6,31 @@
         <title>AJAX Search Results - A11Y First Workshop</title>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/global.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/utility.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/card.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/textbox.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/iconfont.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/listbox.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/button.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/grid-core.min.css"/>
         <link rel="stylesheet" href="app.css"/>
     </head>
     <body>
         <a href="#mainContent" class="clipped clipped--stealth">Skip to main content</a>
         <div class="grid">
-            <header class="grid__group grid__group--no-gutters" role="banner">
+            <header role="banner">
                 <img src="images/ebay-hires.png" alt="ebay" />
-                <form class="searchform" role="search">
-                    <input aria-label="search" type="text" id="_nkw" name="_nkw"/>
-                    <select aria-label="Category" name="category">
-                        <option value="all">All categories</option>
-                        <option value="antiques">Antiques</option>
-                        <option value="art">Art</option>
-                    </select>
-                    <input type="submit" value="Search" />
+                <form action="search-results-ajax.html" role="search">
+                    <span class="textbox textbox--small">
+                        <input aria-label="search" autofocus id="_nkw" name="_nkw" placeholder="Search..." type="text"/>
+                    </span>
+                    <span class="listbox listbox--small listbox--no-label">
+                        <select aria-label="Category" name="category">
+                            <option value="all">All categories</option>
+                            <option value="antiques">Antiques</option>
+                            <option value="art">Art</option>
+                        </select>
+                    </span>
+                    <input class="btn btn--small btn--primary" type="submit" value="Search" />
                 </form>
             </header>
             <main role="main" id="mainContent">

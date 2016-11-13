@@ -221,7 +221,7 @@ Rather than create a second link, which would be redundant for keyboard and scre
 This is an opportunity to recap, and build upon, headings, landmarks and links.
 
 1. Add `<nav role="navigation">` after banner tag
-1. Add `<h2 class="clipped" id="main-nav">Main Navigation</h2>`
+1. Add `<h2 class="clipped" id="main-nav">Main Categories</h2>`
 1. Add list of links (see HTML below) after heading
 1. Demo new navigation landmark in screen reader.
 1. Add `aria-labelledby="main-nav"` to nav tag
@@ -281,9 +281,20 @@ This is an opportunity to recap, and build upon, headings, landmarks and links.
 #### CSS
 
 ```css
+
+.clipped--stealth:focus {
+    -webkit-clip-path: unset;
+    clip: unset;
+    clip-path: auto;
+    height: auto;
+    width: auto;
+    z-index: 1;
+}
+
 a[href='#mainContent'] {
-    font-size: small;
+    background-color: LightYellow;
     left: 0;
+    padding: 0.25em;
     top: 0;
 }
 ```
@@ -310,14 +321,8 @@ a[href='#mainContent'] {
 1. Talk about arrow key behaviour and 'forms mode' of screen reader.
 1. Screen reader announces control value, label, type
 1. Add `autofocus` attribute to textbox
-
-#### CSS
-
-```css
-[role=banner] form {
-    margin: 1em 0;
-}
-```
+1. Add Skin CSS `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/textbox.min.css"/>`
+1. Wrap textbox with skin markup `<span class="textbox textbox--small">..</span>`
 
 ### Listbox
 
@@ -328,10 +333,14 @@ Do not call a listbox a 'dropdown'! The term 'dropdown' is too ambiguous. The te
 1. SPACE or ARROW key expands.
 1. ARROW keys highlight options, ENTER or SPACE selects.
 1. Screen reader announces control value, label, type
+1. Add Skin CSS:
+    * `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/iconfont.min.css"/>`
+    * `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/listbox.min.css"/>`
+1. Wrap listbox with skin markup `<span class="listbox listbox--small listbox--no-label>..</span>`
 
 ### Submit Button
 
-1. Add submit button after listbox
+1. Add `<input type="submit" value="Search" />` after listbox
 1. Screen reader announces button value/label and type
 1. Demo SPACEBAR and ENTER key behaviour
 1. Add `action="search_results.html"` to form
@@ -339,20 +348,14 @@ Do not call a listbox a 'dropdown'! The term 'dropdown' is too ambiguous. The te
 1. Demo that keyboard navigation starts from top of new page
 1. Add reset button after submit button and demo it's behaviour
 1. Remove submit button (we don't need it)
+1. Add Skin CSS `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/button.min.css"/>`
+1. Add skin classes to button `class="btn btn--small btn--primary"`
 
 ### Search Landmark
 
 1. Add `role=search` to form
 1. Demo new search landmark in screen reader
 1. Add class="grid__group" to header
-
-#### CSS
-
-```CSS
-[role=search] {
-    align-self: center;
-}
-```
 
 ### Live Region
 
@@ -379,7 +382,28 @@ $(function() {
 
 ## Part 4
 
-### Buttons
+Now we start looking at buttons that open different types of overlays.
+
+### Button Flyout
+
+1. Add  Normalize.css `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/normalize.min.css"/>`
+
+```css
+.flyout {
+    position: relative;
+}
+.flyout__overlay {
+    background-color: LightYellow;
+    display: none;
+    padding: 1rem;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 1;
+}
+.flyout__trigger[aria-expanded=true] + .flyout__overlay {
+    display: block;
+}
+```
 
 ### Faux Buttons
 
