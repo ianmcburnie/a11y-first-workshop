@@ -21,7 +21,7 @@
         <div id="eyebrow">
             <div class="grid">
                 <span id="profile" class="flyout flyout--click">
-                    <button class="flyout__trigger" type="button">Hi Ian <span class="icon-arrow-down" /></button>
+                    <button class="flyout__trigger" type="button">Hi Ian</button>
                     <div class="flyout__overlay">
                         <img src="images/profile.jpg" alt="" />
                         <ul role="list">
@@ -40,7 +40,7 @@
                     <span class="textbox textbox--small">
                         <input aria-label="search" autofocus id="_nkw" name="_nkw" placeholder="Search..." type="text"/>
                     </span>
-                    <span class="listbox listbox--small listbox--no-label">
+                    <span class="listbox listbox--small listbox--no-label" id="gh-cat-listbox">
                         <select aria-label="Category" name="category">
                             <option value="all">All categories</option>
                             <option value="antiques">Antiques</option>
@@ -70,7 +70,7 @@
             </aside>
             <main id="mainContent" role="main">
                 <h2>Collections</h2>
-                <div class="grid collections">
+                <div class="collections grid">
                     <ul class="grid__group grid__group--wrap" role="list">
                         <li class="grid__cell grid__cell--one-half">
                             <a class="tile" href="http://www.ebay.com/cln/statesidelife/Mix-It-Up/345988657017">
@@ -117,6 +117,9 @@
                             </a>
                         </li>
                     </ul>
+                    <div class="see-all">
+                        <a href="http://www.ebay.com/cln">See all<span class="clipped"> - Collections</span></a>
+                    </div>
                 </div>
                 <h2>Daily Deals</h2>
                 <div class="deals grid">
@@ -152,6 +155,9 @@
                                     </a>
                                 </li>
                             </ul>
+                        </div>
+                        <div class="see-all">
+                            <a href="http://deals.ebay.com">See all<span class="clipped"> - Deals</span></a>
                         </div>
                     </div>
                 </div>

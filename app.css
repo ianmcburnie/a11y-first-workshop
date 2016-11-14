@@ -39,6 +39,15 @@ body > .grid {
     display: block;
 }
 
+a.tile:hover,
+a.tile:focus {
+    text-decoration: none;
+}
+
+.tile p:last-child {
+    color: #555;
+}
+
 /* IFRAME */
 
 iframe {
@@ -93,9 +102,9 @@ a[href='#mainContent'] {
 
 /* LISTBOX */
 
-.listbox {
+#gh-cat-listbox {
     display: inline-block;
-
+    width: 160px;
 }
 
 /* SEARCH LANDMARK */
@@ -110,6 +119,10 @@ h1 {
 }
 
 /* LIVE REGION */
+
+.see-all {
+    text-align: center;
+}
 
 /* CLICK FLYOUT */
 
@@ -148,9 +161,11 @@ h1 {
     display: block;
 }
 
+/* NON CRITICAL ICON */
+
 /* HOVER FLYOUT */
 
-.flyout--hover .flyout__trigger:hover + .flyout .flyout__overlay {
+.flyout--hover .flyout__trigger[aria-expanded=true] + .flyout .flyout__overlay {
     display: block;
 }
 
@@ -164,4 +179,17 @@ h1 {
     border-radius: 3px;
     display: block;
     padding: 0.1em;
+}
+
+/* CRITICAL ICON */
+
+#cart::before {
+    font-weight: 900;
+}
+
+/* TOOLTIP */
+
+.tooltip--expanded .flyout__overlay {
+    background-color: LightYellow;
+    display: block;
 }

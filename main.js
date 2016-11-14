@@ -21,4 +21,6 @@ $(function() {
     $('.flyout--click').clickFlyout({focusManagement:'first'});
 
     $('.flyout--hover').hoverFlyout();
+
+    $('.tooltip').hoverFlyout({expandedClass:'tooltip--expanded'}).focusFlyout({expandedClass:'tooltip--expanded'});
 });

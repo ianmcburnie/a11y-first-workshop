@@ -141,6 +141,7 @@ Part moves onto links and keyboard focus.
 1. Add links around collection and daily deals titles
 1. With screen reader disabled, use TAB key to navigate focus through links
 1. Demo different focus outline in Firefox
+1. Notice that hand cursor shows for links
 1. Notice that with focus on a link all of the page scroll keys still work.
 1. With screen reader on notice that visited links will be announce as 'visited'.
 1. Add the seller profile static text under each collection
@@ -336,11 +337,12 @@ Do not call a listbox a 'dropdown'! The term 'dropdown' is too ambiguous. The te
 1. Add Skin CSS:
     * `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/iconfont.min.css"/>`
     * `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/listbox.min.css"/>`
-1. Wrap listbox with skin markup `<span class="listbox listbox--small listbox--no-label>..</span>`
+1. Wrap listbox with skin markup `<span class="listbox listbox--small listbox--no-label" id="gh-cat-listbox">..</span>`
 
 ### Submit Button
 
 1. Add `<input type="submit" value="Search" />` after listbox
+1. Notice that mouse hand cursor does not show for buttons.
 1. Screen reader announces button value/label and type
 1. Demo SPACEBAR and ENTER key behaviour
 1. Add `action="search_results.html"` to form
@@ -400,7 +402,7 @@ These instructions are going to get a little harder to follow now.
 <div id="eyebrow">
     <div class="grid">
         <span id="profile" class="flyout flyout--click">
-            <button class="flyout__trigger" type="button">Hi Ian <span class="icon-arrow-down" /></button>
+            <button class="flyout__trigger" type="button">Hi Ian</button>
             <div class="flyout__overlay">
                 <ul role="list">
                     <li><a href="http://www.ebay.com">My Collections</a></li>
@@ -441,6 +443,10 @@ These instructions are going to get a little harder to follow now.
 $('.flyout--click').clickFlyout({focusManagement:'first'});
 ```
 
+### Non-Critical Icon
+
+1. Append icon span to button `<span class="icon-arrow-down"/>`
+
 ### Hover Flyouts
 
 We show the problem of opening a flyout on hover on a link.
@@ -448,8 +454,10 @@ We show the problem of opening a flyout on hover on a link.
 1. Add a my ebay link to eyebrow
 1. Convert it to a hover flyout using jquery-hover-flyout
 1. Demonstrate keyboard issue
-1. We *could* open the flyout on focus, but this would force keyboard user to tab through flyout.
-1. Instead we add a hidden stealth button (remember skip to link used same technique) that allows keyboard user to expand the flyout with ENTER or SPACE.
+1. Convert it to a focus flyout using jquery-focus-flyout
+1. Demonstrate that keyboard user now has to tab through flyout.
+1. Remove focus flyout behaviour
+1. Add a hidden jquery-click-flyout that allows keyboard user to expand the flyout with ENTER or SPACE.
 
 #### HTML
 
@@ -472,7 +480,7 @@ We show the problem of opening a flyout on hover on a link.
 ### CSS
 
 ```css
-.flyout--hover .flyout__trigger:hover + .flyout .flyout__overlay {
+.flyout--hover .flyout__trigger[aria-expanded=true] + .flyout .flyout__overlay {
     display: block;
 }
 
@@ -495,14 +503,53 @@ We show the problem of opening a flyout on hover on a link.
 $('.flyout--hover').hoverFlyout();
 ```
 
-### Faux Buttons
+### Critical Icon
 
-### Flyouts
+1. Append link to eyebrow `<a class="icon-cart" href="http://cart.payments.ebay.com" id="cart" aria-label="cart"></a>`
+1. Remember that hand cursor shows for links
 
-* Notifications
-* Shop By Category
+#### CSS
 
-### Faux Menus
+```css
+#cart::before {
+    font-weight: 900;
+}
+```
+
+### Access Key
+
+1. Add attribute `accesskey="c"` to shopping cart link
+1. Use CTRL+OPTION+C to activate shortcut
+1. Voiceover will announce availability of access key
+1. But how do keyboard users know about this accesskey...
+
+### Tooltip
+
+1. Wrap shopping cart link in tooltip markup
+1. Tooltips should be short.
+
+```html
+<span class="tooltip flyout">
+    <a accesskey="c" aria-describedby="tooltip-cart" class="tooltip flyout__trigger icon-cart" href="http://cart.payments.ebay.com" id="cart" aria-label="cart"></a>
+    <div class="flyout__overlay" id="tooltip-cart">Shopping Cart (Access Key: C)</div>
+</span>
+```
+
+```css
+.tooltip--expanded .flyout__overlay {
+    background-color: LightYellow;
+    display: block;
+}
+```
+
+```js
+$('.tooltip').hoverFlyout({expandedClass:'tooltip--expanded'}).focusFlyout({expandedClass:'tooltip--expanded'});
+```
+
+### Faux Button
+
+
+### Faux Menu
 
 * Profile
 * my Ebay
