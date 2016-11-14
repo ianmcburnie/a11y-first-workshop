@@ -3,7 +3,7 @@
   "scripts": {
     "start": "npm run build && parallelshell 'npm run serve' 'npm run watch'",
     "serve": "browser-sync start -s --files *.html,app.css,app.js",
-    "build": "lasso jquery-click-flyout main.js --minify --out . --name app && rimraf build",
+    "build": "lasso jquery-click-flyout jquery-hover-flyout main.js --minify --out . --name app && rimraf build",
     "watch": "onchange main.js -- npm run build"
   },
   "pre-commit": "build",
@@ -12,6 +12,7 @@
     "jquery": ">=1.11",
     "lasso-cli": "^2.0.6",
     "jquery-click-flyout": "latest",
+    "jquery-hover-flyout": "latest",
     "onchange": "^3.0.2",
     "parallelshell": "^2.0.0",
     "pre-commit": "^1.1.3",

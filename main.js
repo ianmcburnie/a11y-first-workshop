@@ -1,7 +1,11 @@
 $(function() {
 
+    if (window.innerWidth > 599) {
+        $('body').addClass('skin-large');
+    }
+
     $(window).on('resize', function(e) {
-        if (this.innerWidth > 600) {
+        if (this.innerWidth > 599) {
             $('body').addClass('skin-large');
         } else {
             $('body').removeClass('skin-large');
@@ -14,5 +18,7 @@ $(function() {
         $('main ul').empty();
     });
 
-    $('#profile').clickFlyout({focusManagement:'first'});
+    $('.flyout--click').clickFlyout({focusManagement:'first'});
+
+    $('.flyout--hover').hoverFlyout();
 });

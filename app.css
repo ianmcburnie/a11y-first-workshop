@@ -27,6 +27,12 @@ body > .grid {
     margin-top: 0;
 }
 
+/* LINK */
+
+.skin-large a:focus {
+  text-decoration: underline;
+}
+
 /* TILE */
 
 .tile {
@@ -117,7 +123,7 @@ h1 {
     margin: 0 auto;
 }
 
-#profile ul {
+.flyout__overlay ul {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -127,13 +133,35 @@ h1 {
     position: relative;
 }
 .flyout__overlay {
-    background-color: LightYellow;
+    background-color: white;
     display: none;
-    padding: 1rem;
+    left: 0;
+    padding: 0.5em 1em;
     position: absolute;
     white-space: nowrap;
     z-index: 1;
 }
-.flyout__trigger[aria-expanded=true] + .flyout__overlay {
+.flyout--click .flyout__trigger span::before {
+    font-size: x-small;
+}
+.flyout--click .flyout__trigger[aria-expanded=true] + .flyout__overlay {
     display: block;
+}
+
+/* HOVER FLYOUT */
+
+.flyout--hover .flyout__trigger:hover + .flyout .flyout__overlay {
+    display: block;
+}
+
+.flyout--hover .flyout--click {
+    position: static;
+}
+
+.flyout--hover .flyout--click .flyout__trigger {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    display: block;
+    padding: 0.1em;
 }

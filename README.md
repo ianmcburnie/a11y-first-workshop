@@ -384,9 +384,36 @@ $(function() {
 
 Now we start looking at buttons that open different types of overlays.
 
-### Button Flyout
+These instructions are going to get a little harder to follow now.
 
-1. Add  Normalize.css `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/normalize.min.css"/>`
+### Click Flyout
+
+1. Add Normalize.css `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/normalize.min.css"/>`
+1. Add Skin font.css `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/icon.min.css"/>`
+1. Add eyebrow div after skipto link
+    * `<div id="eyebrow"><div class="grid">...</div></div>`
+1. todo
+
+#### HTML
+
+```html
+<div id="eyebrow">
+    <div class="grid">
+        <span id="profile" class="flyout flyout--click">
+            <button class="flyout__trigger" type="button">Hi Ian <span class="icon-arrow-down" /></button>
+            <div class="flyout__overlay">
+                <ul role="list">
+                    <li><a href="http://www.ebay.com">My Collections</a></li>
+                    <li><a href="http://www.ebay.com">Account Settings</a></li>
+                    <li><a href="http://www.ebay.com">Sign Out</a></li>
+                </ul>
+            </div>
+        </span>
+    </div>
+</div>
+```
+
+#### CSS
 
 ```css
 .flyout {
@@ -400,9 +427,72 @@ Now we start looking at buttons that open different types of overlays.
     white-space: nowrap;
     z-index: 1;
 }
-.flyout__trigger[aria-expanded=true] + .flyout__overlay {
+.flyout--click .flyout__trigger span::before {
+    font-size: x-small;
+}
+.flyout--click flyout__trigger[aria-expanded=true] + .flyout__overlay {
     display: block;
 }
+```
+
+#### JS
+
+```js
+$('.flyout--click').clickFlyout({focusManagement:'first'});
+```
+
+### Hover Flyouts
+
+We show the problem of opening a flyout on hover on a link.
+
+1. Add a my ebay link to eyebrow
+1. Convert it to a hover flyout using jquery-hover-flyout
+1. Demonstrate keyboard issue
+1. We *could* open the flyout on focus, but this would force keyboard user to tab through flyout.
+1. Instead we add a hidden stealth button (remember skip to link used same technique) that allows keyboard user to expand the flyout with ENTER or SPACE.
+
+#### HTML
+
+```html
+<span id="myebay" class="flyout flyout--hover">
+    <a class="flyout__trigger" href="http://www.ebay.com">My eBay</a>
+    <span class="flyout flyout--click">
+        <button class="flyout__trigger clipped clipped--stealth" type="button">Expand My eBay</button>
+        <div class="flyout__overlay">
+            <ul role="list">
+                <li><a href="http://www.ebay.com">Summary</a></li>
+                <li><a href="http://www.ebay.com">Bids/Offers</a></li>
+                <li><a href="http://www.ebay.com">Watchlist</a></li>
+            </ul>
+        </div>
+    </span>
+</span>
+```
+
+### CSS
+
+```css
+.flyout--hover .flyout__trigger:hover + .flyout .flyout__overlay {
+    display: block;
+}
+
+.flyout--hover .flyout--click {
+    position: static;
+}
+
+.flyout--hover .flyout--click .flyout__trigger {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    display: block;
+    padding: 0.1em;
+}
+```
+
+### JS
+
+```js
+$('.flyout--hover').hoverFlyout();
 ```
 
 ### Faux Buttons
