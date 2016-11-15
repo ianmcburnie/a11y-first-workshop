@@ -12,10 +12,12 @@ $(function() {
         }
     });
 
-    $('.searchform').on('submit', function(e) {
+    $('.skipto').skipTo();
+
+    $('.hijax-form').on('submit', function(e) {
         e.preventDefault();
-        $('.result-status').html('<p>0 results found</p>');
-        $('main ul').empty();
+        $('.result-status').html('<p>1 result found</p>');
+        $('main ul').empty().append('<li><a href="http://www.ebay.com">Item 1</a></li>');
     });
 
     $('.flyout--click').clickFlyout({focusManagement:'first'});

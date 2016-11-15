@@ -14,13 +14,17 @@
     <body>
         <a href="#mainContent" class="clipped clipped--stealth">Skip to main content</a>
         <div class="grid">
-            <header role="banner">
-                <h1><img src="images/ebay-hires.png" alt="ebay" /></h1>
-                <form>
-                    <span class="textbox textbox--small">
-                        <input aria-label="search" autofocus id="_nkw" name="_nkw" placeholder="Search..." type="text"/>
-                    </span>
-                </form>
+            <header class="grid" role="banner">
+                <div class="grid__group">
+                    <div class="grid__cell grid__cell--one-fifth">
+                        <h1><img src="images/ebay-hires.png" alt="ebay" /></h1>
+                    </div>
+                    <form class="grid__cell grid__cell--four-fifth">
+                        <span class="textbox textbox--small">
+                            <input aria-label="search" autofocus id="_nkw" name="_nkw" placeholder="Search..." type="text"/>
+                        </span>
+                    </form>
+                </div>
             </header>
             <nav role="navigation" aria-labelledby="main-nav">
                 <h2 class="clipped" id="main-nav">Main Categories</h2>
@@ -139,5 +143,6 @@
                 <p>Copyright © 1995-2016 eBay Inc. All Rights Reserved.</p>
             </footer>
         </div>
+        <script src="app.js"></script>
     </body>
 </html>

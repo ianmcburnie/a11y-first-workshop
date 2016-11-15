@@ -190,33 +190,6 @@ Rather than create a second link, which would be redundant for keyboard and scre
 }
 ```
 
-### Iframes
-
-1. Add iframe between header and main (without a title attribute for now)
-1. Demo that iframe is keyboard focusable in Firefox
-1. Add image link to iframe_content.html
-1. Demonstrate iframe taborder with keyboard
-1. Demonstrate focus indicator issue with iframe content (iframes usually have body margin set to 0 which causes problem)
-1. Demonstrate untitled iframe with screen reader
-1. Add `title="Advert"` to iframe and demo with screen reader
-    * This is the only recommended use of `title` attribute! (i.e. do not use it as a 'tooltip' on links)
-
-#### HTML
-
-```html
-`<iframe src="iframe_content.html" scrolling="no"></iframe>`
-```
-
-```html
-<a href="http://www.ebay.com/rpp/holidays/?&_trkparms=%26clkid%3D368520364132448429" target="_parent">
-    <img src="images/advert-gift.jpg" alt="It's the gift they've been eyeing all year. Find it here." />
-</a>
-```
-
-### Complementary landmark
-
-1. Wrap iframe in `<aside role="Complementary">`
-
 ### Navigation Landmark
 
 This is an opportunity to recap, and build upon, headings, landmarks and links.
@@ -270,19 +243,29 @@ This is an opportunity to recap, and build upon, headings, landmarks and links.
 
 ### Skipto Links
 
-1. Add `<a href="#mainContent">Skip to main content</a>` after body tag and `id="mainContent"` to main landmark
+1. Add `<span class="skipto"><a href="#mainContent">Skip to main content</a></a>`
+1. Add `id="mainContent"` to main landmark
 1. Demo keyboard behaviour
 1. Demo how screen reader focus does not get set
 1. Add `tabindex="-1"` to main landmark
 1. Demo how screen reader focus is now set
 1. Demo that permanent tabindex on main element causes a focus outline when clicked with mouse or touch.
+1. Add `<script src="app.js"></script>` after body tag
+1. Call skip-to plugin `$('.skipto').skipTo();`
 1. Add class `clipped clipped--stealth` to skip link
 1. Demo that skip link now only appears on keyboard focus
+
+#### HTML
+
+```html
+<span class="skipto">
+    <a href="#mainContent" class="clipped clipped--stealth">Skip to main content</a>
+</span>
+```
 
 #### CSS
 
 ```css
-
 .clipped--stealth:focus {
     -webkit-clip-path: unset;
     clip: unset;
@@ -300,9 +283,40 @@ a[href='#mainContent'] {
 }
 ```
 
+```js
+$('.skipto').skipTo();
+```
+
 #### Notes
 
 * Rather than adding permanent tabindex to main, it would be better to set a temporary tabindex using javascript. The tabindex can be set when the skipto link is clicked (we already know the target id), and the tabindex cn be removed as soon as the target loses focus.
+
+### Iframes
+
+1. Add iframe between header and main (without a title attribute for now)
+1. Demo that iframe is keyboard focusable in Firefox
+1. Add image link to iframe_content.html
+1. Demonstrate iframe taborder with keyboard
+1. Demonstrate focus indicator issue with iframe content (iframes usually have body margin set to 0 which causes problem)
+1. Demonstrate untitled iframe with screen reader
+1. Add `title="Advert"` to iframe and demo with screen reader
+    * This is the only recommended use of `title` attribute! (i.e. do not use it as a 'tooltip' on links)
+
+#### HTML
+
+```html
+`<iframe src="iframe_content.html" scrolling="no"></iframe>`
+```
+
+```html
+<a href="http://www.ebay.com/rpp/holidays/?&_trkparms=%26clkid%3D368520364132448429" target="_parent">
+    <img src="images/advert-gift.jpg" alt="It's the gift they've been eyeing all year. Find it here." />
+</a>
+```
+
+### Complementary landmark
+
+1. Wrap iframe in `<aside role="Complementary">`
 
 ### Part 3
 
@@ -358,29 +372,6 @@ Do not call a listbox a 'dropdown'! The term 'dropdown' is too ambiguous. The te
 1. Add `role=search` to form
 1. Demo new search landmark in screen reader
 1. Add class="grid__group" to header
-
-### Live Region
-
-1. Duplicate the `search-results.html` page as `search-results-ajax.html`
-1. Add class `searchform` to form
-1. Wrap the `10 results found` paragraph in a div
-1. Add `<script src="app.js"></script>` below body
-1. Update `main.js` to hijax form submission with client-side behaviour (see below)
-1. Using screen reader demonstrate that page updates without notifying user
-1. Add `aria-live="polite"` and `role="status"` to wrapper div
-1. Using screen reader now demonstrate the screen reader can notify user of type of update (not the content that updated)
-
-#### JavaScript
-
-```js
-$(function() {
-    $('.searchform').on('submit', function(e) {
-        e.preventDefault();
-        $('.result-status').html('<p>0 results found</p>');
-        $('main ul').empty();
-    });
-});
-```
 
 ## Part 4
 
@@ -548,11 +539,34 @@ $('.tooltip').hoverFlyout({expandedClass:'tooltip--expanded'}).focusFlyout({expa
 
 ### Faux Button
 
+1. Add `class="btn"` to the two see all links
+1. Demo that screen reader still reads them as links (which is correct)
+1. Explain that this can cause issues for customer service (non-sighted user reports UI control as a link, while sighted customer service person sees a button)
+1. The giveaway for mouse users is the hand cursor icon.
+1. The giveaway for keyboard users is the underline on focus.
 
-### Faux Menu
+### Live Region
 
-* Profile
-* my Ebay
+1. Duplicate the `search-results.html` page as `search-results-ajax.html`
+1. Add class `searchform` to form
+1. Wrap the `10 results found` paragraph in a div
+1. Add `<script src="app.js"></script>` below body
+1. Update `main.js` to hijax form submission with client-side behaviour (see below)
+1. Using screen reader demonstrate that page updates without notifying user
+1. Add `aria-live="polite"` and `role="status"` to wrapper div
+1. Using screen reader now demonstrate the screen reader can notify user of type of update (not the content that updated)
+
+#### JavaScript
+
+```js
+$(function() {
+    $('.searchform').on('submit', function(e) {
+        e.preventDefault();
+        $('.result-status').html('<p>0 results found</p>');
+        $('main ul').empty();
+    });
+});
+```
 
 ## Part 5
 

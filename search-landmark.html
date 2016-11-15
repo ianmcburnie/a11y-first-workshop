@@ -17,21 +17,25 @@
     <body>
         <a href="#mainContent" class="clipped clipped--stealth">Skip to main content</a>
         <div class="grid">
-            <header role="banner">
-                <h1><img src="images/ebay-hires.png" alt="ebay" /></h1>
-                <form action="search-results.html" role="search">
-                    <span class="textbox textbox--small">
-                        <input aria-label="search" autofocus id="_nkw" name="_nkw" placeholder="Search..." type="text"/>
-                    </span>
-                    <span class="listbox listbox--small listbox--no-label" id="gh-cat-listbox">
-                        <select aria-label="Category" name="category">
-                            <option value="all">All categories</option>
-                            <option value="antiques">Antiques</option>
-                            <option value="art">Art</option>
-                        </select>
-                    </span>
-                    <input class="btn btn--small btn--primary" type="submit" value="Search" />
-                </form>
+            <header class="grid" role="banner">
+                <div class="grid__group">
+                    <div class="grid__cell grid__cell--one-fifth">
+                        <h1><img src="images/ebay-hires.png" alt="ebay" /></h1>
+                    </div>
+                    <form action="search-results.html" class="grid__cell grid__cell--four-fifth" role="search">
+                        <span class="textbox textbox--small">
+                            <input aria-label="search" autofocus id="_nkw" name="_nkw" placeholder="Search..." type="text"/>
+                        </span>
+                        <span class="listbox listbox--small listbox--no-label" id="gh-cat-listbox">
+                            <select aria-label="Category" name="category">
+                                <option value="all">All categories</option>
+                                <option value="antiques">Antiques</option>
+                                <option value="art">Art</option>
+                            </select>
+                        </span>
+                        <input class="btn btn--small btn--primary" type="submit" value="Search" />
+                    </form>
+                </div>
             </header>
             <nav role="navigation" aria-labelledby="main-nav">
                 <h2 class="clipped" id="main-nav">Main Categories</h2>
@@ -150,6 +154,7 @@
                 <p>Copyright © 1995-2016 eBay Inc. All Rights Reserved.</p>
             </footer>
         </div>
+        <script src="app.js"></script>
     </body>
     <script src="app.js"></script>
 </html>

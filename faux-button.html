@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Hover Flyout - A11Y Workshop</title>
+        <title>Faux Button - A11Y Workshop</title>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/global.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/grid-core.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/utility.min.css"/>
@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="app.css"/>
     </head>
     <body>
-        <span class="skipto"><a href="#mainContent" class="clipped clipped--stealth">Skip to main content</a></span>
+        <a href="#mainContent" class="clipped clipped--stealth">Skip to main content</a>
         <div id="eyebrow">
             <div class="grid">
                 <div class="grid__group grid__group--no-gutters">
@@ -47,6 +47,10 @@
                                     </ul>
                                 </div>
                             </span>
+                        </span>
+                        <span class="tooltip flyout">
+                            <a accesskey="c" aria-describedby="tooltip-cart"  class="tooltip flyout__trigger icon-cart" href="http://cart.payments.ebay.com" id="cart" aria-label="cart"></a>
+                            <div class="flyout__overlay" id="tooltip-cart">Shopping Cart<br/>(Access Key: C)</div>
                         </span>
                     </div>
                 </div>
@@ -137,7 +141,7 @@
                         </li>
                     </ul>
                     <div class="see-all">
-                        <a href="http://www.ebay.com/cln">See all<span class="clipped"> - Collections</span></a>
+                        <a class="btn" href="http://www.ebay.com/cln">See all<span class="clipped"> - Collections</span></a>
                     </div>
                 </div>
                 <h2>Daily Deals</h2>
@@ -177,7 +181,7 @@
                         </div>
                     </div>
                     <div class="see-all">
-                        <a href="http://deals.ebay.com">See all<span class="clipped"> - Deals</span></a>
+                        <a class="btn" href="http://deals.ebay.com">See all<span class="clipped"> - Deals</span></a>
                     </div>
                 </div>
             </main>

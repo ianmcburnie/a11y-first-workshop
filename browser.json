@@ -1,6 +1,7 @@
 {
     "dependencies":[
         "require-run: ./node_modules/jquery/dist/jquery.js",
+        "jquery-skip-to",
         "jquery-click-flyout",
         "jquery-focus-flyout",
         "jquery-hover-flyout",

@@ -95,9 +95,17 @@ a[href='#mainContent'] {
 
 /* TEXTBOX */
 
+h1 {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+form {
+    display: inline-block;
+}
+
 .textbox {
     display: inline-block;
-
 }
 
 /* LISTBOX */
@@ -109,16 +117,15 @@ a[href='#mainContent'] {
 
 /* SEARCH LANDMARK */
 
-h1 {
+
+/* SEARCH PAGE */
+
+[role=banner] img {
     display: inline-block;
     vertical-align: middle;
 }
 
-[role=search] {
-    display: inline-block;
-}
-
-/* LIVE REGION */
+/* AMBIGUOUS LINK */
 
 .see-all {
     text-align: center;
@@ -193,3 +200,14 @@ h1 {
     background-color: LightYellow;
     display: block;
 }
+
+/* FAUX BUTTON */
+
+/* LIVE REGION */
+
+#results {
+    background-color: white;
+    padding: 1em;
+}
+
+/* MENU */
