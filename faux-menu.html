@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Live Region - A11Y First Workshop</title>
+        <title>Faux Menu - A11Y First Workshop</title>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/global.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/utility.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/grid-core.min.css"/>
@@ -63,7 +63,7 @@
                     <div class="grid__cell grid__cell--one-fifth">
                         <img src="images/ebay-hires.png" alt="ebay" />
                     </div>
-                    <form action="search-results.html" class="hijax-form grid__cell grid__cell--four-fifth" role="search">
+                    <form class="grid__cell grid__cell--four-fifth" role="search">
                         <span class="textbox textbox--small">
                             <input aria-label="search" autofocus id="_nkw" name="_nkw" placeholder="Search..." type="text"/>
                         </span>
@@ -80,7 +80,7 @@
             </div>
         </header>
         <div class="grid">
-            <main class="grid" id="mainContent" role="main">
+            <main class="grid" role="main" id="mainContent">
                 <div class="grid__group">
                     <div class="grid__cell grid__cell--one-fifth">
                         <h2 class="clipped">Refinements</h2>
@@ -95,13 +95,6 @@
                                     <li><a class="menu__selected" href="http://www.ebay.com">Best Match</a></li>
                                 </ul>
                             </span>
-                            <div class="menu menu--flyout" id="view">
-                                <button class="btn btn--small btn--secondary flyout__trigger" type="button">View: List</button>
-                                <div role="menu">
-                                    <div role="menuitem">Grid</div>
-                                    <div role="menuitem">Customise</div>
-                                </div>
-                            </div>
                         </div>
                         <div aria-live="polite" class="result-status" role="status">
                             <p>10 results found</p>

@@ -25,4 +25,10 @@ $(function() {
     $('.flyout--hover').hoverFlyout();
 
     $('.tooltip').hoverFlyout({expandedClass:'tooltip--expanded'}).focusFlyout({expandedClass:'tooltip--expanded'});
+
+    $('.menu--faux').clickFlyout({focusManagement:'first'});
+
+    $('.menu:not(.menu--faux)').menu().on('menuSelect', '[role=menuitem]', function(e, data) {
+        alert($(this).text());
+    });
 });

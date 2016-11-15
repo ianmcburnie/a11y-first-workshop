@@ -5,6 +5,7 @@
         "jquery-click-flyout",
         "jquery-focus-flyout",
         "jquery-hover-flyout",
+        "jquery-menu",
         "main.js"
     ]
 }

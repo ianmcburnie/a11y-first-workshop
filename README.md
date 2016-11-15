@@ -517,8 +517,6 @@ Form controls.
 
 ### Listbox
 
-Do not call a listbox a 'dropdown'! The term 'dropdown' is too ambiguous. The term 'dropdown' only describes the visual appearance of the control, and could be confused with a menu or any other kind of overlay. Use the correct term which describes the actual *purpose* of the control, which is listbox (or select). The purpose of a listbox (or select) is to select a value that will be sent to the server via form submit.
-
 1. Add listbox and aria-label after textbox
 1. ENTER key does not submit form.
 1. SPACE or ARROW key expands.
@@ -553,11 +551,14 @@ Do not call a listbox a 'dropdown'! The term 'dropdown' is too ambiguous. The te
 
 Next we move onto controls that cannot be created with HTML alone. These controls require ARIA, CSS and JavaScript.
 
-### Bubble Help
+### Faux Menu
 
-### Menus
+1. Add Skin CSS `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/menu.min.css"/>`
+1. todo
 
-Do not call a menu a 'dropdown'! The term 'dropdown' is too ambiguous. The term 'dropdown' only describes the visual appearance of the control, and could be confused with a menu or any other kind of overlay. Use the correct term which describes the actual *purpose* of the control, which is menu (or popup menu). The purpose of a menu (or popup menu) is to select a value that will trigger some client-side event.
+### Menu
+
+todo
 
 ### Live Region
 
@@ -574,27 +575,28 @@ Do not call a menu a 'dropdown'! The term 'dropdown' is too ambiguous. The term 
 
 ```js
 $(function() {
-    $('.searchform').on('submit', function(e) {
+    $('.hijax-form').on('submit', function(e) {
         e.preventDefault();
-        $('.result-status').html('<p>0 results found</p>');
-        $('main ul').empty();
+        $('.result-status').html('<p>1 result found</p>');
+        $('main ul').empty().append('<li><a href="http://www.ebay.com">Item 1</a></li>');
     });
 });
 ```
 
 ### Tabs
 
-### Comboboxes
+### Combobox
 
 We add combobox behaviour to search textbox.
 
+### Dialog
 
-### Dialogs
-
-Do not call a dialog an 'overlay'! The term 'overlay' is too ambiguous. The term 'overlay' only describes the visual appearance of the control, and could be confused with a tooltip or any other kind of overlay. Use the correct term which describes the actual *purpose* of the control, which is dialog (or modal). The purpose of a dialog (or modal) child window is to collect data to pass back to the parent window.
+todo
 
 ## Other
 
 We will wrap up with some other concepts that were not applicable in the demo page.
 
 ### Tables
+
+todo

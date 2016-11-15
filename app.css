@@ -214,6 +214,16 @@ form {
 /* SEARCH PAGE */
 
 
+/* FAUX MENU */
+
+#customise {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* FAUX MENU */
+
+
 /* LIVE REGION */
 
 #results {
