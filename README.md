@@ -190,6 +190,16 @@ Rather than create a second link, which would be redundant for keyboard and scre
 }
 ```
 
+### Ambiguous Links
+
+### Faux Button
+
+1. Add `class="btn"` to the two see all links
+1. Demo that screen reader still reads them as links (which is correct)
+1. Explain that this can cause issues for customer service (non-sighted user reports UI control as a link, while sighted customer service person sees a button)
+1. The giveaway for mouse users is the hand cursor icon.
+1. The giveaway for keyboard users is the underline on focus.
+
 ### Navigation Landmark
 
 This is an opportunity to recap, and build upon, headings, landmarks and links.
@@ -319,61 +329,6 @@ $('.skipto').skipTo();
 1. Wrap iframe in `<aside role="Complementary">`
 
 ### Part 3
-
-### Textbox
-
-1. Add form tag to banner
-1. Add textbox to form
-1. Demo that textbox is focusable by default
-1. Demo how arrow key behaviour on textbox is different than on link.
-1. Enter search term and press ENTER. ENTER key should always submit form (even with no submit button).
-1. Add placeholder text of 'search' to textbox
-1. Demo placeholder with screen reader
-1. Add label to textbox. Change placeholder text to ('iPhone 7')
-1. Demo textbox and label
-1. Replace label tag with an aria-label attribute on input
-1. Demo textbox and aria-label
-1. Talk about arrow key behaviour and 'forms mode' of screen reader.
-1. Screen reader announces control value, label, type
-1. Add `autofocus` attribute to textbox
-1. Add Skin CSS `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/textbox.min.css"/>`
-1. Wrap textbox with skin markup `<span class="textbox textbox--small">..</span>`
-
-### Listbox
-
-Do not call a listbox a 'dropdown'! The term 'dropdown' is too ambiguous. The term 'dropdown' only describes the visual appearance of the control, and could be confused with a menu or any other kind of overlay. Use the correct term which describes the actual *purpose* of the control, which is listbox (or select). The purpose of a listbox (or select) is to select a value that will be sent to the server via form submit.
-
-1. Add listbox and aria-label after textbox
-1. ENTER key does not submit form.
-1. SPACE or ARROW key expands.
-1. ARROW keys highlight options, ENTER or SPACE selects.
-1. Screen reader announces control value, label, type
-1. Add Skin CSS:
-    * `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/iconfont.min.css"/>`
-    * `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/listbox.min.css"/>`
-1. Wrap listbox with skin markup `<span class="listbox listbox--small listbox--no-label" id="gh-cat-listbox">..</span>`
-
-### Submit Button
-
-1. Add `<input type="submit" value="Search" />` after listbox
-1. Notice that mouse hand cursor does not show for buttons.
-1. Screen reader announces button value/label and type
-1. Demo SPACEBAR and ENTER key behaviour
-1. Add `action="search_results.html"` to form
-1. Demo that form submits an HTTP GET request by default. A submit button is the only button that should navigate to a new URL in this way.
-1. Demo that keyboard navigation starts from top of new page
-1. Add reset button after submit button and demo it's behaviour
-1. Remove submit button (we don't need it)
-1. Add Skin CSS `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/button.min.css"/>`
-1. Add skin classes to button `class="btn btn--small btn--primary"`
-
-### Search Landmark
-
-1. Add `role=search` to form
-1. Demo new search landmark in screen reader
-1. Add class="grid__group" to header
-
-## Part 4
 
 Now we start looking at buttons that open different types of overlays.
 
@@ -537,13 +492,72 @@ $('.flyout--hover').hoverFlyout();
 $('.tooltip').hoverFlyout({expandedClass:'tooltip--expanded'}).focusFlyout({expandedClass:'tooltip--expanded'});
 ```
 
-### Faux Button
+## Part 4
 
-1. Add `class="btn"` to the two see all links
-1. Demo that screen reader still reads them as links (which is correct)
-1. Explain that this can cause issues for customer service (non-sighted user reports UI control as a link, while sighted customer service person sees a button)
-1. The giveaway for mouse users is the hand cursor icon.
-1. The giveaway for keyboard users is the underline on focus.
+Form controls.
+
+### Textbox
+
+1. Add form tag to banner
+1. Add textbox to form
+1. Demo that textbox is focusable by default
+1. Demo how arrow key behaviour on textbox is different than on link.
+1. Enter search term and press ENTER. ENTER key should always submit form (even with no submit button).
+1. Add placeholder text of 'search' to textbox
+1. Demo placeholder with screen reader
+1. Add label to textbox. Change placeholder text to ('iPhone 7')
+1. Demo textbox and label
+1. Replace label tag with an aria-label attribute on input
+1. Demo textbox and aria-label
+1. Talk about arrow key behaviour and 'forms mode' of screen reader.
+1. Screen reader announces control value, label, type
+1. Add `autofocus` attribute to textbox
+1. Add Skin CSS `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/textbox.min.css"/>`
+1. Wrap textbox with skin markup `<span class="textbox textbox--small">..</span>`
+
+### Listbox
+
+Do not call a listbox a 'dropdown'! The term 'dropdown' is too ambiguous. The term 'dropdown' only describes the visual appearance of the control, and could be confused with a menu or any other kind of overlay. Use the correct term which describes the actual *purpose* of the control, which is listbox (or select). The purpose of a listbox (or select) is to select a value that will be sent to the server via form submit.
+
+1. Add listbox and aria-label after textbox
+1. ENTER key does not submit form.
+1. SPACE or ARROW key expands.
+1. ARROW keys highlight options, ENTER or SPACE selects.
+1. Screen reader announces control value, label, type
+1. Add Skin CSS:
+    * `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/iconfont.min.css"/>`
+    * `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/listbox.min.css"/>`
+1. Wrap listbox with skin markup `<span class="listbox listbox--small listbox--no-label" id="gh-cat-listbox">..</span>`
+
+### Submit Button
+
+1. Add `<input type="submit" value="Search" />` after listbox
+1. Notice that mouse hand cursor does not show for buttons.
+1. Screen reader announces button value/label and type
+1. Demo SPACEBAR and ENTER key behaviour
+1. Add `action="search_results.html"` to form
+1. Demo that form submits an HTTP GET request by default. A submit button is the only button that should navigate to a new URL in this way.
+1. Demo that keyboard navigation starts from top of new page
+1. Add reset button after submit button and demo it's behaviour
+1. Remove submit button (we don't need it)
+1. Add Skin CSS `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/button.min.css"/>`
+1. Add skin classes to button `class="btn btn--small btn--primary"`
+
+### Search Landmark
+
+1. Add `role=search` to form
+1. Demo new search landmark in screen reader
+1. Add class="grid__group" to header
+
+## Part 5
+
+Next we move onto controls that cannot be created with HTML alone. These controls require ARIA, CSS and JavaScript.
+
+### Bubble Help
+
+### Menus
+
+Do not call a menu a 'dropdown'! The term 'dropdown' is too ambiguous. The term 'dropdown' only describes the visual appearance of the control, and could be confused with a menu or any other kind of overlay. Use the correct term which describes the actual *purpose* of the control, which is menu (or popup menu). The purpose of a menu (or popup menu) is to select a value that will trigger some client-side event.
 
 ### Live Region
 
@@ -568,19 +582,12 @@ $(function() {
 });
 ```
 
-## Part 5
-
-Next we move onto controls that cannot be created with HTML alone. These controls require ARIA, CSS and JavaScript.
-
 ### Tabs
 
 ### Comboboxes
 
 We add combobox behaviour to search textbox.
 
-### Menus
-
-Do not call a menu a 'dropdown'! The term 'dropdown' is too ambiguous. The term 'dropdown' only describes the visual appearance of the control, and could be confused with a menu or any other kind of overlay. Use the correct term which describes the actual *purpose* of the control, which is menu (or popup menu). The purpose of a menu (or popup menu) is to select a value that will trigger some client-side event.
 
 ### Dialogs
 

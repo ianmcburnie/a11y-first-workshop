@@ -6,14 +6,14 @@
         <title>Search Results - A11Y First Workshop</title>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/global.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/utility.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/grid-core.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/card.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/textbox.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/iconfont.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/listbox.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/button.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/normalize.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/iconfont.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/icon.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/grid-core.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/textbox.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/listbox.min.css"/>
         <link rel="stylesheet" href="app.css"/>
     </head>
     <body>
@@ -57,21 +57,25 @@
             </div>
         </div>
         <div class="grid">
-            <header role="banner">
-                <img src="images/ebay-hires.png" alt="ebay" />
-                <form action="search-results.html" role="search">
-                    <span class="textbox textbox--small">
-                        <input aria-label="search" autofocus id="_nkw" name="_nkw" placeholder="Search..." type="text"/>
-                    </span>
-                    <span class="listbox listbox--small listbox--no-label" id="gh-cat-listbox">
-                        <select aria-label="Category" name="category">
-                            <option value="all">All categories</option>
-                            <option value="antiques">Antiques</option>
-                            <option value="art">Art</option>
-                        </select>
-                    </span>
-                    <input class="btn btn--small btn--primary" type="submit" value="Search" />
-                </form>
+            <header class="grid" role="banner">
+                <div class="grid__group">
+                    <div class="grid__cell grid__cell--one-fifth">
+                        <img src="images/ebay-hires.png" alt="ebay" />
+                    </div>
+                    <form action="search-results.html" class="grid__cell grid__cell--four-fifth" role="search">
+                        <span class="textbox textbox--small">
+                            <input aria-label="search" autofocus id="_nkw" name="_nkw" placeholder="Search..." type="text"/>
+                        </span>
+                        <span class="listbox listbox--small listbox--no-label" id="gh-cat-listbox">
+                            <select aria-label="Category" name="category">
+                                <option value="all">All categories</option>
+                                <option value="antiques">Antiques</option>
+                                <option value="art">Art</option>
+                            </select>
+                        </span>
+                        <input class="btn btn--small btn--primary" type="submit" value="Search" />
+                    </form>
+                </div>
             </header>
             <main class="grid" role="main" id="mainContent">
                 <div class="grid__group">

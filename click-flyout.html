@@ -8,48 +8,35 @@
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/utility.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/grid-core.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/card.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/textbox.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/iconfont.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/listbox.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/button.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/normalize.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/icon.min.css"/>
         <link rel="stylesheet" href="app.css"/>
     </head>
     <body>
-        <span class="skipto"><a href="#mainContent" class="clipped clipped--stealth">Skip to main content</a></span>
-        <div id="eyebrow">
-            <div class="grid">
-                <span id="profile" class="flyout flyout--click">
-                    <button class="flyout__trigger" type="button">Hi Ian</button>
-                    <div class="flyout__overlay">
-                        <img src="images/profile.jpg" alt="" />
-                        <ul role="list">
-                            <li><a href="http://www.ebay.com">My Collections</a></li>
-                            <li><a href="http://www.ebay.com">Account Settings</a></li>
-                            <li><a href="http://www.ebay.com">Sign Out</a></li>
-                        </ul>
-                    </div>
-                </span>
+        <span class="skipto">
+            <a href="#mainContent" class="clipped clipped--stealth">Skip to main content</a>
+        </span>
+        <header role="banner">
+            <div id="eyebrow">
+                <div class="grid">
+                    <span id="profile" class="flyout flyout--click">
+                        <button class="flyout__trigger" type="button">Hi Ian</button>
+                        <div class="flyout__overlay">
+                            <img src="images/profile.jpg" alt="" />
+                            <ul role="list">
+                                <li><a href="http://www.ebay.com">My Collections</a></li>
+                                <li><a href="http://www.ebay.com">Account Settings</a></li>
+                                <li><a href="http://www.ebay.com">Sign Out</a></li>
+                            </ul>
+                        </div>
+                    </span>
+                </div>
             </div>
-        </div>
-        <div class="grid">
-            <header role="banner">
+            <div class="grid">
                 <h1><img src="images/ebay-hires.png" alt="ebay" /></h1>
-                <form action="search-results.html" role="search">
-                    <span class="textbox textbox--small">
-                        <input aria-label="search" autofocus id="_nkw" name="_nkw" placeholder="Search..." type="text"/>
-                    </span>
-                    <span class="listbox listbox--small listbox--no-label" id="gh-cat-listbox">
-                        <select aria-label="Category" name="category">
-                            <option value="all">All categories</option>
-                            <option value="antiques">Antiques</option>
-                            <option value="art">Art</option>
-                        </select>
-                    </span>
-                    <input class="btn btn--small btn--primary" type="submit" value="Search" />
-                </form>
-            </header>
+            </div>
+        </header>
+        <div class="grid">
             <nav role="navigation" aria-labelledby="main-nav">
                 <h2 class="clipped" id="main-nav">Main Categories</h2>
                 <ul>
@@ -118,7 +105,7 @@
                         </li>
                     </ul>
                     <div class="see-all">
-                        <a href="http://www.ebay.com/cln">See all<span class="clipped"> - Collections</span></a>
+                        <a class="btn btn--faux" href="http://www.ebay.com/cln">See all<span class="clipped"> - Collections</span></a>
                     </div>
                 </div>
                 <h2>Daily Deals</h2>
@@ -158,7 +145,7 @@
                         </div>
                     </div>
                     <div class="see-all">
-                        <a href="http://deals.ebay.com">See all<span class="clipped"> - Deals</span></a>
+                        <a class="btn btn--faux" href="http://deals.ebay.com">See all<span class="clipped"> - Deals</span></a>
                     </div>
                 </div>
             </main>

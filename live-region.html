@@ -6,63 +6,63 @@
         <title>Live Region - A11Y First Workshop</title>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/global.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/utility.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/grid-core.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/card.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/textbox.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/iconfont.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/listbox.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/button.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/normalize.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/iconfont.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/icon.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/grid-core.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/textbox.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/listbox.min.css"/>
         <link rel="stylesheet" href="app.css"/>
     </head>
     <body>
         <a href="#mainContent" class="clipped clipped--stealth">Skip to main content</a>
-        <div id="eyebrow">
-            <div class="grid">
-                <div class="grid__group grid__group--no-gutters">
-                    <div class="grid__cell--three-fourth">
-                        <span id="profile" class="flyout flyout--click">
-                            <button class="flyout__trigger" type="button">Hi Ian <span class="icon-arrow-down" /></button>
-                            <div class="flyout__overlay">
-                                <img src="images/profile.jpg" alt="" />
-                                <ul role="list">
-                                    <li><a href="http://www.ebay.com">My Collections</a></li>
-                                    <li><a href="http://www.ebay.com">Account Settings</a></li>
-                                    <li><a href="http://www.ebay.com">Sign Out</a></li>
-                                </ul>
-                            </div>
-                        </span>
-                    </div>
-                    <div class="grid__cell--one-fourth">
-                        <span id="myebay" class="flyout flyout--hover">
-                            <a class="flyout__trigger" href="http://www.ebay.com">My eBay</a>
-                            <span class="flyout flyout--click">
-                                <button class="flyout__trigger clipped clipped--stealth" type="button">Expand My eBay</button>
+        <header role="banner">
+            <div id="eyebrow">
+                <div class="grid">
+                    <div class="grid__group grid__group--no-gutters">
+                        <div class="grid__cell--four-fifth">
+                            <span id="profile" class="flyout flyout--click">
+                                <button class="flyout__trigger" type="button">Hi Ian <span class="icon-arrow-down" /></button>
                                 <div class="flyout__overlay">
+                                    <img src="images/profile.jpg" alt="" />
                                     <ul role="list">
-                                        <li><a href="http://www.ebay.com">Summary</a></li>
-                                        <li><a href="http://www.ebay.com">Bids/Offers</a></li>
-                                        <li><a href="http://www.ebay.com">Watchlist</a></li>
+                                        <li><a href="http://www.ebay.com">My Collections</a></li>
+                                        <li><a href="http://www.ebay.com">Account Settings</a></li>
+                                        <li><a href="http://www.ebay.com">Sign Out</a></li>
                                     </ul>
                                 </div>
                             </span>
-                        </span>
-                        <span class="tooltip flyout">
-                            <a accesskey="c" aria-describedby="tooltip-cart"  class="tooltip flyout__trigger icon-cart" href="http://cart.payments.ebay.com" id="cart" aria-label="cart"></a>
-                            <div class="flyout__overlay" id="tooltip-cart">Shopping Cart<br/>(Access Key: C)</div>
-                        </span>
+                        </div>
+                        <div class="grid__cell--one-fifth">
+                            <span id="myebay" class="flyout flyout--hover">
+                                <a class="flyout__trigger" href="http://www.ebay.com">My eBay</a>
+                                <span class="flyout flyout--click">
+                                    <button class="flyout__trigger clipped clipped--stealth" type="button">Expand My eBay</button>
+                                    <div class="flyout__overlay">
+                                        <ul role="list">
+                                            <li><a href="http://www.ebay.com">Summary</a></li>
+                                            <li><a href="http://www.ebay.com">Bids/Offers</a></li>
+                                            <li><a href="http://www.ebay.com">Watchlist</a></li>
+                                        </ul>
+                                    </div>
+                                </span>
+                            </span>
+                            <span class="tooltip flyout">
+                                <a accesskey="c" aria-describedby="tooltip-cart"  class="tooltip flyout__trigger icon-cart" href="http://cart.payments.ebay.com" id="cart" aria-label="cart"></a>
+                                <div class="flyout__overlay" id="tooltip-cart">Shopping Cart<br/>(Access Key: C)</div>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="grid">
-            <header class="grid" role="banner">
-                <div class="grid__group">
+            <div class="grid">
+                <div class="grid__group grid__group--no-gutters">
                     <div class="grid__cell grid__cell--one-fifth">
                         <img src="images/ebay-hires.png" alt="ebay" />
                     </div>
-                    <form class="grid__cell grid__cell--four-fifth hijax-form" action="search-results.html" role="search">
+                    <form action="search-results.html" class="hijax-form grid__cell grid__cell--four-fifth" role="search">
                         <span class="textbox textbox--small">
                             <input aria-label="search" autofocus id="_nkw" name="_nkw" placeholder="Search..." type="text"/>
                         </span>
@@ -76,8 +76,9 @@
                         <input class="btn btn--small btn--primary" type="submit" value="Search" />
                     </form>
                 </div>
-
-            </header>
+            </div>
+        </header>
+        <div class="grid">
             <main class="grid" role="main" id="mainContent">
                 <div class="grid__group">
                     <div class="grid__cell grid__cell--one-fifth">
