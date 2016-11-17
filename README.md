@@ -6,7 +6,7 @@ The following sections of this README act as a guide to the live-coding session 
 
 ## Part 1
 
-Part 1 is primarily concerned with static text, page structure and mental model.
+Part 1 is primarily concerned with static text, page structure and links.
 
 ### Meta Data
 
@@ -19,14 +19,10 @@ The meta.html page content is left intentionally blank.
 1. Add `<title>Meta - A11Y First Workshop</title>` to head
 1. Test page with screen reader, notice title is now announces
 
-#### Notes
-
-We have introduced 4 key pieces of 'meta' data:
+We have introduced 3 key pieces of 'meta' data:
 
 * Language attribute
     * Language attribute ensures correct pronunciation, amongst other things. See <a href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#meaning-doc-lang-id">WCAG 3.1.1</a>
-* Charset
-    * Not strictly WCAG related (or maybe it is?), but to display an HTML page correctly, a web browser must know which character set (character encoding) to use.
 * Viewport Scale
     * Viewport meta must ensure pinch-to-zoom is **not** disabled. See <a href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-scale">WCAG 1.4.4</a> and <a href="https://ebay.gitbooks.io/mindpatterns/content/antipatterns/disabling_pinch-to-zoom.html">MIND Anti-Pattern: Disabling Pinch-to-Zoom</a>.
     * Valid use cases for disabling pinch to zoom are mapping applications and video games
@@ -40,19 +36,20 @@ We have introduced 4 key pieces of 'meta' data:
     * `<p>For over 20 years, we've been working to create more economic opportunity for everyone. And we're just getting started.</p>`
     * `<p>Copyright © 1995-2016 eBay Inc. All Rights Reserved.</p>`
 1. Ensure Voiceover web rotor settings include 'Static Text'.
+1. Navigate voiceover to web area (show that voiceover can read desktop and other desktop applications too, not just web pages)
 1. Open Voiceover rotor and explore what it can find on the page (hint: nothing much yet! only the static paragraph text).
-
-#### Web Rotor Settings
+1. We ignore Voiceover 'Web Spots' rotor as this is specific to Voiceover.
 
 <img src="images/settings-web-rotor.png" alt="Screenshot of the Voiceover Web Rotor settings" />
 
-### Lists
+### Unordered Lists
 
-1. Add two lists to the page (see markup below)
+1. Add two unordered lists to the page (see markup below)
 1. Ensure Voiceover web rotor settings include 'Lists'.
-1. Explore lists with the screen reader.
-
-#### HTML
+1. Explore lists with voiceover shortcuts and web rotor.
+1. Demonstrate that voiceover stops on list element and announces number of items in each list
+1. Demonstrate that voiceover announces 'bullet' before each list item contents
+1. Discuss and demonstrate difference between unordered list and ordered list
 
 ```html
 <ul>
@@ -77,34 +74,39 @@ We have introduced 4 key pieces of 'meta' data:
     * `<h2>Collections</h2>`
     * `<h2>Daily Deals</h2>`
     * `<h2>Legal</h2>`
-1. Use screen reader shortcut to navigate through headings.
-1. Show list of headings in web rotor.
+1. Navigate headings with voiceover keyboard shortcuts and web rotor
+
+### Clipped Text
+
 1. Add `clipped` class to the 'Legal' header
 1. Add `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/utility.min.css"/>`
-1. Demo that legal header is now invisible
+1. Demo that legal header is now 'invisible'
 1. Demo the legal header is still conveyed to screen reader
 
 ### Landmarks
 
-1. Add the following landmarks:
-    * `<header role="banner">` around h1
-    * `<main role="main">` around lists
-    * `<footer role="contentinfo">` around legal content
+1. Add the following landmark tags:
+    * `<header>` around h1
+    * `<main>` around lists
+    * `<footer>` around legal content
 1. Notice there is no *visual* difference to the page. This is intentional.
-1. Display landmarks in screen reader landmarks lists
-1. Navigate through landmarks using screen reader shortcuts
+1. Display landmarks in screen reader landmarks lists. Notice that footer is not visible
+1. Add the following landmark roles
+    * `role="banner"` to header
+    * `role="main"` to main
+    * `role=contentinfo` to footer
+1. Display landmarks in screen reader landmarks lists. Notice that footer is now visible as contentinfo
 
 ### Images
 
-1. Add following image to banner `<h1><img src="images/ebay-hires.png" /></h1>` (lack of alt text intentional for now)
-1. Demonstrate behaviour of missing alt text in screen reader
+1. Replace `<h1>eBay</h1>` with `<h1><img src="images/ebay-hires.png" /></h1>` (lack of alt text intentional for now)
+1. Demonstrate behaviour of missing alt text in screen reader (it reads image url/filename)
 1. Add `alt="ebay"` to h1 content image
-1. Demonstrate behaviour of alt text with screen reader
-1. Add collection image before each collection title, alt="collection title"
-1. Add daily deal image before each deal title, alt="deal title"
+1. Demonstrate behaviour of alt text with screen reader (it now reads 'ebay' text)
+1. Add image before each collection and deal title, and for the time being set alt="collection/deal title" (we will set this to blank in a later section)
+1. Wrap title in paragraph tag
+1. Demonstrate that voiceover no longer announces 'bullet' for each list item
 1. Use spacebar, up arrow, down arrow, page up, page down, home and end keys to scroll page
-
-#### Notes
 
 Note that the image alt text is the same as the title. Technically speaking these images can be classed as presentational, because if the images were not displayed, we still have the same text below (the title text). We leave the alt text in place for now. Yes, it's a redundant/duplicate navigation for screen reader users, but not technically 'non-accessible'. When we convert the item to a tile, in an upcoming step, we will set this value to blank.
 
@@ -114,27 +116,10 @@ Demonstrates that in some cases, CSS can effect semantics.
 
 1. Add `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/grid-core.min.css"/>`
 1. Wrap each collection item in a `class="grid__cell grid__cell--one-half"`
+1. Demonstrate that voiceover no longer announces list semantics
 1. Add `role=list` to the lists to restore list semantics
-1. Add `display: block` to images (see CSS below)
-1. Add class `card` to daily deals div (see CSS below)
-
-#### Notes
 
 Adding `list-type: none` (via grids css) to the lists means they are <a href="http://www.456bereastreet.com/archive/201109/screen_readers_list_items_and_list-stylenone/">no longer announced as a list in some screen readers</a>. We fix this issue by applying `role=list` to each list.
-
-#### CSS
-
-```css
-.collections img,
-.deals img {
-    display: block;
-    max-width: 100%;
-}
-```
-
-## Part 2
-
-Part moves onto links and keyboard focus.
 
 ### Links
 
@@ -144,14 +129,7 @@ Part moves onto links and keyboard focus.
 1. Notice that hand cursor shows for links
 1. Notice that with focus on a link all of the page scroll keys still work.
 1. With screen reader on notice that visited links will be announce as 'visited'.
-1. Add the seller profile static text under each collection
-1. Add price under each daily deal title.
-1. This new static text introduces one extra virtual cursor navigation for screen reader users.
-1. Notice that it would be nice to have the image as a link to the item page too.
-
-#### Discussion
-
-* Should the title be a heading? I would say it is not strictly necessary, but opinion would be divided here.
+1. Notice that it would be nice to have the image as a link to the item page too. We will address this in a later step.
 
 ### Cards
 
@@ -159,42 +137,76 @@ A purely presentation step where we convert each collection item into a card.
 
 1. Add `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/card.min.css"/>`
 1. Wrap each collection item with `<div class="card"><div class="card__cell">...</div></div>`
+1. Add `display: block` and `max-width: 100%` to images (see CSS below) so they scale responsively (not strictly needed for a11y purposes).
+1. Add the seller profile static text under each collection
+1. Add price under each daily deal title.
+1. This new static text introduces one extra virtual cursor navigation for screen reader users.
+1. Wrap each collection/deal link in an h3 tag
+
+```css
+.collections img,
+.deals img {
+    display: block;
+    max-width: 100%;
+}
+```
+
+#### Discussion
+
+* Should the link/title be a heading? I would say it is not strictly necessary, but opinion would be divided here.
 
 ### Tiles
 
-We want the collection and deals images to link to the item too.
-
-Rather than create a second link, which would be redundant for keyboard and screen reader users, we can wrap the title and image together in a single anchor.
-
-#### Steps
-
-1. Remove anchor tag from collection and deals titles and wrap them around the entire contents of list item
+1. Move anchor tag from collection and deals titles and wrap it around the entire contents of list item
 1. Show keyboard focus indicator
-1. Set `display: inline-block` on anchor to fix focus-indicator.
+1. Set `display: block` on anchor to fix focus-indicator.
 1. Show fixed focus indicator
 1. Listen to anchor in screen reader and notice that link text is red twice
 1. Set the image alt value to blank
 1. Listen to anchor in screen reader and now link text is only read once
-
-#### Notes
-
-* Anchor tags are inline-level elements in CSS by default. This causes some issues with the focus outline.
-* What happens if we want to make the seller profile a link too?    
-    * A: It can no longer be a tile.
-
-#### CSS
+1. Demonstrate what happens if we try to make seller profile a nested link inside of the tile.
+1. Notice that now all text in tile is blue. Can fix this with CSS.
 
 ```css
-.tile {
-    display: inline-block;
+a.tile {
+    display: block;
+}
+a.tile p:last-child {
+    color: #555;
 }
 ```
 
 ### Ambiguous Links
 
+1. Add 'See all' link after collections and deals lists
+1. Align link to center of grid
+1. Demonstrate that we now have two 'ambiguous' links with same text that go to different places
+1. Append clipped text to each link text
+1. Demonstrate the difference if using aria-label
+
+```html
+<div class="see-all">
+    <a href="http://www.ebay.com/cln">See all<span class="clipped"> - Collections</span></a>
+</div>
+...
+<div class="see-all">
+    <a href="http://deals.ebay.com">See all<span class="clipped"> - Deals</span></a>
+</div>
+```
+
+```css
+.see-all {
+    text-align: center;
+}
+```
+
 ### Faux Button
 
 1. Add `class="btn"` to the two see all links
+1. Notice that skin hasn't styled them properly. Something is wrong. Skin enforces accessibility. We don't allow btn tag on a link unless developer signifies they know what they are doing
+1. Add `btn--faux` class modifier
+1. Link is now styled as a button
+1. Add `href="javascript;"`. Skin refuses to style the link.
 1. Demo that screen reader still reads them as links (which is correct)
 1. Explain that this can cause issues for customer service (non-sighted user reports UI control as a link, while sighted customer service person sees a button)
 1. The giveaway for mouse users is the hand cursor icon.
@@ -204,19 +216,17 @@ Rather than create a second link, which would be redundant for keyboard and scre
 
 This is an opportunity to recap, and build upon, headings, landmarks and links.
 
-1. Add `<nav role="navigation">` after banner tag
-1. Add `<h2 class="clipped" id="main-nav">Main Categories</h2>`
-1. Add list of links (see HTML below) after heading
+1. Add list of links (see HTML below) after banner tag
+1. Wrap links with `<nav id="cat-nav" role="navigation">`
+1. Add `<h2 class="clipped" id="cat-nav">Categories</h2>`
 1. Demo new navigation landmark in screen reader.
 1. Add `aria-labelledby="main-nav"` to nav tag
 1. Demo labelled navigation landmark in screen reader
 
-#### HTML
-
 ```html
-<nav role="navigation">
-    <h2 class="clipped">Main Navigation</h2>
-    <ul>
+<nav aria-labelledby="cat-nav-title" id="cat-nav" role="navigation">
+    <h2 class="clipped" id="cat-nav-title">Categories</h2>
+    <ul role="list">
         <li><a href="http://www.ebay.com/motors">Motors</a></li>
         <li><a href="http://www.ebay.com/motors">Fashion</a></li>
         <li><a href="http://www.ebay.com/motors">Electronics</a></li>
@@ -231,10 +241,8 @@ This is an opportunity to recap, and build upon, headings, landmarks and links.
 </nav>
 ```
 
-#### CSS
-
 ```css
-[role=navigation] ul {
+#cat-nav [role=list] {
     border-bottom: 1px solid #ccc;
     border-top: 1px solid #ccc;
     display: flex;
@@ -242,11 +250,11 @@ This is an opportunity to recap, and build upon, headings, landmarks and links.
     margin: 0;
     padding: 1em 0;
 }
-[role=navigation] li {
+#cat-nav li {
     text-align: center;
     width: 128px;
 }
-[role=navigation] a {
+#cat-nav a {
     font-size: 12px;
 }
 ```
@@ -265,15 +273,13 @@ This is an opportunity to recap, and build upon, headings, landmarks and links.
 1. Add class `clipped clipped--stealth` to skip link
 1. Demo that skip link now only appears on keyboard focus
 
-#### HTML
+Rather than adding permanent tabindex to main, it would be better to set a temporary tabindex using javascript. The tabindex can be set when the skipto link is clicked (we already know the target id), and the tabindex cn be removed as soon as the target loses focus.
 
 ```html
 <span class="skipto">
     <a href="#mainContent" class="clipped clipped--stealth">Skip to main content</a>
 </span>
 ```
-
-#### CSS
 
 ```css
 .clipped--stealth:focus {
@@ -297,73 +303,102 @@ a[href='#mainContent'] {
 $('.skipto').skipTo();
 ```
 
-#### Notes
-
-* Rather than adding permanent tabindex to main, it would be better to set a temporary tabindex using javascript. The tabindex can be set when the skipto link is clicked (we already know the target id), and the tabindex cn be removed as soon as the target loses focus.
-
 ### Iframes
 
 1. Add iframe between header and main (without a title attribute for now)
 1. Demo that iframe is keyboard focusable in Firefox
-1. Add image link to iframe_content.html
-1. Demonstrate iframe taborder with keyboard
-1. Demonstrate focus indicator issue with iframe content (iframes usually have body margin set to 0 which causes problem)
+1. Add image to iframe_content.html
+1. Navigate inside iframe with screen reader
 1. Demonstrate untitled iframe with screen reader
 1. Add `title="Advert"` to iframe and demo with screen reader
     * This is the only recommended use of `title` attribute! (i.e. do not use it as a 'tooltip' on links)
-
-#### HTML
+1. Wrap image in link
+1. Demonstrate iframe taborder with keyboard
+1. Demonstrate focus indicator issue with iframe content when iframe body has zero margin
+1. Create an advert that plenty of margin around hyperlink
 
 ```html
-`<iframe src="iframe_content.html" scrolling="no"></iframe>`
+`<iframe src="iframe_content.html" scrolling="no" title="Advert"></iframe>`
 ```
 
 ```html
-<a href="http://www.ebay.com/rpp/holidays/?&_trkparms=%26clkid%3D368520364132448429" target="_parent">
-    <img src="images/advert-gift.jpg" alt="It's the gift they've been eyeing all year. Find it here." />
-</a>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body {
+                margin: 0;
+            }
+            a {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+            }
+            a:focus {
+                outline: 2px dashed white;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="images/gift-cards-for-home.jpg" alt="" />
+        <a href="http://www.ebay.com/rpp/holidays/?&_trkparms=%26clkid%3D368520364132448429" target="_parent">
+            <img src="images/advert-gift.jpg" alt="It's the gift they've been eyeing all year. Find it here." />
+        </a>
+    </body>
+</html>
 ```
 
 ### Complementary landmark
 
-1. Wrap iframe in `<aside role="Complementary">`
+1. Wrap iframe in `<aside role="complementary">`
 
-### Part 3
+### Part 2
 
-Now we start looking at buttons that open different types of overlays.
-
-These instructions are going to get a little harder to follow now.
+Part 2 is primarily concerned with buttons, form controls, DOM order and focus management.
 
 ### Click Flyout
 
 1. Add Normalize.css `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/normalize.min.css"/>`
-1. Add Skin font.css `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/icon.min.css"/>`
-1. Add eyebrow div after skipto link
+    * this will set body margin to 0. So let's center the grid.
+1. Add eyebrow div to start of header
     * `<div id="eyebrow"><div class="grid">...</div></div>`
 1. todo
 
-#### HTML
-
 ```html
-<div id="eyebrow">
-    <div class="grid">
-        <span id="profile" class="flyout flyout--click">
-            <button class="flyout__trigger" type="button">Hi Ian</button>
-            <div class="flyout__overlay">
-                <ul role="list">
-                    <li><a href="http://www.ebay.com">My Collections</a></li>
-                    <li><a href="http://www.ebay.com">Account Settings</a></li>
-                    <li><a href="http://www.ebay.com">Sign Out</a></li>
-                </ul>
-            </div>
-        </span>
+<header role="banner">
+    <div id="eyebrow">
+        <div class="grid">
+            <span id="profile" class="flyout flyout--click">
+                <button class="flyout__trigger" type="button">Hi Ian</button>
+                <div class="flyout__overlay">
+                    <ul role="list">
+                        <li><a href="http://www.ebay.com">My Collections</a></li>
+                        <li><a href="http://www.ebay.com">Account Settings</a></li>
+                        <li><a href="http://www.ebay.com">Sign Out</a></li>
+                    </ul>
+                </div>
+            </span>
+        </div>
     </div>
-</div>
+...
+</header>
 ```
 
-#### CSS
-
 ```css
+body > .grid,
+header > .grid,
+#eyebrow > .grid {
+    margin: 0 auto;
+}
+
+#eyebrow {
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+    padding: 0.25em 0;
+}
+
 .flyout {
     position: relative;
 }
@@ -383,14 +418,14 @@ These instructions are going to get a little harder to follow now.
 }
 ```
 
-#### JS
-
 ```js
 $('.flyout--click').clickFlyout({focusManagement:'first'});
 ```
 
 ### Non-Critical Icon
 
+1. Add Skin iconfont.css `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/iconfont.min.css"/>`
+1. Add Skin font.css `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/icon.min.css"/>`
 1. Append icon span to button `<span class="icon-arrow-down"/>`
 
 ### Hover Flyouts
@@ -404,8 +439,6 @@ We show the problem of opening a flyout on hover on a link.
 1. Demonstrate that keyboard user now has to tab through flyout.
 1. Remove focus flyout behaviour
 1. Add a hidden jquery-click-flyout that allows keyboard user to expand the flyout with ENTER or SPACE.
-
-#### HTML
 
 ```html
 <span id="myebay" class="flyout flyout--hover">
@@ -422,8 +455,6 @@ We show the problem of opening a flyout on hover on a link.
     </span>
 </span>
 ```
-
-### CSS
 
 ```css
 .flyout--hover .flyout__trigger[aria-expanded=true] + .flyout .flyout__overlay {
@@ -443,8 +474,6 @@ We show the problem of opening a flyout on hover on a link.
 }
 ```
 
-### JS
-
 ```js
 $('.flyout--hover').hoverFlyout();
 ```
@@ -453,8 +482,6 @@ $('.flyout--hover').hoverFlyout();
 
 1. Append link to eyebrow `<a class="icon-cart" href="http://cart.payments.ebay.com" id="cart" aria-label="cart"></a>`
 1. Remember that hand cursor shows for links
-
-#### CSS
 
 ```css
 #cart::before {
@@ -491,10 +518,6 @@ $('.flyout--hover').hoverFlyout();
 ```js
 $('.tooltip').hoverFlyout({expandedClass:'tooltip--expanded'}).focusFlyout({expandedClass:'tooltip--expanded'});
 ```
-
-## Part 4
-
-Form controls.
 
 ### Textbox
 
@@ -547,9 +570,9 @@ Form controls.
 1. Demo new search landmark in screen reader
 1. Add class="grid__group" to header
 
-## Part 5
+## Part 3
 
-Next we move onto controls that cannot be created with HTML alone. These controls require ARIA, CSS and JavaScript.
+Part 3 is primarily concerned with advanced keyboard navigation, ARIA widgets & live regions.
 
 ### Faux Menu
 
@@ -570,8 +593,6 @@ todo
 1. Using screen reader demonstrate that page updates without notifying user
 1. Add `aria-live="polite"` and `role="status"` to wrapper div
 1. Using screen reader now demonstrate the screen reader can notify user of type of update (not the content that updated)
-
-#### JavaScript
 
 ```js
 $(function() {
