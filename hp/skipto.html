@@ -3,57 +3,19 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Critical Icon - A11Y Workshop</title>
+        <title>Skipto Link - A11Y Workshop</title>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.9.0/css/skin.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.9.0/css/grid-full.min.css"/>
-        <link rel="stylesheet" href="app.css"/>
+        <link rel="stylesheet" href="../app.css"/>
     </head>
     <body>
-        <a href="#mainContent" class="clipped clipped--stealth">Skip to main content</a>
-        <header role="banner">
-            <div id="eyebrow">
-                <div class="grid">
-                    <div class="grid__group grid__group--no-gutters">
-                        <div class="grid__cell--four-fifth">
-                            <span id="profile" class="flyout flyout--click">
-                                <button class="flyout__trigger" type="button">Hi Ian <span class="icon icon--arrow-down" /></button>
-                                <div class="flyout__overlay">
-                                    <img src="images/profile.jpg" alt="" />
-                                    <ul role="list">
-                                        <li><a href="http://www.ebay.com">My Collections</a></li>
-                                        <li><a href="http://www.ebay.com">Account Settings</a></li>
-                                        <li><a href="http://www.ebay.com">Sign Out</a></li>
-                                    </ul>
-                                </div>
-                            </span>
-                        </div>
-                        <div class="grid__cell--one-fifth">
-                            <span id="myebay" class="flyout flyout--hover">
-                                <a class="flyout__trigger" href="http://www.ebay.com">My eBay</a>
-                                <span class="flyout flyout--click">
-                                    <button class="flyout__trigger clipped clipped--stealth" type="button">Expand My eBay</button>
-                                    <div class="flyout__overlay">
-                                        <ul role="list">
-                                            <li><a href="http://www.ebay.com">Summary</a></li>
-                                            <li><a href="http://www.ebay.com">Bids/Offers</a></li>
-                                            <li><a href="http://www.ebay.com">Watchlist</a></li>
-                                        </ul>
-                                    </div>
-                                </span>
-                            </span>
-                            <span class="tooltip flyout">
-                                <a accesskey="c" aria-describedby="tooltip-cart"  class="tooltip flyout__trigger icon icon--cart" href="http://cart.payments.ebay.com" id="cart" aria-label="cart"></a>
-                                <div class="flyout__overlay" id="tooltip-cart">Shopping Cart<br/>(Access Key: C)</div>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid">
-                <h1><img src="images/ebay-hires.png" alt="ebay" /></h1>
-            </div>
-        </header>
+        <span class="skipto">
+            <a href="#mainContent" class="clipped clipped--stealth">Skip to main content</a>
+        </span>
         <div class="grid">
+            <header role="banner">
+                <h1><img src="../images/ebay-hires.png" alt="ebay" /></h1>
+            </header>
             <nav role="navigation" aria-labelledby="main-nav">
                 <h2 class="clipped" id="main-nav">Main Categories</h2>
                 <ul>
@@ -69,9 +31,6 @@
                     <li><a href="http://www.ebay.com/motors">Holiday</a></li>
                 </ul>
             </nav>
-            <aside role="complementary">
-                <iframe scrolling="no" src="iframe_content.html" title="Advert"></iframe>
-            </aside>
             <main id="mainContent" role="main">
                 <h2>Collections</h2>
                 <div class="collections grid">
@@ -172,5 +131,5 @@
             </footer>
         </div>
     </body>
-    <script src="app.js"></script>
+    <script src="../app.js"></script>
 </html>

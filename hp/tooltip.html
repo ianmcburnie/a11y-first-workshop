@@ -3,13 +3,13 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Access Key - A11Y Workshop</title>
+        <title>Critical Icon - A11Y Workshop</title>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.9.0/css/skin.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.9.0/css/grid-full.min.css"/>
-        <link rel="stylesheet" href="app.css"/>
+        <link rel="stylesheet" href="../app.css"/>
     </head>
     <body>
-        <span class="skipto"><a href="#mainContent" class="clipped clipped--stealth">Skip to main content</a></span>
+        <a href="#mainContent" class="clipped clipped--stealth">Skip to main content</a>
         <header role="banner">
             <div id="eyebrow">
                 <div class="grid">
@@ -18,7 +18,7 @@
                             <span id="profile" class="flyout flyout--click">
                                 <button class="flyout__trigger" type="button">Hi Ian <span class="icon icon--arrow-down" /></button>
                                 <div class="flyout__overlay">
-                                    <img src="images/profile.jpg" alt="" />
+                                    <img src="../images/profile.jpg" alt="" />
                                     <ul role="list">
                                         <li><a href="http://www.ebay.com">My Collections</a></li>
                                         <li><a href="http://www.ebay.com">Account Settings</a></li>
@@ -41,13 +41,16 @@
                                     </div>
                                 </span>
                             </span>
-                            <a accesskey="c" class="icon icon--cart" href="http://cart.payments.ebay.com" id="cart" aria-label="cart"></a>
+                            <span class="tooltip flyout">
+                                <a accesskey="c" aria-describedby="tooltip-cart"  class="tooltip flyout__trigger icon icon--cart" href="http://cart.payments.ebay.com" id="cart" aria-label="cart"></a>
+                                <div class="flyout__overlay" id="tooltip-cart">Shopping Cart<br/>(Access Key: C)</div>
+                            </span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="grid">
-                <h1><img src="images/ebay-hires.png" alt="ebay" /></h1>
+                <h1><img src="../images/ebay-hires.png" alt="ebay" /></h1>
             </div>
         </header>
         <div class="grid">
@@ -169,5 +172,5 @@
             </footer>
         </div>
     </body>
-    <script src="app.js"></script>
+    <script src="../app.js"></script>
 </html>

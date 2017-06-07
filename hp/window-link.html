@@ -3,95 +3,19 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Listbox - A11Y Workshop</title>
+        <title>New Window Link - A11Y Workshop</title>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.9.0/css/skin.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.9.0/css/grid-full.min.css"/>
-        <link rel="stylesheet" href="app.css"/>
+        <link rel="stylesheet" href="../app.css"/>
     </head>
     <body>
-        <a href="#mainContent" class="clipped clipped--stealth">Skip to main content</a>
-        <header role="banner">
-            <div id="eyebrow">
-                <div class="grid">
-                    <div class="grid__group grid__group--no-gutters">
-                        <div class="grid__cell--four-fifth">
-                            <span id="profile" class="flyout flyout--click">
-                                <button class="flyout__trigger" type="button">Hi Ian <span class="icon icon--arrow-down" /></button>
-                                <div class="flyout__overlay">
-                                    <img src="images/profile.jpg" alt="" />
-                                    <ul role="list">
-                                        <li><a href="http://www.ebay.com">My Collections</a></li>
-                                        <li><a href="http://www.ebay.com">Account Settings</a></li>
-                                        <li><a href="http://www.ebay.com">Sign Out</a></li>
-                                    </ul>
-                                </div>
-                            </span>
-                        </div>
-                        <div class="grid__cell--one-fifth">
-                            <span id="myebay" class="flyout flyout--hover">
-                                <a class="flyout__trigger" href="http://www.ebay.com">My eBay</a>
-                                <span class="flyout flyout--click">
-                                    <button class="flyout__trigger clipped clipped--stealth" type="button">Expand My eBay</button>
-                                    <div class="flyout__overlay">
-                                        <ul role="list">
-                                            <li><a href="http://www.ebay.com">Summary</a></li>
-                                            <li><a href="http://www.ebay.com">Bids/Offers</a></li>
-                                            <li><a href="http://www.ebay.com">Watchlist</a></li>
-                                        </ul>
-                                    </div>
-                                </span>
-                            </span>
-                            <span class="tooltip flyout">
-                                <a accesskey="c" aria-describedby="tooltip-cart"  class="tooltip flyout__trigger icon icon--cart" href="http://cart.payments.ebay.com" id="cart" aria-label="cart"></a>
-                                <div class="flyout__overlay" id="tooltip-cart">Shopping Cart<br/>(Access Key: C)</div>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid">
-                <div class="grid__group grid__group--no-gutters">
-                    <div class="grid__cell grid__cell--one-fifth">
-                        <h1><img src="images/ebay-hires.png" alt="ebay" /></h1>
-                    </div>
-                    <form class="grid__cell grid__cell--four-fifth">
-                        <span class="textbox">
-                            <input aria-label="search" autofocus class="textbox__control" id="_nkw" name="_nkw" placeholder="Search..." type="text"/>
-                        </span>
-                        <span class="listbox">
-                            <select aria-label="Category" class="listbox__control" name="category">
-                                <option value="all">All categories</option>
-                                <option value="antiques">Antiques</option>
-                                <option value="art">Art</option>
-                            </select>
-                            <span class="listbox__icon"></span>
-                        </span>
-                    </form>
-                </div>
-            </div>
-        </header>
         <div class="grid">
-            <nav role="navigation" aria-labelledby="main-nav">
-                <h2 class="clipped" id="main-nav">Main Categories</h2>
-                <ul>
-                    <li><a href="http://www.ebay.com/motors">Motors</a></li>
-                    <li><a href="http://www.ebay.com/motors">Fashion</a></li>
-                    <li><a href="http://www.ebay.com/motors">Electronics</a></li>
-                    <li><a href="http://www.ebay.com/motors">Collectibles &amp; Art</a></li>
-                    <li><a href="http://www.ebay.com/motors">Home &amp; Garden</a></li>
-                    <li><a href="http://www.ebay.com/motors">Sporting Goods</a></li>
-                    <li><a href="http://www.ebay.com/motors">Toys</a></li>
-                    <li><a href="http://www.ebay.com/motors">Business &amp; Industrial</a></li>
-                    <li><a href="http://www.ebay.com/motors">Music</a></li>
-                    <li><a href="http://www.ebay.com/motors">Holiday</a></li>
-                </ul>
-            </nav>
-            <aside role="complementary">
-                <iframe scrolling="no" src="iframe_content.html" title="Advert"></iframe>
-            </aside>
-            <main id="mainContent" role="main">
+            <header role="banner">
+                <h1><img src="../images/ebay-hires.png" alt="ebay" /></h1>
+            </header>
+            <main role="main">
                 <h2>Collections</h2>
-                <div class="collections grid">
+                <div class="grid collections">
                     <ul class="grid__group grid__group--wrap" role="list">
                         <li class="grid__cell grid__cell--one-half">
                             <a class="tile" href="http://www.ebay.com/cln/statesidelife/Mix-It-Up/345988657017">
@@ -139,9 +63,10 @@
                         </li>
                     </ul>
                     <div class="see-all">
-                        <a class="btn btn--faux" href="http://www.ebay.com/cln">See all<span class="clipped"> - Collections</span></a>
+                        <a href="http://www.ebay.com/cln">See all<span class="clipped"> - Collections</span></a>
                     </div>
                 </div>
+
                 <h2>Daily Deals</h2>
                 <div class="deals grid">
                     <div class="card">
@@ -179,15 +104,14 @@
                         </div>
                     </div>
                     <div class="see-all">
-                        <a class="btn btn--faux" href="http://deals.ebay.com">See all<span class="clipped"> - Deals</span></a>
+                        <a href="http://deals.ebay.com">See all<span class="clipped"> - Deals</span></a>
                     </div>
                 </div>
             </main>
             <footer role="contentinfo">
                 <h2 class="clipped">Legal</h2>
-                <p>Copyright © 1995-2017 eBay Inc. All Rights Reserved.</p>
+                <p>Copyright © 1995-2017 eBay Inc. All Rights Reserved. <a href="http://pages.ebay.com/help/policies/user-agreement.html" target="_blank">User Agreement <span class="icon icon--window" role="img" aria-label="Opens in new window or tab"></span></a></p>
             </footer>
         </div>
-        <script src="app.js"></script>
     </body>
 </html>
