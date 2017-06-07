@@ -1,23 +1,42 @@
-# A11Y-First : An Accessibility Workshop
+# A11Y-First : Web Accessibility Workshop
 
-The idea of this project it to run a live-coding session starting with an empty HTML file. From that starting point we will progressively build up a working page, and introduce many common accessibility principles and techniques along the way.
+The idea of this project it to run a live-coding session starting with an empty HTML file. No web server is required. From that starting point the session instructor will progressively build up that page, and several others, introducing many common accessibility principles and techniques along the way.
 
-The following sections of this README act as a guide to the live-coding session instructor.
+The following sections of this README act as a guide to the session instructor.
+
+## Start
+
+For a live-coding workshop, please prime your initial index.html file with the following content:
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.9.0/css/skin.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.9.0/css/grid-full.min.css"/>
+        <link rel="stylesheet" href="app.css"/>
+    </head>
+    <body></body>
+    <script src="app.js"></script>
+</html>
+```
+
+If you get lost or lose your way, each step has a "one I made earlier" that you can copy-and-paste from into your file.
 
 ## Part 1
 
-Part 1 is primarily concerned with static text, page structure and links.
+Part 1 is primarily concerned with static content, page structure and links.
 
 ### Meta Data
 
-The meta.html page content is left intentionally blank.
+The page content for this step is left intentionally blank.
 
-1. Add `<html lang="en">`
+1. Add `lang="en"` to the `html` tag
 1. Add `<meta charset="utf-8" />` to head
 1. Add `<meta name="viewport" content="width=device-width, initial-scale=1">` to head
 1. Test page with screen reader, notice nothing is announced
 1. Add `<title>Meta - A11Y First Workshop</title>` to head
-1. Test page with screen reader, notice title is now announces
+1. Test page with screen reader, notice title is now announced
 
 We have introduced 3 key pieces of 'meta' data:
 
@@ -34,7 +53,7 @@ We have introduced 3 key pieces of 'meta' data:
 1. Add three paragraphs of content to the page:
     * `<p>eBay is where the world goes to shop, sell, and give. Our mission is to be the world’s favorite destination for discovering great value and unique selection.</p>`
     * `<p>For over 20 years, we've been working to create more economic opportunity for everyone. And we're just getting started.</p>`
-    * `<p>Copyright © 1995-2016 eBay Inc. All Rights Reserved.</p>`
+    * `<p>Copyright © 1995-2017 eBay Inc. All Rights Reserved.</p>`
 1. Ensure Voiceover web rotor settings include 'Static Text'.
 1. Navigate voiceover to web area (show that voiceover can read desktop and other desktop applications too, not just web pages)
 1. Open Voiceover rotor and explore what it can find on the page (hint: nothing much yet! only the static paragraph text).
@@ -79,7 +98,6 @@ We have introduced 3 key pieces of 'meta' data:
 ### Clipped Text
 
 1. Add `clipped` class to the 'Legal' header
-1. Add `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/utility.min.css"/>`
 1. Demo that legal header is now 'invisible'
 1. Demo the legal header is still conveyed to screen reader
 
@@ -94,7 +112,7 @@ We have introduced 3 key pieces of 'meta' data:
 1. Add the following landmark roles
     * `role="banner"` to header
     * `role="main"` to main
-    * `role=contentinfo` to footer
+    * `role="contentinfo"` to footer
 1. Display landmarks in screen reader landmarks lists. Notice that footer is now visible as contentinfo
 
 ### Images
@@ -114,28 +132,16 @@ Note that the image alt text is the same as the title. Technically speaking thes
 
 Demonstrates that in some cases, CSS can effect semantics.
 
-1. Add `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/grid-core.min.css"/>`
 1. Wrap each collection item in a `class="grid__cell grid__cell--one-half"`
 1. Demonstrate that voiceover no longer announces list semantics
-1. Add `role=list` to the lists to restore list semantics
+1. Add `role="list"` to the lists to restore list semantics
 
-Adding `list-type: none` (via grids css) to the lists means they are <a href="http://www.456bereastreet.com/archive/201109/screen_readers_list_items_and_list-stylenone/">no longer announced as a list in some screen readers</a>. We fix this issue by applying `role=list` to each list.
-
-### Links
-
-1. Add links around collection and daily deals titles
-1. With screen reader disabled, use TAB key to navigate focus through links
-1. Demo different focus outline in Firefox
-1. Notice that hand cursor shows for links
-1. Notice that with focus on a link all of the page scroll keys still work.
-1. With screen reader on notice that visited links will be announce as 'visited'.
-1. Notice that it would be nice to have the image as a link to the item page too. We will address this in a later step.
+Adding `list-type: none` (via grids css) to the lists means they are <a href="http://www.456bereastreet.com/archive/201109/screen_readers_list_items_and_list-stylenone/">no longer announced as a list in some screen readers</a>. We fix this issue by applying `role="list"` to each list.
 
 ### Cards
 
 A purely presentation step where we convert each collection item into a card.
 
-1. Add `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/card.min.css"/>`
 1. Wrap each collection item with `<div class="card"><div class="card__cell">...</div></div>`
 1. Add `display: block` and `max-width: 100%` to images (see CSS below) so they scale responsively (not strictly needed for a11y purposes).
 1. Add the seller profile static text under each collection
@@ -150,6 +156,16 @@ A purely presentation step where we convert each collection item into a card.
     max-width: 100%;
 }
 ```
+
+### Links
+
+1. Add links around collection and daily deals titles
+1. With screen reader disabled, use TAB key to navigate focus through links
+1. Demo different focus outline in Firefox
+1. Notice that hand cursor shows for links
+1. Notice that with focus on a link all of the page scroll keys still work.
+1. With screen reader on notice that visited links will be announce as 'visited'.
+1. Notice that it would be nice to have the image as a link to the item page too. We will address this in a later step.
 
 #### Discussion
 
@@ -200,13 +216,34 @@ a.tile p:last-child {
 }
 ```
 
+### New Window Link
+
+Append the following link to the legal footer paragraph:
+
+```html
+<a href="http://pages.ebay.com/help/policies/user-agreement.html" target="_blank">User Agreement</a></p>
+```
+
+Demonstrate that links opens a new window, and screen reader users is not notified.
+
+Then add clipped text:
+
+```html
+<a href="http://pages.ebay.com/help/policies/user-agreement.html" target="_blank">User Agreement<span class="clipped"> - opens in new window or tab</span></a></p>
+```
+
+This lets screen reader users know about link behaviour, but sighted users still do not know. Let's fix that with an icon:
+
+```html
+<a href="http://pages.ebay.com/help/policies/user-agreement.html" target="_blank">User Agreement <span class="icon icon--window" role="img" aria-label="Opens in new window or tab"></span></a>
+```
+
 ### Faux Button
 
 1. Add `class="btn"` to the two see all links
 1. Notice that skin hasn't styled them properly. Something is wrong. Skin enforces accessibility. We don't allow btn tag on a link unless developer signifies they know what they are doing
 1. Add `btn--faux` class modifier
 1. Link is now styled as a button
-1. Add `href="javascript;"`. Skin refuses to style the link.
 1. Demo that screen reader still reads them as links (which is correct)
 1. Explain that this can cause issues for customer service (non-sighted user reports UI control as a link, while sighted customer service person sees a button)
 1. The giveaway for mouse users is the hand cursor icon.
@@ -259,21 +296,17 @@ This is an opportunity to recap, and build upon, headings, landmarks and links.
 }
 ```
 
-### Skipto Links
+### Skip-To Link
 
 1. Add `<span class="skipto"><a href="#mainContent">Skip to main content</a></a>`
 1. Add `id="mainContent"` to main landmark
 1. Demo keyboard behaviour
+1. Add class `clipped clipped--stealth` to skip link
+1. Demo that skip link now only appears on keyboard focus
 1. Demo how screen reader focus does not get set
 1. Add `tabindex="-1"` to main landmark
 1. Demo how screen reader focus is now set
 1. Demo that permanent tabindex on main element causes a focus outline when clicked with mouse or touch.
-1. Add `<script src="app.js"></script>` after body tag
-1. Call skip-to plugin `$('.skipto').skipTo();`
-1. Add class `clipped clipped--stealth` to skip link
-1. Demo that skip link now only appears on keyboard focus
-
-Rather than adding permanent tabindex to main, it would be better to set a temporary tabindex using javascript. The tabindex can be set when the skipto link is clicked (we already know the target id), and the tabindex cn be removed as soon as the target loses focus.
 
 ```html
 <span class="skipto">
@@ -297,13 +330,13 @@ a[href='#mainContent'] {
     padding: 0.25em;
     top: 0;
 }
+
+#mainContent:focus {
+    outline: 0 none;
+}
 ```
 
-```js
-$('.skipto').skipTo();
-```
-
-### Iframes
+### IFrame
 
 1. Add iframe between header and main (without a title attribute for now)
 1. Demo that iframe is keyboard focusable in Firefox
@@ -316,10 +349,15 @@ $('.skipto').skipTo();
 1. Demonstrate iframe taborder with keyboard
 1. Demonstrate focus indicator issue with iframe content when iframe body has zero margin
 1. Create an advert that plenty of margin around hyperlink
+1. Wrap iframe in `<aside role="complementary">`
 
 ```html
-`<iframe src="iframe_content.html" scrolling="no" title="Advert"></iframe>`
+<aside role="complementary">
+  `<iframe src="iframe_content.html" scrolling="no" title="Advert"></iframe>`
+ </aside>
 ```
+
+This is the content of the IFRAME:
 
 ```html
 <!DOCTYPE html>
@@ -350,18 +388,44 @@ $('.skipto').skipTo();
 </html>
 ```
 
-### Complementary landmark
+## Part 2
 
-1. Wrap iframe in `<aside role="complementary">`
+Part 3 is primarily concerned with forms, form controls and validation.
 
-### Part 2
+### Textbox
 
-Part 2 is primarily concerned with buttons, form controls, DOM order and focus management.
+### Listbox
+
+### Checkbox
+
+### Radio
+
+### Submit
+
+### Form Validation
+
+### Form Validation Enhanced
+
+### Input Validation
+
+## Part 3
+
+Part 3 is primarily concerned with buttons, form controls, DOM order and focus management.
+
+### Skip-To Link Enhanced
+
+1. Add `<script src="app.js"></script>` after body tag
+1. Call skip-to plugin `$('.skipto').skipTo();`
+
+Rather than adding permanent tabindex to main, it would be better to set a temporary tabindex using javascript. The tabindex can be set when the skipto link is clicked (we already know the target id), and the tabindex cn be removed as soon as the target loses focus.
+
+
+```js
+$('.skipto').skipTo();
+```
 
 ### Click Flyout
 
-1. Add Normalize.css `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/normalize.min.css"/>`
-    * this will set body margin to 0. So let's center the grid.
 1. Add eyebrow div to start of header
     * `<div id="eyebrow"><div class="grid">...</div></div>`
 1. todo
@@ -422,13 +486,7 @@ header > .grid,
 $('.flyout--click').clickFlyout({focusManagement:'first'});
 ```
 
-### Non-Critical Icon
-
-1. Add Skin iconfont.css `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/iconfont.min.css"/>`
-1. Add Skin font.css `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/icon.min.css"/>`
-1. Append icon span to button `<span class="icon-arrow-down"/>`
-
-### Hover Flyouts
+### Hover Flyout
 
 We show the problem of opening a flyout on hover on a link.
 
@@ -489,10 +547,15 @@ $('.flyout--hover').hoverFlyout();
 }
 ```
 
+### Non-Critical Icon
+
+1. Append icon span to button `<span class="icon icon--arrow-down"/>`
+1. TODO: use inline SVG instead of font icon
+
 ### Access Key
 
 1. Add attribute `accesskey="c"` to shopping cart link
-1. Use CTRL+OPTION+C to activate shortcut
+1. Use [accesskey](https://www.w3schools.com/tags/att_global_accesskey.asp) (e.g. CTRL+ALT+C for Mac Safari) to activate shortcut
 1. Voiceover will announce availability of access key
 1. But how do keyboard users know about this accesskey...
 
@@ -519,7 +582,9 @@ $('.flyout--hover').hoverFlyout();
 $('.tooltip').hoverFlyout({expandedClass:'tooltip--expanded'}).focusFlyout({expandedClass:'tooltip--expanded'});
 ```
 
-### Textbox
+### ARIA Labels
+
+Textbox
 
 1. Add form tag to banner
 1. Add textbox to form
@@ -535,40 +600,30 @@ $('.tooltip').hoverFlyout({expandedClass:'tooltip--expanded'}).focusFlyout({expa
 1. Talk about arrow key behaviour and 'forms mode' of screen reader.
 1. Screen reader announces control value, label, type
 1. Add `autofocus` attribute to textbox
-1. Add Skin CSS `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/textbox.min.css"/>`
-1. Wrap textbox with skin markup `<span class="textbox textbox--small">..</span>`
+1. Add [Skin Textbox Classes](https://ebay.github.io/skin/#textbox)
 
-### Listbox
+Listbox
 
 1. Add listbox and aria-label after textbox
 1. ENTER key does not submit form.
 1. SPACE or ARROW key expands.
 1. ARROW keys highlight options, ENTER or SPACE selects.
 1. Screen reader announces control value, label, type
-1. Add Skin CSS:
-    * `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/iconfont.min.css"/>`
-    * `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/listbox.min.css"/>`
-1. Wrap listbox with skin markup `<span class="listbox listbox--small listbox--no-label" id="gh-cat-listbox">..</span>`
+1. Add [Skin Listbox Classes](https://ebay.github.io/skin/#listbox)
 
-### Submit Button
+Submit Button
 
-1. Add `<input type="submit" value="Search" />` after listbox
+1. Add `<button type="submit">Search</button>` after listbox
 1. Notice that mouse hand cursor does not show for buttons.
 1. Screen reader announces button value/label and type
 1. Demo SPACEBAR and ENTER key behaviour
-1. Add `action="search_results.html"` to form
 1. Demo that form submits an HTTP GET request by default. A submit button is the only button that should navigate to a new URL in this way.
 1. Demo that keyboard navigation starts from top of new page
 1. Add reset button after submit button and demo it's behaviour
 1. Remove submit button (we don't need it)
-1. Add Skin CSS `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/button.min.css"/>`
-1. Add skin classes to button `class="btn btn--small btn--primary"`
-
-### Search Landmark
-
-1. Add `role=search` to form
-1. Demo new search landmark in screen reader
-1. Add class="grid__group" to header
+1. Add skin classes to button `class="btn btn--primary"`
+1. Add `role="search"` to form
+1. Add `class="grid__group"` to header
 
 ## Part 3
 
@@ -576,8 +631,7 @@ Part 3 is primarily concerned with advanced keyboard navigation, ARIA widgets & 
 
 ### Faux Menu
 
-1. Add Skin CSS `<link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/menu.min.css"/>`
-1. todo
+todo
 
 ### Menu
 
@@ -585,7 +639,6 @@ todo
 
 ### Live Region
 
-1. Duplicate the `search-results.html` page as `search-results-ajax.html`
 1. Add class `searchform` to form
 1. Wrap the `10 results found` paragraph in a div
 1. Add `<script src="app.js"></script>` below body
@@ -605,6 +658,8 @@ $(function() {
 ```
 
 ### Tabs
+
+todo
 
 ### Combobox
 

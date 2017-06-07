@@ -1,12 +1,12 @@
 $(function() {
 
     /* BEGIN skin adaptive breakpoints */
-    if (window.innerWidth > 599) {
+    if (window.innerWidth > 600) {
         $('body').addClass('skin-large');
     }
 
     $(window).on('resize', function(e) {
-        if (this.innerWidth > 599) {
+        if (this.innerWidth > 600) {
             $('body').addClass('skin-large');
         } else {
             $('body').removeClass('skin-large');
@@ -14,7 +14,7 @@ $(function() {
     });
     /* END skin adaptive breakpoints */
 
-    $('.skipto').skipTo();
+    $('.skipto--enahanced').skipTo();
 
     $('.hijax-form').on('submit', function(e) {
         e.preventDefault();

@@ -5,10 +5,8 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>A11Y First - A Web Accessibility Workshop</title>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/global.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/normalize.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/card.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.6.2/css/grid-core.min.css"/>
+        <link rel="stylesheet" href="http://ir.ebaystatic.com/cr/v/c1/skin/v2.9.0/css/skin.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.9.0/css/grid-full.min.css"/>
         <link rel="stylesheet" href="app.css"/>
         <style>
             .grid {
@@ -31,17 +29,15 @@
     </head>
     <body>
         <header class="grid">
-            <h1>A11Y First - A Web Accessibility Workshop</h1>
-            <p>Follow this workshop and see how we build a typical eCommerce browse and search page, learning about important accessibility concepts each step of the way.</p>
+            <h1>A11Y First - Web Accessibility Workshop</h1>
             <p>Refer to the <a href="https://github.com/ianmcburnie/a11y-first">README</a> for instructions.</p>
         </header>
         <main class="grid">
             <div class="card">
                 <div class="card__cell">
-                    <h2>Part 1 - Basic Concepts</h2>
-                    <p>Part 1 is primarily concerned with static text, page structure and links.</p>
+                    <h2>Part 1 - Static Content, Page Structure &amp; Links</h2>
                     <ol>
-                        <li><a href="meta.html">Meta (the page will be intentionally blank)</a></li>
+                        <li><a href="meta.html">Meta</a> (page intentionally blank)</li>
                         <li><a href="paragraphs.html">Paragraph</a></li>
                         <li><a href="lists.html">Unordered List</a></li>
                         <li><a href="headings.html">Heading</a></li>
@@ -49,56 +45,57 @@
                         <li><a href="landmarks.html">Landmark</a></li>
                         <li><a href="images.html">Image</a></li>
                         <li><a href="grid.html">Grid</a></li>
+                        <li><a href="cards.html">Card</a> (presentational step)</li>
                         <li><a href="links.html">Link</a></li>
-                        <li><a href="cards.html">Card (presentational step)</a></li>
                         <li><a href="tiles.html">Tile</a></li>
                         <li><a href="ambiguous-link.html">Ambiguous Link</a></li>
-                        <li>New Window</li>
+                        <li><a href="window-link.html">New Window Link</a></li>
                         <li><a href="faux-button.html">Faux Button</a></li>
                         <li><a href="navigation.html">Navigation Landmark</a></li>
-                        <li><a href="skipto.html">Skip to Link</a></li>
+                        <li><a href="skipto.html">Skip-To Link</a></li>
                         <li><a href="iframe.html">Iframe</a></li>
-                        <li><a href="complementary.html">Complementary Landmark</a></li>
                     </ol>
 
-                    <h2>Part 2 - Intermediate Concepts</h2>
-                    <p>Part 2 is primarily concerned with buttons, form controls, DOM order and focus management.</p>
+                    <h2>Part 2 - Forms, Form Controls &amp; Validation</h2>
                     <ol>
-                        <li>Carousel</li>
-                        <li>Placeholder Text</li>
-                        <li>Labels</li>
-                        <li>Form Validation (no JavaScript)</li>
+                        <li>Textbox</a></li>
+                        <li>Listbox</a></li>
+                        <li>Radio</a></li>
+                        <li>Checkbox</a></li>
+                        <li>Submit Button</a></li>
+                        <li>Form Validation</a></li>
+                        <li>Form Validation Enhanced</a></li>
+                        <li>Input Validation</li>
+                    </ol>
+
+                    <h2>Part 3 - Buttons, DOM Order &amp; Focus Management</h2>
+                    <ol>
+                        <li><a href="skipto-enhanced.html">Skip-To Link Enhanced</a></li>
                         <li><a href="click-flyout.html">Click Flyout</a></li>
-                        <li><a href="non-critical-icon.html">Non Critical Icon</a></li>
                         <li><a href="hover-flyout.html">Hover Flyout</a></li>
                         <li><a href="critical-icon.html">Critical Icon</a></li>
+                        <li><a href="non-critical-icon.html">Non-Critical Icon</a></li>
                         <li><a href="accesskey.html">Access Key</a></li>
                         <li><a href="tooltip.html">Tooltip</a></li>
-                        <li><a href="textbox.html">Textbox</a></li>
-                        <li><a href="listbox.html">Listbox</a></li>
-                        <li><a href="submit.html">Submit Button</a></li>
-                        <li><a href="search-landmark.html">Search Landmark</a></li>
-                        <li><a href="faux-menu.html">Faux Menu</a></li>
+                        <li><a href="aria-label.html">ARIA Labels</a></li>
                     </ol>
 
-                    <h2>Part 3 - Advanced Concepts</h2>
-                    <p>Part 3 is primarily concerned with advanced keyboard navigation, ARIA widgets &amp; live regions.</p>
+                    <h2>Part 4 - Interactive Widgets &amp; Advanced Keyboard Navigation</h2>
                     <ol>
-                        <li><a href="menu.html">Menu</a></li>
-                        <li><a href="live-region.html">Live Region</a></li>
+                        <li><a href="srp/faux-menu.html">Faux Menu</a></li>
+                        <li><a href="srp/menu.html">Menu</a></li>
                         <li>Bubble Help</li>
-                        <li>Input Validation</li>
-                        <li>Form Validation (client-side)</li>
                         <li>Dialog</li>
                         <li>Tabs</li>
                         <li>Combobox</li>
+                        <li>Carousel</li>
                     </ol>
                 </div>
             </div>
         </main>
 
         <footer class="grid">
-            <img src="images/ebay-hires.png" alt="ebay" />Copyright © 1995-2016 eBay Inc. All Rights Reserved.
+            <img src="images/ebay-hires.png" alt="ebay" />Copyright © 1995-2017 eBay Inc. All Rights Reserved.
         </footer>
     </body>
 </html>

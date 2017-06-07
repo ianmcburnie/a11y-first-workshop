@@ -1,5 +1,15 @@
+body {
+    margin: 0.6em;
+}
+
 * {
     box-sizing: border-box;
+}
+
+/* LANDMARK */
+
+footer[role="contentinfo"] {
+
 }
 
 /* IMAGES */
@@ -36,6 +46,7 @@ body > .grid {
 
 .tile {
     display: block;
+    text-decoration: none;
 }
 
 a.tile:hover,
@@ -47,13 +58,18 @@ a.tile:focus {
     color: #555;
 }
 
-/* IFRAME */
+/* AMBIGUOUS LINK */
 
-iframe {
-    border: 0;
-    height: 200px;
-    margin: 1rem 0;
-    width: 100%;
+.see-all {
+    text-align: center;
+}
+
+/* NEW WINDOW LINK */
+
+.icon--window {
+    display: inline-block;
+        font-size: x-small;
+        vertical-align: top;
 }
 
 /* NAVIGATION LANDMARK */
@@ -72,6 +88,7 @@ iframe {
 }
 [role=navigation] a {
     font-size: 12px;
+    text-decoration: none;
 }
 
 /* SKIPTO LINK */
@@ -92,13 +109,20 @@ a[href='#mainContent'] {
     top: 0;
 }
 
-/* AMBIGUOUS LINK */
-
-.see-all {
-    text-align: center;
+#mainContent:focus {
+    outline: 0 none;
 }
 
-/* FAUX BUTTON */
+/* FAUX BUTTON - uses skin */
+
+/* IFRAME */
+
+iframe {
+    border: 0;
+    height: 200px;
+    margin: 1rem 0;
+    width: 100%;
+}
 
 /* CLICK FLYOUT */
 
@@ -139,12 +163,6 @@ header > .grid {
     display: block;
 }
 
-/* NON CRITICAL ICON */
-
-.flyout--click .flyout__trigger span::before {
-    font-size: x-small;
-}
-
 /* HOVER FLYOUT */
 
 .flyout--hover .flyout__trigger[aria-expanded=true] + .flyout .flyout__overlay {
@@ -173,6 +191,12 @@ header > .grid {
     font-weight: 900;
 }
 
+/* NON CRITICAL ICON */
+
+.flyout--click .flyout__trigger span::before {
+    font-size: x-small;
+}
+
 /* TOOLTIP */
 
 .tooltip--expanded .flyout__overlay {
@@ -180,7 +204,7 @@ header > .grid {
     display: block;
 }
 
-/* TEXTBOX */
+/* ARIA-LABELS */
 
 h1 {
     display: inline-block;
@@ -192,27 +216,9 @@ form {
     margin: 0.4em 0;
 }
 
-.textbox {
-    display: inline-block;
-    margin: 0;
+button[type="submit"] {
+    vertical-align: top;
 }
-
-/* LISTBOX */
-
-#gh-cat-listbox {
-    display: inline-block;
-    margin: 0;
-    width: 160px;
-}
-
-/* SUBMIT */
-
-
-/* SEARCH LANDMARK */
-
-
-/* SEARCH PAGE */
-
 
 /* FAUX MENU */
 
@@ -221,15 +227,13 @@ form {
     justify-content: flex-end;
 }
 
-/* FAUX MENU */
+/* MENU */
 
 
-/* LIVE REGION */
+/* LIVE REGION RESULTS */
 
 #results {
     background-color: white;
     min-height: 500px;
     padding: 1em;
 }
-
-/* MENU */
