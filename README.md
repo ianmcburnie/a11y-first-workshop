@@ -25,7 +25,7 @@ If you get lost or lose your way, each step has a "one I made earlier" that you 
 
 ## Part 1
 
-Part 1 is primarily concerned with static content, page structure and links.
+Part 1 is primarily concerned with page structure, static content and links.
 
 ### Meta Data
 
@@ -146,7 +146,7 @@ Demonstrates that in some cases, CSS can effect semantics.
 1. Wrap each collection list item in a `class="grid__cell grid__cell--one-half"`
 1. Demonstrate that voiceover no longer announces list semantics
 1. Add `role="list"` to the lists to restore list semantics
-1. Add grid container inside of footer (presentational step)
+1. Add div wrapper inside of footer (presentational step)
 
 Adding `list-type: none` (via grids css) to the lists means they are <a href="http://www.456bereastreet.com/archive/201109/screen_readers_list_items_and_list-stylenone/">no longer announced as a list in some screen readers</a>. We fix this issue by applying `role="list"` to each list.
 
@@ -160,7 +160,7 @@ footer[role="contentinfo"] {
     border-top: 1px solid #aaa;
 }
 
-footer[role="contentinfo"] > .grid {
+footer[role="contentinfo"] > div {
     margin: 0 auto;
 }
 
@@ -249,6 +249,18 @@ a.tile p:last-child {
 }
 ```
 
+
+### Fake Button
+
+1. Add `class="btn"` to the two see all links
+1. Notice that skin hasn't styled them. Something is wrong. Skin enforces accessibility. We don't allow btn class on a link unless developer signifies they know what they are doing.
+1. Add `class="fake-btn"`
+1. Link is now styled as a button
+1. Demo that screen reader still reads them as links (which is correct)
+1. Explain that this can cause issues for customer service (non-sighted user reports UI control as a link, while sighted customer service person sees a button)
+1. The giveaway for mouse users is the hand cursor icon.
+1. The giveaway for keyboard users is the underline on focus.
+
 ### New Window Link
 
 Append the following link to the legal footer paragraph:
@@ -270,17 +282,6 @@ This lets screen reader users know about link behaviour, but sighted users still
 ```html
 <a href="http://pages.ebay.com/help/policies/user-agreement.html" target="_blank">User Agreement <span class="icon icon--window" role="img" aria-label="Opens in new window or tab"></span></a>
 ```
-
-### Faux Button
-
-1. Add `class="btn"` to the two see all links
-1. Notice that skin hasn't styled them properly. Something is wrong. Skin enforces accessibility. We don't allow btn tag on a link unless developer signifies they know what they are doing
-1. Add `btn--faux` class modifier
-1. Link is now styled as a button
-1. Demo that screen reader still reads them as links (which is correct)
-1. Explain that this can cause issues for customer service (non-sighted user reports UI control as a link, while sighted customer service person sees a button)
-1. The giveaway for mouse users is the hand cursor icon.
-1. The giveaway for keyboard users is the underline on focus.
 
 ### Navigation Landmark
 
@@ -447,55 +448,18 @@ Part 3 is primarily concerned with buttons, form controls, DOM order and focus m
 
 ### Skip-To Link Enhanced
 
-1. Add `<script src="app.js"></script>` after body tag
-1. Call skip-to plugin `$('.skipto').skipTo();`
-
-Rather than adding permanent tabindex to main, it would be better to set a temporary tabindex using javascript. The tabindex can be set when the skipto link is clicked (we already know the target id), and the tabindex cn be removed as soon as the target loses focus.
+Rather than adding permanent tabindex to main, it would be better to set a temporary tabindex using javascript. The tabindex can be set when the skipto link is clicked (we already know the target id), and the tabindex can be removed as soon as the target loses focus.
 
 
 ```js
-$('.skipto').skipTo();
+$('.skipto--enhanced').skipTo();
 ```
 
 ### Click Flyout
 
-1. Add eyebrow div to start of header
-    * `<div id="eyebrow"><div class="grid">...</div></div>`
-1. todo
-
-```html
-<header role="banner">
-    <div id="eyebrow">
-        <div class="grid">
-            <span id="profile" class="flyout flyout--click">
-                <button class="flyout__trigger" type="button">Hi Ian</button>
-                <div class="flyout__overlay">
-                    <ul role="list">
-                        <li><a href="http://www.ebay.com">My Collections</a></li>
-                        <li><a href="http://www.ebay.com">Account Settings</a></li>
-                        <li><a href="http://www.ebay.com">Sign Out</a></li>
-                    </ul>
-                </div>
-            </span>
-        </div>
-    </div>
-...
-</header>
-```
+The eBay shop by category button is a good example of a flyout that opens on click.
 
 ```css
-body > .grid,
-header > .grid,
-#eyebrow > .grid {
-    margin: 0 auto;
-}
-
-#eyebrow {
-    background-color: white;
-    border-bottom: 1px solid #ccc;
-    padding: 0.25em 0;
-}
-
 .flyout {
     position: relative;
 }
@@ -507,10 +471,8 @@ header > .grid,
     white-space: nowrap;
     z-index: 1;
 }
-.flyout--click .flyout__trigger span::before {
-    font-size: x-small;
-}
-.flyout--click flyout__trigger[aria-expanded=true] + .flyout__overlay {
+
+.flyout--click .flyout__trigger[aria-expanded=true] + .flyout__overlay {
     display: block;
 }
 ```
@@ -519,10 +481,17 @@ header > .grid,
 $('.flyout--click').clickFlyout({focusManagement:'first'});
 ```
 
+### Click Flyout + Hover
+
+The profile button is a good example of a button that opens on click and hover.
+
 ### Hover Flyout
 
 We show the problem of opening a flyout on hover on a link.
 
+1. Add eyebrow div to start of header
+    * `<div id="eyebrow"><div>...</div></div>`
+1. todo
 1. Add a my ebay link to eyebrow
 1. Convert it to a hover flyout using jquery-hover-flyout
 1. Demonstrate keyboard issue
@@ -582,7 +551,7 @@ $('.flyout--hover').hoverFlyout();
 
 ### Non-Critical Icon
 
-1. Append icon span to button `<span class="icon icon--arrow-down"/>`
+1. Append icon span to button `<span aria-hidden="true" class="icon icon--arrow-down"/>`
 1. TODO: use inline SVG instead of font icon
 
 ### Access Key
@@ -590,12 +559,12 @@ $('.flyout--hover').hoverFlyout();
 1. Add attribute `accesskey="c"` to shopping cart link
 1. Use [accesskey](https://www.w3schools.com/tags/att_global_accesskey.asp) (e.g. CTRL+ALT+C for Mac Safari) to activate shortcut
 1. Voiceover will announce availability of access key
-1. But how do keyboard users know about this accesskey...
+1. But how do keyboard users know about this accesskey. We need a tooltip.
 
 ### Tooltip
 
 1. Wrap shopping cart link in tooltip markup
-1. Tooltips should be short.
+1. Tooltip text should be short.
 
 ```html
 <span class="tooltip flyout">
@@ -614,6 +583,10 @@ $('.flyout--hover').hoverFlyout();
 ```js
 $('.tooltip').hoverFlyout({expandedClass:'tooltip--expanded'}).focusFlyout({expandedClass:'tooltip--expanded'});
 ```
+
+## Part 3
+
+Part 3 is primarily concerned with advanced keyboard navigation, ARIA widgets & live regions.
 
 ### ARIA Labels
 
@@ -658,11 +631,7 @@ Submit Button
 1. Add `role="search"` to form
 1. Add `class="grid__group"` to header
 
-## Part 3
-
-Part 3 is primarily concerned with advanced keyboard navigation, ARIA widgets & live regions.
-
-### Faux Menu
+### Fake Menu
 
 todo
 

@@ -22,7 +22,7 @@ $(function() {
         $('main ol').empty().append('<li><a href="http://www.ebay.com">Item 1</a></li>');
     });
 
-    $('.flyout--click').clickFlyout({focusManagement:'first'});
+    $('.flyout--click').clickFlyout({focusManagement:'first', closeOnEsc: true});
 
     $('.flyout--hover').hoverFlyout();
 

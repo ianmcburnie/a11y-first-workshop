@@ -34,8 +34,9 @@ footer[role="contentinfo"] {
     padding-bottom: 8px;
 }
 
-footer[role="contentinfo"] > .grid {
+footer[role="contentinfo"] > div {
     margin: 0 auto;
+    max-width: 1280px;
 }
 
 .collections img,
@@ -78,6 +79,9 @@ footer[role="contentinfo"] > .grid {
     text-align: center;
 }
 
+/* FAKE BUTTON */
+
+
 /* NEW WINDOW LINK */
 
 .icon--window {
@@ -105,7 +109,7 @@ footer[role="contentinfo"] > .grid {
     text-decoration: none;
 }
 
-/* SKIPTO LINK */
+/* SKIP-TO LINK */
 
 .clipped--stealth:focus {
     -webkit-clip-path: unset;
@@ -127,8 +131,6 @@ a[href='#mainContent'] {
     outline: 0 none;
 }
 
-/* FAUX BUTTON - uses skin */
-
 /* IFRAME */
 
 iframe {
@@ -140,29 +142,19 @@ iframe {
 
 /* CLICK FLYOUT */
 
+.btn-plain {
+    background-color: transparent;
+    border: 0 none;
+}
+
 header > .grid {
     margin: 0 auto;
-}
-
-#eyebrow {
-    background-color: white;
-    border-bottom: 1px solid #ccc;
-    padding: 0.25em 0;
-}
-
-#eyebrow > .grid {
-    margin: 0 auto;
-}
-
-.flyout__overlay ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
 .flyout {
     position: relative;
 }
+
 .flyout__overlay {
     background-color: white;
     display: none;
@@ -173,11 +165,33 @@ header > .grid {
     z-index: 1;
 }
 
+.flyout__overlay ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 .flyout--click .flyout__trigger[aria-expanded=true] + .flyout__overlay {
     display: block;
 }
 
 /* HOVER FLYOUT */
+
+#eyebrow {
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+    padding: 0.25em 0;
+}
+
+#eyebrow > div {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1280px;
+}
+
+#myebay {
+    margin-left: auto;
+}
 
 .flyout--hover .flyout__trigger[aria-expanded=true] + .flyout .flyout__overlay {
     display: block;
@@ -220,21 +234,15 @@ header > .grid {
 
 /* ARIA-LABELS */
 
-h1 {
-    display: inline-block;
+header h1 {
     margin: 0;
-}
-
-form {
-    display: inline-block;
-    margin: 0.4em 0;
 }
 
 button[type="submit"] {
     vertical-align: top;
 }
 
-/* FAUX MENU */
+/* FAKE MENU */
 
 #customise {
     display: flex;
