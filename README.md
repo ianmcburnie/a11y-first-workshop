@@ -128,15 +128,48 @@ We have introduced 3 key pieces of 'meta' data:
 
 Note that the image alt text is the same as the title. Technically speaking these images can be classed as presentational, because if the images were not displayed, we still have the same text below (the title text). We leave the alt text in place for now. Yes, it's a redundant/duplicate navigation for screen reader users, but not technically 'non-accessible'. When we convert the item to a tile, in an upcoming step, we will set this value to blank.
 
-### Grid
+### Table Layout
+
+Demonstrate the problems with using table tags for layout.
+
+1. Replace the list of collections with a 4x4 table
+1. Replace the list of deals with a 1x4 table
+1. Demonstrate that screen reader announces rows & columns (voiceover also needs tbody and empty th to demo this)
+1. Add role="presentation" to the two tables
+1. Demonstrate that screen reader now no longer announces table dimensions
+
+### Grid System
 
 Demonstrates that in some cases, CSS can effect semantics.
 
-1. Wrap each collection item in a `class="grid__cell grid__cell--one-half"`
+1. Revert the table changes made in the previous step (i.e. back to a list)
+1. Wrap each collection list item in a `class="grid__cell grid__cell--one-half"`
 1. Demonstrate that voiceover no longer announces list semantics
 1. Add `role="list"` to the lists to restore list semantics
+1. Add grid container inside of footer (presentational step)
 
 Adding `list-type: none` (via grids css) to the lists means they are <a href="http://www.456bereastreet.com/archive/201109/screen_readers_list_items_and_list-stylenone/">no longer announced as a list in some screen readers</a>. We fix this issue by applying `role="list"` to each list.
+
+```css
+body > .grid {
+    margin: 0 auto;
+}
+
+footer[role="contentinfo"] {
+    background-color: white;
+    border-top: 1px solid #aaa;
+}
+
+footer[role="contentinfo"] > .grid {
+    margin: 0 auto;
+}
+
+.collections img,
+.deals img {
+    display: block;
+    max-width: 100%;
+}
+```
 
 ### Cards
 

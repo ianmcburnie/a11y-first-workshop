@@ -15,10 +15,6 @@
 
 /* LANDMARK */
 
-footer[role="contentinfo"] {
-
-}
-
 /* IMAGES */
 
 [role=banner] img {
@@ -28,6 +24,17 @@ footer[role="contentinfo"] {
 /* GRID */
 
 body > .grid {
+    margin: 0 auto;
+}
+
+footer[role="contentinfo"] {
+    background-color: white;
+    border-top: 1px solid #aaa;
+    margin-top: 32px;
+    padding-bottom: 8px;
+}
+
+footer[role="contentinfo"] > .grid {
     margin: 0 auto;
 }
 
