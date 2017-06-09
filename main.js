@@ -30,7 +30,7 @@ $(function() {
 
     $('.tooltip').tooltip();
 
-    $('.menu--faux').clickFlyout({focusManagement:'first'});
+    $('.fake-menu').clickFlyout({focusManagement:'first', closeOnEsc: true});
 
     $('.menu:not(.menu--faux)').menu().on('menuSelect', '[role=menuitem]', function(e, data) {
         alert($(this).text());

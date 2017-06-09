@@ -3,10 +3,10 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Menu - A11Y First Workshop</title>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.9.0/css/skin.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.9.0/css/grid-full.min.css"/>
-        <link rel="stylesheet" href="app.css"/>
+        <title>Live Region - A11Y First Workshop</title>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.0/css/skin.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.0/css/grid-full.min.css"/>
+        <link rel="stylesheet" href="../app.css"/>
     </head>
     <body>
         <a href="#mainContent" class="clipped clipped--stealth">Skip to main content</a>
@@ -18,7 +18,7 @@
                             <span id="profile" class="flyout flyout--click">
                                 <button class="flyout__trigger" type="button">Hi Ian <span class="icon icon--arrow-down" /></button>
                                 <div class="flyout__overlay">
-                                    <img src="images/profile.jpg" alt="" />
+                                    <img src="../images/profile.jpg" alt="" />
                                     <ul role="list">
                                         <li><a href="http://www.ebay.com">My Collections</a></li>
                                         <li><a href="http://www.ebay.com">Account Settings</a></li>
@@ -52,7 +52,7 @@
             <div class="grid">
                 <div class="grid__group grid__group--no-gutters">
                     <div class="grid__cell grid__cell--one-fifth">
-                        <img src="images/ebay-hires.png" alt="ebay" />
+                        <img src="../images/ebay-hires.png" alt="ebay" />
                     </div>
                     <form class="grid__cell grid__cell--four-fifth" role="search">
                         <span class="textbox">
@@ -80,28 +80,35 @@
                     <div id="results" class="grid__cell grid__cell--four-fifth">
                         <h1 class="clipped">Search Results</h1>
                         <div id="customise">
-                            <span class="menu menu--faux menu--flyout" id="sort">
-                                <button class="btn btn--small btn--secondary menu__btn flyout__trigger" type="button">
+                            <span class="fake-menu" id="sort">
+                                <button class="btn btn--secondary fake-menu__btn flyout__trigger" type="button">
                                     <span>Sort: Best Match</span>
-                                    <span class="btn__icon menu__icon">
+                                    <svg aria-hidden="true" class="btn__icon fake-menu__icon" focusable="false">
+                                        <use xlink:href="../icons.svg#svg-icon-arrow-down"></use>
+                                    </svg>
                                 </button>
-                                <ul class="flyout__overlay">
-                                    <li><a href="http://www.ebay.com">Soonest</a></li>
-                                    <li><a class="menu__selected" href="http://www.ebay.com">Best Match</a></li>
+                                <ul class="fake-menu__items flyout__overlay">
+                                    <li><a class="fake-menu__item" href="http://www.ebay.com">Soonest</a></li>
+                                    <li><a class="fake-menu__item" aria-current="page" href="http://www.ebay.com">Best Match</a></li>
                                 </ul>
                             </span>
-                            <div class="menu menu--flyout" id="view">
-                                <button class="btn btn--small btn--secondary menu__btn flyout__trigger" type="button">
-                                    <span>View: List</span>
-                                    <span class="btn__icon menu__icon"></span>
+                            <span class="menu" id="view">
+                                <button class="btn menu__btn" aria-expanded="false" aria-haspopup="true" type="button">
+                                    <span class="btn__cell">
+                                        <span>Menu</span>
+                                        <svg aria-hidden="true" class="btn__icon menu__icon" focusable="false">
+                                            <use xlink:href="../icons.svg#svg-icon-arrow-down"></use>
+                                        </svg>
+                                    </span>
                                 </button>
-                                <div role="menu">
-                                    <div role="menuitem">Grid</div>
-                                    <div role="menuitem">Customise</div>
+                                <div class="menu__items" role="menu">
+                                    <div class="menu__item" role="menuitem">Menu item 1</div>
+                                    <div class="menu__item" role="menuitem">Menu item 2</div>
+                                    <div class="menu__item" role="menuitem">Menu item 3</div>
                                 </div>
-                            </div>
+                            </span>
                         </div>
-                        <div aria-live="polite" class="result-status" role="status">
+                        <div class="result-status">
                             <p>10 results found</p>
                         </div>
                         <ol>
@@ -124,5 +131,5 @@
             </footer>
         </div>
     </body>
-    <script src="app.js"></script>
+    <script src="../app.js"></script>
 </html>

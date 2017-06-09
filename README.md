@@ -637,6 +637,8 @@ todo
 
 todo
 
+<!--
+
 ### Live Region
 
 1. Add class `searchform` to form
@@ -656,6 +658,8 @@ $(function() {
     });
 });
 ```
+
+-->
 
 ### Tabs
 

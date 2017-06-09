@@ -1,9 +1,16 @@
-body {
-    margin: 0.6em;
-}
+/* CLIPPED TEXT  */
 
-* {
-    box-sizing: border-box;
+.clipped {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
 }
 
 /* LANDMARK */
@@ -44,17 +51,17 @@ body > .grid {
 
 /* TILE */
 
-.tile {
+.item-tile {
     display: block;
     text-decoration: none;
 }
 
-a.tile:hover,
-a.tile:focus {
+.item-tile:hover,
+.item-tile:focus {
     text-decoration: none;
 }
 
-.tile p:last-child {
+.item-tile p:last-child {
     color: #555;
 }
 

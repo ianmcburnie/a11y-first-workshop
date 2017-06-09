@@ -3,9 +3,9 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Faux Menu - A11Y First Workshop</title>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.9.0/css/skin.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.9.0/css/grid-full.min.css"/>
+        <title>Fake Menu - A11Y First Workshop</title>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.0/css/skin.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.0/css/grid-full.min.css"/>
         <link rel="stylesheet" href="../app.css"/>
     </head>
     <body>
@@ -52,9 +52,9 @@
             <div class="grid">
                 <div class="grid__group grid__group--no-gutters">
                     <div class="grid__cell grid__cell--one-fifth">
-                        <img src="../images/ebay-hires.png" alt="ebay" />
+                        <h1><img src="../images/ebay-hires.png" alt="ebay" /></h1>
                     </div>
-                    <form class="grid__cell grid__cell--four-fifth" role="search">
+                    <form class="grid__cell grid__cell--four-fifth">
                         <span class="textbox">
                             <input aria-label="search" autofocus class="textbox__control" id="_nkw" name="_nkw" placeholder="Search..." type="text"/>
                         </span>
@@ -64,7 +64,9 @@
                                 <option value="antiques">Antiques</option>
                                 <option value="art">Art</option>
                             </select>
-                            <span class="listbox__icon"></span>
+                            <svg aria-hidden="true" class="listbox__icon" focusable="false">
+                                <use xlink:href="../icons.svg#svg-icon-arrow-down"></use>
+                            </svg>
                         </span>
                         <button class="btn btn--primary" type="submit">Search</button>
                     </form>
@@ -80,14 +82,16 @@
                     <div id="results" class="grid__cell grid__cell--four-fifth">
                         <h1 class="clipped">Search Results</h1>
                         <div id="customise">
-                            <span class="menu menu--faux menu--flyout" id="sort">
-                                <button class="btn btn--small btn--secondary menu__btn flyout__trigger" type="button">
+                            <span class="fake-menu" id="sort">
+                                <button class="btn btn--secondary fake-menu__btn flyout__trigger" type="button">
                                     <span>Sort: Best Match</span>
-                                    <span class="btn__icon menu__icon">
+                                    <svg aria-hidden="true" class="btn__icon fake-menu__icon" focusable="false">
+                                        <use xlink:href="../icons.svg#svg-icon-arrow-down"></use>
+                                    </svg>
                                 </button>
-                                <ul class="flyout__overlay">
-                                    <li><a href="http://www.ebay.com">Soonest</a></li>
-                                    <li><a class="menu__selected" href="http://www.ebay.com">Best Match</a></li>
+                                <ul class="fake-menu__items flyout__overlay">
+                                    <li><a class="fake-menu__item" href="http://www.ebay.com">Soonest</a></li>
+                                    <li><a class="fake-menu__item" aria-current="page" href="http://www.ebay.com">Best Match</a></li>
                                 </ul>
                             </span>
                         </div>
