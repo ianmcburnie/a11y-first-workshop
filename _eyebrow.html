@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Eyebrow - A11Y First Workshop</title>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/skin.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/grid-full.min.css"/>
+        <link rel="stylesheet" href="app.css"/>
+    </head>
+    <body>
+        <div id="eyebrow">
+            <div>
+                <span id="profile" class="flyout flyout--click flyout--hover">
+                    <button class="flyout__trigger" type="button">Hi Ian <span aria-hidden="true" class="icon icon--arrow-down" /></button>
+                    <div class="flyout__overlay">
+                        <img src="../images/profile.jpg" alt="" />
+                        <ul role="list">
+                            <li><a href="http://www.ebay.com">My Collections</a></li>
+                            <li><a href="http://www.ebay.com">Account Settings</a></li>
+                            <li><a href="http://www.ebay.com">Sign Out</a></li>
+                        </ul>
+                    </div>
+                </span>
+                <span id="myebay" class="flyout flyout--hover">
+                    <a class="flyout__trigger" href="http://www.ebay.com">My eBay</a>
+                    <span class="flyout flyout--click">
+                        <button class="flyout__trigger clipped clipped--stealth" type="button">Expand My eBay</button>
+                        <div class="flyout__overlay">
+                            <ul role="list">
+                                <li><a href="http://www.ebay.com">Summary</a></li>
+                                <li><a href="http://www.ebay.com">Bids/Offers</a></li>
+                                <li><a href="http://www.ebay.com">Watchlist</a></li>
+                            </ul>
+                        </div>
+                    </span>
+                </span>
+                <span class="tooltip flyout">
+                    <a accesskey="c" aria-describedby="tooltip-cart"  class="tooltip flyout__trigger icon icon--cart" href="http://cart.payments.ebay.com" id="cart" aria-label="cart"></a>
+                    <div class="flyout__overlay" id="tooltip-cart">Shopping Cart<br/>(Access Key: C)</div>
+                </span>
+            </div>
+        </div>
+    </body>
+    <script src="app.js"></script>
+</html>

@@ -433,25 +433,128 @@ This is the content of the IFRAME:
 </html>
 ```
 
+### Fake Tabs
+
+Links are some times presented visually as tabs, but retain their link behaviour. It is a common mistake amongst developers to assign the ARIA tab related roles to these links.
+
+1. Create a new page at `signin.html`
+1. Create a new page at `reg.html`
+1. Use the markup below for both pages and Skin will style the links as fake tabs
+1. Create a new CSS file at `signin.css`
+1. Create a new CSS file at `reg.css`
+1. Use the CSS below to add some basic page styling.
+
+HTML
+
+```html
+<div role="main">
+    <div class="fake-tabs">
+        <ul class="fake-tabs__items">
+            <li class="fake-tabs__item fake-tabs__item--current">
+                <a aria-current="page"  href="#">Sign In</a>
+            </li>
+            <li class="fake-tabs__item">
+                <a href="reg.html">Register</a>
+            </li>
+        </ul>
+        <div class="fake-tabs__content">
+            <p>Sign-in form goes here</p>
+        </div>
+    </div>
+</div>
+```
+
+CSS
+
+```css
+[role="main"] {
+    background-color: white;
+    border: 1px solid #ccc;
+    margin: 16px auto;
+    padding: 16px;
+    width: 400px;
+}
+```
+
 ## Part 3
 
 Part 3 is primarily concerned with forms and validation.
 
+### Radio
+
+Radio buttons are our first introduction to using the ARROW keys. The TAB key moves keyboard focus into the radio group, the ARROW keys interact with the radio group buttons. Pressing the TAB key again moves keyboard focus off the radio group onto the next interactive element on the page.
+
+1. Add the HTML to the fake tabs content panel
+1. Demonstrate with screen reader that the radio button labels are announced
+
+```html
+<span class="field">
+    <input class="field__control" id="paccount" name="account_type" type="radio" value="p" />
+    <label class="field__label field__label--end" for="paccount">Personal Account</label>
+</span>
+<span class="field">
+    <input class="field__control" id="baccount" name="account_type" type="radio" value="b" />
+    <label class="field__label field__label--end" for="baccount">Business Account</label>
+</span>
+```
+
+1. Next, add a fieldset and legend
+1. Demonstrate with screen reader that each radio button now announces the legend
+
+```html
+<fieldset>
+    <legend class="clipped">Account Type</legend>
+    <span class="field">
+        <input class="field__control" name="account_type" type="radio" value="p" />
+        <label class="field__label field__label--end">Personal Account</label>
+    </span>
+    <span class="field">
+        <input class="field__control" name="account_type" type="radio" value="b" />
+        <label class="field__label field__label--end">Business Account</label>
+    </span>
+</fieldset>
+```
+
+### Custom Radio
+
+Skin enhances the native radios with a custom SVG style, while maintaining the accessibility of the underlying form controls.
+
+Anytime you need to ensure the user makes only single selection (e.g. [star rating](http://ianmcburnie.github.io/mindpatterns/input/starrating/)), radio buttons should be used, and their appearance can be customised using icon fonts or SVG.
+
+```html
+<span class="radio">
+    <input class="field__control radio__control" name="account_type" type="radio" value="p" />
+    <span class="radio__icon" hidden>
+        <svg aria-hidden="true" focusable="false">
+            <use xlink:href="../icons.svg#svg-icon-radio"></use>
+        </svg>
+    </span>
+</span>
+```
+
 ### Textbox
 
-### Listbox
+Add textboxes + labels for email, password, first name, last name and mobile phone.
+
+### Submit
+
+```html
+<div class="field">
+    <button class="btn btn--fluid btn--primary" type="submit">Register</button>
+</div>
+```
 
 ### Checkbox
 
-### Radio
-
-### Submit
+### Listbox
 
 ### Form Validation
 
 ### Form Validation Enhanced
 
 ### Input Validation
+
+### ARIA Labels
 
 ## Part 4
 

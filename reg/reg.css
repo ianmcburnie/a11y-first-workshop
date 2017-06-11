@@ -8,6 +8,7 @@
 
 fieldset {
     border: 0;
+    margin: 16px;
 }
 
 fieldset .field {

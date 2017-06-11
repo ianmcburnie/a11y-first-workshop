@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Radio - A11Y First Workshop</title>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/skin.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/grid-full.min.css"/>
+        <link rel="stylesheet" href="../app.css"/>
+        <link rel="stylesheet" href="reg.css"/>
+    </head>
+    <body>
+        <div role="main">
+            <div class="fake-tabs">
+                <ul class="fake-tabs__items">
+                    <li class="fake-tabs__item">
+                        <a href="http://www.ebay.com">Sign In</a>
+                    </li>
+                    <li class="fake-tabs__item fake-tabs__item--current">
+                        <a aria-current="page" href="http://www.ebay.com">Register</a>
+                    </li>
+                </ul>
+                <div class="fake-tabs__content">
+                    <form>
+                        <fieldset>
+                            <legend class="clipped">Account Type</legend>
+                            <span class="field">
+                                <input class="field__control" id="paccount" name="account_type" type="radio" value="p" />
+                                <label class="field__label field__label--end" for="paccount">Personal account</label>
+                            </span>
+                            <span class="field">
+                                <input class="field__control" id="baccount" name="account_type" type="radio" value="b" />
+                                <label class="field__label field__label--end" for="baccount">Business account</label>
+                            </span>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="../app.js"></script>
+</html>
