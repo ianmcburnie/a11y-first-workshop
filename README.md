@@ -2,6 +2,13 @@
 
 The idea of this project it to run a live-coding session starting with an empty HTML file. No web server is required. From that starting point the session instructor will progressively build up that page, and several others, introducing many common accessibility principles and techniques along the way.
 
+* Start
+* Part 1: Page Structure & Static content
+* Part 2: Links
+* Part 3: Forms and Validation
+* Part 4: Buttons &amp; Focus management
+* Part 5: ARIA Widgets
+
 The following sections of this README act as a guide to the session instructor.
 
 ## Start
@@ -25,7 +32,7 @@ If you get lost or lose your way, each step has a "one I made earlier" that you 
 
 ## Part 1
 
-Part 1 is primarily concerned with page structure, static content and links.
+Part 1 is primarily concerned with page structure & static content.
 
 ### Meta Data
 
@@ -72,17 +79,17 @@ We have introduced 3 key pieces of 'meta' data:
 
 ```html
 <ul>
-    <li>Mix It Up</li>
-    <li>At the Hearth</li>
-    <li>Give Thanks</li>
-    <li>Guests of Honour</li>
+    <li>Mix It Up - 17 items by statesidelife</li>
+    <li>At the Hearth - 9 items by designassembly</li>
+    <li>Give Thanks - 35 items by ebayhomeeditor</li>
+    <li>Guests of Honour - 30 items by ebaydealseditor</li>
 </ul>
 
 <ul>
-    <li>Christmas Socks</li>
-    <li>MacBook Air</li>
-    <li>Xbox One 500GB</li>
-    <li>Playstation Pro 1TB</li>
+    <li>Christmas Socks - $4.99</li>
+    <li>MacBook Air - $799.99</li>
+    <li>Xbox One 500GB - $169.99</li>
+    <li>Playstation Pro 1TB - $419.99</li>
 </ul>
 ```
 
@@ -100,6 +107,7 @@ We have introduced 3 key pieces of 'meta' data:
 1. Add `clipped` class to the 'Legal' header
 1. Demo that legal header is now 'invisible'
 1. Demo the legal header is still conveyed to screen reader
+1. Show legal header in screen reader headings list
 
 ### Landmarks
 
@@ -114,6 +122,15 @@ We have introduced 3 key pieces of 'meta' data:
     * `role="main"` to main
     * `role="contentinfo"` to footer
 1. Display landmarks in screen reader landmarks lists. Notice that footer is now visible as contentinfo
+
+```css
+footer[role="contentinfo"] {
+    background-color: white;
+    border-top: 1px solid #ccc;
+    margin-top: 32px;
+    padding-bottom: 8px;
+}
+```
 
 ### Images
 
@@ -143,25 +160,23 @@ Demonstrate the problems with using table tags for layout.
 Demonstrates that in some cases, CSS can effect semantics.
 
 1. Revert the table changes made in the previous step (i.e. back to a list)
+1. Add div wrapper container inside of body (presentational step, see CSS below)
+1. Add div wrapper container inside of footer (presentational step, see CSS below)
+1. Add class `.grid` to the `.collections` and `.deals`
+1. Add `grid__group grid__group--no-gutters grid__group--wrap` to the collections list
+1. Add `grid__group grid__group--no-gutters` to the deals list
 1. Wrap each collection list item in a `class="grid__cell grid__cell--one-half"`
 1. Demonstrate that voiceover no longer announces list semantics
 1. Add `role="list"` to the lists to restore list semantics
-1. Add div wrapper inside of footer (presentational step)
+1. Add `display: block` and `max-width: 100%` to images (see CSS below) so they scale responsively (not strictly needed for a11y purposes).
 
 Adding `list-type: none` (via grids css) to the lists means they are <a href="http://www.456bereastreet.com/archive/201109/screen_readers_list_items_and_list-stylenone/">no longer announced as a list in some screen readers</a>. We fix this issue by applying `role="list"` to each list.
 
 ```css
-body > .grid {
-    margin: 0 auto;
-}
-
-footer[role="contentinfo"] {
-    background-color: white;
-    border-top: 1px solid #aaa;
-}
-
+body > div,
 footer[role="contentinfo"] > div {
     margin: 0 auto;
+    max-width: 1280px;
 }
 
 .collections img,
@@ -176,23 +191,17 @@ footer[role="contentinfo"] > div {
 A purely presentation step where we convert each collection item into a card.
 
 1. Wrap each collection item with `<div class="card"><div class="card__cell">...</div></div>`
-1. Add `display: block` and `max-width: 100%` to images (see CSS below) so they scale responsively (not strictly needed for a11y purposes).
-1. Add the seller profile static text under each collection
-1. Add price under each daily deal title.
-1. This new static text introduces one extra virtual cursor navigation for screen reader users.
-1. Wrap each collection/deal link in an h3 tag
 
-```css
-.collections img,
-.deals img {
-    display: block;
-    max-width: 100%;
-}
-```
+## Part 2
 
-### Links
+Part 2 is primarily concerned with links.
+
+### Text Links
 
 1. Add links around collection and daily deals titles
+1. Temporarily add `a {text-decoration: none}`
+1. Demonstrate the challenges of finding hyperlinks within paragraph text
+1. Remove `a {text-decoration: none}`
 1. With screen reader disabled, use TAB key to navigate focus through links
 1. Demo different focus outline in Firefox
 1. Notice that hand cursor shows for links
@@ -247,10 +256,12 @@ a.tile p:last-child {
 .see-all {
     text-align: center;
 }
+.see-all a {
+    text-decoration: none;
+}
 ```
 
-
-### Fake Button
+### Fake Buttons
 
 1. Add `class="btn"` to the two see all links
 1. Notice that skin hasn't styled them. Something is wrong. Skin enforces accessibility. We don't allow btn class on a link unless developer signifies they know what they are doing.
@@ -422,9 +433,9 @@ This is the content of the IFRAME:
 </html>
 ```
 
-## Part 2
+## Part 3
 
-Part 3 is primarily concerned with forms, form controls and validation.
+Part 3 is primarily concerned with forms and validation.
 
 ### Textbox
 
@@ -442,9 +453,9 @@ Part 3 is primarily concerned with forms, form controls and validation.
 
 ### Input Validation
 
-## Part 3
+## Part 4
 
-Part 3 is primarily concerned with buttons, form controls, DOM order and focus management.
+Part 4 is primarily concerned with buttons, DOM order and focus management.
 
 ### Skip-To Link Enhanced
 
@@ -584,9 +595,9 @@ $('.flyout--hover').hoverFlyout();
 $('.tooltip').hoverFlyout({expandedClass:'tooltip--expanded'}).focusFlyout({expandedClass:'tooltip--expanded'});
 ```
 
-## Part 3
+## Part 5
 
-Part 3 is primarily concerned with advanced keyboard navigation, ARIA widgets & live regions.
+Part 5 is primarily concerned with ARIA widgets advanced keyboard navigation.
 
 ### ARIA Labels
 

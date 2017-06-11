@@ -23,20 +23,17 @@
 
 /* GRID */
 
-body > .grid {
+body > div,
+footer[role="contentinfo"] > div {
+    max-width: 1280px;
     margin: 0 auto;
 }
 
 footer[role="contentinfo"] {
     background-color: white;
-    border-top: 1px solid #aaa;
+    border-top: 1px solid #ccc;
     margin-top: 32px;
     padding-bottom: 8px;
-}
-
-footer[role="contentinfo"] > div {
-    margin: 0 auto;
-    max-width: 1280px;
 }
 
 .collections img,
@@ -77,6 +74,10 @@ footer[role="contentinfo"] > div {
 
 .see-all {
     text-align: center;
+}
+
+.see-all a {
+    text-decoration: none;
 }
 
 /* FAKE BUTTON */
@@ -147,7 +148,8 @@ iframe {
     border: 0 none;
 }
 
-header > .grid {
+header > div:last-child {
+    max-width: 1280px;
     margin: 0 auto;
 }
 

@@ -1,0 +1,20 @@
+[role="main"] {
+    background-color: white;
+    border: 1px solid #ccc;
+    margin: 16px auto;
+    padding: 16px;
+    width: 400px;
+}
+
+fieldset {
+    border: 0;
+}
+
+fieldset .field {
+    float: left;
+    width: 50%;
+}
+
+fieldset span.field + span.field {
+    margin: 0;
+}

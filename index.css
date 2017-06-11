@@ -1,0 +1,19 @@
+body > * {
+    margin: 0 auto;
+    max-width: 1280px;
+}
+h1 {
+    font-size: 44px;
+    font-weight: 100;
+}
+hr {
+    margin: 16px 0;
+}
+footer {
+    font-size: 12px;
+    text-align: right;
+}
+footer img {
+    width: 100px;
+    vertical-align: middle;
+}

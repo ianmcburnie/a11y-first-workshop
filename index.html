@@ -4,37 +4,18 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>A11Y First - A Web Accessibility Workshop</title>
+        <title>A11Y First - Web Accessibility Workshop</title>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/skin.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/grid-full.min.css"/>
-        <style>
-            .grid {
-                margin: 0 auto;
-            }
-            h1 {
-                font-size: 44px;
-                font-weight: 100;
-                margin-bottom: 0;
-            }
-            footer {
-                font-size: 12px;
-                text-align: right;
-            }
-            footer img {
-                width: 100px;
-                vertical-align: middle;
-            }
-        </style>
+        <link rel="stylesheet" href="index.css"/>
     </head>
     <body>
-        <header class="grid">
-            <h1>A11Y First - Web Accessibility Workshop</h1>
-            <p>Refer to the <a href="https://github.com/ianmcburnie/a11y-first">README</a> for instructions.</p>
-        </header>
-        <main class="grid">
+        <main>
             <div class="card">
                 <div class="card__cell">
-                    <h2>Part 1 - Page Structure, Static Content &amp; Links</h2>
+                    <h1>A11Y First - Web Accessibility Workshop</h1>
+                    <p>Refer to the <a href="https://github.com/ianmcburnie/a11y-first">README</a> for instructions.</p>
+                    <hr/>
+                    <h2>Part 1 - Page Structure &amp; Static Content</h2>
                     <ol>
                         <li><a href="hp/meta.html">Meta</a> (page intentionally blank)</li>
                         <li><a href="hp/paragraphs.html">Paragraph</a></li>
@@ -46,7 +27,11 @@
                         <li><a href="hp/table-layout.html">Table Layout</a></li>
                         <li><a href="hp/grid-system.html">Grid System</a></li>
                         <li><a href="hp/cards.html">Card</a> (presentational step)</li>
-                        <li><a href="hp/links.html">Link</a></li>
+                    </ol>
+                    <hr/>
+                    <h2>Part 2 - Links</h2>
+                    <ol>
+                        <li><a href="hp/links.html">Text Link</a></li>
                         <li><a href="hp/tiles.html">Tile</a></li>
                         <li><a href="hp/ambiguous-link.html">Ambiguous Link</a></li>
                         <li><a href="hp/fake-button.html">Fake Button</a></li>
@@ -54,11 +39,12 @@
                         <li><a href="hp/navigation.html">Navigation Landmark</a></li>
                         <li><a href="hp/skipto.html">Skip-To Link</a></li>
                         <li><a href="hp/iframe.html">Iframe</a></li>
+                        <li><a href="signin/fake-tabs.html">Fake Tabs</a></li>
                     </ol>
-
-                    <h2>Part 2 - Forms, Form Controls &amp; Validation</h2>
+                    <hr/>
+                    <h2>Part 3 - Forms &amp; Validation</h2>
                     <ol>
-                        <li>Textbox</a></li>
+                        <li><a href="reg/textbox.html">Textbox</a></li>
                         <li>Listbox</a></li>
                         <li>Radio</a></li>
                         <li>Checkbox</a></li>
@@ -67,8 +53,8 @@
                         <li>Form Validation Enhanced</a></li>
                         <li>Input Validation</li>
                     </ol>
-
-                    <h2>Part 3 - Buttons, DOM Order &amp; Focus Management</h2>
+                    <hr/>
+                    <h2>Part 4 - Buttons, Overlays &amp; Focus Management</h2>
                     <ol>
                         <li>Skip-To Link Enhanced</li>
                         <li><a href="hp/click-flyout.html">Click Flyout</a></li>
@@ -79,8 +65,8 @@
                         <li><a href="hp/accesskey.html">Access Key</a></li>
                         <li><a href="hp/tooltip.html">Tooltip</a></li>
                     </ol>
-
-                    <h2>Part 4 - Interactive Widgets &amp; Advanced Keyboard Navigation</h2>
+                    <hr/>
+                    <h2>Part 5 - ARIA Widgets</h2>
                     <ol>
                         <li><a href="hp/aria-label.html">ARIA Labels</a></li>
                         <li><a href="srp/fake-menu.html">Fake Menu</a></li>
@@ -95,7 +81,7 @@
             </div>
         </main>
 
-        <footer class="grid">
+        <footer>
             <img src="images/ebay-hires.png" alt="ebay" />Copyright © 1995-2017 eBay Inc. All Rights Reserved.
         </footer>
     </body>
