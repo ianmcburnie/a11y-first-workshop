@@ -3,11 +3,12 @@
 The idea of this project it to run a live-coding session starting with an empty HTML file. No web server is required. From that starting point the session instructor will progressively build up that page, and several others, introducing many common accessibility principles and techniques along the way.
 
 * Start
-* Part 1: Page Structure & Static content
-* Part 2: Links
-* Part 3: Forms and Validation
-* Part 4: Buttons &amp; Focus management
-* Part 5: ARIA Widgets
+* Part 1: Introduces Structure
+* Part 2: Introduces Links
+* Part 3: Introduces Forms
+* Part 4: Introduces Buttons
+* Part 5: Introduces ARIA Widgets
+* Part 6: Introduces Data Tables
 
 The following sections of this README act as a guide to the session instructor.
 
@@ -30,9 +31,13 @@ For a live-coding workshop, please prime your initial index.html file with the f
 
 If you get lost or lose your way, each step has a "one I made earlier" that you can copy-and-paste from into your file.
 
-## Part 1
+## Part 1: Introduces Structure
 
-Part 1 is primarily concerned with page structure & static content.
+Part 1 builds a mock version of a typical eCommerce website.
+
+Whenever I build a new page or component, I always start with the markup. I don't even think about the CSS and JavaScript until I am happy with the structure and semantics. In fact, I will go as far as to disable CSS and JavaScript in my browser to ensure that the raw markup is accessible and functional.
+
+Some developers, on the other hand, like to start with the JavaScript first. Or the "bells and whistles" as I like to say. To me this is like a builder placing down all of the household electronics (television, microwave, internet router, etc) on the plot before the foundations have been laid and walls built. All of those electronics are just going to get in the way. Okay, maybe I need a better analogy ;-)
 
 ### Meta Data
 
@@ -192,9 +197,9 @@ A purely presentation step where we convert each collection item into a card.
 
 1. Wrap each collection item with `<div class="card"><div class="card__cell">...</div></div>`
 
-## Part 2
+## Part 2: Introduces Links
 
-Part 2 is primarily concerned with links.
+Part 2 continues to build upon our homepage, before moving onto a typical sign in page.
 
 ### Text Links
 
@@ -433,38 +438,17 @@ This is the content of the IFRAME:
 </html>
 ```
 
-### Fake Tabs
+### CHECKPOINT: Sign In &amp; Registration
 
-Links are some times presented visually as tabs, but retain their link behaviour. It is a common mistake amongst developers to assign the ARIA tab related roles to these links.
-
-1. Create a new page at `signin.html`
-1. Create a new page at `reg.html`
-1. Use the markup below for both pages and Skin will style the links as fake tabs
-1. Create a new CSS file at `signin.css`
-1. Create a new CSS file at `reg.css`
-1. Use the CSS below to add some basic page styling.
-
-HTML
+We now move onto a new page. Actually, two pages, the signin and registration pages. They both have the following content to begin with:
 
 ```html
 <div role="main">
-    <div class="fake-tabs">
-        <ul class="fake-tabs__items">
-            <li class="fake-tabs__item fake-tabs__item--current">
-                <a aria-current="page"  href="#">Sign In</a>
-            </li>
-            <li class="fake-tabs__item">
-                <a href="reg.html">Register</a>
-            </li>
-        </ul>
-        <div class="fake-tabs__content">
-            <p>Sign-in form goes here</p>
-        </div>
-    </div>
+    <!-- content goes here -->
 </div>
-```
+```html
 
-CSS
+Create a new CSS file for each new page:
 
 ```css
 [role="main"] {
@@ -476,9 +460,51 @@ CSS
 }
 ```
 
-## Part 3
+### Fake Tabs
 
-Part 3 is primarily concerned with forms and validation.
+Links are sometimes presented visually as tabs, but retain their link behaviour. It is a common mistake amongst developers to assign the ARIA tab related roles to these links.
+
+Add the following list of links inside the main landmark:
+
+```html
+<div>
+    <ul>
+        <li>
+            <a href="fake-tabs.html">Sign In</a>
+        </li>
+        <li>
+            <a href="../reg/fake-tabs.html">Register</a>
+        </li>
+    </ul>
+    <div>
+        <p>Sign-in form goes here</p>
+    </div>
+</div>
+```
+
+Demonstrate that everything we have already learnt about lists and links applies here. We could also use a navigation landmark.
+
+Now add the following Skin classes to style the links as fake tabs:
+
+```html
+<div class="fake-tabs">
+    <ul class="fake-tabs__items">
+        <li class="fake-tabs__item fake-tabs__item--current">
+            <a aria-current="page" href="#">Sign In</a>
+        </li>
+        <li class="fake-tabs__item">
+            <a href="reg.html">Register</a>
+        </li>
+    </ul>
+    <div class="fake-tabs__content">
+        <p>Sign-in form goes here</p>
+    </div>
+</div>
+```
+
+## Part 3: Introduces Forms
+
+Part 3 continues on with our signin and registration pages.
 
 ### Radio
 
@@ -556,9 +582,52 @@ Add textboxes + labels for email, password, first name, last name and mobile pho
 
 ### ARIA Labels
 
-## Part 4
+<!--
+Textbox
 
-Part 4 is primarily concerned with buttons, DOM order and focus management.
+1. Add form tag to banner
+1. Add textbox to form
+1. Demo that textbox is focusable by default
+1. Demo how arrow key behaviour on textbox is different than on link.
+1. Enter search term and press ENTER. ENTER key should always submit form (even with no submit button).
+1. Add placeholder text of 'search' to textbox
+1. Demo placeholder with screen reader
+1. Add label to textbox. Change placeholder text to ('iPhone 7')
+1. Demo textbox and label
+1. Replace label tag with an aria-label attribute on input
+1. Demo textbox and aria-label
+1. Talk about arrow key behaviour and 'forms mode' of screen reader.
+1. Screen reader announces control value, label, type
+1. Add `autofocus` attribute to textbox
+1. Add [Skin Textbox Classes](https://ebay.github.io/skin/#textbox)
+
+Listbox
+
+1. Add listbox and aria-label after textbox
+1. ENTER key does not submit form.
+1. SPACE or ARROW key expands.
+1. ARROW keys highlight options, ENTER or SPACE selects.
+1. Screen reader announces control value, label, type
+1. Add [Skin Listbox Classes](https://ebay.github.io/skin/#listbox)
+
+Submit Button
+
+1. Add `<button type="submit">Search</button>` after listbox
+1. Notice that mouse hand cursor does not show for buttons.
+1. Screen reader announces button value/label and type
+1. Demo SPACEBAR and ENTER key behaviour
+1. Demo that form submits an HTTP GET request by default. A submit button is the only button that should navigate to a new URL in this way.
+1. Demo that keyboard navigation starts from top of new page
+1. Add reset button after submit button and demo it's behaviour
+1. Remove submit button (we don't need it)
+1. Add skin classes to button `class="btn btn--primary"`
+1. Add `role="search"` to form
+1. Add `class="grid__group"` to header
+-->
+
+## Part 4: Introduces Buttons
+
+For Part 4, we move back to our homepage.
 
 ### Skip-To Link Enhanced
 
@@ -698,52 +767,13 @@ $('.flyout--hover').hoverFlyout();
 $('.tooltip').hoverFlyout({expandedClass:'tooltip--expanded'}).focusFlyout({expandedClass:'tooltip--expanded'});
 ```
 
-## Part 5
+## Part 5: Introduces ARIA Widgets
 
-Part 5 is primarily concerned with ARIA widgets advanced keyboard navigation.
+In part 5 we move from our homepage example, to a search results page (SRP) example.
 
-### ARIA Labels
+### CHECKPOINT: Search Results Page (SRP)
 
-Textbox
-
-1. Add form tag to banner
-1. Add textbox to form
-1. Demo that textbox is focusable by default
-1. Demo how arrow key behaviour on textbox is different than on link.
-1. Enter search term and press ENTER. ENTER key should always submit form (even with no submit button).
-1. Add placeholder text of 'search' to textbox
-1. Demo placeholder with screen reader
-1. Add label to textbox. Change placeholder text to ('iPhone 7')
-1. Demo textbox and label
-1. Replace label tag with an aria-label attribute on input
-1. Demo textbox and aria-label
-1. Talk about arrow key behaviour and 'forms mode' of screen reader.
-1. Screen reader announces control value, label, type
-1. Add `autofocus` attribute to textbox
-1. Add [Skin Textbox Classes](https://ebay.github.io/skin/#textbox)
-
-Listbox
-
-1. Add listbox and aria-label after textbox
-1. ENTER key does not submit form.
-1. SPACE or ARROW key expands.
-1. ARROW keys highlight options, ENTER or SPACE selects.
-1. Screen reader announces control value, label, type
-1. Add [Skin Listbox Classes](https://ebay.github.io/skin/#listbox)
-
-Submit Button
-
-1. Add `<button type="submit">Search</button>` after listbox
-1. Notice that mouse hand cursor does not show for buttons.
-1. Screen reader announces button value/label and type
-1. Demo SPACEBAR and ENTER key behaviour
-1. Demo that form submits an HTTP GET request by default. A submit button is the only button that should navigate to a new URL in this way.
-1. Demo that keyboard navigation starts from top of new page
-1. Add reset button after submit button and demo it's behaviour
-1. Remove submit button (we don't need it)
-1. Add skin classes to button `class="btn btn--primary"`
-1. Add `role="search"` to form
-1. Add `class="grid__group"` to header
+Create a new `srp.html` page.
 
 ### Fake Menu
 
@@ -789,10 +819,6 @@ We add combobox behaviour to search textbox.
 
 todo
 
-## Other
-
-We will wrap up with some other concepts that were not applicable in the demo page.
-
-### Tables
+## Part 6: Introduces Data Tables
 
 todo
