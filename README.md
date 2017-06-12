@@ -33,7 +33,7 @@ If you get lost or lose your way, each step has a "one I made earlier" that you 
 
 ## Part 1: Introduces Structure
 
-Part 1 builds a mock version of a typical eCommerce website.
+Part 1 builds a mock version of a typical eCommerce homepage.
 
 Whenever I build a new page or component, I always start with the markup. I don't even think about the CSS and JavaScript until I am happy with the structure and semantics. In fact, I will go as far as to disable CSS and JavaScript in my browser to ensure that the raw markup is accessible and functional.
 
