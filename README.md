@@ -5,10 +5,11 @@ The idea of this project it to run a live-coding session starting with an empty 
 * Start
 * Part 1: Introduces Structure
 * Part 2: Introduces Links
-* Part 3: Introduces Forms
-* Part 4: Introduces Buttons
-* Part 5: Introduces ARIA Widgets
-* Part 6: Introduces Data Tables
+* Part 3: Introduces Form Controls
+* Part 4: Introduces Form Validation
+* Part 5: Introduces Buttons
+* Part 6: Introduces ARIA Widgets
+* Part 7: Introduces Data Tables
 
 The following sections of this README act as a guide to the session instructor.
 
@@ -113,6 +114,21 @@ We have introduced 3 key pieces of 'meta' data:
 1. Demo that legal header is now 'invisible'
 1. Demo the legal header is still conveyed to screen reader
 1. Show legal header in screen reader headings list
+
+```css
+.clipped {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+```
 
 ### Landmarks
 
@@ -444,6 +460,7 @@ We now move onto a new page. Actually, two pages, the signin and registration pa
 
 ```html
 <div role="main">
+    <h1 class="clipped">Sign In and Registration</h1>
     <!-- content goes here -->
 </div>
 ```html
@@ -497,14 +514,116 @@ Now add the following Skin classes to style the links as fake tabs:
         </li>
     </ul>
     <div class="fake-tabs__content">
-        <p>Sign-in form goes here</p>
+        <form>
+            <p>Sign-in form goes here</p>
+        </form>
     </div>
 </div>
 ```
 
-## Part 3: Introduces Forms
+## Part 3: Introduces Form Controls
 
 Part 3 continues on with our signin and registration pages.
+
+### Textbox
+
+Add textbox and label for email inside of form.
+
+```html
+<label for="email">Email</label>
+<input id="email" name="email" type="text" />
+```
+
+1. Demo that textbox is focusable with TAB key
+1. Demo how ARROW key behaviour on textbox is different than on link.
+1. Talk about ARROW key behaviour and 'forms mode' of screen reader.
+1. Demo that ENTER key does nothing... yet
+1. Demo that screen reader announces value, label, type and state (in no particular order)
+1. The `name` attribute is used by the server (key/value pair). The `id` attribute is used by the client (for link anchors, label targets, scripting)
+1. Add `disabled` attribute to textbox and demonstrate screen reader behaviour
+1. Remove `disabled` attribute
+1. Add `autofocus` attribute to textbox and demonstrate behaviour on page load
+1. Remove `autofocus` attribute
+
+Also add textbox &amp; label for password, first name, last name and phone, adding [Skin Textbox Classes](https://ebay.github.io/skin/#textbox). For example:
+
+```html
+<div class="field">
+    <label class="field__label field__label--stacked" for="email">Email</label>
+    <div class="field__control textbox">
+        <input class="textbox__control textbox__control--fluid" id="email" name="email" type="text" />
+    </div>
+</div>
+```
+
+### ARIA Labels
+
+For this step we move back to our `signin.html` page (it should currently only consist of fake tabs and an empty form).
+
+An unfortunate recent trend in web design is to use the `placeholder` attribute as an alternative to the label tag. **We strongly discourage this behaviour, especially for long forms, because of cognitive issues caused by the transient nature of placeholder text**.
+
+If you must implement this pattern, at a very minimum every input must have an `aria-label` attribute that will act in place of the missing label tag for screen readers (another alternative is to use the previously mentioned `clipped` class on actual label tags). Inline icons should also be used to mitigate problems caused by the lack of permanent visual label.
+
+```html
+<div class="field">
+    <div class="field__control textbox">
+        <svg aria-hidden="true" class="textbox__icon" focusable="false">
+            <use xlink:href="../icons.svg#svg-icon-mail"></use>
+        </svg>
+        <input aria-label="Email or username" class="textbox__control textbox__control--fluid" type="text" placeholder="Email or username" />
+    </div>
+</div>
+
+<div class="field">
+    <div class="field__control textbox">
+        <svg aria-hidden="true" class="textbox__icon" focusable="false">
+            <use xlink:href="../icons.svg#svg-icon-star"></use>
+        </svg>
+        <input aria-label="Password" class="textbox__control textbox__control--fluid" id="password" placeholder="Password" type="password" />
+    </div>
+</div>
+```
+
+*NOTE*: I currently don't have a better icon for password! It should ideally be a padlock or something.
+
+Fortunately, we are now starting to see a shift away from this pattern towards floating labels, which counters the problems caused by transient placeholder text.
+
+### Checkbox
+
+Add a checkbox to the signin page.
+
+```html
+<div class="field">
+    <input type="checkbox" name="stay" id="stay"/>
+    <label for="stay">Stay signed in</label>
+</div>
+```
+
+### Custom Checkbox
+
+It is possible to replace the default checkbox style with SVG.
+
+```html
+<div class="field">
+    <span class="field__control checkbox">
+        <input class="checkbox__control" id="ssi" name="ssi" type="checkbox" />
+        <span class="checkbox__icon" hidden>
+            <svg aria-hidden="true" focusable="false">
+                <use xlink:href="../icons.svg#svg-icon-checkbox"></use>
+            </svg>
+        </span>
+    </span>
+    <label class="field__label field__label--end" for="ssi">Stay signed in</label>
+</div>
+```
+
+### Field Description
+
+In addition to a short label, a field might also have longer descriptive text. For example, the eBay signin page has the text "Using a public or shared device? Uncheck to protect your account." next to the checkbox.
+
+1. Add `<p id="ssi-description">Using a public or shared device? Uncheck to protect your account.</p>`
+1. Add `aria-describedby="ssi-description"` to the checkbox
+1. Demonstrate that voiceover reads the description after a short pause
 
 ### Radio
 
@@ -558,11 +677,27 @@ Anytime you need to ensure the user makes only single selection (e.g. [star rati
 </span>
 ```
 
-### Textbox
+### Listbox
 
-Add textboxes + labels for email, password, first name, last name and mobile phone.
+1. ENTER key does not submit form.
+1. SPACE or ARROW key expands.
+1. ARROW keys highlight options, ENTER or SPACE selects.
+1. Screen reader announces control value, label, type
+1. Add [Skin Listbox Classes](https://ebay.github.io/skin/#listbox)
 
 ### Submit
+
+Every form requires a submit button, otherwise keyboard accessibility of form is broken (ENTER key will not work, see above).
+
+1. Add `<button type="submit">Register</button>`
+1. Notice that mouse hand cursor does not show for buttons.
+1. Screen reader announces button value/label and type
+1. Demo SPACEBAR and ENTER key behaviour
+1. Demo that form submits an HTTP GET request by default. A submit button is the only button that should navigate to a new URL in this way.
+1. Demo that keyboard navigation starts from top of new page
+1. Add `action="form-validation.html"` to the form tag
+1. Add skin classes to button `class="btn btn--primary"`
+
 
 ```html
 <div class="field">
@@ -570,69 +705,104 @@ Add textboxes + labels for email, password, first name, last name and mobile pho
 </div>
 ```
 
-### Checkbox
+#### Reset
 
-### Listbox
-
-### Form Validation
-
-### Form Validation Enhanced
-
-### Input Validation
-
-### ARIA Labels
-
-<!--
-Textbox
-
-1. Add form tag to banner
-1. Add textbox to form
-1. Demo that textbox is focusable by default
-1. Demo how arrow key behaviour on textbox is different than on link.
-1. Enter search term and press ENTER. ENTER key should always submit form (even with no submit button).
-1. Add placeholder text of 'search' to textbox
-1. Demo placeholder with screen reader
-1. Add label to textbox. Change placeholder text to ('iPhone 7')
-1. Demo textbox and label
-1. Replace label tag with an aria-label attribute on input
-1. Demo textbox and aria-label
-1. Talk about arrow key behaviour and 'forms mode' of screen reader.
-1. Screen reader announces control value, label, type
-1. Add `autofocus` attribute to textbox
-1. Add [Skin Textbox Classes](https://ebay.github.io/skin/#textbox)
-
-Listbox
-
-1. Add listbox and aria-label after textbox
-1. ENTER key does not submit form.
-1. SPACE or ARROW key expands.
-1. ARROW keys highlight options, ENTER or SPACE selects.
-1. Screen reader announces control value, label, type
-1. Add [Skin Listbox Classes](https://ebay.github.io/skin/#listbox)
-
-Submit Button
-
-1. Add `<button type="submit">Search</button>` after listbox
-1. Notice that mouse hand cursor does not show for buttons.
-1. Screen reader announces button value/label and type
-1. Demo SPACEBAR and ENTER key behaviour
-1. Demo that form submits an HTTP GET request by default. A submit button is the only button that should navigate to a new URL in this way.
-1. Demo that keyboard navigation starts from top of new page
 1. Add reset button after submit button and demo it's behaviour
-1. Remove submit button (we don't need it)
-1. Add skin classes to button `class="btn btn--primary"`
-1. Add `role="search"` to form
-1. Add `class="grid__group"` to header
--->
 
-## Part 4: Introduces Buttons
+## Part 4: Introduces Validation
 
-For Part 4, we move back to our homepage.
+In part 4 we continue with our sign and registration pages introducing server-side and client-side validation.
+
+### CHECKPOINT: Registration Error Page
+
+Duplicate your current `signin.html` and name it `form-validation.html`.
+
+### Page Error
+
+At the start of the form, add the following notice:
+
+```html
+<section aria-labelledby="error-status" class="page-notice page-notice--priority" role="region">
+    <h2 aria-label="Error notice" class="page-notice__status" id="error-status">
+        <svg aria-hidden="true" focusable="false">
+            <use xlink:href="../icons.svg#svg-icon-priority"></use>
+        </svg>
+    </h2>
+    <span class="page-notice__cell page-notice__cell--align-middle">
+        <p>Something went wrong. Please try again.</p>
+    </span>
+</section>
+```
+
+If JavaScript is available we can enhance this experience by setting focus on the page notice. This is our first introduction to the concept of focus management, but bear in mind that **this is one of the very few scenarios we would consider setting focus after page load!**
+
+1. Add `tabindex="-1"` to the page notice
+1. Add the script below to set focus after page load.
+1. Notice that the message cannot be re-focussed again after focus is lost. This is intentional,
+
+```js
+window.onload = function(e) {
+    document.querySelector('.page-notice--priority').focus();
+}
+```
+
+So, we know *something* went wrong, but not *what* went wrong. Let's make our error message more descriptive.
+
+```html
+<p>Please fix the following errors:</p>
+<ul role="list">
+    <li>First Name</li>
+    <li>Last Name</li>
+</ul>
+````
+
+```css
+.page-notice--priority ul {
+    list-style-type: none;
+    padding: 0;
+}
+```
+
+This may be a long form with many fields in the tab order. How can we make life easier for keyboard user to get directly to those invalids fields. The answer is skip links of course (remember we covered these earlier)
+
+```html
+<ul role="list">
+    <li><a href="#fname">First NameM</a></li>
+    <li><a href="#lname">Last Name</a></li>
+</ul>
+```
+
+### Inline Errors
+
+Let's add individual error descriptions next after the first and last name fields. For example:
+
+```html
+<div class="field__description field__description--error" id="email-error">
+    <span>Please enter your first</span>
+</div>
+```
+
+This is technically accessible, but playing 'hunt' the invalid field is not much fun for non-sighted users. Let's make a quick improvement, by adding `aria-invalid="true"` to the two textboxes:
+
+### Inline Errors Enhanced
+
+todo
+
+### Page Errors Enhanced
+
+todo
+
+### Password Helper
+
+todo
+
+## Part 5: Introduces Buttons
+
+For Part 5, we move back to our homepage.
 
 ### Skip-To Link Enhanced
 
 Rather than adding permanent tabindex to main, it would be better to set a temporary tabindex using javascript. The tabindex can be set when the skipto link is clicked (we already know the target id), and the tabindex can be removed as soon as the target loses focus.
-
 
 ```js
 $('.skipto--enhanced').skipTo();
@@ -767,9 +937,9 @@ $('.flyout--hover').hoverFlyout();
 $('.tooltip').hoverFlyout({expandedClass:'tooltip--expanded'}).focusFlyout({expandedClass:'tooltip--expanded'});
 ```
 
-## Part 5: Introduces ARIA Widgets
+## Part 6: Introduces ARIA Widgets
 
-In part 5 we move from our homepage example, to a search results page (SRP) example.
+In part 6 we move from our homepage example, to a search results page (SRP) example.
 
 ### CHECKPOINT: Search Results Page (SRP)
 
@@ -819,6 +989,6 @@ We add combobox behaviour to search textbox.
 
 todo
 
-## Part 6: Introduces Data Tables
+## Part 7: Introduces Data Tables
 
 todo

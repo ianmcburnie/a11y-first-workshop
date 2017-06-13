@@ -1,20 +1,18 @@
-$(function() {
+window.onload = function(e) {
 
-    /* BEGIN skin adaptive breakpoints */
-    if (window.innerWidth > 600) {
-        $('body').addClass('skin-large');
+    /* ALL PAGES */
+    if (document.body.clientWidth > 600) {
+        document.body.classList.add('skin-large');
     }
 
-    $(window).on('resize', function(e) {
-        if (this.innerWidth > 600) {
-            $('body').addClass('skin-large');
-        } else {
-            $('body').removeClass('skin-large');
-        }
-    });
-    /* END skin adaptive breakpoints */
+    /* PAGE NOTICE */
+    document.querySelector('.page-notice').focus();
+}
 
-    $('.skipto--enahanced').skipTo();
+
+/* jQuery Plugins */
+$(function() {
+    $('.skipto--enhanced').skipTo();
 
     $('.hijax-form').on('submit', function(e) {
         e.preventDefault();

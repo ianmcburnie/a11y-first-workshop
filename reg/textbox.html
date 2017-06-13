@@ -11,85 +11,51 @@
     </head>
     <body>
         <div role="main">
+            <h1 class="clipped">Sign In and Registration</h1>
             <div class="fake-tabs">
                 <ul class="fake-tabs__items">
                     <li class="fake-tabs__item">
                         <a href="http://www.ebay.com">Sign In</a>
                     </li>
                     <li class="fake-tabs__item fake-tabs__item--current">
-                        <a aria-current="page" href="http://www.ebay.com">Register</a>
+                        <a aria-current="page" href="../reg/fake-tabs.html">Register</a>
                     </li>
                 </ul>
                 <div class="fake-tabs__content">
-                    <form action="#">
-                        <fieldset>
-                            <legend class="clipped">Account Type</legend>
-                            <span class="field">
-                                <span class="radio">
-                                    <input class="field__control radio__control" id="paccount" name="account_type" type="radio" value="p" />
-                                    <span class="radio__icon" hidden>
-                                        <svg aria-hidden="true" focusable="false">
-                                            <use xlink:href="../icons.svg#svg-icon-radio"></use>
-                                        </svg>
-                                    </span>
-                                </span>
-                                <label class="field__label field__label--end" for="paccount">Personal account</label>
-                            </span>
-                            <span class="field">
-                                <span class="radio">
-                                    <input class="field__control radio__control" id="baccount" name="account_type" type="radio" value="b" />
-                                    <span class="radio__icon" hidden>
-                                        <svg aria-hidden="true" focusable="false">
-                                            <use xlink:href="../icons.svg#svg-icon-radio"></use>
-                                        </svg>
-                                    </span>
-                                </span>
-                                <label class="field__label field__label--end" for="baccount">Business account</label>
-                            </span>
-                        </fieldset>
+                    <form>
 
                         <div class="field">
-                            <div class="field__label field__label--stacked">
-                                <label for="email">Email</label>
-                            </div>
+                            <label class="field__label field__label--stacked" for="email">Email</label>
                             <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" id="email" type="text" />
+                                <input class="textbox__control textbox__control--fluid" name="email" id="email" type="text" />
                             </div>
                         </div>
 
                         <div class="field">
-                            <div class="field__label field__label--stacked">
-                                <label for="password">Password</label>
-                            </div>
+                            <label class="field__label field__label--stacked" for="password">Password</label>
                             <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" id="password" type="password" />
+                                <input class="textbox__control textbox__control--fluid" name="password" id="password" type="password" />
                             </div>
                         </div>
 
                         <div class="field" style="display: inline-block; float: left; width: 50%; ">
-                            <div class="field__label field__label--stacked">
-                                <label for="fname">First Name</label>
-                            </div>
+                            <label class="field__label field__label--stacked" for="password">First Name</label>
                             <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" id="fname" type="text" />
+                                <input class="textbox__control textbox__control--fluid" name="fname" id="fname" type="text" />
                             </div>
                         </div>
 
                         <div class="field" style="box-sizing: border-box; display: inline-block; padding-left: 8px; width: 50%;">
-                            <div class="field__label field__label--stacked">
-                                <label for="lname">Last Name</label>
-                            </div>
+                            <label class="field__label field__label--stacked" for="lname">Last Name</label>
                             <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" id="lname" type="text" />
+                                <input class="textbox__control textbox__control--fluid" name="lname" id="lname" type="text" />
                             </div>
                         </div>
 
                         <div class="field">
-                            <div class="field__label field__label--stacked">
-                                <label for="phone">Mobile Phone</label>
-                            </div>
+                            <label class="field__label field__label--stacked" for="phone">Mobile Phone</label>
                             <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" id="phone" type="text" />
+                                <input class="textbox__control textbox__control--fluid" name="phone" id="phone" type="text" />
                             </div>
                         </div>
                     </form>

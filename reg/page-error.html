@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Submit - A11Y First Workshop</title>
+        <title>Page Error - A11Y First Workshop</title>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/skin.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/grid-full.min.css"/>
         <link rel="stylesheet" href="../app.css"/>
@@ -22,7 +22,22 @@
                     </li>
                 </ul>
                 <div class="fake-tabs__content">
-                    <form action="page-notice.html">
+                    <form action="#">
+
+                        <section aria-labelledby="error-status" class="page-notice page-notice--priority" role="region" tabindex="-1">
+                            <h2 aria-label="Error notice" class="page-notice__status" id="error-status">
+                                <svg aria-hidden="true" focusable="false">
+                                    <use xlink:href="../icons.svg#svg-icon-priority"></use>
+                                </svg>
+                            </h2>
+                            <span class="page-notice__cell page-notice__cell--align-middle">
+                                <p>Please fix the following errors:</p>
+                                <ul role="list">
+                                    <li><a href="#fname">First Name</a></li>
+                                    <li><a href="#lname">Last Name</a></li>
+                                </ul>
+                            </span>
+                        </section>
 
                         <div class="field">
                             <label class="field__label field__label--stacked" for="email">Email</label>
@@ -38,17 +53,17 @@
                             </div>
                         </div>
 
-                        <div class="field" style="display: inline-block; float: left; width: 50%;">
+                        <div class="field" style="display: inline-block; float: left; width: 50%; ">
                             <label class="field__label field__label--stacked" for="password">First Name</label>
                             <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" id="fname" type="text" />
+                                <input class="textbox__control textbox__control--fluid" id="fname" name="fname" type="text" />
                             </div>
                         </div>
 
                         <div class="field" style="box-sizing: border-box; display: inline-block; padding-left: 8px; width: 50%;">
                             <label class="field__label field__label--stacked" for="lname">Last Name</label>
                             <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" id="lname" type="text" />
+                                <input class="textbox__control textbox__control--fluid" id="lname" name="lname" type="text" />
                             </div>
                         </div>
 
@@ -59,12 +74,8 @@
                             </div>
                         </div>
 
-                        <div class="field" style="display: inline-block; float: left; width: 50%;">
-                            <button class="btn btn--fluid btn--secondary" type="reset">Reset</button>
-                        </div>
-
-                        <div class="field" style="box-sizing: border-box; display: inline-block; padding-left: 8px; width: 50%;">
-                            <button class="btn btn--fluid btn--primary" type="submit">Submit</button>
+                        <div class="field">
+                            <button class="btn btn--fluid btn--primary" type="submit">Register</button>
                         </div>
                     </form>
                 </div>

@@ -11,13 +11,14 @@
     </head>
     <body>
         <div role="main">
+            <h1 class="clipped">Sign In and Registration</h1>
             <div class="fake-tabs">
                 <ul class="fake-tabs__items">
                     <li class="fake-tabs__item">
                         <a href="http://www.ebay.com">Sign In</a>
                     </li>
                     <li class="fake-tabs__item fake-tabs__item--current">
-                        <a aria-current="page" href="http://www.ebay.com">Register</a>
+                        <a aria-current="page" href="../reg/field-description.html">Register</a>
                     </li>
                 </ul>
                 <div class="fake-tabs__content">
@@ -34,6 +35,42 @@
                             </span>
                         </fieldset>
                     </form>
+
+                    <div class="field">
+                        <label class="field__label field__label--stacked" for="email">Email</label>
+                        <div class="field__control textbox">
+                            <input class="textbox__control textbox__control--fluid" name="email" id="email" type="text" />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="field__label field__label--stacked" for="password">Password</label>
+                        <div class="field__control textbox">
+                            <input class="textbox__control textbox__control--fluid" name="password" id="password" type="password" />
+                        </div>
+                    </div>
+
+                    <div class="field" style="display: inline-block; float: left; width: 50%; ">
+                        <label class="field__label field__label--stacked" for="password">First Name</label>
+                        <div class="field__control textbox">
+                            <input class="textbox__control textbox__control--fluid" name="fname" id="fname" type="text" />
+                        </div>
+                    </div>
+
+                    <div class="field" style="box-sizing: border-box; display: inline-block; padding-left: 8px; width: 50%;">
+                        <label class="field__label field__label--stacked" for="lname">Last Name</label>
+                        <div class="field__control textbox">
+                            <input class="textbox__control textbox__control--fluid" name="lname" id="lname" type="text" />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="field__label field__label--stacked" for="phone">Mobile Phone</label>
+                        <div class="field__control textbox">
+                            <input class="textbox__control textbox__control--fluid" name="phone" id="phone" type="text" />
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

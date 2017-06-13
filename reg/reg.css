@@ -6,9 +6,11 @@
     width: 400px;
 }
 
+/* RADIO */
+
 fieldset {
     border: 0;
-    margin: 16px;
+    margin: 16px 0;
 }
 
 fieldset .field {
@@ -18,4 +20,21 @@ fieldset .field {
 
 fieldset span.field + span.field {
     margin: 0;
+}
+
+/* PAGE NOTICE */
+
+.page-notice--priority ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.page-notice--priority a {
+    color: red;
+}
+
+/* INLINE NOTICE */
+
+.field__description--error {
+    color: red;
 }
