@@ -6,7 +6,7 @@ The idea of this project it to run a live-coding session starting with an empty 
 * [Part 1: Introduces Structure](user-content-part-1-introduces-structure)
 * [Part 2: Introduces Links](user-content-part-2-introduces-links)
 * [Part 3: Introduces Form Controls](user-content-part-3-introduces-form-controls)
-* [Part 4: Introduces Form Validation](user-content-part-4-introduces-form-validation)
+* [Part 4: Introduces Form Validation &amp; Live Regions](user-content-part-4-introduces-form-validation-and-live-regions)
 * [Part 5: Introduces Buttons](user-content-part-5-introduces-buttons)
 * [Part 6: Introduces ARIA Widgets](user-content-part-6-introduces-aria-widgets)
 * [Part 7: Introduces Data Tables](user-content-part-7-introduces-data-tables)
@@ -400,28 +400,51 @@ a[href='#mainContent'] {
 }
 ```
 
+### CHECKPOINT: Iframe content
+
+Create a new `iframe-content.html` page with the following markup:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body {
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="images/gift-cards-for-home.jpg" alt="" />
+    </body>
+</html>
+```
+
 ### IFrame
 
-1. Add iframe between header and main (without a title attribute for now)
+1. Add iframe without title between header and main `<iframe src="iframe_content.html" scrolling="no"></iframe>`
 1. Demo that iframe is keyboard focusable in Firefox
-1. Add image to iframe_content.html
-1. Navigate inside iframe with screen reader
-1. Demonstrate untitled iframe with screen reader
+1. Demonstrate untitled iframe behaviour with screen reader
 1. Add `title="Advert"` to iframe and demo with screen reader
     * This is the only recommended use of `title` attribute! (i.e. do not use it as a 'tooltip' on links)
-1. Wrap image in link
-1. Demonstrate iframe taborder with keyboard
-1. Demonstrate focus indicator issue with iframe content when iframe body has zero margin
+1. Navigate inside iframe with screen reader
+1. Wrap image in link and demonstrate focus indicator issue when iframe body has zero margin
+1. Add a second image after the first `<img src="images/advert-gift.jpg" alt="It's the gift they've been eyeing all year. Find it here." />`
+1. Move link around this new image
 1. Create an advert that plenty of margin around hyperlink
 1. Wrap iframe in `<aside role="complementary">`
 
+This is the final content of main page:
+
 ```html
 <aside role="complementary">
-  `<iframe src="iframe_content.html" scrolling="no" title="Advert"></iframe>`
+  `<iframe src="iframe-content.html" scrolling="no" title="Advert"></iframe>`
  </aside>
 ```
 
-This is the content of the IFRAME:
+This is the final content of the IFRAME:
 
 ```html
 <!DOCTYPE html>
@@ -438,9 +461,6 @@ This is the content of the IFRAME:
                 top: 20px;
                 left: 20px;
             }
-            a:focus {
-                outline: 2px dashed white;
-            }
         </style>
     </head>
     <body>
@@ -450,6 +470,16 @@ This is the content of the IFRAME:
         </a>
     </body>
 </html>
+```
+
+### Custom Focus
+
+We will use the image link inside of the iframe to demonstrate a custom focus indicator.
+
+```css
+a:focus {
+    outline: 2px dashed white;
+}
 ```
 
 ### CHECKPOINT: Sign In &amp; Registration
@@ -497,7 +527,7 @@ Add the following list of links inside the main landmark:
 </div>
 ```
 
-Demonstrate that everything we have already learnt about lists and links applies here. We could also use a navigation landmark.
+Demonstrate that everything we have already learnt about lists and links applies here. We could also use a navigation landmark around the list.
 
 Now add the following Skin classes to style the links as fake tabs:
 
@@ -518,6 +548,8 @@ Now add the following Skin classes to style the links as fake tabs:
     </div>
 </div>
 ```
+
+Demonstrate that the tabs are still announce as links, and still show up in the screen reader list of links. This is the desired, expected behaviour.
 
 ## Part 3: Introduces Form Controls
 
@@ -588,32 +620,47 @@ Fortunately, we are now starting to see a shift away from this pattern towards f
 
 ### Checkbox
 
-Add a checkbox to the signin page.
+Add a checkbox to the sign in page.
 
 ```html
-<div class="field">
-    <input type="checkbox" name="stay" id="stay"/>
-    <label for="stay">Stay signed in</label>
-</div>
+<input type="checkbox" name="ssi" id="ssi"/>
+<label for="ssi">Stay signed in</label>
 ```
+
+1. Demonstrate that checkbox is in default tab order with `TAB` key
+1. Demonstrate that checkbox state is toggle with `SPACEBAR` key
 
 ### Custom Checkbox
 
-It is possible to replace the default checkbox style with SVG.
+With a bit of CSS tricker, it is possible to replace the default checkbox style with inline SVG.
+
+First create the field boiler plate, similar to what we have for textboxes:
 
 ```html
 <div class="field">
     <span class="field__control checkbox">
         <input class="checkbox__control" id="ssi" name="ssi" type="checkbox" />
-        <span class="checkbox__icon" hidden>
-            <svg aria-hidden="true" focusable="false">
-                <use xlink:href="../icons.svg#svg-icon-checkbox"></use>
-            </svg>
-        </span>
+        <!-- checkbox icon goes here -->
     </span>
     <label class="field__label field__label--end" for="ssi">Stay signed in</label>
 </div>
 ```
+
+Now let's talk about the SVG.
+
+```html
+<span class="checkbox__icon" hidden>
+    <svg aria-hidden="true" focusable="false">
+        <use xlink:href="../icons.svg#svg-icon-checkbox"></use>
+    </svg>
+</span>
+```
+
+1. The hidden attribute prevents the SVG from appearing in a non-CSS state (FOUC) and supports progressive enhancement scenario
+1. The hidden attribute will be overriden by the CSS to `display: inline-block`
+1. The `use` attribute refers to an SVG symbol defined in an external SVG file. Note that some older browsers do not support symbols defined in an external SVG file. If you need to support those browsers, the SVG symbols can instead be defined in the same HTML page or a JavaScript polyfill can be used.
+
+If you ever use `role="checkbox"` on an tag other than an input, you must ensure that all keyboard and screen reader behaviour associated with a native checkbox is met. And remember that only the input tag supports form data and browser autofill behaviour.
 
 ### Field Description
 
@@ -627,8 +674,9 @@ In addition to a short label, a field might also have longer descriptive text. F
 
 Radio buttons are our first introduction to using the ARROW keys. The TAB key moves keyboard focus into the radio group, the ARROW keys interact with the radio group buttons. Pressing the TAB key again moves keyboard focus off the radio group onto the next interactive element on the page.
 
-1. Add the HTML to the fake tabs content panel
-1. Demonstrate with screen reader that the radio button labels are announced
+1. Add the HTML below to the fake tabs content panel
+1. Demonstrate keyboard behaviour
+1. Demonstrate screen reader semantics (type, label, state)
 
 ```html
 <span class="field">
@@ -641,8 +689,8 @@ Radio buttons are our first introduction to using the ARROW keys. The TAB key mo
 </span>
 ```
 
-1. Next, add a fieldset and legend
-1. Demonstrate with screen reader that each radio button now announces the legend
+1. Add a fieldset and legend
+1. Demonstrate additional screen reader semantics (group name/label)
 
 ```html
 <fieldset>
@@ -662,7 +710,7 @@ Radio buttons are our first introduction to using the ARROW keys. The TAB key mo
 
 Skin enhances the native radios with a custom SVG style, while maintaining the accessibility of the underlying form controls.
 
-Anytime you need to ensure the user makes only single selection (e.g. [star rating](http://ianmcburnie.github.io/mindpatterns/input/starrating/)), radio buttons should be used, and their appearance can be customised using icon fonts or SVG.
+Anytime you need to ensure the user makes only single selection (e.g. [star rating](http://ianmcburnie.github.io/mindpatterns/input/starrating/)), radio buttons should be used, and their appearance can be customised using font icons or SVG.
 
 ```html
 <span class="radio">
@@ -675,13 +723,53 @@ Anytime you need to ensure the user makes only single selection (e.g. [star rati
 </span>
 ```
 
+If you ever use `role="radio"` on a tag other than input, you must ensure that all keyboard and screen reader behaviour associated with native radios is met. And remember that only the input tag supports form data and browser autofill behaviour.
+
 ### Listbox
 
-1. ENTER key does not submit form.
+Add a native HTML listbox with label:
+
+```html
+<div class="field">
+    <label class="field__label field__label--stacked" for="dial-code">Dialing Code</label>
+    <select id="dial-code" name="dc">
+        <option value="1">United States +1</option>
+        <option value="44">United Kingdom +44</option>
+        <option value="1">Canada +1</option>
+    </select>
+</div>
+```
+
 1. SPACE or ARROW key expands.
 1. ARROW keys highlight options, ENTER or SPACE selects.
 1. Screen reader announces control value, label, type
 1. Add [Skin Listbox Classes](https://ebay.github.io/skin/#listbox)
+
+### Custom Listbox
+
+Skin provides a custom style for the select `button`, but not for the overlay.
+
+```html
+<div class="field">
+    <label class="field__label field__label--stacked" for="dial-code">Dialing Code</label>
+    <span class="field__control listbox">
+        <select class="listbox__control" id="dial-code" name="dc">
+            <option value="1">United States +1</option>
+            <option value="44">United Kingdom +44</option>
+            <option value="1">Canada +1</option>
+        </select>
+        <svg aria-hidden="true" class="listbox__icon" focusable="false">
+            <use xlink:href="../icons.svg#svg-icon-arrow-down"></use>
+        </svg>
+    </span>
+</div>
+```
+
+If you ever use `role="listbox"` on a tag other than select, you must ensure that all keyboard and screen reader behaviour associated with a native listbox is met.  And remember that only the select tag supports form data and browser autofill behaviour.
+
+#### Reset
+
+1. Add reset button after submit button and demo it's behaviour
 
 ### Submit
 
@@ -703,11 +791,12 @@ Every form requires a submit button, otherwise keyboard accessibility of form is
 </div>
 ```
 
-#### Reset
+### Submit Terms
 
-1. Add reset button after submit button and demo it's behaviour
+todo
 
-## Part 4: Introduces Validation
+
+## Part 4: Introduces Form Validation and Live Regions
 
 In part 4 we continue with our sign and registration pages introducing server-side and client-side validation.
 
@@ -732,11 +821,13 @@ At the start of the form, add the following notice:
 </section>
 ```
 
+Demonstrate that a labelled region shows up in the screen reader list of landmarks.
+
 If JavaScript is available we can enhance this experience by setting focus on the page notice. This is our first introduction to the concept of focus management, but bear in mind that **this is one of the very few scenarios we would consider setting focus after page load!**
 
-1. Add `tabindex="-1"` to the page notice
+1. Add `tabindex="-1"` to the page notice which allows programmatic focus
 1. Add the script below to set focus after page load.
-1. Notice that the message cannot be re-focussed again after focus is lost. This is intentional,
+1. Notice that the message cannot be re-focussed again with keyboard after focus is lost. This is intentional,
 
 ```js
 window.onload = function(e) {
@@ -765,28 +856,96 @@ This may be a long form with many fields in the tab order. How can we make life 
 
 ```html
 <ul role="list">
-    <li><a href="#fname">First NameM</a></li>
+    <li><a href="#fname">First Name</a></li>
     <li><a href="#lname">Last Name</a></li>
 </ul>
 ```
 
-### Inline Errors
+Now imagine if we have a long form, and scroll down so that the page error notice is no longer visible. We don't want to have to remember where the errors were. We need to flag the fields themselves in some way...
 
-Let's add individual error descriptions next after the first and last name fields. For example:
+### Inline Error
+
+A typical design approach is to make the border or color of an invalid field red. However, we **must not use colour alone to convey meaning**. In this case the colour red conveys the meaning of invalid. We also need to add an icon and/or text to convey the meaning.
+
+Let's add individual error descriptions after the first and last name fields. For example:
 
 ```html
-<div class="field__description field__description--error" id="email-error">
-    <span>Please enter your first</span>
+<div class="field__description field__description--error" id="fname-error">
+    <span>Please enter your first name</span>
 </div>
 ```
 
-This is technically accessible, but playing 'hunt' the invalid field is not much fun for non-sighted users. Let's make a quick improvement, by adding `aria-invalid="true"` to the two textboxes:
+```css
+.field__description--error {
+    color: red;
+}
+```
 
-### Inline Errors Enhanced
+This works well for sighted users. They see at a glance which fields are invalid. But screen reader users do not know the field is invalid when they are on the field. The solution is to use the aria-invalid property.
+
+```html
+<input aria-invalid="true" class="textbox__control textbox__control--fluid" id="fname" name="fname" type="text" />
+```
+
+We can also use this property for styling purposes.
+
+```css
+.textbox__control[aria-invalid="true"] {
+    border-color: red;
+}
+```
+
+Okay, so the screen reader now says the field is invalid. But why is it invalid, and how can the user fix it? The solution is the `aria-describedby` attribute (remember we used this for field description of the checkbox on the sign page).
+
+```html
+<input aria-describebby="fname-error" aria-invalid="true" class="textbox__control textbox__control--fluid" id="fname" name="fname" type="text" />
+```
+
+Viola! Now all users are informed that the page has an error, what the user must do to fix those errors, and conveniant links to go directly to the error.
+
+### Inline Error Enhanced
+
+Why reload the page just to tell a user they entered an invalid value? We can use JavaScript to validate the field at any time.
+
+Let's add hidden error messages after each:
+
+```html
+<div class="field__description field__description--error" id="email-error">
+    <span hidden>Please enter your first name</span>
+</div>
+```
+
+For older browsers that do not support `hidden` it's a good idea to polfill the CSS:
+
+```css
+[hidden] {
+    display: none;
+}
+```
+
+Add the class `.field-validation` to the field containing the email textbox.
+
+Now add a script that looks for each inline error:
+
+```js
+document.querySelectorAll('.field-validation input').forEach(function(item) {
+    item.addEventListener('blur', function(e) {
+        document.querySelector('#' + this.getAttribute('aria-describedby') + ' span').removeAttribute('hidden');
+    })
+});
+```
+
+Now the error message appears when the field loses focus. Of course we aren't actually doing any validation in this simple example. We have just hardcoded the error message to appear every time. Writing a validation routine is not in the scope of this workshop, but is a fun exercise!
+
+Note that `forEach` on a query collection is not supported in some browsers.
+
+### Live Region
+
+The error message appears for sighted users, but a screen reader user might miss this error message entirely if they use the TAB key to skip to the next field. The solution is to convert the error message container into a live region.
 
 todo
 
-### Page Errors Enhanced
+### Page Error Enhanced
 
 todo
 

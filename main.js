@@ -5,8 +5,19 @@ window.onload = function(e) {
         document.body.classList.add('skin-large');
     }
 
-    /* PAGE NOTICE */
-    document.querySelector('.page-notice').focus();
+    /* ERROR NOTICE */
+    var pageError = document.getElementById('page-error');
+    if (pageError) {
+        pageError.focus();
+    }
+
+    /* INLINE ERROR ENHANCE */
+
+    document.querySelectorAll('.field-validation input').forEach(function(item) {
+        item.addEventListener('blur', function(e) {
+            document.querySelector('#' + this.getAttribute('aria-describedby') + ' span').removeAttribute('hidden');
+        })
+    });
 }
 
 

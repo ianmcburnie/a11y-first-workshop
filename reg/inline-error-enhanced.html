@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Reset - A11Y First Workshop</title>
+        <title>Inline Error Enhanced - A11Y First Workshop</title>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/skin.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/grid-full.min.css"/>
         <link rel="stylesheet" href="../app.css"/>
@@ -18,37 +18,43 @@
                         <a href="../signin/field-description.html">Sign In</a>
                     </li>
                     <li class="fake-tabs__item fake-tabs__item--current">
-                        <a aria-current="page" href="reset.html">Register</a>
+                        <a aria-current="page" href="page-error.html">Register</a>
                     </li>
                 </ul>
                 <div class="fake-tabs__content">
-                    <form action="page-notice.html">
+                    <form action="inline-error.html">
 
-                        <div class="field">
+                        <div class="field field-validation">
                             <label class="field__label field__label--stacked" for="email">Email</label>
                             <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" id="email" type="text" />
+                                <input aria-describedby="email-error" class="textbox__control textbox__control--fluid" id="email" name="email" type="text" />
+                            </div>
+                            <div role="status" class="field__description field__description--error" id="email-error">
+                                <span hidden>Please enter your email address</span>
                             </div>
                         </div>
 
-                        <div class="field">
+                        <div class="field field-validation">
                             <label class="field__label field__label--stacked" for="password">Password</label>
                             <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" id="password" type="password" />
+                                <input class="textbox__control textbox__control--fluid" id="password" name="password" type="password" />
+                            </div>
+                            <div role="status" class="field__description field__description--error" id="email-error">
+                                <span hidden>Please enter your password</span>
                             </div>
                         </div>
 
-                        <div class="field" style="display: inline-block; float: left; width: 50%;">
+                        <div class="field" style="display: inline-block; float: left; width: 50%; ">
                             <label class="field__label field__label--stacked" for="password">First Name</label>
                             <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" id="fname" type="text" />
+                                <input class="textbox__control textbox__control--fluid" id="fname" name="fname" type="text" />
                             </div>
                         </div>
 
                         <div class="field" style="box-sizing: border-box; display: inline-block; padding-left: 8px; width: 50%;">
                             <label class="field__label field__label--stacked" for="lname">Last Name</label>
                             <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" id="lname" type="text" />
+                                <input class="textbox__control textbox__control--fluid" id="lname" name="lname" type="text" />
                             </div>
                         </div>
 
@@ -56,9 +62,9 @@
                             <label class="field__label field__label--stacked" for="dial-code">Dialing Code</label>
                             <span class="field__control listbox">
                                 <select class="listbox__control" id="dial-code" name="dc">
-                                    <option>United States +1</option>
-                                    <option>United Kingdom +44</option>
-                                    <option>Canada +1</option>
+                                    <option value="1">United States +1</option>
+                                    <option value="44">United Kingdom +44</option>
+                                    <option value="1">Canada +1</option>
                                 </select>
                                 <svg aria-hidden="true" class="listbox__icon" focusable="false">
                                     <use xlink:href="../icons.svg#svg-icon-arrow-down"></use>
@@ -69,14 +75,13 @@
                         <div class="field" style="box-sizing: border-box; display: inline-block; padding-left: 8px; width: 50%;">
                             <label class="field__label field__label--stacked" for="phone">Mobile Phone</label>
                             <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" name="phone" id="phone" type="text" />
+                                <input class="textbox__control textbox__control--fluid" id="phone" name="phone" type="text" />
                             </div>
                         </div>
 
                         <div class="field">
-                            <button class="btn btn--fluid btn--secondary" type="reset">Reset</button>
+                            <button class="btn btn--fluid btn--primary" type="submit">Register</button>
                         </div>
-
                     </form>
                 </div>
             </div>

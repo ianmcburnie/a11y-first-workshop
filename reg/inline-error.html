@@ -22,9 +22,9 @@
                     </li>
                 </ul>
                 <div class="fake-tabs__content">
-                    <form action="#">
+                    <form action="inline-error-enhanced.html">
 
-                        <section aria-labelledby="error-status" class="page-notice page-notice--priority" role="region" tabindex="-1">
+                        <section aria-labelledby="error-status" class="page-notice page-notice--priority" id="page-error" role="region" tabindex="-1">
                             <h2 aria-label="Error notice" class="page-notice__status" id="error-status">
                                 <svg aria-hidden="true" focusable="false">
                                     <use xlink:href="../icons.svg#svg-icon-priority"></use>
@@ -42,23 +42,23 @@
                         <div class="field">
                             <label class="field__label field__label--stacked" for="email">Email</label>
                             <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" id="email" type="text" />
+                                <input class="textbox__control textbox__control--fluid" id="email" name="email" type="text" />
                             </div>
                         </div>
 
                         <div class="field">
                             <label class="field__label field__label--stacked" for="password">Password</label>
                             <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" id="password" type="password" />
+                                <input class="textbox__control textbox__control--fluid" id="password" name="password" type="password" />
                             </div>
                         </div>
 
                         <div class="field" style="display: inline-block; float: left; width: 50%; ">
                             <label class="field__label field__label--stacked" for="password">First Name</label>
                             <div class="field__control textbox">
-                                <input aria-invalid="true" class="textbox__control textbox__control--fluid" id="fname" type="text" />
+                                <input aria-describedby="fname-error" aria-invalid="true" class="textbox__control textbox__control--fluid" id="fname" name="fname" type="text" />
                             </div>
-                            <div class="field__description field__description--error" id="email-error">
+                            <div class="field__description field__description--error" id="fname-error">
                                 <span>Please enter your first name</span>
                             </div>
                         </div>
@@ -66,17 +66,31 @@
                         <div class="field" style="box-sizing: border-box; display: inline-block; padding-left: 8px; width: 50%;">
                             <label class="field__label field__label--stacked" for="lname">Last Name</label>
                             <div class="field__control textbox">
-                                <input aria-invalid="true" class="textbox__control textbox__control--fluid" id="lname" type="text" />
+                                <input aria-describedby="lname-error" aria-invalid="true" class="textbox__control textbox__control--fluid" id="lname" name="lname" type="text" />
                             </div>
-                            <div class="field__description field__description--error" id="email-error">
+                            <div class="field__description field__description--error" id="lname-error">
                                 <span>Please enter your last name</span>
                             </div>
                         </div>
 
-                        <div class="field">
+                        <div class="field" style="display: inline-block; float: left; width: 50%;">
+                            <label class="field__label field__label--stacked" for="dial-code">Dialing Code</label>
+                            <span class="field__control listbox">
+                                <select class="listbox__control" id="dial-code" name="dc">
+                                    <option value="1">United States +1</option>
+                                    <option value="44">United Kingdom +44</option>
+                                    <option value="1">Canada +1</option>
+                                </select>
+                                <svg aria-hidden="true" class="listbox__icon" focusable="false">
+                                    <use xlink:href="../icons.svg#svg-icon-arrow-down"></use>
+                                </svg>
+                            </span>
+                        </div>
+
+                        <div class="field" style="box-sizing: border-box; display: inline-block; padding-left: 8px; width: 50%;">
                             <label class="field__label field__label--stacked" for="phone">Mobile Phone</label>
                             <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" id="phone" type="text" />
+                                <input class="textbox__control textbox__control--fluid" id="phone" name="phone" type="text" />
                             </div>
                         </div>
 
