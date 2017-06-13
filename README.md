@@ -2,16 +2,14 @@
 
 The idea of this project it to run a live-coding session starting with an empty HTML file. No web server is required. From that starting point the session instructor will progressively build up that page, and several others, introducing many common accessibility principles and techniques along the way.
 
-* Start
-* Part 1: Introduces Structure
-* Part 2: Introduces Links
-* Part 3: Introduces Form Controls
-* Part 4: Introduces Form Validation
-* Part 5: Introduces Buttons
-* Part 6: Introduces ARIA Widgets
-* Part 7: Introduces Data Tables
-
-The following sections of this README act as a guide to the session instructor.
+* [Start](user-content-start)
+* [Part 1: Introduces Structure](user-content-part-1-introduces-structure)
+* [Part 2: Introduces Links](user-content-part-2-introduces-links)
+* [Part 3: Introduces Form Controls](user-content-part-3-introduces-form-controls)
+* [Part 4: Introduces Form Validation](user-content-part-4-introduces-form-validation)
+* [Part 5: Introduces Buttons](user-content-part-5-introduces-buttons)
+* [Part 6: Introduces ARIA Widgets](user-content-part-6-introduces-aria-widgets)
+* [Part 7: Introduces Data Tables](user-content-part-7-introduces-data-tables)
 
 ## Start
 
@@ -38,7 +36,7 @@ Part 1 builds a mock version of a typical eCommerce homepage.
 
 Whenever I build a new page or component, I always start with the markup. I don't even think about the CSS and JavaScript until I am happy with the structure and semantics. In fact, I will go as far as to disable CSS and JavaScript in my browser to ensure that the raw markup is accessible and functional.
 
-Some developers, on the other hand, like to start with the JavaScript first. Or the "bells and whistles" as I like to say. To me this is like a builder placing down all of the household electronics (television, microwave, internet router, etc) on the plot before the foundations have been laid and walls built. All of those electronics are just going to get in the way. Okay, maybe I need a better analogy ;-)
+Some developers, on the other hand, like to start with the JavaScript first. Or the "bells and whistles" as I like to say. To me this is like a builder placing down all of the household electronics (television, microwave, internet router, etc) on the plot of land before the foundations have been laid, walls built and windows put in. Okay, maybe I need a better analogy ;-)
 
 ### Meta Data
 
@@ -247,10 +245,10 @@ Part 2 continues to build upon our homepage, before moving onto a typical sign i
 1. Notice that now all text in tile is blue. Can fix this with CSS.
 
 ```css
-a.tile {
+a.item-tile {
     display: block;
 }
-a.tile p:last-child {
+a.item-tile p:last-child {
     color: #555;
 }
 ```
