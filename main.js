@@ -11,7 +11,7 @@ window.onload = function(e) {
         pageError.focus();
     }
 
-    /* INLINE ERROR ENHANCE */
+    /* INLINE ERROR CLIENT */
 
     document.querySelectorAll('.field-validation input').forEach(function(item) {
         var statusText = document.querySelector('#' + item.getAttribute('aria-describedby') + ' span');
@@ -23,8 +23,35 @@ window.onload = function(e) {
             }
         })
     });
-}
 
+    /* PAGE ERROR CLIENT */
+    var regForm = document.getElementById('reg-form');
+
+    if (regForm) {
+        var placeholderEl = regForm.querySelector('.page-error-placeholder');
+        var template = '' +
+            '<section aria-labelledby="error-status" class="page-notice page-notice--priority" id="page-error" role="region">' +
+                '<h2 aria-label="Error notice" class="page-notice__status" id="error-status">' +
+                    '<svg aria-hidden="true" focusable="false">' +
+                        '<use xlink:href="../icons.svg#svg-icon-priority"></use>' +
+                    '</svg>' +
+                '</h2>' +
+                '<span class="page-notice__cell page-notice__cell--align-middle">' +
+                    '<p>Please fix the following errors:</p>' +
+                    '<ul role="list">' +
+                        '<li><a href="#fname">First Name: please enter your first name</a></li>' +
+                        '<li><a href="#lname">Last Name: please enter your last name</a></li>' +
+                    '</ul>' +
+                '</span>' +
+            '</section>';
+
+        regForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            placeholderEl.innerHTML = template;
+            placeholderEl.focus();
+        });
+    }
+}
 
 /* jQuery Plugins */
 $(function() {

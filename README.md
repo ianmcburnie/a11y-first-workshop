@@ -979,15 +979,71 @@ This short step introduces the concept of redundant text.
 
 
 
-### Page Error Enhanced
+### Page Error Client
 
 So we've made the inline error messages appear without a round trip to the server and a full page reload. We call this input validation, or field validation. How about making the page error appear instantly too, after clicking the submit button?
 
-Basically, all we are going to do here is render the exact same markup as in the previous page error step, but this time we will render it on the client with JavaScript. We also need to *prevent* the form submission.
+Basically, all we are going to do here is render the exact same markup as in the previous page error step, but this time we will render it on the client with JavaScript. First though, we need to *prevent* the form submission to avoid full page load/reload.
 
-This might surprise you, but the page error wont be a live region, instead we'll use focus management. Think about it. If a user has clicked the submit button, they have signaled their intent to proceed with the form. If there is an error, it doesn't make sense to announce the live region error and just leave them on the submit button. They can keep clicking the submit button but they cannot proceed while errors remain. So instead we move them back to the page error notice, where they can continue to fix the errors in a linear fashion.
+```js
+var regForm = document.getElementById('reg-form');
 
-todo
+if (regForm) {
+    regForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+    });
+}
+```
+
+Now let's render the page error, grabbing the same markup as from the earlier step. In order to simplify our example, let's add a placeholder element for the notice into our server rendered markup:
+
+```html
+<div class="page-error-placeholder" tabindex="-1"></div>
+```
+
+Then update our script to update the innerHTML of the placeholder. Yes, this is a quick and dirty method for our demonstration purposes. A real life implementation would no doubt need a more sophisticated method of constructing the notice.
+
+```js
+if (regForm) {
+    var placeholderEl = regForm.querySelector('.page-error-placeholder');
+    var template = '' +
+        '<section aria-labelledby="error-status" class="page-notice page-notice--priority" id="page-error" role="region">' +
+            '<h2 aria-label="Error notice" class="page-notice__status" id="error-status">' +
+                '<svg aria-hidden="true" focusable="false">' +
+                    '<use xlink:href="../icons.svg#svg-icon-priority"></use>' +
+                '</svg>' +
+            '</h2>' +
+            '<span class="page-notice__cell page-notice__cell--align-middle">' +
+                '<p>Please fix the following errors:</p>' +
+                '<ul role="list">' +
+                    '<li><a href="#fname">First Name: please enter your first name</a></li>' +
+                    '<li><a href="#lname">Last Name: please enter your last name</a></li>' +
+                '</ul>' +
+            '</span>' +
+        '</section>';
+
+    regForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        placeholderEl.innerHTML = template;
+    });
+}
+```
+
+This might surprise you, but the page error wont be a live region, instead we'll use focus management.
+
+Think about it. If a user has clicked the submit button, they have signaled their intent to proceed with the form. If there is an error, it doesn't make sense to announce the live region error and just leave them on the submit button. They can keep clicking the submit button but they cannot proceed while errors remain. So instead we move them back to the page error notice, where they can continue to fix the errors in a linear fashion.
+
+Anyway, update the event handler so that focus is set on the placeholder:
+
+```js
+regForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    placeholderEl.innerHTML = template;
+    placeholderEl.focus();
+});
+```
+
+Remember that we would also need to render the inline errors on the client too!
 
 ### Password Helper
 
