@@ -14,8 +14,13 @@ window.onload = function(e) {
     /* INLINE ERROR ENHANCE */
 
     document.querySelectorAll('.field-validation input').forEach(function(item) {
+        var statusText = document.querySelector('#' + item.getAttribute('aria-describedby') + ' span');
         item.addEventListener('blur', function(e) {
-            document.querySelector('#' + this.getAttribute('aria-describedby') + ' span').removeAttribute('hidden');
+            if (this.value) {
+                statusText.removeAttribute('hidden');
+            } else {
+                statusText.setAttribute('hidden', 'hidden');
+            }
         })
     });
 }

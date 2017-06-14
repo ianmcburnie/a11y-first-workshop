@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Inline Error Enhanced - A11Y First Workshop</title>
+        <title>Page Error Client-Side - A11Y First Workshop</title>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/skin.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/grid-full.min.css"/>
         <link rel="stylesheet" href="../app.css"/>
@@ -22,14 +22,14 @@
                     </li>
                 </ul>
                 <div class="fake-tabs__content">
-                    <form action="inline-error.html">
+                    <form action="page-error-enhanced.html">
 
                         <div class="field field-validation">
                             <label class="field__label field__label--stacked" for="email">Email</label>
                             <div class="field__control textbox">
                                 <input aria-describedby="email-error" class="textbox__control textbox__control--fluid" id="email" name="email" type="text" />
                             </div>
-                            <div role="status" class="field__description field__description--error" id="email-error">
+                            <div aria-live="polite" class="field__description field__description--error" id="email-error">
                                 <span hidden>Please enter your email address</span>
                             </div>
                         </div>
@@ -37,24 +37,30 @@
                         <div class="field field-validation">
                             <label class="field__label field__label--stacked" for="password">Password</label>
                             <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" id="password" name="password" type="password" />
+                                <input aria-describedby="password-error" class="textbox__control textbox__control--fluid" id="password" name="password" type="password" />
                             </div>
-                            <div role="status" class="field__description field__description--error" id="email-error">
+                            <div aria-live="polite" class="field__description field__description--error" id="password-error">
                                 <span hidden>Please enter your password</span>
                             </div>
                         </div>
 
-                        <div class="field" style="display: inline-block; float: left; width: 50%; ">
+                        <div class="field field-validation" style="display: inline-block; float: left; width: 50%; ">
                             <label class="field__label field__label--stacked" for="password">First Name</label>
                             <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" id="fname" name="fname" type="text" />
+                                <input aria-describedby="fname-error" class="textbox__control textbox__control--fluid" id="fname" name="fname" type="text" />
+                            </div>
+                            <div class="field__description field__description--error" id="fname-error">
+                                <span hidden>Please enter your first name</span>
                             </div>
                         </div>
 
-                        <div class="field" style="box-sizing: border-box; display: inline-block; padding-left: 8px; width: 50%;">
+                        <div class="field field-validation" style="box-sizing: border-box; display: inline-block; padding-left: 8px; width: 50%;">
                             <label class="field__label field__label--stacked" for="lname">Last Name</label>
                             <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" id="lname" name="lname" type="text" />
+                                <input aria-describedby="lname-error" class="textbox__control textbox__control--fluid" id="lname" name="lname" type="text" />
+                            </div>
+                            <div aria-live="polite" class="field__description field__description--error" id="lname-error">
+                                <span hidden>Please enter your last name</span>
                             </div>
                         </div>
 
@@ -72,10 +78,13 @@
                             </span>
                         </div>
 
-                        <div class="field" style="box-sizing: border-box; display: inline-block; padding-left: 8px; width: 50%;">
+                        <div class="field field-validation" style="box-sizing: border-box; display: inline-block; padding-left: 8px; width: 50%;">
                             <label class="field__label field__label--stacked" for="phone">Mobile Phone</label>
                             <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" id="phone" name="phone" type="text" />
+                                <input aria-describedby="phone-error" class="textbox__control textbox__control--fluid" id="phone" name="phone" type="text" />
+                            </div>
+                            <div aria-live="polite" class="field__description field__description--error" id="phone-error">
+                                <span hidden>Please enter your mobile phone</span>
                             </div>
                         </div>
 

@@ -3,13 +3,13 @@
 The idea of this project it to run a live-coding session starting with an empty HTML file. No web server is required. From that starting point the session instructor will progressively build up that page, and several others, introducing many common accessibility principles and techniques along the way.
 
 * [Start](user-content-start)
-* [Part 1: Introduces Structure](user-content-part-1-introduces-structure)
-* [Part 2: Introduces Links](user-content-part-2-introduces-links)
-* [Part 3: Introduces Form Controls](user-content-part-3-introduces-form-controls)
-* [Part 4: Introduces Form Validation &amp; Live Regions](user-content-part-4-introduces-form-validation-and-live-regions)
-* [Part 5: Introduces Buttons](user-content-part-5-introduces-buttons)
-* [Part 6: Introduces ARIA Widgets](user-content-part-6-introduces-aria-widgets)
-* [Part 7: Introduces Data Tables](user-content-part-7-introduces-data-tables)
+* [Chapter 1: Introduces Structure](user-content-chapter-1-introduces-structure)
+* [Chapter 2: Introduces Links](user-content-chapter-2-introduces-links)
+* [Chapter 3: Introduces Form Controls](user-content-chapter-3-introduces-form-controls)
+* [Chapter 4: Introduces Form Validation](user-content-chapter-4-introduces-form-validation)
+* [Chapter 5: Introduces Buttons](user-content-chapter-5-introduces-buttons)
+* [Chapter 6: Introduces ARIA Widgets](user-content-chapter-6-introduces-aria-widgets)
+* [Chapter 7: Introduces Data Tables](user-content-chapter-7-introduces-data-tables)
 
 ## Start
 
@@ -30,9 +30,9 @@ For a live-coding workshop, please prime your initial index.html file with the f
 
 If you get lost or lose your way, each step has a "one I made earlier" that you can copy-and-paste from into your file.
 
-## Part 1: Introduces Structure
+## Chapter 1: Introduces Structure
 
-Part 1 builds a mock version of a typical eCommerce homepage.
+Chapter 1 builds a mock version of a typical eCommerce homepage.
 
 Whenever I build a new page or component, I always start with the markup. I don't even think about the CSS and JavaScript until I am happy with the structure and semantics. In fact, I will go as far as to disable CSS and JavaScript in my browser to ensure that the raw markup is accessible and functional.
 
@@ -211,9 +211,9 @@ A purely presentation step where we convert each collection item into a card.
 
 1. Wrap each collection item with `<div class="card"><div class="card__cell">...</div></div>`
 
-## Part 2: Introduces Links
+## Chapter 2: Introduces Links
 
-Part 2 continues to build upon our homepage, before moving onto a typical sign in page.
+Chapter 2 continues to build upon our homepage, before moving onto a typical sign in page.
 
 ### Text Links
 
@@ -551,9 +551,9 @@ Now add the following Skin classes to style the links as fake tabs:
 
 Demonstrate that the tabs are still announce as links, and still show up in the screen reader list of links. This is the desired, expected behaviour.
 
-## Part 3: Introduces Form Controls
+## Chapter 3: Introduces Form Controls
 
-Part 3 continues on with our signin and registration pages.
+Chapter 3 continues on with our signin and registration pages.
 
 ### Textbox
 
@@ -564,6 +564,7 @@ Add textbox and label for email inside of form.
 <input id="email" name="email" type="text" />
 ```
 
+1. We call it `textbox` (after the ARIA role) or `text field`
 1. Demo that textbox is focusable with TAB key
 1. Demo how ARROW key behaviour on textbox is different than on link.
 1. Talk about ARROW key behaviour and 'forms mode' of screen reader.
@@ -740,6 +741,8 @@ Add a native HTML listbox with label:
 </div>
 ```
 
+1. We call it `listbox` (after the ARIA role) or `select` (after the tag name)
+1. A listbox
 1. SPACE or ARROW key expands.
 1. ARROW keys highlight options, ENTER or SPACE selects.
 1. Screen reader announces control value, label, type
@@ -781,9 +784,8 @@ Every form requires a submit button, otherwise keyboard accessibility of form is
 1. Demo SPACEBAR and ENTER key behaviour
 1. Demo that form submits an HTTP GET request by default. A submit button is the only button that should navigate to a new URL in this way.
 1. Demo that keyboard navigation starts from top of new page
-1. Add `action="form-validation.html"` to the form tag
+1. Add `action="page-error.html"` to the form tag
 1. Add skin classes to button `class="btn btn--primary"`
-
 
 ```html
 <div class="field">
@@ -793,20 +795,19 @@ Every form requires a submit button, otherwise keyboard accessibility of form is
 
 ### Submit Terms
 
-todo
+todo - talk about how checkbox or confirm pattern can be used for legal conditions for form
 
+## Chapter 4: Introduces Form Validation
 
-## Part 4: Introduces Form Validation and Live Regions
-
-In part 4 we continue with our sign and registration pages introducing server-side and client-side validation.
+In Chapter 4 we continue with our sign and registration pages introducing server-side and client-side validation.
 
 ### CHECKPOINT: Registration Error Page
 
-Duplicate your current `signin.html` and name it `form-validation.html`.
+Duplicate your current `signin.html` and name it `page-error.html`.
 
 ### Page Error
 
-At the start of the form, add the following notice:
+At the start of the form, add the following error region:
 
 ```html
 <section aria-labelledby="error-status" class="page-notice page-notice--priority" role="region">
@@ -840,8 +841,8 @@ So, we know *something* went wrong, but not *what* went wrong. Let's make our er
 ```html
 <p>Please fix the following errors:</p>
 <ul role="list">
-    <li>First Name</li>
-    <li>Last Name</li>
+    <li>First Name: please enter your first name</li>
+    <li>Last Name: please enter your last name</li>
 </ul>
 ````
 
@@ -852,12 +853,12 @@ So, we know *something* went wrong, but not *what* went wrong. Let's make our er
 }
 ```
 
-This may be a long form with many fields in the tab order. How can we make life easier for keyboard user to get directly to those invalids fields. The answer is skip links of course (remember we covered these earlier)
+This may be a long form with many fields in the tab order. How can we make life easier for keyboard user to get directly to those invalids fields? The answer is skip links of course (remember we covered these in chapter 2).
 
 ```html
 <ul role="list">
-    <li><a href="#fname">First Name</a></li>
-    <li><a href="#lname">Last Name</a></li>
+    <li><a href="#fname">First Name: please enter your first name</a></li>
+    <li><a href="#lname">Last Name: please enter your last name</a></li>
 </ul>
 ```
 
@@ -907,11 +908,11 @@ Viola! Now all users are informed that the page has an error, what the user must
 
 Why reload the page just to tell a user they entered an invalid value? We can use JavaScript to validate the field at any time.
 
-Let's add hidden error messages after each:
+Let's go back to our `reg.html` page, and add hidden error messages after the email, password and phone text boxes:
 
 ```html
 <div class="field__description field__description--error" id="email-error">
-    <span hidden>Please enter your first name</span>
+    <span hidden>Please enter a valid email address</span>
 </div>
 ```
 
@@ -923,29 +924,68 @@ For older browsers that do not support `hidden` it's a good idea to polfill the 
 }
 ```
 
-Add the class `.field-validation` to the field containing the email textbox.
+Add the class `.field-validation` to the fields containing the email, password and phone text boxes.
 
-Now add a script that looks for each inline error:
+Now add a simple script that unhides the error message text if the textbox value is non-empty:
 
 ```js
 document.querySelectorAll('.field-validation input').forEach(function(item) {
+    var statusText = document.querySelector('#' + item.getAttribute('aria-describedby') + ' span');
     item.addEventListener('blur', function(e) {
-        document.querySelector('#' + this.getAttribute('aria-describedby') + ' span').removeAttribute('hidden');
+        if (this.value) {
+            statusText.removeAttribute('hidden');
+        } else {
+            statusText.setAttribute('hidden', 'hidden');
+        }
     })
 });
 ```
 
-Now the error message appears when the field loses focus. Of course we aren't actually doing any validation in this simple example. We have just hardcoded the error message to appear every time. Writing a validation routine is not in the scope of this workshop, but is a fun exercise!
+Now, after a value is entered, the error message appears when the field loses focus. Of course we aren't actually doing any real validation in this simple example. We have just hardcoded the error message to appear for any non-empty value. Writing a validation routine is not in the scope of this workshop, but is a fun exercise!
 
 Note that `forEach` on a query collection is not supported in some browsers.
 
 ### Live Region
 
-The error message appears for sighted users, but a screen reader user might miss this error message entirely if they use the TAB key to skip to the next field. The solution is to convert the error message container into a live region.
+The error message appears for sighted users, but a screen reader user might miss this error message entirely if they use the `TAB` key to skip to the next field. The solution is to convert the error message container into an ARIA live region.
 
-todo
+If you've ever heard of ARIA live regions, and wondered what they were and when to use them, this is a perhaps one of the best use cases. The general purpose of a live region is to announce when some new content has appeared on screen *without* using focus management. For example, in this case we do not want to use focus management to force focus back into the invalid input. Why? Well just imagine that the user might decide they want to come back to the form later, and want to navigate down to the help links in the footer. If we force them back to the invalid input then we have effectively create a focus trap which prevents them from reaching the footer.
+
+```html
+<div aria-live="polite" class="field__description field__description--error" id="email-error">
+    <span hidden>Please enter a valid email address</span>
+</div>
+```
+
+Now when the error message text appears, it will announce the new text that displayed inside of the live region. The value of polite informs assistive technology to make this announcement after all other current announcements in queue. A value of assertive would push the announcement to the front of that queue. I wish it had been called 'rude'!
+
+### Required Field
+
+You may have noticed that we have removed the validation for missing first name and last name, and we are no longer doing any checks on the client for missing values. Why? Because there is another well established pattern for this. Required fields.
+
+The convention for sighted users is to add an asterisk next to each field. To convey the same information to assistive technology, we use the `aria-required` property. Note that correct use of listbox (applying a sensible default) means that we shouldn't need to denote a listbox as a required field.
+
+1. Add an asterisk after label text for email, password and phone
+1. Add `aria-required="true"` to textbox for email, password and phone
+1. Demonstrate that screen reader reads this new 'required' state
+    * It also reads the asterisk, which isn't too disastrous, but let's address it in the next step
+
+### Redundant Text
+
+This short step introduces the concept of redundant text.
+
+1. Replace the asterisk inside each required field label with `<span aria-hidden="true">*</span>`
+1. Demonstrate that screen reader now ignores these elements (remember, the same information is conveyed with `aria-required`)
+
+
 
 ### Page Error Enhanced
+
+So we've made the inline error messages appear without a round trip to the server and a full page reload. We call this input validation, or field validation. How about making the page error appear instantly too, after clicking the submit button?
+
+Basically, all we are going to do here is render the exact same markup as in the previous page error step, but this time we will render it on the client with JavaScript. We also need to *prevent* the form submission.
+
+This might surprise you, but the page error wont be a live region, instead we'll use focus management. Think about it. If a user has clicked the submit button, they have signaled their intent to proceed with the form. If there is an error, it doesn't make sense to announce the live region error and just leave them on the submit button. They can keep clicking the submit button but they cannot proceed while errors remain. So instead we move them back to the page error notice, where they can continue to fix the errors in a linear fashion.
 
 todo
 
@@ -953,17 +993,9 @@ todo
 
 todo
 
-## Part 5: Introduces Buttons
+## Chapter 5: Introduces Buttons
 
-For Part 5, we move back to our homepage.
-
-### Skip-To Link Enhanced
-
-Rather than adding permanent tabindex to main, it would be better to set a temporary tabindex using javascript. The tabindex can be set when the skipto link is clicked (we already know the target id), and the tabindex can be removed as soon as the target loses focus.
-
-```js
-$('.skipto--enhanced').skipTo();
-```
+For Chapter 5, we move back to our homepage.
 
 ### Click Flyout
 
@@ -1094,9 +1126,9 @@ $('.flyout--hover').hoverFlyout();
 $('.tooltip').hoverFlyout({expandedClass:'tooltip--expanded'}).focusFlyout({expandedClass:'tooltip--expanded'});
 ```
 
-## Part 6: Introduces ARIA Widgets
+## Chapter 6: Introduces ARIA Widgets
 
-In part 6 we move from our homepage example, to a search results page (SRP) example.
+In Chapter 6 we move from our homepage example, to a search results page (SRP) example.
 
 ### CHECKPOINT: Search Results Page (SRP)
 
@@ -1146,6 +1178,14 @@ We add combobox behaviour to search textbox.
 
 todo
 
-## Part 7: Introduces Data Tables
+### Skip-To Link Enhanced
+
+Rather than adding permanent tabindex to main, it would be better to set a temporary tabindex using javascript. The tabindex can be set when the skipto link is clicked (we already know the target id), and the tabindex can be removed as soon as the target loses focus.
+
+```js
+$('.skipto--enhanced').skipTo();
+```
+
+## Chapter 7: Introduces Data Tables
 
 todo
