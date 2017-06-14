@@ -400,6 +400,18 @@ a[href='#mainContent'] {
 }
 ```
 
+### CHECKPOINT: JavaScript
+
+At this point we will be introducing some JavaScript. So please create a JavaScript file and include it on your page. The `jquery-skip-to` plugin is also required.
+
+### Skip-To Link Enhanced
+
+Rather than adding permanent tabindex to main, it would be better to set a temporary tabindex using javascript. The tabindex can be set when the skipto link is clicked (we already know the target id), and the tabindex can be removed as soon as the target loses focus.
+
+```js
+$('.skipto').skipTo();
+```
+
 ### CHECKPOINT: Iframe content
 
 Create a new `iframe-content.html` page with the following markup:
@@ -1233,14 +1245,6 @@ We add combobox behaviour to search textbox.
 ### Dialog
 
 todo
-
-### Skip-To Link Enhanced
-
-Rather than adding permanent tabindex to main, it would be better to set a temporary tabindex using javascript. The tabindex can be set when the skipto link is clicked (we already know the target id), and the tabindex can be removed as soon as the target loses focus.
-
-```js
-$('.skipto--enhanced').skipTo();
-```
 
 ## Chapter 7: Introduces Data Tables
 

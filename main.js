@@ -12,7 +12,6 @@ window.onload = function(e) {
     }
 
     /* INLINE ERROR CLIENT */
-
     document.querySelectorAll('.field-validation input').forEach(function(item) {
         var statusText = document.querySelector('#' + item.getAttribute('aria-describedby') + ' span');
         item.addEventListener('blur', function(e) {
@@ -55,25 +54,31 @@ window.onload = function(e) {
 
 /* jQuery Plugins */
 $(function() {
-    $('.skipto--enhanced').skipTo();
+    /* SKIP TO ENHANCED */
+    $('.skipto').skipTo();
 
+    /* CLICK FLYOUT */
+    $('.flyout--click').clickFlyout({focusManagement:'first', closeOnEsc: true});
+
+    /* CLICK FLYOUT + HOVER  */
+    $('.flyout--hover').hoverFlyout();
+
+    /* TOOLTIP */
+    $('.tooltip').tooltip();
+
+    /* FAKE MENU */
+    $('.fake-menu').clickFlyout({focusManagement:'first', closeOnEsc: true});
+
+    /* MENU */
+    $('.menu').menu().on('menuSelect', '[role=menuitem]', function(e, data) {
+        alert($(this).text());
+    });
+
+    /*
     $('.hijax-form').on('submit', function(e) {
         e.preventDefault();
         $('.result-status').html('<p>1 result found</p>');
         $('main ol').empty().append('<li><a href="http://www.ebay.com">Item 1</a></li>');
     });
-
-    $('.flyout--click').clickFlyout({focusManagement:'first', closeOnEsc: true});
-
-    $('.flyout--hover').hoverFlyout();
-
-    //$('.tooltip').hoverFlyout({expandedClass:'tooltip--expanded'}).focusFlyout({expandedClass:'tooltip--expanded'});
-
-    $('.tooltip').tooltip();
-
-    $('.fake-menu').clickFlyout({focusManagement:'first', closeOnEsc: true});
-
-    $('.menu:not(.menu--faux)').menu().on('menuSelect', '[role=menuitem]', function(e, data) {
-        alert($(this).text());
-    });
+    */
 });
