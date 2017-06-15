@@ -518,7 +518,7 @@ We now move onto a new page. Actually, two pages, signin and registration. Both 
     <h1 class="clipped">Sign In and Registration</h1>
     <!-- content goes here -->
 </div>
-```html
+```
 
 Create a new CSS file for each new page:
 
@@ -591,6 +591,10 @@ Now add the following Skin classes to style the links as fake tabs:
 
 Demonstrate that the tabs are still announce as links, and still show up in the screen reader list of links. This is the desired, expected behaviour.
 
+The `aria-current` property announces which link in the list matches the current URL.
+
+A problem with fake-tabs is that they look *too* realstic. Keyboard users might try and use the arrow keys, rather than the TAB key.
+
 ## Chapter 3: Introduces Form Controls
 
 Chapter 3 continues on with our signin and registration pages.
@@ -610,7 +614,7 @@ Add textbox and label for email inside of form.
 1. Talk about ARROW key behaviour and 'forms mode' of screen reader.
 1. Demo that ENTER key does nothing... yet
 1. Demo that screen reader announces value (or contents), label, type (edit text) and state (in no particular order)
-1. The `name` attribute is used by the server (key/value pair). The `id` attribute is used by the client (for link anchors, label targets, scripting)
+1. The `name` attribute is used by the server (key/value pair). The `id` attribute is used by the label tag
 1. Add `disabled` attribute to textbox and demonstrate screen reader behaviour (it now reads "dimmed")
 1. Remove `disabled` attribute
 1. Add `readonly` attribute to textbox and demonstrate screen reader behaviour (it now just says "text" instead of "edit text")
@@ -634,7 +638,17 @@ Also add textbox &amp; label for password, first name, last name and phone, addi
 
 For this step we move back to our `signin.html` page (it should currently only consist of fake tabs and an empty form).
 
+But first, demo some sign in pages on the web. For example, t-mobile.com, nintendo.com, chase.com. Show how it can be easy to forget the 'label' after typing (i.e. hmm, did it ask for email or username? I guess I'll have to delete my text just to make sure).
+
 An unfortunate recent trend in web design is to use the `placeholder` attribute as an alternative to the label tag. **We strongly discourage this behaviour, especially for long forms, because of cognitive issues caused by the transient nature of placeholder text**.
+
+1. Copy over the email address and password textboxes from the registration page.
+1. Remove the label tags
+1. Add placeholder attributes
+1. Add SVG icon
+1. The `use` attribute refers to an SVG symbol defined in an external SVG file.
+1. Add `aria-hidden="true"` to SVG tag (to hide presentational image)
+1. Add `focusable="false"` to SVG tag (for IE)
 
 If you must implement this pattern, at a very minimum every input must have an `aria-label` attribute that will act in place of the missing label tag for screen readers (another alternative is to use the previously mentioned `clipped` class on actual label tags). Inline icons should also be used to mitigate problems caused by the lack of permanent visual label.
 
@@ -657,6 +671,8 @@ If you must implement this pattern, at a very minimum every input must have an `
     </div>
 </div>
 ```
+
+Note that some older browsers do not support symbols defined in an external SVG file. If you need to support those browsers, the SVG symbols can instead be defined in the same HTML page or a JavaScript polyfill can be used.
 
 *NOTE*: I currently don't have a better icon for password! It should ideally be a padlock or something.
 
@@ -690,6 +706,10 @@ First create the field boiler plate, similar to what we have for textboxes:
 </div>
 ```
 
+1. The checkbox control remains in place but is now fully transparent.
+1. Mention that Skin decouples the checkbox class from the label. This allows great flexibility in terms of DOM structure and visual layout (e.g. a grid system)
+1. The SVG icon is going to sit underneath the transparent input control, therefore all click events still reach the native control
+
 Now let's talk about the SVG.
 
 ```html
@@ -701,8 +721,9 @@ Now let's talk about the SVG.
 ```
 
 1. The hidden attribute prevents the SVG from appearing in a non-CSS state (FOUC) and supports progressive enhancement scenario
-1. The hidden attribute will be overriden by the CSS to `display: inline-block`
-1. The `use` attribute refers to an SVG symbol defined in an external SVG file. Note that some older browsers do not support symbols defined in an external SVG file. If you need to support those browsers, the SVG symbols can instead be defined in the same HTML page or a JavaScript polyfill can be used.
+1. The hidden attribute will be overriden by the CSS to `display: inline-block`, therefore it is important not to forget the `aria-hidden="true"` property on the SVG itself
+1. The `checked` attribute of the input dictates which SVG path is shown
+1. Notice that the checkbox has a custom focus indicator (dotted outline), this is because we cannot show the default focus outline due to it being transparent (`opacity: 0`)
 
 If you ever use `role="checkbox"` on an tag other than an input, you must ensure that all keyboard and screen reader behaviour associated with a native checkbox is met. And remember that only the input tag supports form data and browser autofill behaviour.
 
@@ -713,13 +734,22 @@ In addition to a short label, a field might also have longer descriptive text. F
 1. Add `<p id="ssi-description">Using a public or shared device? Uncheck to protect your account.</p>`
 1. Add `aria-describedby="ssi-description"` to the checkbox
 1. Demonstrate that voiceover reads the description after a short pause
+1. Talk about the differences between a label and a description
+
+In voiceover the length of pause is configurable, see screenshot below.
+
+<img src="images/settings-voiceover-verbosity.png" alt="Screenshot of the Voiceover verbosity settings" />
 
 ### Radio
+
+We are done with the sign in page, and now move back to our registration page.
 
 Radio buttons are our first introduction to using the ARROW keys. The TAB key moves keyboard focus into the radio group, the ARROW keys interact with the radio group buttons. Pressing the TAB key again moves keyboard focus off the radio group onto the next interactive element on the page.
 
 1. Add the HTML below to the fake tabs content panel
 1. Demonstrate keyboard behaviour
+    * TAB key does not move from radio to radio
+    * ARROW key selects
 1. Demonstrate screen reader semantics (type, label, state)
 
 ```html
@@ -731,6 +761,7 @@ Radio buttons are our first introduction to using the ARROW keys. The TAB key mo
 
 1. Add a fieldset and legend
 1. Demonstrate additional screen reader semantics (group name/label)
+1. Notice that the number and index position of radio is announced, therefore we do not need to put radios inside of lists.
 
 ```html
 <fieldset>
@@ -816,6 +847,7 @@ If you ever use `role="listbox"` on a tag other than select, you must ensure tha
 #### Reset
 
 1. Add reset button after submit button and demo it's behaviour
+1. Notice that a reset will reset all types of form controls, even listbox and radio, this is why it's imperative we use real controls to support this behaviour
 
 ### Submit
 
@@ -825,10 +857,11 @@ Every form requires a submit button, otherwise keyboard accessibility of form is
 1. Notice that mouse hand cursor does not show for buttons.
 1. Screen reader announces button value/label and type
 1. Demo SPACEBAR and ENTER key behaviour
-1. Demo that form submits an HTTP GET request by default. A submit button is the only button that should navigate to a new URL in this way.
+1. Demo that form submits an HTTP GET request by default.
+1. A submit button is the only button that should navigate to a new URL in this way.
 1. Demo that keyboard navigation starts from top of new page
-1. Add `action="page-error.html"` to the form tag
 1. Add skin classes to button `class="btn btn--primary"`
+1. Add `action="page-error.html"` to the form tag
 
 ```html
 <div class="field">
@@ -969,7 +1002,14 @@ For older browsers that do not support `hidden` it's a good idea to polfill the 
 
 Add the class `.field-validation` to the fields containing the email, password and phone text boxes.
 
-Now add a simple script that unhides the error message text if the textbox value is non-empty:
+Now add a simple script that does the following:
+
+1. Get all field validation input elements
+1. Locates the status text belonging to those inputs (using `aria-describedby`)
+1. Add blur event listener to each input
+1. If the value is non-empty, remove the hidden attribute
+1. Else if the value empty set the hidden attribute
+
 
 ```js
 document.querySelectorAll('.field-validation input').forEach(function(item) {
@@ -1000,18 +1040,21 @@ If you've ever heard of ARIA live regions, and wondered what they were and when 
 </div>
 ```
 
+Note that the `aria-live` attribute **must** go on the ancestor of the dynamic content, and not on the dymamic content itself (i.e. in this example it must go on the outer div, not the inner span).
+
 Now when the error message text appears, it will announce the new text that displayed inside of the live region. The value of polite informs assistive technology to make this announcement after all other current announcements in queue. A value of assertive would push the announcement to the front of that queue. I wish it had been called 'rude'!
 
 ### Required Field
 
 You may have noticed that we have removed the validation for missing first name and last name, and we are no longer doing any checks on the client for missing values. Why? Because there is another well established pattern for this. Required fields.
 
-The convention for sighted users is to add an asterisk next to each field. To convey the same information to assistive technology, we use the `aria-required` property. Note that correct use of listbox (applying a sensible default) means that we shouldn't need to denote a listbox as a required field.
-
 1. Add an asterisk after label text for email, password and phone
 1. Add `aria-required="true"` to textbox for email, password and phone
+1. Add `checked` state to personal account type radio to set it as the default
 1. Demonstrate that screen reader reads this new 'required' state
     * It also reads the asterisk, which isn't too disastrous, but let's address it in the next step
+
+The convention for sighted users is to add an asterisk next to each field. To convey the same information to assistive technology, we use the `aria-required` property. Note that correct use of listbox (applying a sensible default) means that we shouldn't need to denote a listbox as a required field.
 
 ### Redundant Text
 
@@ -1026,7 +1069,11 @@ This short step introduces the concept of redundant text.
 
 So we've made the inline error messages appear without a round trip to the server and a full page reload. We call this input validation, or field validation. How about making the page error appear instantly too, after clicking the submit button?
 
-Basically, all we are going to do here is render the exact same markup as in the previous page error step, but this time we will render it on the client with JavaScript. First though, we need to *prevent* the form submission to avoid full page load/reload.
+Basically, all we are going to do here is render the exact same markup as in the previous page error step, but this time we will render it on the client with JavaScript.
+
+1. Add an ID to the form
+1. Get a JavaScript reference to the form element by id
+1. Prevent the default form submission to avoid full page load/reload.
 
 ```js
 var regForm = document.getElementById('reg-form');
@@ -1038,7 +1085,7 @@ if (regForm) {
 }
 ```
 
-Now let's render the page error, grabbing the same markup as from the earlier step. In order to simplify our example, let's add a placeholder element for the notice into our server rendered markup:
+In order to simplify our example, let's add a placeholder element for the client-side notice into our server rendered markup:
 
 ```html
 <div class="page-error-placeholder" tabindex="-1"></div>
