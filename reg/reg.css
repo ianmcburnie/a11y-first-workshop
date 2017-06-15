@@ -6,20 +6,25 @@
     width: 400px;
 }
 
+div.field {
+    margin: 16px 0;
+}
+
+.field-group {
+    display: flex;
+    margin: 16px 0;
+}
+
+.field-group span.field {
+    width: 100%;
+}
+
 /* RADIO */
 
 fieldset {
     border: 0;
-    margin: 16px 0;
-}
-
-fieldset .field {
-    float: left;
-    width: 50%;
-}
-
-fieldset span.field + span.field {
     margin: 0;
+    padding: 0;
 }
 
 /* PAGE NOTICE */

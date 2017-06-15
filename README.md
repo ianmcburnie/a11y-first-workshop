@@ -1,6 +1,6 @@
 # A11Y-First : Web Accessibility Workshop
 
-The idea of this project it to run a live-coding session starting with an empty HTML file. No web server is required. From that starting point the session instructor will progressively build up that page, and several others, introducing many common accessibility principles and techniques along the way.
+The idea of this project it to run a live-coding session starting with an empty HTML file. From that starting point the session instructor will progressively build up that page, and several others, introducing many common accessibility principles and techniques along the way.
 
 * [Start](user-content-start)
 * [Chapter 1: Introduces Structure](user-content-chapter-1-introduces-structure)
@@ -10,6 +10,14 @@ The idea of this project it to run a live-coding session starting with an empty 
 * [Chapter 5: Introduces Buttons](user-content-chapter-5-introduces-buttons)
 * [Chapter 6: Introduces ARIA Widgets](user-content-chapter-6-introduces-aria-widgets)
 * [Chapter 7: Introduces Data Tables](user-content-chapter-7-introduces-data-tables)
+
+## Requirements
+
+For the live coding we assume some basic familiarity with HTML, CSS and JavaScript.
+
+To get the static web server and bundler up and running we assume some familiarity with NPM and LassoJS.
+
+More info to follow.
 
 ## Start
 
@@ -24,11 +32,12 @@ For a live-coding workshop, please prime your initial index.html file with the f
         <link rel="stylesheet" href="app.css"/>
     </head>
     <body></body>
-    <script src="app.js"></script>
+    <!-- uncomment the following line when instructed -->
+    <!-- <script src="app.js"></script>-->
 </html>
 ```
 
-If you get lost or lose your way, each step has a "one I made earlier" that you can copy-and-paste from into your file.
+If you get lost or lose your way, every step of every chapter has a "here's one I made earlier" that you can copy-and-paste from into your file.
 
 ## Chapter 1: Introduces Structure
 
@@ -36,7 +45,7 @@ Chapter 1 builds a mock version of a typical eCommerce homepage.
 
 Whenever I build a new page or component, I always start with the markup. I don't even think about the CSS and JavaScript until I am happy with the structure and semantics. In fact, I will go as far as to disable CSS and JavaScript in my browser to ensure that the raw markup is accessible and functional.
 
-Some developers, on the other hand, like to start with the JavaScript first. Or the "bells and whistles" as I like to say. To me this is like a builder placing down all of the household electronics (television, microwave, internet router, etc) on the plot of land before the foundations have been laid, walls built and windows put in. Okay, maybe I need a better analogy ;-)
+Some developers, on the other hand, like to start with the JavaScript first. Or the "bells and whistles" as I like to say. To me this is like a builder placing down all of the household electronics (television, microwave, internet router, etc) on the plot of land before the foundations have been laid, walls built and windows put in. Yes, it's exactly like that. Okay, okay maybe I need a better analogy ;-)
 
 ### Meta Data
 
@@ -51,13 +60,13 @@ The page content for this step is left intentionally blank.
 
 We have introduced 3 key pieces of 'meta' data:
 
-* Language attribute
-    * Language attribute ensures correct pronunciation, amongst other things. See <a href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#meaning-doc-lang-id">WCAG 3.1.1</a>
-* Viewport Scale
-    * Viewport meta must ensure pinch-to-zoom is **not** disabled. See <a href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-scale">WCAG 1.4.4</a> and <a href="https://ebay.gitbooks.io/mindpatterns/content/antipatterns/disabling_pinch-to-zoom.html">MIND Anti-Pattern: Disabling Pinch-to-Zoom</a>.
-    * Valid use cases for disabling pinch to zoom are mapping applications and video games
-* Title
-    * Title ensures the user can orient themselves. See <a href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#navigation-mechanisms-title">WCAG 2.4.2</a>. Titles identify the current location without requiring users to read or interpret page content.
+* Language attribute ensures correct pronunciation, amongst other things.
+    * See <a href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#meaning-doc-lang-id">WCAG 3.1.1</a>
+* Viewport meta must ensure pinch-to-zoom is **not** disabled.
+    * See <a href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-scale">WCAG 1.4.4</a> and <a href="https://ebay.gitbooks.io/mindpatterns/content/antipatterns/disabling_pinch-to-zoom.html">MIND Anti-Pattern: Disabling Pinch-to-Zoom</a>.
+    * Valid use cases for disabling pinch-to-zoom are mapping applications and video games
+* Title ensures the user can orient themselves.
+    * See <a href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#navigation-mechanisms-title">WCAG 2.4.2</a>. Titles identify the current location without requiring users to read or interpret page content.
 
 ### Paragraphs
 
@@ -99,7 +108,7 @@ We have introduced 3 key pieces of 'meta' data:
 
 ### Headings
 
-1. Add headings to page:
+1. Add the following headings:
     * `<h1>eBay</h1>`
     * `<h2>Collections</h2>`
     * `<h2>Daily Deals</h2>`
@@ -160,9 +169,14 @@ footer[role="contentinfo"] {
 1. Add image before each collection and deal title, and for the time being set alt="collection/deal title" (we will set this to blank in a later section)
 1. Wrap title in paragraph tag
 1. Demonstrate that voiceover no longer announces 'bullet' for each list item
-1. Use spacebar, up arrow, down arrow, page up, page down, home and end keys to scroll page
 
 Note that the image alt text is the same as the title. Technically speaking these images can be classed as presentational, because if the images were not displayed, we still have the same text below (the title text). We leave the alt text in place for now. Yes, it's a redundant/duplicate navigation for screen reader users, but not technically 'non-accessible'. When we convert the item to a tile, in an upcoming step, we will set this value to blank.
+
+### Scrolling
+
+Now that we have content that goes below the fold, we can demonstrate some keyboard accessibility.
+
+1. Use spacebar, up arrow, down arrow, page up, page down, home and end keys to scroll page
 
 ### Table Layout
 
@@ -176,7 +190,7 @@ Demonstrate the problems with using table tags for layout.
 
 ### Grid System
 
-Demonstrates that in some cases, CSS can effect semantics.
+Demonstrate that in some cases, CSS can effect semantics.
 
 1. Revert the table changes made in the previous step (i.e. back to a list)
 1. Add div wrapper container inside of body (presentational step, see CSS below)
@@ -207,7 +221,7 @@ footer[role="contentinfo"] > div {
 
 ### Cards
 
-A purely presentation step where we convert each collection item into a card.
+A purely presentation step where we convert each collection item into a card using Skin CSS.
 
 1. Wrap each collection item with `<div class="card"><div class="card__cell">...</div></div>`
 
@@ -230,7 +244,7 @@ Chapter 2 continues to build upon our homepage, before moving onto a typical sig
 
 #### Discussion
 
-* Should the link/title be a heading? I would say it is not strictly necessary, but opinion would be divided here.
+* Should the link/title be a heading? I would say it is not strictly necessary for accessibility, but maybe so for SEO. Opinion is often divided here.
 
 ### Tiles
 
@@ -255,7 +269,7 @@ a.item-tile p:last-child {
 
 ### Ambiguous Links
 
-1. Add 'See all' link after collections and deals lists
+1. Add "See all" link after collections and deals lists
 1. Align link to center of grid
 1. Demonstrate that we now have two 'ambiguous' links with same text that go to different places
 1. Append clipped text to each link text
@@ -282,7 +296,7 @@ a.item-tile p:last-child {
 
 ### Fake Buttons
 
-1. Add `class="btn"` to the two see all links
+1. Add `class="btn"` to the two "see all" links
 1. Notice that skin hasn't styled them. Something is wrong. Skin enforces accessibility. We don't allow btn class on a link unless developer signifies they know what they are doing.
 1. Add `class="fake-btn"`
 1. Link is now styled as a button
@@ -296,12 +310,12 @@ a.item-tile p:last-child {
 Append the following link to the legal footer paragraph:
 
 ```html
-<a href="http://pages.ebay.com/help/policies/user-agreement.html" target="_blank">User Agreement</a></p>
+<a href="http://pages.ebay.com/help/policies/user-agreement.html" target="_blank">User Agreement</a>
 ```
 
-Demonstrate that links opens a new window, and screen reader users is not notified.
+Demonstrate that screen reader does not notify user of this behaviour when focus is on link.
 
-Then add clipped text:
+Add clipped text:
 
 ```html
 <a href="http://pages.ebay.com/help/policies/user-agreement.html" target="_blank">User Agreement<span class="clipped"> - opens in new window or tab</span></a></p>
@@ -371,6 +385,7 @@ This is an opportunity to recap, and build upon, headings, landmarks and links.
 1. Add `tabindex="-1"` to main landmark
 1. Demo how screen reader focus is now set
 1. Demo that permanent tabindex on main element causes a focus outline when clicked with mouse or touch.
+1. Fix focus outline issue with CSS. This is perhaps the only time it is okay to remove focus outline.
 
 ```html
 <span class="skipto">
@@ -496,7 +511,7 @@ a:focus {
 
 ### CHECKPOINT: Sign In &amp; Registration
 
-We now move onto a new page. Actually, two pages, the signin and registration pages. They both have the following content to begin with:
+We now move onto a new page. Actually, two pages, signin and registration. Both pages have the following content to begin with:
 
 ```html
 <div role="main">
@@ -514,6 +529,19 @@ Create a new CSS file for each new page:
     margin: 16px auto;
     padding: 16px;
     width: 400px;
+}
+
+div.field {
+    margin: 16px 0;
+}
+
+.field-group {
+    display: flex;
+    margin: 16px 0;
+}
+
+.field-group span.field {
+    width: 100%;
 }
 ```
 
@@ -581,14 +609,17 @@ Add textbox and label for email inside of form.
 1. Demo how ARROW key behaviour on textbox is different than on link.
 1. Talk about ARROW key behaviour and 'forms mode' of screen reader.
 1. Demo that ENTER key does nothing... yet
-1. Demo that screen reader announces value, label, type and state (in no particular order)
+1. Demo that screen reader announces value (or contents), label, type (edit text) and state (in no particular order)
 1. The `name` attribute is used by the server (key/value pair). The `id` attribute is used by the client (for link anchors, label targets, scripting)
-1. Add `disabled` attribute to textbox and demonstrate screen reader behaviour
+1. Add `disabled` attribute to textbox and demonstrate screen reader behaviour (it now reads "dimmed")
 1. Remove `disabled` attribute
+1. Add `readonly` attribute to textbox and demonstrate screen reader behaviour (it now just says "text" instead of "edit text")
+1. Remove `readonly` attribute
 1. Add `autofocus` attribute to textbox and demonstrate behaviour on page load
 1. Remove `autofocus` attribute
+1. Add skin field related classes (`field`, `field__label field__label--stacked` and `field__control`)
 
-Also add textbox &amp; label for password, first name, last name and phone, adding [Skin Textbox Classes](https://ebay.github.io/skin/#textbox). For example:
+Also add textbox &amp; label for password, first name, last name and phone, adding [Skin Textbox Classes](https://ebay.github.io/skin/#textbox). For example, final email field should look like this:
 
 ```html
 <div class="field">
@@ -692,14 +723,10 @@ Radio buttons are our first introduction to using the ARROW keys. The TAB key mo
 1. Demonstrate screen reader semantics (type, label, state)
 
 ```html
-<span class="field">
-    <input class="field__control" id="paccount" name="account_type" type="radio" value="p" />
-    <label class="field__label field__label--end" for="paccount">Personal Account</label>
-</span>
-<span class="field">
-    <input class="field__control" id="baccount" name="account_type" type="radio" value="b" />
-    <label class="field__label field__label--end" for="baccount">Business Account</label>
-</span>
+<input id="paccount" name="account_type" type="radio" value="p" />
+<label for="paccount">Personal account</label>
+<input id="baccount" name="account_type" type="radio" value="b" />
+<label for="baccount">Business account</label>
 ```
 
 1. Add a fieldset and legend
@@ -708,15 +735,19 @@ Radio buttons are our first introduction to using the ARROW keys. The TAB key mo
 ```html
 <fieldset>
     <legend class="clipped">Account Type</legend>
-    <span class="field">
-        <input class="field__control" name="account_type" type="radio" value="p" />
-        <label class="field__label field__label--end">Personal Account</label>
-    </span>
-    <span class="field">
-        <input class="field__control" name="account_type" type="radio" value="b" />
-        <label class="field__label field__label--end">Business Account</label>
-    </span>
+    <input id="paccount" name="account_type" type="radio" value="p" />
+    <label for="paccount">Personal account</label>
+    <input id="baccount" name="account_type" type="radio" value="b" />
+    <label for="baccount">Business account</label>
 </fieldset>
+```
+
+```css
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
 ```
 
 ### Custom Radio
@@ -768,7 +799,7 @@ Skin provides a custom style for the select `button`, but not for the overlay.
 <div class="field">
     <label class="field__label field__label--stacked" for="dial-code">Dialing Code</label>
     <span class="field__control listbox">
-        <select class="listbox__control" id="dial-code" name="dc">
+        <select class="listbox__control listbox__control--fluid" id="dial-code" name="dc">
             <option value="1">United States +1</option>
             <option value="44">United Kingdom +44</option>
             <option value="1">Canada +1</option>

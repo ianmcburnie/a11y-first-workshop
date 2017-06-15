@@ -25,28 +25,30 @@
                     <form>
                         <fieldset>
                             <legend class="clipped">Account Type</legend>
-                            <span class="field">
-                                <span class="radio">
-                                    <input class="field__control radio__control" id="paccount" name="account_type" type="radio" value="p" />
-                                    <span class="radio__icon" hidden>
-                                        <svg aria-hidden="true" focusable="false">
-                                            <use xlink:href="../icons.svg#svg-icon-radio"></use>
-                                        </svg>
+                            <div class="field-group">
+                                <span class="field">
+                                    <span class="radio">
+                                        <input class="field__control radio__control" id="paccount" name="account_type" type="radio" value="p" />
+                                        <span class="radio__icon" hidden>
+                                            <svg aria-hidden="true" focusable="false">
+                                                <use xlink:href="../icons.svg#svg-icon-radio"></use>
+                                            </svg>
+                                        </span>
                                     </span>
+                                    <label class="field__label field__label--end" for="paccount">Personal account</label>
                                 </span>
-                                <label class="field__label field__label--end" for="paccount">Personal account</label>
-                            </span>
-                            <span class="field">
-                                <span class="radio">
-                                    <input class="field__control radio__control" id="baccount" name="account_type" type="radio" value="b" />
-                                    <span class="radio__icon" hidden>
-                                        <svg aria-hidden="true" focusable="false">
-                                            <use xlink:href="../icons.svg#svg-icon-radio"></use>
-                                        </svg>
+                                <span class="field">
+                                    <span class="radio">
+                                        <input class="field__control radio__control" id="baccount" name="account_type" type="radio" value="b" />
+                                        <span class="radio__icon" hidden>
+                                            <svg aria-hidden="true" focusable="false">
+                                                <use xlink:href="../icons.svg#svg-icon-radio"></use>
+                                            </svg>
+                                        </span>
                                     </span>
+                                    <label class="field__label field__label--end" for="baccount">Business account</label>
                                 </span>
-                                <label class="field__label field__label--end" for="baccount">Business account</label>
-                            </span>
+                            </div>
                         </fieldset>
 
                         <div class="field">
@@ -63,18 +65,20 @@
                             </div>
                         </div>
 
-                        <div class="field" style="display: inline-block; float: left; width: 50%; ">
-                            <label class="field__label field__label--stacked" for="password">First Name</label>
-                            <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" name="fname" id="fname" type="text" />
-                            </div>
-                        </div>
+                        <div class="field-group">
+                            <span class="field">
+                                <label class="field__label field__label--stacked" for="password">First Name</label>
+                                <div class="field__control textbox">
+                                    <input class="textbox__control textbox__control--fluid" name="fname" id="fname" type="text" />
+                                </div>
+                            </span>
 
-                        <div class="field" style="box-sizing: border-box; display: inline-block; padding-left: 8px; width: 50%;">
-                            <label class="field__label field__label--stacked" for="lname">Last Name</label>
-                            <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" name="lname" id="lname" type="text" />
-                            </div>
+                            <span class="field">
+                                <label class="field__label field__label--stacked" for="lname">Last Name</label>
+                                <div class="field__control textbox">
+                                    <input class="textbox__control textbox__control--fluid" name="lname" id="lname" type="text" />
+                                </div>
+                            </span>
                         </div>
 
                         <div class="field">

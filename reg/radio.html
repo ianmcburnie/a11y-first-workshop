@@ -25,14 +25,10 @@
                     <form>
                         <fieldset>
                             <legend class="clipped">Account Type</legend>
-                            <span class="field">
-                                <input class="field__control" id="paccount" name="account_type" type="radio" value="p" />
-                                <label class="field__label field__label--end" for="paccount">Personal account</label>
-                            </span>
-                            <span class="field">
-                                <input class="field__control" id="baccount" name="account_type" type="radio" value="b" />
-                                <label class="field__label field__label--end" for="baccount">Business account</label>
-                            </span>
+                            <input id="paccount" name="account_type" type="radio" value="p" />
+                            <label for="paccount">Personal account</label>
+                            <input id="baccount" name="account_type" type="radio" value="b" />
+                            <label for="baccount">Business account</label>
                         </fieldset>
                     </form>
 
@@ -50,18 +46,20 @@
                         </div>
                     </div>
 
-                    <div class="field" style="display: inline-block; float: left; width: 50%; ">
-                        <label class="field__label field__label--stacked" for="password">First Name</label>
-                        <div class="field__control textbox">
-                            <input class="textbox__control textbox__control--fluid" name="fname" id="fname" type="text" />
-                        </div>
-                    </div>
+                    <div class="field-group">
+                        <span class="field">
+                            <label class="field__label field__label--stacked" for="fname">First Name</label>
+                            <div class="field__control textbox">
+                                <input class="textbox__control textbox__control--fluid" name="fname" id="fname" type="text" />
+                            </div>
+                        </span>
 
-                    <div class="field" style="box-sizing: border-box; display: inline-block; padding-left: 8px; width: 50%;">
-                        <label class="field__label field__label--stacked" for="lname">Last Name</label>
-                        <div class="field__control textbox">
-                            <input class="textbox__control textbox__control--fluid" name="lname" id="lname" type="text" />
-                        </div>
+                        <span class="field">
+                            <label class="field__label field__label--stacked" for="lname">Last Name</label>
+                            <div class="field__control textbox">
+                                <input class="textbox__control textbox__control--fluid" name="lname" id="lname" type="text" />
+                            </div>
+                        </span>
                     </div>
 
                     <div class="field">

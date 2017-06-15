@@ -24,6 +24,34 @@
                 <div class="fake-tabs__content">
                     <form action="page-error-client.html">
 
+                        <fieldset>
+                            <legend class="clipped">Account Type</legend>
+                            <div class="field-group">
+                                <span class="field">
+                                    <span class="radio">
+                                        <input class="field__control radio__control" id="paccount" name="account_type" type="radio" value="p" />
+                                        <span class="radio__icon" hidden>
+                                            <svg aria-hidden="true" focusable="false">
+                                                <use xlink:href="../icons.svg#svg-icon-radio"></use>
+                                            </svg>
+                                        </span>
+                                    </span>
+                                    <label class="field__label field__label--end" for="paccount">Personal account</label>
+                                </span>
+                                <span class="field">
+                                    <span class="radio">
+                                        <input class="field__control radio__control" id="baccount" name="account_type" type="radio" value="b" />
+                                        <span class="radio__icon" hidden>
+                                            <svg aria-hidden="true" focusable="false">
+                                                <use xlink:href="../icons.svg#svg-icon-radio"></use>
+                                            </svg>
+                                        </span>
+                                    </span>
+                                    <label class="field__label field__label--end" for="baccount">Business account</label>
+                                </span>
+                            </div>
+                        </fieldset>
+
                         <div class="field field-validation">
                             <label class="field__label field__label--stacked" for="email">Email <span aria-hidden="true">*</span></label>
                             <div class="field__control textbox">
@@ -44,42 +72,46 @@
                             </div>
                         </div>
 
-                        <div class="field" style="display: inline-block; float: left; width: 50%; ">
-                            <label class="field__label field__label--stacked" for="password">First Name <span aria-hidden="true">*</span></label>
-                            <div class="field__control textbox">
-                                <input aria-describedby="fname-error" class="textbox__control textbox__control--fluid" id="fname" name="fname" type="text" />
-                            </div>
-                        </div>
+                        <div class="field-group">
+                            <span class="field">
+                                <label class="field__label field__label--stacked" for="password">First Name <span aria-hidden="true">*</span></label>
+                                <div class="field__control textbox">
+                                    <input aria-describedby="fname-error" class="textbox__control textbox__control--fluid" id="fname" name="fname" type="text" />
+                                </div>
+                            </span>
 
-                        <div class="field" style="box-sizing: border-box; display: inline-block; padding-left: 8px; width: 50%;">
-                            <label class="field__label field__label--stacked" for="lname">Last Name <span aria-hidden="true">*</span></label>
-                            <div class="field__control textbox">
-                                <input aria-describedby="lname-error" class="textbox__control textbox__control--fluid" id="lname" name="lname" type="text" />
-                            </div>
-                        </div>
-
-                        <div class="field" style="display: inline-block; float: left; width: 50%;">
-                            <label class="field__label field__label--stacked" for="dial-code">Dialing Code</label>
-                            <span class="field__control listbox">
-                                <select class="listbox__control" id="dial-code" name="dc">
-                                    <option value="1">United States +1</option>
-                                    <option value="44">United Kingdom +44</option>
-                                    <option value="1">Canada +1</option>
-                                </select>
-                                <svg aria-hidden="true" class="listbox__icon" focusable="false">
-                                    <use xlink:href="../icons.svg#svg-icon-arrow-down"></use>
-                                </svg>
+                            <span class="field">
+                                <label class="field__label field__label--stacked" for="lname">Last Name <span aria-hidden="true">*</span></label>
+                                <div class="field__control textbox">
+                                    <input aria-describedby="lname-error" class="textbox__control textbox__control--fluid" id="lname" name="lname" type="text" />
+                                </div>
                             </span>
                         </div>
 
-                        <div class="field field-validation" style="box-sizing: border-box; display: inline-block; padding-left: 8px; width: 50%;">
-                            <label class="field__label field__label--stacked" for="phone">Mobile Phone <span aria-hidden="true">*</span></label>
-                            <div class="field__control textbox">
-                                <input aria-describedby="phone-error" aria-required="true" class="textbox__control textbox__control--fluid" id="phone" name="phone" type="text" />
-                            </div>
-                            <div aria-live="polite" class="field__description field__description--error" id="phone-error">
-                                <span hidden>Please enter a valid mobile phone</span>
-                            </div>
+                        <div class="field-group">
+                            <span class="field">
+                                <label class="field__label field__label--stacked" for="dial-code">Dialing Code</label>
+                                <span class="field__control listbox">
+                                    <select class="listbox__control listbox__control--fluid" id="dial-code" name="dc">
+                                        <option value="1">United States +1</option>
+                                        <option value="44">United Kingdom +44</option>
+                                        <option value="1">Canada +1</option>
+                                    </select>
+                                    <svg aria-hidden="true" class="listbox__icon" focusable="false">
+                                        <use xlink:href="../icons.svg#svg-icon-arrow-down"></use>
+                                    </svg>
+                                </span>
+                            </span>
+
+                            <span class="field field-validation">
+                                <label class="field__label field__label--stacked" for="phone">Mobile Phone <span aria-hidden="true">*</span></label>
+                                <div class="field__control textbox">
+                                    <input aria-describedby="phone-error" aria-required="true" class="textbox__control textbox__control--fluid" id="phone" name="phone" type="text" />
+                                </div>
+                                <div aria-live="polite" class="field__description field__description--error" id="phone-error">
+                                    <span hidden>Please enter a valid mobile phone</span>
+                                </div>
+                            </span>
                         </div>
 
                         <div class="field">
