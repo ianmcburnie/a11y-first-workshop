@@ -32,7 +32,7 @@ For a live-coding workshop, please prime your initial index.html file with the f
 <html>
     <head>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/skin.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/grid-full.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v6.3.3/ds4/grid-full.min.css"/>
         <link rel="stylesheet" href="app.css"/>
     </head>
     <body></body>

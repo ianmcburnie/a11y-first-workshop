@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "start": "npm run build && parallelshell 'npm run serve' 'npm run watch'",
-    "serve": "browser-sync start -s --files *.html,app.css,app.js",
+    "serve": "browser-sync start -s --files index.html,app.css,app.js,hp/*.html,srp/*.html,reg/*.html/signin/*.html",
     "build": "lasso browser.json --minify --out . --name app --html false",
     "watch": "onchange main.js -- npm run build"
   },
