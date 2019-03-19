@@ -6,12 +6,12 @@
     "build": "lasso browser.json --minify --out . --name app --html false",
     "watch": "onchange main.js -- npm run build"
   },
-  "pre-commit": "build",
   "devDependencies": {
     "browser-sync": "^2",
     "jquery": ">=1.11",
     "jquery-click-flyout": "latest",
     "jquery-common-keydown": "latest",
+    "jquery-focusable": "latest",
     "jquery-focus-exit": "latest",
     "jquery-focus-flyout": "latest",
     "jquery-grid-navigation": "latest",
@@ -24,9 +24,8 @@
     "jquery-roving-tabindex": "latest",
     "jquery-skip-to": "latest",
     "jquery-tooltip": "latest",
-    "lasso-cli": "^2.0.6",
-    "onchange": "^3.0.2",
-    "parallelshell": "^2.0.0",
-    "pre-commit": "^1.1.3"
+    "lasso-cli": "^2",
+    "onchange": "^5",
+    "parallelshell": "^3"
   }
 }
