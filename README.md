@@ -1,6 +1,10 @@
-# A11Y-First : Web Accessibility Workshop
+# a11y-first-workshop : A Web Accessibility Workshop
 
-The idea of this project it to run a live-coding session starting with an empty HTML file. From that starting point the session instructor will progressively build up that page, and several others, introducing many common accessibility principles and techniques along the way.
+HTML is fully accessible by default, but whenever a developer chooses the wrong tag, wrong ARIA attribute, or adds a line of CSS or JavaScript, they run the risk of breaking that out-of-the-box accessibility.
+
+Starting completely from scratch, this workshop will progressively build up the UI for a typical eCommerce homepage, sign-in page, and SRP, introducing many common accessibility principles, techniques and gotchas along the way.
+
+No prior accessibility experience is necessary.
 
 * [Start](user-content-start)
 * [Chapter 1: Introduces Structure](user-content-chapter-1-introduces-structure)
