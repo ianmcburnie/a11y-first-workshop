@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Tooltip - A11Y Workshop</title>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/skin.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v7.0.2/ds4/skin.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v6.3.3/ds4/grid-full.min.css"/>
         <link rel="stylesheet" href="../app.css"/>
     </head>
@@ -38,12 +38,14 @@
                         </span>
                     </span>
                     <span class="tooltip flyout">
-                        <a accesskey="c" aria-describedby="tooltip-cart"  class="tooltip flyout__trigger icon icon--cart" href="http://cart.payments.ebay.com" id="cart" aria-label="cart"></a>
+                        <a accesskey="c"  aria-describedby="tooltip-cart" class="tooltip flyout__trigger" href="http://cart.payments.ebay.com" id="cart" aria-label="cart">
+                            <span class="icon icon--cart"></span>
+                        </a>
                         <div class="flyout__overlay" id="tooltip-cart">Shopping Cart<br/>(Access Key: C)</div>
                     </span>
                 </div>
             </div>
-            <div>
+            <div id="eyeball">
                 <table role="presentation">
                     <tr>
                         <td>

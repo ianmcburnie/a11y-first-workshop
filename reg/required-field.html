@@ -4,18 +4,18 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Required Field - A11Y First Workshop</title>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/skin.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v7.0.2/ds4/skin.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v6.3.3/ds4/grid-full.min.css"/>
         <link rel="stylesheet" href="../app.css"/>
         <link rel="stylesheet" href="reg.css"/>
     </head>
-    <body>
+    <body class="identity">
         <div role="main">
             <h1 class="clipped">Sign In and Registration</h1>
             <div class="fake-tabs">
                 <ul class="fake-tabs__items">
                     <li class="fake-tabs__item">
-                        <a href="../signin/field-description.html">Sign In</a>
+                        <a href="../signin/fake-tabs.html">Sign In</a>
                     </li>
                     <li class="fake-tabs__item fake-tabs__item--current">
                         <a aria-current="page" href="page-error.html">Register</a>
@@ -23,67 +23,52 @@
                 </ul>
                 <div class="fake-tabs__content">
                     <form action="redundant-text.html">
-
                         <fieldset>
                             <legend class="clipped">Account Type</legend>
                             <div class="field-group">
                                 <span class="field">
                                     <span class="radio">
-                                        <input class="field__control radio__control" id="paccount" name="account_type" type="radio" value="p" />
-                                        <span class="radio__icon" hidden>
-                                            <svg aria-hidden="true" focusable="false">
-                                                <use xlink:href="../icons.svg#svg-icon-radio"></use>
-                                            </svg>
-                                        </span>
+                                        <input class="field__control radio__control" id="paccount" name="account_type" type="radio" value="p" checked />
+                                        <span class="radio__icon"></span>
                                     </span>
                                     <label class="field__label field__label--end" for="paccount">Personal account</label>
                                 </span>
                                 <span class="field">
                                     <span class="radio">
                                         <input class="field__control radio__control" id="baccount" name="account_type" type="radio" value="b" />
-                                        <span class="radio__icon" hidden>
-                                            <svg aria-hidden="true" focusable="false">
-                                                <use xlink:href="../icons.svg#svg-icon-radio"></use>
-                                            </svg>
-                                        </span>
+                                        <span class="radio__icon"></span>
                                     </span>
                                     <label class="field__label field__label--end" for="baccount">Business account</label>
                                 </span>
                             </div>
                         </fieldset>
 
-                        <div class="field field-validation">
-                            <label class="field__label field__label--stacked" for="email">Email *</label>
+                        <div class="field">
+                            <label class="field__label field__label--stacked" for="email">Email <span aria-hidden="true">*</span></label>
                             <div class="field__control textbox">
-                                <input aria-describedby="email-error" aria-required="true" class="textbox__control textbox__control--fluid" id="email" name="email" type="text" />
-                            </div>
-                            <div aria-live="polite" class="field__description field__description--error" id="email-error">
-                                <span hidden>Please enter a valid email address</span>
+                                <input aria-required="true" class="textbox__control textbox__control--fluid" id="email" name="email" type="text" />
                             </div>
                         </div>
 
-                        <div class="field field-validation">
-                            <label class="field__label field__label--stacked" for="password">Password *</label>
+                        <div class="field">
+                            <label class="field__label field__label--stacked" for="password">Password <span aria-hidden="true">*</span></label>
                             <div class="field__control textbox">
-                                <input aria-describedby="password-error" aria-required="true" class="textbox__control textbox__control--fluid" id="password" name="password" type="password" />
-                            </div>
-                            <div aria-live="polite" class="field__description field__description--error" id="password-error">
-                                <span hidden>Please enter a valid password</span>
+                                <input aria-required="true" class="textbox__control textbox__control--fluid" id="password" name="password" type="password" />
                             </div>
                         </div>
 
                         <div class="field-group">
                             <span class="field">
-                                <label class="field__label field__label--stacked" for="password">First Name *</label>
+                                <label class="field__label field__label--stacked" for="password">First Name</label>
                                 <div class="field__control textbox">
-                                    <input aria-describedby="fname-error" class="textbox__control textbox__control--fluid" id="fname" name="fname" type="text" />
+                                    <input class="textbox__control textbox__control--fluid" id="fname" name="fname" type="text" />
                                 </div>
                             </span>
 
                             <span class="field">
-                                <label class="field__label field__label--stacked" for="lname">Last Name *</label>
+                                <label class="field__label field__label--stacked" for="lname">Last Name</label>
                                 <div class="field__control textbox">
-                                    <input aria-describedby="lname-error" class="textbox__control textbox__control--fluid" id="lname" name="lname" type="text" />
+                                    <input class="textbox__control textbox__control--fluid" id="lname" name="lname" type="text" />
                                 </div>
                             </span>
                         </div>
@@ -91,25 +76,20 @@
                         <div class="field-group">
                             <span class="field">
                                 <label class="field__label field__label--stacked" for="dial-code">Dialing Code</label>
-                                <span class="field__control listbox">
-                                    <select class="listbox__control listbox__control--fluid" id="dial-code" name="dc">
+                                <span class="field__control select">
+                                    <select class="select__control select__control--fluid" id="dial-code" name="dc">
                                         <option value="1">United States +1</option>
                                         <option value="44">United Kingdom +44</option>
                                         <option value="1">Canada +1</option>
                                     </select>
-                                    <svg aria-hidden="true" class="listbox__icon" focusable="false">
-                                        <use xlink:href="../icons.svg#svg-icon-arrow-down"></use>
-                                    </svg>
+                                    <span class="select__icon"></span>
                                 </span>
                             </span>
 
                             <span class="field field-validation">
-                                <label class="field__label field__label--stacked" for="phone">Mobile Phone *</label>
+                                <label class="field__label field__label--stacked" for="phone">Mobile Phone</label>
                                 <div class="field__control textbox">
-                                    <input aria-describedby="phone-error" aria-required="true" class="textbox__control textbox__control--fluid" id="phone" name="phone" type="text" />
-                                </div>
-                                <div aria-live="polite" class="field__description field__description--error" id="phone-error">
-                                    <span hidden>Please enter a valid mobile phone</span>
+                                    <input class="textbox__control textbox__control--fluid" id="phone" name="phone" type="text" />
                                 </div>
                             </span>
                         </div>

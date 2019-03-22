@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Fake Menu - A11Y First Workshop</title>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/skin.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v7.0.2/ds4/skin.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v6.3.3/ds4/grid-full.min.css"/>
         <link rel="stylesheet" href="../app.css"/>
     </head>
@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            <div class="grid">
+            <div class="grid" id="eyeball">
                 <div class="grid__group grid__group--no-gutters">
                     <div class="grid__cell grid__cell--one-fifth">
                         <h1><img src="../images/ebay-hires.png" alt="ebay" /></h1>
@@ -58,15 +58,13 @@
                         <span class="textbox">
                             <input aria-label="search" autofocus class="textbox__control" id="_nkw" name="_nkw" placeholder="Search..." type="text"/>
                         </span>
-                        <span class="listbox">
-                            <select aria-label="Category" class="listbox__control" name="category">
+                        <span class="field__control select">
+                            <select class="select__control select__control--fluid" id="dial-code" name="category">
                                 <option value="all">All categories</option>
                                 <option value="antiques">Antiques</option>
                                 <option value="art">Art</option>
                             </select>
-                            <svg aria-hidden="true" class="listbox__icon" focusable="false">
-                                <use xlink:href="../icons.svg#svg-icon-arrow-down"></use>
-                            </svg>
+                            <span class="select__icon"></span>
                         </span>
                         <button class="btn btn--primary" type="submit">Search</button>
                     </form>
@@ -83,16 +81,29 @@
                         <h1 class="clipped">Search Results</h1>
                         <div id="customise">
                             <span class="fake-menu" id="sort">
-                                <button class="btn btn--secondary fake-menu__btn flyout__trigger" type="button">
-                                    <span>Sort: Best Match</span>
-                                    <svg aria-hidden="true" class="btn__icon fake-menu__icon" focusable="false">
-                                        <use xlink:href="../icons.svg#svg-icon-arrow-down"></use>
-                                    </svg>
+                                <button class="expand-btn expand-btn--regular flyout__trigger" aria-expanded="false" aria-haspopup="true" type="button">
+                                    <span class="expand-btn__cell">
+                                        <span>Fake menu</span>
+                                        <span class="expand-btn__icon"></span>
+                                    </span>
                                 </button>
                                 <ul class="fake-menu__items flyout__overlay">
                                     <li><a class="fake-menu__item" href="http://www.ebay.com">Soonest</a></li>
-                                    <li><a class="fake-menu__item" aria-current="page" href="http://www.ebay.com">Best Match</a></li>
+                                    <li><a aria-current="page" class="fake-menu__item" href="http://www.ebay.com">Best Match</a></li>
                                 </ul>
+                            </span>
+                            <span class="menu" id="view">
+                                <button class="expand-btn expand-btn--regular" aria-expanded="false" aria-haspopup="true" type="button">
+                                    <span class="expand-btn__cell">
+                                        <span>Menu</span>
+                                        <span class="expand-btn__icon"></span>
+                                    </span>
+                                </button>
+                                <div class="menu__items" role="menu">
+                                    <div class="menu__item" role="menuitem"><span>Item 1</span></div>
+                                    <div class="menu__item" role="menuitem"><span>Item 2</span></div>
+                                    <div class="menu__item" role="menuitem"><span>Item 3</span></div>
+                                </div>
                             </span>
                         </div>
                         <div class="result-status">

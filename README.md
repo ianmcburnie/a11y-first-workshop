@@ -4,10 +4,9 @@ HTML is fully accessible by default, but whenever a developer chooses the wrong 
 
 Starting completely from scratch, this workshop will progressively build up the UI for a typical eCommerce homepage, sign-in page, and SRP, introducing many common accessibility principles, techniques and gotchas along the way.
 
-No prior accessibility experience is necessary.
+No prior accessibility experience is necessary, but we assume some basic familiarity with HTML, CSS and JavaScript. If you get lost or lose your way, every step of every chapter has a "here's one I made earlier" that you can copy-and-paste from into your file.
 
-* [Start](user-content-start)
-* [Chapter 1: Introduces Structure](user-content-chapter-1-introduces-structure)
+* [Chapter 1: Introduces Structure &amp; Semantics](user-content-chapter-1-introduces-structure-semantics)
 * [Chapter 2: Introduces Links](user-content-chapter-2-introduces-links)
 * [Chapter 3: Introduces Form Controls](user-content-chapter-3-introduces-form-controls)
 * [Chapter 4: Introduces Form Validation](user-content-chapter-4-introduces-form-validation)
@@ -15,35 +14,7 @@ No prior accessibility experience is necessary.
 * [Chapter 6: Introduces ARIA Widgets](user-content-chapter-6-introduces-aria-widgets)
 * [Chapter 7: Introduces Data Tables](user-content-chapter-7-introduces-data-tables)
 
-## Requirements
-
-For the live coding we assume some basic familiarity with HTML, CSS and JavaScript.
-
-To get the static web server and bundler up and running we assume some familiarity with NPM and LassoJS.
-
-More info to follow.
-
-## Start
-
-For a live-coding workshop, please prime your initial index.html file with the following content:
-
-```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/skin.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v6.3.3/ds4/grid-full.min.css"/>
-        <link rel="stylesheet" href="app.css"/>
-    </head>
-    <body></body>
-    <!-- uncomment the following line when instructed -->
-    <!-- <script src="app.js"></script>-->
-</html>
-```
-
-If you get lost or lose your way, every step of every chapter has a "here's one I made earlier" that you can copy-and-paste from into your file.
-
-## Chapter 1: Introduces Structure
+## Chapter 1: Introduces Structure &amp; Semantics
 
 Chapter 1 builds a mock version of a typical eCommerce homepage.
 
@@ -51,14 +22,47 @@ Whenever I build a new page or component, I always start with the markup. I don'
 
 Some developers, on the other hand, like to start with the JavaScript first. Or the "bells and whistles" as I like to say. To me this is like a builder placing down all of the household electronics (television, microwave, internet router, etc) on the plot of land before the foundations have been laid, walls built and windows put in. Yes, it's exactly like that. Okay, okay maybe I need a better analogy ;-)
 
+1. [Blank Page](user-content-blank-page)
+1. [Meta Data](user-content-meta-data)
+1. [Paragraphs](user-content-paragraphs)
+1. [Lists](user-content-lists)
+1. [Headings](user-content-headings)
+1. [Landmarks](user-content-landmarks)
+1. [Images](user-content-images)
+1. [Table Layout](user-content-table-layout)
+1. [Grid System](user-content-grid-system)
+1. [Cards](user-content-cards)
+1. [Inline Frames](user-content-inline-frames)
+
+### Blank Page
+
+We'll beging with our index page. The page content for this step is left intentionally blank.
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v7.0.2/ds4/skin.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v6.3.3/ds4/grid-full.min.css"/>
+        <link rel="stylesheet" href="app.css"/>
+    </head>
+    <body>
+        <!-- intentionally blank -->
+    </body>
+    <!-- uncomment the following line when instructed -->
+    <!-- <script src="app.js"></script>-->
+</html>
+```
+
+1. Test page with screen reader, notice nothing is announced
+
 ### Meta Data
 
-The page content for this step is left intentionally blank.
+Let's begin adding some meta data to the page.
 
 1. Add `lang="en"` to the `html` tag
 1. Add `<meta charset="utf-8" />` to head
 1. Add `<meta name="viewport" content="width=device-width, initial-scale=1">` to head
-1. Test page with screen reader, notice nothing is announced
 1. Add `<title>Meta - A11Y First Workshop</title>` to head
 1. Test page with screen reader, notice title is now announced
 
@@ -74,25 +78,27 @@ We have introduced 3 key pieces of 'meta' data:
 
 ### Paragraphs
 
-1. Add three paragraphs of content to the page:
-    * `<p>eBay is where the world goes to shop, sell, and give. Our mission is to be the world’s favorite destination for discovering great value and unique selection.</p>`
-    * `<p>For over 20 years, we've been working to create more economic opportunity for everyone. And we're just getting started.</p>`
-    * `<p>Copyright © 1995-2017 eBay Inc. All Rights Reserved.</p>`
-1. Ensure Voiceover web rotor settings include 'Static Text'.
-1. Navigate voiceover to web area (show that voiceover can read desktop and other desktop applications too, not just web pages)
-1. Open Voiceover rotor and explore what it can find on the page (hint: nothing much yet! only the static paragraph text).
-1. We ignore Voiceover 'Web Spots' rotor as this is specific to Voiceover.
+1. Add three paragraphs of content to the page (HTML below)
+1. Ensure VoiceOver web rotor settings include 'Static Text'.
+1. Navigate VO to web area (show that voiceover can read desktop and other desktop applications too, not just web pages)
+1. Open VoiceOover rotor and explore what it can find on the page (hint: nothing much yet! only the static paragraph text).
+1. We ignore VO 'Web Spots' rotor as this is specific to Voiceover.
 
-<img src="images/settings-web-rotor.png" alt="Screenshot of the Voiceover Web Rotor settings" />
+<img src="images/settings-web-rotor.png" alt="Screenshot of the VoiceOver Web Rotor settings" />
 
-### Unordered Lists
+```html
+`<p>eBay is where the world goes to shop, sell, and give. Our mission is to be the world’s favorite destination for discovering great value and unique selection.</p>`
+`<p>For over 20 years, we've been working to create more economic opportunity for everyone. And we're just getting started.</p>`
+`<p>Copyright © 1995-2017 eBay Inc. All Rights Reserved.</p>`
+```
+
+### Lists
 
 1. Add two unordered lists to the page (see markup below)
-1. Ensure Voiceover web rotor settings include 'Lists'.
-1. Explore lists with voiceover shortcuts and web rotor.
-1. Demonstrate that voiceover stops on list element and announces number of items in each list
-1. Demonstrate that voiceover announces 'bullet' before each list item contents
-1. Discuss and demonstrate difference between unordered list and ordered list
+1. Ensure VoiceOver web rotor settings include 'Lists'
+1. Explore lists with VO shortcuts and web rotor
+1. Demonstrate that VO stops on list element and announces number of items in each list
+1. Demonstrate that VO announces 'bullet' before each list item contents
 
 ```html
 <ul>
@@ -110,6 +116,10 @@ We have introduced 3 key pieces of 'meta' data:
 </ul>
 ```
 
+#### Discussion!
+
+What's the difference between an unordered list and an ordered list?
+
 ### Headings
 
 1. Add the following headings:
@@ -119,7 +129,7 @@ We have introduced 3 key pieces of 'meta' data:
     * `<h2>Legal</h2>`
 1. Navigate headings with voiceover keyboard shortcuts and web rotor
 
-### Clipped Text
+It's a bit odd to display a "Legal" header. It's probably not going to fly with designers, but SEO and screenreader users need it. Let's address that now.
 
 1. Add `clipped` class to the 'Legal' header
 1. Demo that legal header is now 'invisible'
@@ -176,7 +186,7 @@ footer[role="contentinfo"] {
 
 Note that the image alt text is the same as the title. Technically speaking these images can be classed as presentational, because if the images were not displayed, we still have the same text below (the title text). We leave the alt text in place for now. Yes, it's a redundant/duplicate navigation for screen reader users, but not technically 'non-accessible'. When we convert the item to a tile, in an upcoming step, we will set this value to blank.
 
-### Scrolling
+#### Discussion
 
 Now that we have content that goes below the fold, we can demonstrate some keyboard accessibility.
 
@@ -229,9 +239,73 @@ A purely presentation step where we convert each collection item into a card usi
 
 1. Wrap each collection item with `<div class="card"><div class="card__cell">...</div></div>`
 
+### Inline Frames
+
+Create a new `iframe-content-1.html` page with the following markup:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body {
+                margin: 0;
+            }
+            img:last-child {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="images/gift-cards-for-home.jpg" alt="" />
+        <img src="images/advert-gift.jpg" alt="It's the gift they've been eyeing all year. Find it here." />
+    </body>
+</html>
+```
+Add the following CSS:
+
+```css
+iframe {
+    border: 0;
+    height: 200px;
+    margin: 1rem 0;
+    width: 100%;
+}
+```
+
+1. Add iframe without title between header and main `<iframe src="iframe-content-1.html" scrolling="no"></iframe>`
+1. Demo that iframe is keyboard focusable in Firefox
+1. Demonstrate untitled iframe behaviour with screen reader
+1. Add `title="Advert"` to iframe and demo with screen reader
+1. This is the only recommended use of `title` attribute! (i.e. do not use it as a 'tooltip' on links)
+1. Navigate inside iframe with screen reader
+1. On main page, wrap iframe in `<aside role="complementary">`. Launch VoiceOver list of landmarks.
+
+This is the final content of main page:
+
+```html
+<aside role="complementary">
+  `<iframe src="iframe-content-1.html" scrolling="no" title="Advert"></iframe>`
+ </aside>
+```
+
 ## Chapter 2: Introduces Links
 
 Chapter 2 continues to build upon our homepage, before moving onto a typical sign in page.
+
+1. [Text Links](user-content-text-links)
+1. [Tiles](user-content-tiles)
+1. [Ambiguous Links](user-content-ambiguous-links)
+1. [Fake Buttons](user-content-fake-buttons)
+1. [New Window Link](user-content-new-window-link)
+1. [Navigation Landmark](user-content-navigation-landmarks)
+1. [Skip-to Link](user-content-skipto)
+1. [Enhanced Skip-to](user-content-skipto-enhanced)
+1. [Custom Focus](user-content-custom-focus)
 
 ### Text Links
 
@@ -329,6 +403,23 @@ This lets screen reader users know about link behaviour, but sighted users still
 
 ```html
 <a href="http://pages.ebay.com/help/policies/user-agreement.html" target="_blank">User Agreement <span class="icon icon--window" role="img" aria-label="Opens in new window or tab"></span></a>
+```
+
+The following CSS is needed for the icon:
+
+```css
+span.icon {
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+}
+
+span.icon--window {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOCAyNSI+PHBhdGggZmlsbD0iIzc2NzY3NiIgZD0iTS40OTcgNS43MDFoMTUuNjQ0Yy4yNzQgMCAuNDk3LjIyMi40OTcuNDk3di43MThhLjQ5Ny40OTcgMCAwIDEtLjQ5Ny40OTdILjQ5N0EuNDk3LjQ5NyAwIDAgMSAwIDYuOTE2di0uNzE4YzAtLjI3NC4yMjItLjQ5Ny40OTctLjQ5N3ptMS4yMTUgMFYyMy45NEgwVjUuNzAxaDEuNzEyem0xOC41MTUgNy43ODV2OS45MzlhLjU1Mi41NTIgMCAwIDEtLjU1Mi41NTJoLS42OTlhLjU1Mi41NTIgMCAwIDEtLjU1Mi0uNTUydi05LjkzOWMwLS4zMDUuMjQ3LS41NTIuNTUyLS41NTJoLjY5OWMuMzA1IDAgLjU1Mi4yNDcuNTUyLjU1MnpNMCAyMi4zMDJoMjAuMjA5djEuNzEySDB2LTEuNzEyek0yNS43NjcuMTYxaDEuOTE0djE2LjU4M2gtMS45MTRWLjE2MXptMS45MTQtLjE0N3YxLjkxNEgxMS4wOThWLjAxNGgxNi41ODN6TTI2LjMyMiAwbDEuMzUzIDEuMzUzTDEzLjM5OCAxNS42M2wtMS4zNTMtMS4zNTNMMjYuMzIyIDB6Ii8+PC9zdmc+);
+    height: 12px;
+    vertical-align: top;
+    width: 12px;
+}
 ```
 
 ### Navigation Landmark
@@ -431,49 +522,14 @@ Rather than adding permanent tabindex to main, it would be better to set a tempo
 $('.skipto').skipTo();
 ```
 
-### CHECKPOINT: Iframe content
+### Custom Focus
 
-Create a new `iframe-content.html` page with the following markup:
+Now we go back to our iframe content.
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            body {
-                margin: 0;
-            }
-        </style>
-    </head>
-    <body>
-        <img src="images/gift-cards-for-home.jpg" alt="" />
-    </body>
-</html>
-```
-
-### IFrame
-
-1. Add iframe without title between header and main `<iframe src="iframe_content.html" scrolling="no"></iframe>`
-1. Demo that iframe is keyboard focusable in Firefox
-1. Demonstrate untitled iframe behaviour with screen reader
-1. Add `title="Advert"` to iframe and demo with screen reader
-    * This is the only recommended use of `title` attribute! (i.e. do not use it as a 'tooltip' on links)
-1. Navigate inside iframe with screen reader
 1. Wrap image in link and demonstrate focus indicator issue when iframe body has zero margin
 1. Add a second image after the first `<img src="images/advert-gift.jpg" alt="It's the gift they've been eyeing all year. Find it here." />`
 1. Move link around this new image
 1. Create an advert that plenty of margin around hyperlink
-1. Wrap iframe in `<aside role="complementary">`
-
-This is the final content of main page:
-
-```html
-<aside role="complementary">
-  `<iframe src="iframe-content.html" scrolling="no" title="Advert"></iframe>`
- </aside>
-```
 
 This is the final content of the IFRAME:
 
@@ -515,37 +571,26 @@ a:focus {
 
 ### CHECKPOINT: Sign In &amp; Registration
 
-We now move onto a new page. Actually, two pages, signin and registration. Both pages have the following content to begin with:
+We now move onto two new pages, sign in and registration. Create two files `signin.html` and `reg.html`. Both pages have the following content to begin with:
 
 ```html
-<div role="main">
-    <h1 class="clipped">Sign In and Registration</h1>
-    <!-- content goes here -->
-</div>
+<body class="identity">
+    <div role="main">
+        <h1 class="clipped">Sign In and Registration</h1>
+        <!-- content goes here -->
+    </div>
+</body>
 ```
 
-Create a new CSS file for each new page:
+Add the following styles to `app.css`:
 
 ```css
-[role="main"] {
+body.identity [role="main"] {
     background-color: white;
     border: 1px solid #ccc;
     margin: 16px auto;
     padding: 16px;
     width: 400px;
-}
-
-div.field {
-    margin: 16px 0;
-}
-
-.field-group {
-    display: flex;
-    margin: 16px 0;
-}
-
-.field-group span.field {
-    width: 100%;
 }
 ```
 
@@ -593,15 +638,29 @@ Now add the following Skin classes to style the links as fake tabs:
 </div>
 ```
 
-Demonstrate that the tabs are still announce as links, and still show up in the screen reader list of links. This is the desired, expected behaviour.
+Demonstrate that the tabs are still announced as links, and still show up in the screen reader list of links. This is the desired, expected behaviour.
 
 The `aria-current` property announces which link in the list matches the current URL.
+
+#### Discussion
 
 A problem with fake-tabs is that they look *too* realstic. Keyboard users might try and use the arrow keys, rather than the TAB key.
 
 ## Chapter 3: Introduces Form Controls
 
-Chapter 3 continues on with our signin and registration pages.
+Chapter 3 continues on with our sign in and registration pages.
+
+1. [Textbox](user-content-textbox)
+1. [Radio](user-content-radio)
+1. [Customised Radio](user-content-customised-radio)
+1. [Select](user-content-select)
+1. [Customised Select](user-content-customised-select)
+1. [Reset](user-content-reset)
+1. [Submit](user-content-submit)
+1. [Textbox Icon](user-content-textbox-icon)
+1. [Checkbox](user-content-checkbox)
+1. [Customised Checkbox](user-content-customised-checkbox)
+1. [Field Description](user-content-field-description)
 
 ### Textbox
 
@@ -638,7 +697,140 @@ Also add textbox &amp; label for password, first name, last name and phone, addi
 </div>
 ```
 
-### ARIA Labels
+Add the following CSS for layout of the side-by-side fields:
+
+```css
+.field-group {
+    display: flex;
+    margin: 16px 0;
+}
+
+.field-group span.field {
+    width: 100%;
+}
+```
+
+### Radio
+
+We are done with the sign in page, and now move back to our registration page.
+
+Radio buttons are our first introduction to using the ARROW keys. The TAB key moves keyboard focus into the radio group, the ARROW keys interact with the radio group buttons. Pressing the TAB key again moves keyboard focus off the radio group onto the next interactive element on the page.
+
+1. Add the HTML below to the fake tabs content panel
+1. Demonstrate keyboard behaviour
+    * TAB key does not move from radio to radio
+    * ARROW key selects
+1. Demonstrate screen reader semantics (type, label, state)
+
+```html
+<input id="paccount" name="account_type" type="radio" value="p" />
+<label for="paccount">Personal account</label>
+<input id="baccount" name="account_type" type="radio" value="b" />
+<label for="baccount">Business account</label>
+```
+
+1. Add a fieldset and legend (clipped)
+1. Demonstrate additional screen reader semantics (group name/label)
+1. Notice that the number and index position of radio is announced, therefore we do not need to put radios inside of lists.
+
+```html
+<fieldset>
+    <legend class="clipped">Account Type</legend>
+    <input id="paccount" name="account_type" type="radio" value="p" />
+    <label for="paccount">Personal account</label>
+    <input id="baccount" name="account_type" type="radio" value="b" />
+    <label for="baccount">Business account</label>
+</fieldset>
+```
+
+Add margins for the fieldset:
+
+```css
+fieldset {
+    margin: 16px 0;
+}
+```
+
+### Customised Radio
+
+Skin enhances the native radios with a custom SVG style, while maintaining the accessibility of the underlying form controls.
+
+Anytime you need to ensure the user makes only single selection (e.g. [star rating](http://ianmcburnie.github.io/mindpatterns/input/starrating/)), radio buttons should be used, and their appearance can be customised using background or foreground SVG.
+
+```html
+<span class="radio">
+    <input class="field__control radio__control" name="account_type" type="radio" value="p" />
+    <span class="radio__icon"></span>
+</span>
+```
+
+If you ever use `role="radio"` on a tag other than input, you must ensure that all keyboard and screen reader behaviour associated with native radios is met. And remember that only the input tag supports form data and browser autofill behaviour.
+
+### Select
+
+Add a native HTML form select with label:
+
+```html
+<div class="field">
+    <label class="field__label field__label--stacked" for="dial-code">Dialing Code</label>
+    <select id="dial-code" name="dc">
+        <option value="1">United States +1</option>
+        <option value="44">United Kingdom +44</option>
+        <option value="1">Canada +1</option>
+    </select>
+</div>
+```
+
+1. SPACE or ARROW key expands.
+1. ARROW keys highlight options, ENTER or SPACE selects.
+1. Screen reader announces control value, label, type
+
+### Customised Select
+
+Skin provides a custom style for the select `button`, but not for the overlay.
+
+```html
+<div class="field">
+    <label class="field__label field__label--stacked" for="dial-code">Dialing Code</label>
+    <span class="field__control select">
+        <select class="select__control select__control--fluid" id="dial-code" name="dc">
+            <option value="1">United States +1</option>
+            <option value="44">United Kingdom +44</option>
+            <option value="1">Canada +1</option>
+        </select>
+        <span class="select__icon" />
+    </span>
+</div>
+```
+
+If you ever try and construct a fully custom select control (i.e. including the overlay), you must ensure that all keyboard and screen reader behaviour associated with a native select control is met.  And remember that only the select tag supports form data and browser autofill behaviour.
+
+#### Reset
+
+1. Add reset button after submit button and demo it's behaviour
+1. Notice that a reset will reset all types of form controls, even listbox and radio, this is why it's imperative we use real controls to support this behaviour
+
+### Submit
+
+Every form requires a submit button, otherwise keyboard accessibility of form is broken (ENTER key will not work, see above).
+
+1. Add `<button type="submit">Register</button>`
+1. Notice that mouse hand cursor does not show for buttons.
+1. Screen reader announces button value/label and type
+1. Demo SPACEBAR and ENTER key behaviour
+1. Demo that form submits an HTTP GET request by default.
+1. A submit button is the only button that should navigate to a new URL in this way.
+1. Demo that keyboard navigation starts from top of new page
+1. Add skin classes to button `class="btn btn--primary"`
+1. Add `action="page-error.html"` to the form tag
+
+```html
+<div class="field">
+    <button class="btn btn--fluid btn--primary" type="submit">Register</button>
+</div>
+```
+
+### Textbox Icons
 
 For this step we move back to our `signin.html` page (it should currently only consist of fake tabs and an empty form).
 
@@ -650,7 +842,7 @@ An unfortunate recent trend in web design is to use the `placeholder` attribute 
 1. Remove the label tags
 1. Add placeholder attributes
 1. Add SVG icon
-1. The `use` attribute refers to an SVG symbol defined in an external SVG file.
+1. The `use` attribute references the ID of an SVG symbol defined on same page, or in an external SVG file
 1. Add `aria-hidden="true"` to SVG tag (to hide presentational image)
 1. Add `focusable="false"` to SVG tag (for IE)
 
@@ -694,7 +886,7 @@ Add a checkbox to the sign in page.
 1. Demonstrate that checkbox is in default tab order with `TAB` key
 1. Demonstrate that checkbox state is toggle with `SPACEBAR` key
 
-### Custom Checkbox
+### Customised Checkbox
 
 With a bit of CSS tricker, it is possible to replace the default checkbox style with inline SVG.
 
@@ -744,171 +936,59 @@ In voiceover the length of pause is configurable, see screenshot below.
 
 <img src="images/settings-voiceover-verbosity.png" alt="Screenshot of the Voiceover verbosity settings" />
 
-### Radio
-
-We are done with the sign in page, and now move back to our registration page.
-
-Radio buttons are our first introduction to using the ARROW keys. The TAB key moves keyboard focus into the radio group, the ARROW keys interact with the radio group buttons. Pressing the TAB key again moves keyboard focus off the radio group onto the next interactive element on the page.
-
-1. Add the HTML below to the fake tabs content panel
-1. Demonstrate keyboard behaviour
-    * TAB key does not move from radio to radio
-    * ARROW key selects
-1. Demonstrate screen reader semantics (type, label, state)
-
-```html
-<input id="paccount" name="account_type" type="radio" value="p" />
-<label for="paccount">Personal account</label>
-<input id="baccount" name="account_type" type="radio" value="b" />
-<label for="baccount">Business account</label>
-```
-
-1. Add a fieldset and legend
-1. Demonstrate additional screen reader semantics (group name/label)
-1. Notice that the number and index position of radio is announced, therefore we do not need to put radios inside of lists.
-
-```html
-<fieldset>
-    <legend class="clipped">Account Type</legend>
-    <input id="paccount" name="account_type" type="radio" value="p" />
-    <label for="paccount">Personal account</label>
-    <input id="baccount" name="account_type" type="radio" value="b" />
-    <label for="baccount">Business account</label>
-</fieldset>
-```
-
-```css
-fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
-}
-```
-
-### Custom Radio
-
-Skin enhances the native radios with a custom SVG style, while maintaining the accessibility of the underlying form controls.
-
-Anytime you need to ensure the user makes only single selection (e.g. [star rating](http://ianmcburnie.github.io/mindpatterns/input/starrating/)), radio buttons should be used, and their appearance can be customised using font icons or SVG.
-
-```html
-<span class="radio">
-    <input class="field__control radio__control" name="account_type" type="radio" value="p" />
-    <span class="radio__icon" hidden>
-        <svg aria-hidden="true" focusable="false">
-            <use xlink:href="../icons.svg#svg-icon-radio"></use>
-        </svg>
-    </span>
-</span>
-```
-
-If you ever use `role="radio"` on a tag other than input, you must ensure that all keyboard and screen reader behaviour associated with native radios is met. And remember that only the input tag supports form data and browser autofill behaviour.
-
-### Listbox
-
-Add a native HTML listbox with label:
-
-```html
-<div class="field">
-    <label class="field__label field__label--stacked" for="dial-code">Dialing Code</label>
-    <select id="dial-code" name="dc">
-        <option value="1">United States +1</option>
-        <option value="44">United Kingdom +44</option>
-        <option value="1">Canada +1</option>
-    </select>
-</div>
-```
-
-1. We call it `listbox` (after the ARIA role) or `select` (after the tag name)
-1. A listbox
-1. SPACE or ARROW key expands.
-1. ARROW keys highlight options, ENTER or SPACE selects.
-1. Screen reader announces control value, label, type
-1. Add [Skin Listbox Classes](https://ebay.github.io/skin/#listbox)
-
-### Custom Listbox
-
-Skin provides a custom style for the select `button`, but not for the overlay.
-
-```html
-<div class="field">
-    <label class="field__label field__label--stacked" for="dial-code">Dialing Code</label>
-    <span class="field__control listbox">
-        <select class="listbox__control listbox__control--fluid" id="dial-code" name="dc">
-            <option value="1">United States +1</option>
-            <option value="44">United Kingdom +44</option>
-            <option value="1">Canada +1</option>
-        </select>
-        <svg aria-hidden="true" class="listbox__icon" focusable="false">
-            <use xlink:href="../icons.svg#svg-icon-arrow-down"></use>
-        </svg>
-    </span>
-</div>
-```
-
-If you ever use `role="listbox"` on a tag other than select, you must ensure that all keyboard and screen reader behaviour associated with a native listbox is met.  And remember that only the select tag supports form data and browser autofill behaviour.
-
-#### Reset
-
-1. Add reset button after submit button and demo it's behaviour
-1. Notice that a reset will reset all types of form controls, even listbox and radio, this is why it's imperative we use real controls to support this behaviour
-
-### Submit
-
-Every form requires a submit button, otherwise keyboard accessibility of form is broken (ENTER key will not work, see above).
-
-1. Add `<button type="submit">Register</button>`
-1. Notice that mouse hand cursor does not show for buttons.
-1. Screen reader announces button value/label and type
-1. Demo SPACEBAR and ENTER key behaviour
-1. Demo that form submits an HTTP GET request by default.
-1. A submit button is the only button that should navigate to a new URL in this way.
-1. Demo that keyboard navigation starts from top of new page
-1. Add skin classes to button `class="btn btn--primary"`
-1. Add `action="page-error.html"` to the form tag
-
-```html
-<div class="field">
-    <button class="btn btn--fluid btn--primary" type="submit">Register</button>
-</div>
-```
-
-### Submit Terms
-
-todo - talk about how checkbox or confirm pattern can be used for legal conditions for form
-
 ## Chapter 4: Introduces Form Validation
 
 In Chapter 4 we continue with our sign and registration pages introducing server-side and client-side validation.
 
-### CHECKPOINT: Registration Error Page
+1. [Required Field](user-content-required-field)
+1. [Page Error](user-content-page-error)
+1. [Field Error](user-content-field-error)
+1. [Dynamic Page Error](user-content-dynamic-page-error)
+1. [Dynamic Field Error](user-content-dynamic-field-error)
 
-Duplicate your current `signin.html` and name it `page-error.html`.
+### Required Field
+
+If a field is required, we should notify the user ahead of time, before they leave the field. There is a well established pattern for this. Required fields.
+
+1. Add an asterisk after label text for email & password
+1. Add `aria-required="true"` to textbox for email & password
+1. Add `checked` state to personal account type radio to set it as the default
+1. Demonstrate that screen reader reads this new 'required' state
+
+The convention for sighted users is to add an asterisk next to each field. To convey the same information to assistive technology, we use the `aria-required` property.
+
+Notice that the screen reader also reads the asterisk, which isn't too disastrous, but let's address this now, with `aria-hidden`.
+
+1. Replace the asterisk inside each required field label with `<span aria-hidden="true">*</span>`
 
 ### Page Error
+
+Duplicate your current `signin.html` and name it `page-error.html`.
 
 At the start of the form, add the following error region:
 
 ```html
-<section aria-labelledby="error-status" class="page-notice page-notice--priority" role="region">
-    <h2 aria-label="Error notice" class="page-notice__status" id="error-status">
-        <svg aria-hidden="true" focusable="false">
-            <use xlink:href="../icons.svg#svg-icon-priority"></use>
-        </svg>
+<section aria-labelledby="attention-status" class="page-notice page-notice--attention" id="page-error" role="region" tabindex="-1">
+    <h2 class="page-notice__status" id="attention-status">
+        <span aria-label="Attention" role="img"></span>
     </h2>
-    <span class="page-notice__cell page-notice__cell--align-middle">
-        <p>Something went wrong. Please try again.</p>
-    </span>
+    <div class="page-notice__content">
+        <p>Please fix the following errors:</p>
+        <ul role="list">
+            <li><a href="#fname">First Name: please enter your first name</a></li>
+            <li><a href="#lname">Last Name: please enter your last name</a></li>
+        </ul>
+    </div>
 </section>
 ```
 
-Demonstrate that a labelled region shows up in the screen reader list of landmarks.
+Demonstrate that a labelled section shows up in the screen reader list of landmarks.
 
-If JavaScript is available we can enhance this experience by setting focus on the page notice. This is our first introduction to the concept of focus management, but bear in mind that **this is one of the very few scenarios we would consider setting focus after page load!**
+If JavaScript is available we can enhance this experience by setting focus on the page notice. This is our first introduction to the concept of focus management, but bear in mind that **this is one of the very few scenarios we would consider setting focus after a full server-side page load!**
 
 1. Add `tabindex="-1"` to the page notice which allows programmatic focus
 1. Add the script below to set focus after page load.
-1. Notice that the message cannot be re-focussed again with keyboard after focus is lost. This is intentional,
+1. Notice that the message cannot be re-focussed again with keyboard after focus is lost. This is intentional.
 
 ```js
 window.onload = function(e) {
@@ -942,9 +1022,9 @@ This may be a long form with many fields in the tab order. How can we make life 
 </ul>
 ```
 
-Now imagine if we have a long form, and scroll down so that the page error notice is no longer visible. We don't want to have to remember where the errors were. We need to flag the fields themselves in some way...
+Now imagine if we have a long form, and scroll down so that the page error notice is no longer visible. We don't want to have to remember where the errors were. We need to flag the fields themselves in some way.
 
-### Inline Error
+### Field Error
 
 A typical design approach is to make the border or color of an invalid field red. However, we **must not use colour alone to convey meaning**. In this case the colour red conveys the meaning of invalid. We also need to add an icon and/or text to convey the meaning.
 
@@ -958,7 +1038,7 @@ Let's add individual error descriptions after the first and last name fields. Fo
 
 ```css
 .field__description--error {
-    color: red;
+    color: #dd1e31;
 }
 ```
 
@@ -972,7 +1052,7 @@ We can also use this property for styling purposes.
 
 ```css
 .textbox__control[aria-invalid="true"] {
-    border-color: red;
+    border-color: #dd1e31;
 }
 ```
 
@@ -982,9 +1062,9 @@ Okay, so the screen reader now says the field is invalid. But why is it invalid,
 <input aria-describebby="fname-error" aria-invalid="true" class="textbox__control textbox__control--fluid" id="fname" name="fname" type="text" />
 ```
 
-Viola! Now all users are informed that the page has an error, what the user must do to fix those errors, and conveniant links to go directly to the error.
+Viola! Now all users are informed that the page has an error, what the user must do to fix those errors, and convenient links to go directly to the error.
 
-### Inline Error Enhanced
+### Dynamic Field Error
 
 Why reload the page just to tell a user they entered an invalid value? We can use JavaScript to validate the field at any time.
 
@@ -994,14 +1074,6 @@ Let's go back to our `reg.html` page, and add hidden error messages after the em
 <div class="field__description field__description--error" id="email-error">
     <span hidden>Please enter a valid email address</span>
 </div>
-```
-
-For older browsers that do not support `hidden` it's a good idea to polfill the CSS:
-
-```css
-[hidden] {
-    display: none;
-}
 ```
 
 Add the class `.field-validation` to the fields containing the email, password and phone text boxes.
@@ -1028,11 +1100,9 @@ document.querySelectorAll('.field-validation input').forEach(function(item) {
 });
 ```
 
+**NOTE:** `forEach` on a query collection is not supported in some older browsers.
+
 Now, after a value is entered, the error message appears when the field loses focus. Of course we aren't actually doing any real validation in this simple example. We have just hardcoded the error message to appear for any non-empty value. Writing a validation routine is not in the scope of this workshop, but is a fun exercise!
-
-Note that `forEach` on a query collection is not supported in some browsers.
-
-### Live Region
 
 The error message appears for sighted users, but a screen reader user might miss this error message entirely if they use the `TAB` key to skip to the next field. The solution is to convert the error message container into an ARIA live region.
 
@@ -1048,28 +1118,7 @@ Note that the `aria-live` attribute **must** go on the ancestor of the dynamic c
 
 Now when the error message text appears, it will announce the new text that displayed inside of the live region. The value of polite informs assistive technology to make this announcement after all other current announcements in queue. A value of assertive would push the announcement to the front of that queue. I wish it had been called 'rude'!
 
-### Required Field
-
-You may have noticed that we have removed the validation for missing first name and last name, and we are no longer doing any checks on the client for missing values. Why? Because there is another well established pattern for this. Required fields.
-
-1. Add an asterisk after label text for email, password and phone
-1. Add `aria-required="true"` to textbox for email, password and phone
-1. Add `checked` state to personal account type radio to set it as the default
-1. Demonstrate that screen reader reads this new 'required' state
-    * It also reads the asterisk, which isn't too disastrous, but let's address it in the next step
-
-The convention for sighted users is to add an asterisk next to each field. To convey the same information to assistive technology, we use the `aria-required` property. Note that correct use of listbox (applying a sensible default) means that we shouldn't need to denote a listbox as a required field.
-
-### Redundant Text
-
-This short step introduces the concept of redundant text.
-
-1. Replace the asterisk inside each required field label with `<span aria-hidden="true">*</span>`
-1. Demonstrate that screen reader now ignores these elements (remember, the same information is conveyed with `aria-required`)
-
-
-
-### Page Error Client
+### Dynamic Page Error
 
 So we've made the inline error messages appear without a round trip to the server and a full page reload. We call this input validation, or field validation. How about making the page error appear instantly too, after clicking the submit button?
 
@@ -1139,10 +1188,6 @@ regForm.addEventListener('submit', function(e) {
 
 Remember that we would also need to render the inline errors on the client too!
 
-### Password Helper
-
-todo
-
 ## Chapter 5: Introduces Buttons
 
 For Chapter 5, we move back to our homepage.
@@ -1150,6 +1195,26 @@ For Chapter 5, we move back to our homepage.
 ### Click Flyout
 
 The eBay shop by category button is a good example of a flyout that opens on click.
+
+```html
+<div class="flyout flyout--click">
+    <button class="flyout__trigger" type="button">Shop by Category <span aria-hidden="true" class="icon icon--arrow-down" /></button>
+    <div class="flyout__overlay">
+        <h3>Category 1</h3>
+        <ul>
+            <li><a href="http://www.ebay.com">Sub-Category 1</a></li>
+            <li><a href="http://www.ebay.com">Sub-Category 2</a></li>
+            <li><a href="http://www.ebay.com">Sub-Category 3</a></li>
+        </ul>
+        <h3>Category 2</h3>
+        <ul>
+            <li><a href="http://www.ebay.com">Sub-Category 1</a></li>
+            <li><a href="http://www.ebay.com">Sub-Category 2</a></li>
+            <li><a href="http://www.ebay.com">Sub-Category 3</a></li>
+        </ul>
+    </div>
+</div>
+```
 
 ```css
 .flyout {
@@ -1166,6 +1231,16 @@ The eBay shop by category button is a good example of a flyout that opens on cli
 
 .flyout--click .flyout__trigger[aria-expanded=true] + .flyout__overlay {
     display: block;
+}
+```
+
+We add a new background icon:
+
+```CSS
+span.icon--arrow-down {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAxMyI+PHBhdGggZmlsbD0iIzc2NzY3NiIgZD0iTTExLjYwNCAxMi45MjFMMCAwaDIzLjIxNWwtNS44MDcgNi40NjJ6Ii8+PC9zdmc+');
+  height: 13px;
+  width: 24px;
 }
 ```
 
@@ -1232,19 +1307,35 @@ $('.flyout--hover').hoverFlyout();
 
 ### Critical Icon
 
-1. Append link to eyebrow `<a class="icon-cart" href="http://cart.payments.ebay.com" id="cart" aria-label="cart"></a>`
+1. Append link to eyebrow
 1. Remember that hand cursor shows for links
 
-```css
-#cart::before {
-    font-weight: 900;
-}
+```html
+`<a href="http://cart.payments.ebay.com" id="cart" aria-label="cart">
+    <span class="icon icon--cart"></span>
+</a>`
 ```
 
-### Non-Critical Icon
+Add the following CSS:
 
-1. Append icon span to button `<span aria-hidden="true" class="icon icon--arrow-down"/>`
-1. TODO: use inline SVG instead of font icon
+```css
+a#cart {
+    margin-left: 1em;
+}
+
+span.icon {
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+span.icon--cart {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAyNCI+PHBhdGggZmlsbD0iIzc2NzY3NiIgZD0iTTI5LjU2NCA1LjU2MWMtLjI5My0uNDY4LS45MzctMS4wNTQtMi4yMjQtMS4wNTQtMS40MDUtLjA1OS0xOC4yMDcgMC0xOS4yMDIgMEw2LjY3NS41ODVBLjg4Ljg4IDAgMCAwIDUuODU1IDBILjg3OEMuMzUxIDAgMCAuMzUxIDAgLjg3OHMuMzUxLjg3OC44NzguODc4aDQuMzlsNS43MzggMTUuMjJhLjg4Ljg4IDAgMCAwIC44Mi41ODVoMTMuODE3Yy41MjcgMCAuOTM3LS4yOTMgMS4xMTItLjc2MS4xMTctLjI5My43NjEtMi4wNDkgMS40MDUtMy44MDUuNjQ0LTEuODE1IDEuMzQ2LTMuNjg4IDEuNTIyLTQuMjczLjQ2OS0xLjI4OC40MS0yLjQtLjExNy0zLjE2MXptLTEuNTIyIDIuNTE3Yy0uMjM0LjU4NS0uODc4IDIuNDU5LTEuNTggNC4yNzNhMTA3LjM4MiAxMDcuMzgyIDAgMCAwLTEuMjMgMy40NTRoLTEyLjgybC0zLjYzLTkuNTQxaDE4LjVjLjI5MyAwIC42NDQuMDU5LjgyLjI5My4yMzQuMjM0LjE3Ni44Mi0uMDU5IDEuNTIydi0uMDAxek0xNC42OTUgMjEuNmEyLjE2NiAyLjE2NiAwIDEgMS00LjMzMyAwIDIuMTY2IDIuMTY2IDAgMCAxIDQuMzMzIDB6bTEyLjY0NSAwYTIuMTY2IDIuMTY2IDAgMSAxLTQuMzMzIDAgMi4xNjYgMi4xNjYgMCAwIDEgNC4zMzMgMHoiLz48L3N2Zz4=');
+  height: 1rem;
+  width: 30px;
+}
+```
 
 ### Access Key
 

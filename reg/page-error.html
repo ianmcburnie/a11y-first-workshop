@@ -4,39 +4,37 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Page Error - A11Y First Workshop</title>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/skin.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v7.0.2/ds4/skin.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v6.3.3/ds4/grid-full.min.css"/>
         <link rel="stylesheet" href="../app.css"/>
         <link rel="stylesheet" href="reg.css"/>
     </head>
-    <body>
+    <body class="identity">
         <div role="main">
             <h1 class="clipped">Sign In and Registration</h1>
             <div class="fake-tabs">
                 <ul class="fake-tabs__items">
                     <li class="fake-tabs__item">
-                        <a href="../signin/field-description.html">Sign In</a>
+                        <a href="../signin/fake-tabs.html">Sign In</a>
                     </li>
                     <li class="fake-tabs__item fake-tabs__item--current">
-                        <a aria-current="page" href="page-error.html">Register</a>
+                        <a aria-current="page" href="submit.html">Register</a>
                     </li>
                 </ul>
                 <div class="fake-tabs__content">
                     <form action="inline-error.html">
 
-                        <section aria-labelledby="error-status" class="page-notice page-notice--priority" id="page-error" role="region" tabindex="-1">
-                            <h2 aria-label="Error notice" class="page-notice__status" id="error-status">
-                                <svg aria-hidden="true" focusable="false">
-                                    <use xlink:href="../icons.svg#svg-icon-priority"></use>
-                                </svg>
+                        <section aria-labelledby="attention-status" class="page-notice page-notice--attention" id="page-error" role="region" tabindex="-1">
+                            <h2 class="page-notice__status" id="attention-status">
+                                <span aria-label="Attention" role="img"></span>
                             </h2>
-                            <span class="page-notice__cell page-notice__cell--align-middle">
+                            <div class="page-notice__content">
                                 <p>Please fix the following errors:</p>
                                 <ul role="list">
                                     <li><a href="#fname">First Name: please enter your first name</a></li>
                                     <li><a href="#lname">Last Name: please enter your last name</a></li>
                                 </ul>
-                            </span>
+                            </div>
                         </section>
 
                         <fieldset>
@@ -44,23 +42,15 @@
                             <div class="field-group">
                                 <span class="field">
                                     <span class="radio">
-                                        <input class="field__control radio__control" id="paccount" name="account_type" type="radio" value="p" />
-                                        <span class="radio__icon" hidden>
-                                            <svg aria-hidden="true" focusable="false">
-                                                <use xlink:href="../icons.svg#svg-icon-radio"></use>
-                                            </svg>
-                                        </span>
+                                        <input class="field__control radio__control" id="paccount" name="account_type" type="radio" value="p" checked />
+                                        <span class="radio__icon"></span>
                                     </span>
                                     <label class="field__label field__label--end" for="paccount">Personal account</label>
                                 </span>
                                 <span class="field">
                                     <span class="radio">
                                         <input class="field__control radio__control" id="baccount" name="account_type" type="radio" value="b" />
-                                        <span class="radio__icon" hidden>
-                                            <svg aria-hidden="true" focusable="false">
-                                                <use xlink:href="../icons.svg#svg-icon-radio"></use>
-                                            </svg>
-                                        </span>
+                                        <span class="radio__icon"></span>
                                     </span>
                                     <label class="field__label field__label--end" for="baccount">Business account</label>
                                 </span>
@@ -68,14 +58,14 @@
                         </fieldset>
 
                         <div class="field">
-                            <label class="field__label field__label--stacked" for="email">Email</label>
+                            <label class="field__label field__label--stacked" for="email">Email <span aria-hidden="true">*</span></label>
                             <div class="field__control textbox">
                                 <input class="textbox__control textbox__control--fluid" id="email" name="email" type="text" />
                             </div>
                         </div>
 
                         <div class="field">
-                            <label class="field__label field__label--stacked" for="password">Password</label>
+                            <label class="field__label field__label--stacked" for="password">Password <span aria-hidden="true">*</span></label>
                             <div class="field__control textbox">
                                 <input class="textbox__control textbox__control--fluid" id="password" name="password" type="password" />
                             </div>
@@ -100,15 +90,13 @@
                         <div class="field-group">
                             <span class="field">
                                 <label class="field__label field__label--stacked" for="dial-code">Dialing Code</label>
-                                <span class="field__control listbox">
-                                    <select class="listbox__control listbox__control--fluid" id="dial-code" name="dc">
+                                <span class="field__control select">
+                                    <select class="select__control select__control--fluid" id="dial-code" name="dc">
                                         <option value="1">United States +1</option>
                                         <option value="44">United Kingdom +44</option>
                                         <option value="1">Canada +1</option>
                                     </select>
-                                    <svg aria-hidden="true" class="listbox__icon" focusable="false">
-                                        <use xlink:href="../icons.svg#svg-icon-arrow-down"></use>
-                                    </svg>
+                                    <span class="select__icon"></span>
                                 </span>
                             </span>
 

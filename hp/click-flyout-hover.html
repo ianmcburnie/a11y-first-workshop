@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Click Flyout Hover - A11Y Workshop</title>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/skin.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v7.0.2/ds4/skin.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v6.3.3/ds4/grid-full.min.css"/>
         <link rel="stylesheet" href="../app.css"/>
     </head>
@@ -14,7 +14,7 @@
             <div id="eyebrow">
                 <div>
                     <span id="profile" class="flyout flyout--click flyout--hover">
-                        <button class="flyout__trigger" type="button">Hi Ian</button>
+                        <button class="flyout__trigger" type="button">Hi Ian <span aria-hidden="true" class="icon icon--arrow-down" /></button>
                         <div class="flyout__overlay">
                             <img src="../images/profile.jpg" alt="" />
                             <ul role="list">
@@ -26,7 +26,7 @@
                     </span>
                 </div>
             </div>
-            <div>
+            <div id="eyeball">
                 <table role="presentation">
                     <tr>
                         <td>
@@ -34,7 +34,7 @@
                         </td>
                         <td>
                             <div class="flyout flyout--click">
-                                <button class="flyout__trigger" type="button">Shop by Category</button>
+                                <button class="flyout__trigger" type="button">Shop by Category <span aria-hidden="true" class="icon icon--arrow-down" /></button>
                                 <div class="flyout__overlay">
                                     <h3>Category 1</h3>
                                     <ul>

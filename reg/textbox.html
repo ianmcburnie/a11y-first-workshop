@@ -4,12 +4,11 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Textbox - A11Y First Workshop</title>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/skin.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v7.0.2/ds4/skin.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v6.3.3/ds4/grid-full.min.css"/>
         <link rel="stylesheet" href="../app.css"/>
-        <link rel="stylesheet" href="reg.css"/>
     </head>
-    <body>
+    <body class="identity">
         <div role="main">
             <h1 class="clipped">Sign In and Registration</h1>
             <div class="fake-tabs">
@@ -38,27 +37,27 @@
                             </div>
                         </div>
 
-                        <div class="field">
-                            <label class="field__label field__label--stacked" for="password">First Name</label>
-                            <div class="field__control textbox">
-                                <input class="textbox__control textbox__control--fluid" name="fname" id="fname" type="text" />
-                            </div>
-                        </div>
-
                         <div class="field-group">
+                            <span class="field">
+                                <label class="field__label field__label--stacked" for="fname">First Name</label>
+                                <div class="field__control textbox">
+                                    <input class="textbox__control textbox__control--fluid" name="fname" id="fname" type="text" />
+                                </div>
+                            </span>
+
                             <span class="field">
                                 <label class="field__label field__label--stacked" for="lname">Last Name</label>
                                 <div class="field__control textbox">
                                     <input class="textbox__control textbox__control--fluid" name="lname" id="lname" type="text" />
                                 </div>
                             </span>
+                        </div>
 
-                            <span class="field">
-                                <label class="field__label field__label--stacked" for="phone">Mobile Phone</label>
-                                <div class="field__control textbox">
-                                    <input class="textbox__control textbox__control--fluid" name="phone" id="phone" type="text" />
-                                </div>
-                            </span>
+                        <div class="field">
+                            <label class="field__label field__label--stacked" for="phone">Mobile Phone</label>
+                            <div class="field__control textbox">
+                                <input class="textbox__control textbox__control--fluid" name="phone" id="phone" type="text" />
+                            </div>
                         </div>
                     </form>
                 </div>

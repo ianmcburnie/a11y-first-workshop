@@ -29,20 +29,18 @@ window.onload = function(e) {
     if (regForm) {
         var placeholderEl = regForm.querySelector('.page-error-placeholder');
         var template = '' +
-            '<section aria-labelledby="error-status" class="page-notice page-notice--priority" id="page-error" role="region">' +
-                '<h2 aria-label="Error notice" class="page-notice__status" id="error-status">' +
-                    '<svg aria-hidden="true" focusable="false">' +
-                        '<use xlink:href="../icons.svg#svg-icon-priority"></use>' +
-                    '</svg>' +
-                '</h2>' +
-                '<span class="page-notice__cell page-notice__cell--align-middle">' +
-                    '<p>Please fix the following errors:</p>' +
-                    '<ul role="list">' +
-                        '<li><a href="#fname">First Name: please enter your first name</a></li>' +
-                        '<li><a href="#lname">Last Name: please enter your last name</a></li>' +
-                    '</ul>' +
-                '</span>' +
-            '</section>';
+        '<section aria-labelledby="attention-status" class="page-notice page-notice--attention" id="page-error" role="region" tabindex="-1">' +
+            '<h2 class="page-notice__status" id="attention-status">' +
+                '<span aria-label="Attention" role="img"></span>' +
+            '</h2>' +
+            '<div class="page-notice__content">' +
+                '<p>Please fix the following errors:</p>' +
+                '<ul role="list">' +
+                    '<li><a href="#fname">First Name: please enter your first name</a></li>' +
+                    '<li><a href="#lname">Last Name: please enter your last name</a></li>' +
+                '</ul>' +
+            '</div>' +
+        '</section>';
 
         regForm.addEventListener('submit', function(e) {
             e.preventDefault();

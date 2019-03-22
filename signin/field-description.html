@@ -4,12 +4,11 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Checkbox - A11Y First Workshop</title>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/skin.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v7.0.2/ds4/skin.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v6.3.3/ds4/grid-full.min.css"/>
         <link rel="stylesheet" href="../app.css"/>
-        <link rel="stylesheet" href="../reg/reg.css"/>
     </head>
-    <body>
+    <body class="identity">
         <div role="main">
             <div class="fake-tabs">
                 <ul class="fake-tabs__items">
@@ -17,7 +16,7 @@
                         <a aria-current="page" href="field-description.html">Sign In</a>
                     </li>
                     <li class="fake-tabs__item">
-                        <a href="../reg/textbox.html">Register</a>
+                        <a href="../reg/fake-tabs.html">Register</a>
                     </li>
                 </ul>
                 <div class="fake-tabs__content">
@@ -25,7 +24,7 @@
                         <div class="field">
                             <div class="field__control textbox">
                                 <svg aria-hidden="true" class="textbox__icon" focusable="false">
-                                    <use xlink:href="../icons.svg#svg-icon-mail"></use>
+                                    <use xlink:href="../icons.svg#icon-messages"></use>
                                 </svg>
                                 <input aria-label="Email or username" class="textbox__control textbox__control--fluid" type="text" placeholder="Email or username" />
                             </div>
@@ -34,7 +33,7 @@
                         <div class="field">
                             <div class="field__control textbox">
                                 <svg aria-hidden="true" class="textbox__icon" focusable="false">
-                                    <use xlink:href="../icons.svg#svg-icon-star"></use>
+                                    <use xlink:href="../icons.svg#icon-profile"></use>
                                 </svg>
                                 <input aria-label="Password" class="textbox__control textbox__control--fluid" id="password" placeholder="Password" type="password" />
                             </div>
@@ -50,8 +49,11 @@
                             <span class="field__control checkbox">
                                 <input aria-describedby="ssi-description" class="checkbox__control" id="ssi" name="ssi" type="checkbox" />
                                 <span class="checkbox__icon" hidden>
-                                    <svg aria-hidden="true" focusable="false">
-                                        <use xlink:href="../icons.svg#svg-icon-checkbox"></use>
+                                    <svg class="icon icon--checkbox--unchecked checkbox__unchecked" focusable="false" height="19" width="21">
+                                        <use xlink:href="../icons.svg#icon-checkbox-unchecked"></use>
+                                    </svg>
+                                    <svg class="icon icon--checkbox--checked checkbox__checked" focusable="false" height="19" width="21">
+                                        <use xlink:href="../icons.svg#icon-checkbox-checked"></use>
                                     </svg>
                                 </span>
                             </span>

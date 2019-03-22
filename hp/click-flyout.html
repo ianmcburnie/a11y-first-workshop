@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Click Flyout - A11Y Workshop</title>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v2.10.1/css/skin.min.css"/>
+        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v7.0.2/ds4/skin.min.css"/>
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v6.3.3/ds4/grid-full.min.css"/>
         <link rel="stylesheet" href="../app.css"/>
     </head>
@@ -13,7 +13,7 @@
             <a href="#mainContent" class="clipped clipped--stealth">Skip to main content</a>
         </span>
         <header role="banner">
-            <div>
+            <div id="eyeball">
                 <table role="presentation">
                     <tr>
                         <td>
@@ -21,7 +21,7 @@
                         </td>
                         <td>
                             <div class="flyout flyout--click">
-                                <button class="flyout__trigger" type="button">Shop by Category</button>
+                                <button class="flyout__trigger" type="button">Shop by Category <span aria-hidden="true" class="icon icon--arrow-down" /></button>
                                 <div class="flyout__overlay">
                                     <h3>Category 1</h3>
                                     <ul>
