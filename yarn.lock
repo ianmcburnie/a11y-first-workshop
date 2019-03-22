@@ -1154,6 +1154,11 @@ cross-spawn@^6.0.0:
     shebang-command "^1.2.0"
     which "^1.2.9"
 
+custom-event-polyfill@~0.3:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/custom-event-polyfill/-/custom-event-polyfill-0.3.0.tgz#99807839be62edb446b645832e0d80ead6fa1888"
+  integrity sha1-mYB4Ob5i7bRGtkWDLg2A6tb6GIg=
+
 debug@2.6.9, debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.8, debug@^2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
@@ -2158,86 +2163,6 @@ isobject@^3.0.0, isobject@^3.0.1:
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
 
-jquery-click-flyout@latest:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/jquery-click-flyout/-/jquery-click-flyout-0.0.10.tgz#6764249fe239ddd19485588f19a23ba0ce6f7183"
-  integrity sha512-uKu3QHY6dATsNuUwOQRj3ZRK/A2BoZjMuTVqeLPoUCv9nUXQwDFVYqRckhEH84+qZHehE1L56CGhP8lRkcYnXA==
-
-jquery-common-keydown@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/jquery-common-keydown/-/jquery-common-keydown-1.0.1.tgz#4b6d99dae5c20ffa9bc937b1652fb4620ca9f1f6"
-  integrity sha512-SShg1jPEkNXH8yUBsIhGYjnt5U2Rbg7aNaHPVieG3nxjMjpqPREG3//MDWUgGHTyyenfsrV1OLTu5Ne/5U3Sdg==
-
-jquery-focus-exit@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/jquery-focus-exit/-/jquery-focus-exit-1.0.1.tgz#76b5686bb464d07f9be45ef3888216305ced8046"
-  integrity sha512-p79pTJKVsrYX4bZML+bc1MnRe9IrxcpIIeUqyfuVMpLFR4L05r7zxBe3YywPjn74hNavuOA2KNBhy36UXroMiA==
-
-jquery-focus-flyout@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/jquery-focus-flyout/-/jquery-focus-flyout-0.0.5.tgz#ccc031d75ba4edcee3fceb5ef8180edba94643d6"
-  integrity sha512-Z4cb1c7H1YmJtUVpPrL6vWGBeDP96b9om/823AKGUi0kax+fRqoNhRmRPoKZwIItchz5kzr1rfPNjPTh/Zso1Q==
-
-jquery-focusable@latest:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/jquery-focusable/-/jquery-focusable-1.0.1.tgz#a8fe7062ccf01a0c1cf7818cfb2f41ac0dd55a79"
-  integrity sha512-2b8ygutQWTTRDXUN2/abYN0dgFyFQyuXpRajQ+acJw6fmurgde+k5KQrxteEQZd7x6YYdbNaI9IHuih7maC6pA==
-
-jquery-grid-navigation@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/jquery-grid-navigation/-/jquery-grid-navigation-1.0.1.tgz#210b971ef14f90c61a9309b89c2cb9e92747bc95"
-  integrity sha512-z7yHgAqfOT6XRDRpHX3XFZnwvd9FNAnI3aNzOeCW6L53mtMTPeUSFdT/lLtsMnxCjaYgQvKImglQLJjgAgQD1g==
-
-jquery-hover-flyout@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/jquery-hover-flyout/-/jquery-hover-flyout-0.0.5.tgz#f39db3e66f716053920e6b7ccf03706b5bd4a16b"
-  integrity sha512-gKUfrZX2GnukCtQXjOpkkmsOTJJtmRR7B0KMdNmmapHYTtWDaNEEWF6jnpY4ZKYNDIFyDA3ozwSSMSwVh/9o7Q==
-
-jquery-linear-navigation@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/jquery-linear-navigation/-/jquery-linear-navigation-1.0.2.tgz#cd0a63d7e90bf1a1cd96d6b70d8d0cefa8fb5db2"
-  integrity sha512-KImjGdfIw9jJhkL9Tw5qWcnMS1l4qTkQF9Axwn6w688boN6k3XvZE0WJdH0J0OyuKUM6ORxfUQRVzPFELhrL0A==
-
-jquery-menu@^0.7.3:
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/jquery-menu/-/jquery-menu-0.7.3.tgz#85e56e668cc8851a25f82dc4b22c60556b44a1af"
-  integrity sha512-eQUM+2LBqC7/yDfzfslpVzZEKd6EdotbvE9nWHKDqFcpYFCvDI6NOkITWPxgZzYMI/9TFixRIi24k2fCjgMTHA==
-
-jquery-mouse-exit@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/jquery-mouse-exit/-/jquery-mouse-exit-1.0.1.tgz#010226c4065a52eda618ce9f450e42bd5dc38fe2"
-  integrity sha512-GmFpnyCDrvmSbQA3PbJRU3LzT2Hl1oabsmfn8y1RYXuGqG6LBYDKU7qbSRXesxlrWZzsN/iRQ7sn3ZzieSNGvw==
-
-jquery-next-id@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/jquery-next-id/-/jquery-next-id-1.0.1.tgz#26541a06be9cb44186470716bc2ab7870cfd7936"
-  integrity sha512-k3KfyKULqlfik9xb6DZpFt+3rdAnMf8zXxz1xwrsDyjGrUuAKSr20nQJ0H/Qh2Suewt4zDzdYeGDEK74xNSkng==
-
-jquery-prevent-scroll-keys@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/jquery-prevent-scroll-keys/-/jquery-prevent-scroll-keys-1.0.1.tgz#4ee4ac3b59bee96c3f77cf814c88c947d9a2228d"
-  integrity sha512-wGIarVUxWQ1i6ievF+R4HKg6bRVayiJx2kL4l4gdoALX9Tw5UnR8THZfCdyeWIdnAbBjiwwnQIWIvAgvx8ZsYg==
-
-jquery-roving-tabindex@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/jquery-roving-tabindex/-/jquery-roving-tabindex-1.0.1.tgz#e32544212d874da306b5448639acb25106c7c0d5"
-  integrity sha512-JVnw0MQHNoIG5bX9vgi/H6JhBJX4W9JATBl4DMmoXTRNejJkjO59HqmdnrThbe0J38IOQd9q4uysA5Mz+2lWKQ==
-
-jquery-skip-to@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/jquery-skip-to/-/jquery-skip-to-0.0.2.tgz#1a3240dfd67a99ad9951db10ebce18abe8933070"
-  integrity sha512-HRLuiXwaR5tU4Bx1yHMldtT2taZHVHC1z90jUZR2CBEAJZQBTYQEaPeOb52ueym5BRK2fUis9qMh15DJBKsH3A==
-
-jquery-tooltip@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/jquery-tooltip/-/jquery-tooltip-0.2.1.tgz#ef0492cf04add960cf1f7ed394d70cca3fc7fe94"
-  integrity sha512-xuvABPMv9N4tA1pqYQfxHfkNOkRhRwF861eBbf5qzF07dB/+70oRPbkM2UnxObUiMb/aBnRBVLXNd/oUmp8/cg==
-
-jquery@>=1.11:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
-  integrity sha512-Ubldcmxp5np52/ENotGxlLe6aGMvmF4R8S6tZjsP6Knsaxd/xp3Zrh50cG93lR6nPXyUFwzN3ZSOQI0wRJNdGg==
-
 "js-tokens@^3.0.0 || ^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -2524,6 +2449,34 @@ loose-envify@^1.0.0:
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
+
+makeup-exit-emitter@~0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/makeup-exit-emitter/-/makeup-exit-emitter-0.0.4.tgz#26482e73db3ef6ef5f8ac2c3c21e8197488fd458"
+  integrity sha512-qcfKD3R9fXGlekobtjHIgkyqY4Y2NNP0H1RjPtZMDgf216oKwdvvY7JyxHanuJbjlN/i17A35SXhya6eqhuE2g==
+  dependencies:
+    custom-event-polyfill "~0.3"
+    makeup-next-id "~0.0"
+
+makeup-expander@~0.7:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/makeup-expander/-/makeup-expander-0.7.0.tgz#593d55f76a2f08440ba2913bf96a9d2e6f0388eb"
+  integrity sha512-d1SA6iXKAjw9YI70EvzoVSbUsLijH1dMOG+cakaz/HjO9kNUFplPHKjm2NMUtEmA+0wyfecANPqeEQHDpKU8Yg==
+  dependencies:
+    custom-event-polyfill "~0.3"
+    makeup-exit-emitter "~0.0.4"
+    makeup-focusables "~0.0.3"
+    makeup-next-id "~0.0.2"
+
+makeup-focusables@~0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/makeup-focusables/-/makeup-focusables-0.0.3.tgz#e30f36a99beb7c5166daafb8f823fefcc7a551fa"
+  integrity sha512-iYXrrGPK0ISdiFc6YZUhMpAD4Fw9a+sS2FZ4FF6hlSKSn8zlJEUOHqBgQ6PWd6hYXAIEzDheayRqDARQCjMFmQ==
+
+makeup-next-id@~0.0, makeup-next-id@~0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/makeup-next-id/-/makeup-next-id-0.0.2.tgz#70f19812b0b5cb8d5f0f7f78719179ea4b61a0ef"
+  integrity sha512-nAeDpu/X8Z978mvtj1GnalHNs3ulHOLIpEm2lLAM3SO8KdTDtl4uP3utfW8oYtOZIXaeMhR53JqxFDQ3ZYCZug==
 
 map-cache@^0.2.2:
   version "0.2.2"

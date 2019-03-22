@@ -159,7 +159,7 @@ fieldset {
     margin: 16px 0;
 }
 
-/* STEP: PAGE NOTICE */
+/* STEP: PAGE ERROR */
 
 .page-notice--attention ul {
     list-style-type: none;
@@ -176,18 +176,18 @@ fieldset {
     color: #dd1e31;
 }
 
-/* STEP: CLICK FLYOUT */
+/* STEP: BUTTON FLYOUT */
 
 #eyeball {
     max-width: 1280px;
     margin: 0 auto;
 }
 
-.flyout {
+.expander {
     position: relative;
 }
 
-.flyout__overlay {
+.expander__content {
     background-color: white;
     display: none;
     left: 0;
@@ -197,13 +197,15 @@ fieldset {
     z-index: 1;
 }
 
-.flyout__overlay ul {
+.expander__content ul {
+    column-count: 3;
     list-style: none;
+    line-height: 2rem;
     margin: 0;
     padding: 0;
 }
 
-.flyout--click .flyout__trigger[aria-expanded=true] + .flyout__overlay {
+.expander__host[aria-expanded=true] + .expander__content {
     display: block;
 }
 
@@ -253,8 +255,15 @@ body {
 
 /* STEP: CRITICAL ICON */
 
-a#cart {
-    margin-left: 1em;
+button#notifications {
+    background: 0 none;
+    border: 0 none;
+}
+
+span.icon--notification {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzc2NzY3NiIgZD0iTTEyLjA0OCAyMy41OWMxLjIyOSAwIDIuMjI0LS45OTUgMi4yMjQtMi4xNjZoLTQuMzljLS4wNiAxLjE3MS45MzcgMi4xNjYgMi4xNjYgMi4xNjZ6bTExLjUzMi00LjU2NnMtMi4xNjYtMS43NTYtMy4zMzctMy4xMDJjLS45MzctMS4xMTItLjkzNy0yLjUxNy0uOTM3LTQuMzMyIDAtMi40LjA1OS01LjQ0NC0yLjY5My04LjQyOUMxNS40NDIgMS44NzMgMTQuMDM3IDEuMjg4IDEzLjEuOTk1IDEzLjA0LjQxIDEyLjUxNiAwIDExLjkzIDBjLS41ODYgMC0xLjA1NC40MS0xLjE3MS45OTUtLjk5NS4yOTMtMi4zNDEuODc4LTMuNTEyIDIuMTY2QzQuNDk2IDYuMTQ2IDQuNDk2IDkuMTkgNC41NTQgMTEuNTljMCAxLjgxNS4wNTkgMy4yMi0uOTM3IDQuMzMyQzIuNDQ2IDE3LjI2OC4zMzkgMTkuMDI0LjI4IDE5LjAyNGMtLjIzNC4xNzYtLjM1MS41MjctLjIzNC44Mi4xMTcuMjkzLjM1LjQ2OC43MDIuNDY4aDIyLjI0NGEuNzYuNzYgMCAwIDAgLjcwMi0uNDY4Yy4yMzQtLjI5My4xMTctLjY0NC0uMTE3LS44MmguMDAzem0tMTEuNTMyLS4xNzVoLTkuMjVhMzEuNjU2IDMxLjY1NiAwIDAgMCAxLjk5LTEuOTljMS4zNDctMS41MjIgMS4yODktMy4zMzcgMS4yODktNS4yNjggMC0yLjQtLjA2LTQuODU5IDIuMzQtNy40MzRDOS45NCAyLjQ1OSAxMS45OSAyLjIyNSAxMS45OSAyLjIyNWguMDU5czIuMDQ5LjIzNCAzLjU3IDEuOTMyYzIuMzQyIDIuNTc2IDIuMzQyIDUuMDM0IDIuMzQyIDcuNDM0IDAgMS45MzItLjA2IDMuNzQ2IDEuMjg4IDUuMjY4YTMxLjY1NiAzMS42NTYgMCAwIDAgMS45OSAxLjk5aC05LjE5eiIvPjwvc3ZnPg==');
+  height: 1rem;
+  width: 24px;
 }
 
 span.icon--cart {

@@ -832,6 +832,8 @@ Every form requires a submit button, otherwise keyboard accessibility of form is
 
 ### Textbox Icons
 
+**DISCLAIMER**: Textboxes *without* visual text labels are not recommended. If you insist on using the following approach, you should make sure it is used for very short, and very familiar, forms only.
+
 For this step we move back to our `signin.html` page (it should currently only consist of fake tabs and an empty form).
 
 But first, demo some sign in pages on the web. For example, t-mobile.com, nintendo.com, chase.com. Show how it can be easy to forget the 'label' after typing (i.e. hmm, did it ask for email or username? I guess I'll have to delete my text just to make sure).
@@ -841,7 +843,7 @@ An unfortunate recent trend in web design is to use the `placeholder` attribute 
 1. Copy over the email address and password textboxes from the registration page.
 1. Remove the label tags
 1. Add placeholder attributes
-1. Add SVG icon
+1. Add SVG icons
 1. The `use` attribute references the ID of an SVG symbol defined on same page, or in an external SVG file
 1. Add `aria-hidden="true"` to SVG tag (to hide presentational image)
 1. Add `focusable="false"` to SVG tag (for IE)
@@ -982,45 +984,38 @@ At the start of the form, add the following error region:
 </section>
 ```
 
-Demonstrate that a labelled section shows up in the screen reader list of landmarks.
+Demonstrate that a labelled section shows up in the screen reader list of landmarks. We have created a "custom" landmark.
 
 If JavaScript is available we can enhance this experience by setting focus on the page notice. This is our first introduction to the concept of focus management, but bear in mind that **this is one of the very few scenarios we would consider setting focus after a full server-side page load!**
 
-1. Add `tabindex="-1"` to the page notice which allows programmatic focus
+1. Add `tabindex="-1"` to the page notice which allows programmatic focus (or this can be done in JS also)
 1. Add the script below to set focus after page load.
 1. Notice that the message cannot be re-focussed again with keyboard after focus is lost. This is intentional.
 
+JavaScript:
+
 ```js
-window.onload = function(e) {
-    document.querySelector('.page-notice--priority').focus();
+var pageError = document.getElementById('page-error');
+if (pageError) {
+    pageError.setAttribute('tabindex', '-1');
+    pageError.focus();
 }
 ```
 
-So, we know *something* went wrong, but not *what* went wrong. Let's make our error message more descriptive.
-
-```html
-<p>Please fix the following errors:</p>
-<ul role="list">
-    <li>First Name: please enter your first name</li>
-    <li>Last Name: please enter your last name</li>
-</ul>
-````
+CSS:
 
 ```css
-.page-notice--priority ul {
+.page-notice--attention ul {
     list-style-type: none;
     padding: 0;
 }
+
+.page-notice--attention a {
+    color: #dd1e31;
+}
 ```
 
-This may be a long form with many fields in the tab order. How can we make life easier for keyboard user to get directly to those invalids fields? The answer is skip links of course (remember we covered these in chapter 2).
-
-```html
-<ul role="list">
-    <li><a href="#fname">First Name: please enter your first name</a></li>
-    <li><a href="#lname">Last Name: please enter your last name</a></li>
-</ul>
-```
+Notice the skip-to links (remember we covered these in chapter 2). This may be a long form with many fields in the tab order. Skip links make life easier for keyboard user to get directly to those invalids fields.
 
 Now imagine if we have a long form, and scroll down so that the page error notice is no longer visible. We don't want to have to remember where the errors were. We need to flag the fields themselves in some way.
 
@@ -1192,14 +1187,98 @@ Remember that we would also need to render the inline errors on the client too!
 
 For Chapter 5, we move back to our homepage.
 
-### Click Flyout
+### Critical Icon
+
+First of all, let's add the ebay eyebrow to our banner.
+
+```html
+<header role="banner">
+    <div id="eyebrow">
+        <!-- our buttons are going here -->
+    </div>
+    <div id="eyeball">
+        <h1><img src="../images/ebay-hires.png" alt="ebay" /></h1>
+    </div>
+</header>
+```
+
+1. Append notifications button to eyebrow (see HTML below)
+1. Notice the aria-label. This is required for accessibility.
+1. Add a `title` attribute. Show how this "tooltip" is not keyboard accessible.
+1. Remove the `title` attribute. We will come back to an accessible tooltip later.
+
+HTML:
+
+```html
+<div id="eyebrow">
+    <div>
+        <button id="notifications" aria-label="Notifications" onclick="alert('You have no new notifications')">
+            <span class="icon icon--notification"></span>
+        </button>
+    </div>
+</div>
+```
+
+CSS:
+
+```css
+button#notifications {
+    background: 0 none;
+    border: 0 none;
+}
+
+span.icon--notification {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzc2NzY3NiIgZD0iTTEyLjA0OCAyMy41OWMxLjIyOSAwIDIuMjI0LS45OTUgMi4yMjQtMi4xNjZoLTQuMzljLS4wNiAxLjE3MS45MzcgMi4xNjYgMi4xNjYgMi4xNjZ6bTExLjUzMi00LjU2NnMtMi4xNjYtMS43NTYtMy4zMzctMy4xMDJjLS45MzctMS4xMTItLjkzNy0yLjUxNy0uOTM3LTQuMzMyIDAtMi40LjA1OS01LjQ0NC0yLjY5My04LjQyOUMxNS40NDIgMS44NzMgMTQuMDM3IDEuMjg4IDEzLjEuOTk1IDEzLjA0LjQxIDEyLjUxNiAwIDExLjkzIDBjLS41ODYgMC0xLjA1NC40MS0xLjE3MS45OTUtLjk5NS4yOTMtMi4zNDEuODc4LTMuNTEyIDIuMTY2QzQuNDk2IDYuMTQ2IDQuNDk2IDkuMTkgNC41NTQgMTEuNTljMCAxLjgxNS4wNTkgMy4yMi0uOTM3IDQuMzMyQzIuNDQ2IDE3LjI2OC4zMzkgMTkuMDI0LjI4IDE5LjAyNGMtLjIzNC4xNzYtLjM1MS41MjctLjIzNC44Mi4xMTcuMjkzLjM1LjQ2OC43MDIuNDY4aDIyLjI0NGEuNzYuNzYgMCAwIDAgLjcwMi0uNDY4Yy4yMzQtLjI5My4xMTctLjY0NC0uMTE3LS44MmguMDAzem0tMTEuNTMyLS4xNzVoLTkuMjVhMzEuNjU2IDMxLjY1NiAwIDAgMCAxLjk5LTEuOTljMS4zNDctMS41MjIgMS4yODktMy4zMzcgMS4yODktNS4yNjggMC0yLjQtLjA2LTQuODU5IDIuMzQtNy40MzRDOS45NCAyLjQ1OSAxMS45OSAyLjIyNSAxMS45OSAyLjIyNWguMDU5czIuMDQ5LjIzNCAzLjU3IDEuOTMyYzIuMzQyIDIuNTc2IDIuMzQyIDUuMDM0IDIuMzQyIDcuNDM0IDAgMS45MzItLjA2IDMuNzQ2IDEuMjg4IDUuMjY4YTMxLjY1NiAzMS42NTYgMCAwIDAgMS45OSAxLjk5aC05LjE5eiIvPjwvc3ZnPg==');
+  height: 1rem;
+  width: 24px;
+}
+```
+
+#### DISCUSSION!
+
+Should we change the mouse cursor when it hovers over this icon button?
+
+### Access Key
+
+1. Add attribute `accesskey="n"` to the notifications button
+1. Use [accesskey](https://www.w3schools.com/tags/att_global_accesskey.asp) to activate shortcut (e.g. CTRL+ALT+N for Safari)
+1. VoiceOver will announce availability of access key
+1. But how do keyboard users know about this accesskey? Nooo, no the `title` attribute. We need a tooltip.
+
+### Infotip
+
+todo
+
+### Fake Menu
+
+todo
+
+### Carousel Buttons
+
+todo
+
+### Pagination Buttons
+
+todo
+
+## Chapter 6: Introduces Flyouts
+
+First of all, let's add the eyebrow:
+
+```html
+<div id="eyebrow">
+    <div></div>
+</div>
+```
+
+### Button Flyout
 
 The eBay shop by category button is a good example of a flyout that opens on click.
 
 ```html
-<div class="flyout flyout--click">
-    <button class="flyout__trigger" type="button">Shop by Category <span aria-hidden="true" class="icon icon--arrow-down" /></button>
-    <div class="flyout__overlay">
+<div class="expander">
+    <button class="expander__host" type="button">Shop by Category <span aria-hidden="true" class="icon icon--arrow-down" /></button>
+    <div class="expander__content">
         <h3>Category 1</h3>
         <ul>
             <li><a href="http://www.ebay.com">Sub-Category 1</a></li>
@@ -1217,19 +1296,28 @@ The eBay shop by category button is a good example of a flyout that opens on cli
 ```
 
 ```css
-.flyout {
+.expander {
     position: relative;
 }
-.flyout__overlay {
-    background-color: LightYellow;
+
+.expander__content {
+    background-color: white;
     display: none;
-    padding: 1rem;
+    left: 0;
+    padding: 0.5em 1em;
     position: absolute;
     white-space: nowrap;
     z-index: 1;
 }
 
-.flyout--click .flyout__trigger[aria-expanded=true] + .flyout__overlay {
+.expander__content ul {
+    line-height: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.expander--expanded .expander__content {
     display: block;
 }
 ```
@@ -1245,20 +1333,23 @@ span.icon--arrow-down {
 ```
 
 ```js
-$('.flyout--click').clickFlyout({focusManagement:'first'});
+querySelectorAllToArray('.expander').forEach(function(el, i) {
+    const widget = new Expander(el, {
+        collapseOnClickOut: true,
+        collapseOnFocusOut: true,
+        expandedClass: 'expander--expanded',
+        expandOnClick: true,
+        focusManagement: 'interactive'
+    });
+});
 ```
 
-### Click Flyout + Hover
+### Link Flyout
 
-The profile button is a good example of a button that opens on click and hover.
-
-### Hover Flyout
+NEEDS UPDATING FOR MAKEUPJS
 
 We show the problem of opening a flyout on hover on a link.
 
-1. Add eyebrow div to start of header
-    * `<div id="eyebrow"><div>...</div></div>`
-1. todo
 1. Add a my ebay link to eyebrow
 1. Convert it to a hover flyout using jquery-hover-flyout
 1. Demonstrate keyboard issue
@@ -1305,46 +1396,17 @@ We show the problem of opening a flyout on hover on a link.
 $('.flyout--hover').hoverFlyout();
 ```
 
-### Critical Icon
+### Fake Menu
 
-1. Append link to eyebrow
-1. Remember that hand cursor shows for links
+todo
 
-```html
-`<a href="http://cart.payments.ebay.com" id="cart" aria-label="cart">
-    <span class="icon icon--cart"></span>
-</a>`
-```
+## Chapter 7: Introduces ARIA Widgets
 
-Add the following CSS:
-
-```css
-a#cart {
-    margin-left: 1em;
-}
-
-span.icon {
-  background-repeat: no-repeat;
-  background-size: contain;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-span.icon--cart {
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAyNCI+PHBhdGggZmlsbD0iIzc2NzY3NiIgZD0iTTI5LjU2NCA1LjU2MWMtLjI5My0uNDY4LS45MzctMS4wNTQtMi4yMjQtMS4wNTQtMS40MDUtLjA1OS0xOC4yMDcgMC0xOS4yMDIgMEw2LjY3NS41ODVBLjg4Ljg4IDAgMCAwIDUuODU1IDBILjg3OEMuMzUxIDAgMCAuMzUxIDAgLjg3OHMuMzUxLjg3OC44NzguODc4aDQuMzlsNS43MzggMTUuMjJhLjg4Ljg4IDAgMCAwIC44Mi41ODVoMTMuODE3Yy41MjcgMCAuOTM3LS4yOTMgMS4xMTItLjc2MS4xMTctLjI5My43NjEtMi4wNDkgMS40MDUtMy44MDUuNjQ0LTEuODE1IDEuMzQ2LTMuNjg4IDEuNTIyLTQuMjczLjQ2OS0xLjI4OC40MS0yLjQtLjExNy0zLjE2MXptLTEuNTIyIDIuNTE3Yy0uMjM0LjU4NS0uODc4IDIuNDU5LTEuNTggNC4yNzNhMTA3LjM4MiAxMDcuMzgyIDAgMCAwLTEuMjMgMy40NTRoLTEyLjgybC0zLjYzLTkuNTQxaDE4LjVjLjI5MyAwIC42NDQuMDU5LjgyLjI5My4yMzQuMjM0LjE3Ni44Mi0uMDU5IDEuNTIydi0uMDAxek0xNC42OTUgMjEuNmEyLjE2NiAyLjE2NiAwIDEgMS00LjMzMyAwIDIuMTY2IDIuMTY2IDAgMCAxIDQuMzMzIDB6bTEyLjY0NSAwYTIuMTY2IDIuMTY2IDAgMSAxLTQuMzMzIDAgMi4xNjYgMi4xNjYgMCAwIDEgNC4zMzMgMHoiLz48L3N2Zz4=');
-  height: 1rem;
-  width: 30px;
-}
-```
-
-### Access Key
-
-1. Add attribute `accesskey="c"` to shopping cart link
-1. Use [accesskey](https://www.w3schools.com/tags/att_global_accesskey.asp) (e.g. CTRL+ALT+C for Mac Safari) to activate shortcut
-1. Voiceover will announce availability of access key
-1. But how do keyboard users know about this accesskey. We need a tooltip.
+In Chapter 6 we move from our homepage example, to a search results page (SRP) example.
 
 ### Tooltip
+
+NEEDS UPDATING FOR MAKEUPJS.
 
 1. Wrap shopping cart link in tooltip markup
 1. Tooltip text should be short.
@@ -1366,18 +1428,6 @@ span.icon--cart {
 ```js
 $('.tooltip').hoverFlyout({expandedClass:'tooltip--expanded'}).focusFlyout({expandedClass:'tooltip--expanded'});
 ```
-
-## Chapter 6: Introduces ARIA Widgets
-
-In Chapter 6 we move from our homepage example, to a search results page (SRP) example.
-
-### CHECKPOINT: Search Results Page (SRP)
-
-Create a new `srp.html` page.
-
-### Fake Menu
-
-todo
 
 ### Menu
 
@@ -1407,18 +1457,22 @@ $(function() {
 
 -->
 
+### Dialog
+
+todo
+
 ### Tabs
 
 todo
 
 ### Combobox
 
-We add combobox behaviour to search textbox.
+todo
 
-### Dialog
+### Date Picker
 
 todo
 
-## Chapter 7: Introduces Data Tables
+## Chapter 8: Introduces Data Tables
 
 todo

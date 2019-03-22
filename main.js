@@ -1,18 +1,25 @@
+var Expander = require('makeup-expander');
+
+function nodeListToArray(nodeList) {
+    return Array.prototype.slice.call(nodeList);
+}
+
+function querySelectorAllToArray(selector, parentNode) {
+    parentNode = parentNode || document;
+    return nodeListToArray(parentNode.querySelectorAll(selector));
+}
+
 window.onload = function(e) {
 
-    /* ALL PAGES */
-    if (document.body.clientWidth > 600) {
-        document.body.classList.add('skin-large');
-    }
-
-    /* ERROR NOTICE */
+    /* STEP: PAGE ERROR */
     var pageError = document.getElementById('page-error');
     if (pageError) {
+        pageError.setAttribute('tabindex', '-1');
         pageError.focus();
     }
 
-    /* INLINE ERROR CLIENT */
-    document.querySelectorAll('.field-validation input').forEach(function(item) {
+    /* STEP: DYNAMIC FIELD ERROR */
+    querySelectorAllToArray('.field-validation input').forEach(function(item) {
         var statusText = document.querySelector('#' + item.getAttribute('aria-describedby') + ' span');
         item.addEventListener('blur', function(e) {
             if (this.value) {
@@ -23,12 +30,12 @@ window.onload = function(e) {
         })
     });
 
-    /* PAGE ERROR CLIENT */
+    /* STEP: DYNAMIC PAGE ERROR */
     var regForm = document.getElementById('reg-form');
 
     if (regForm) {
-        var placeholderEl = regForm.querySelector('.page-error-placeholder');
-        var template = '' +
+        var placeholderEl = document.getElementById('page-error-placeholder');
+        var pageErrorTemplate = '' +
         '<section aria-labelledby="attention-status" class="page-notice page-notice--attention" id="page-error" role="region" tabindex="-1">' +
             '<h2 class="page-notice__status" id="attention-status">' +
                 '<span aria-label="Attention" role="img"></span>' +
@@ -44,30 +51,44 @@ window.onload = function(e) {
 
         regForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            placeholderEl.innerHTML = template;
+            placeholderEl.innerHTML = pageErrorTemplate;
             placeholderEl.focus();
         });
     }
+
+    /* STEP: CRITICAL ICON */
+
+    /* STEP: BUTTON FLYOUT */
+
+    querySelectorAllToArray('.expander').forEach(function(el, i) {
+        const widget = new Expander(el, {
+            collapseOnClickOut: true,
+            collapseOnFocusOut: true,
+            expandedClass: 'expander--expanded',
+            expandOnClick: true,
+            focusManagement: 'interactive'
+        });
+    });
 }
 
-/* jQuery Plugins */
+/* jQuery Plugins
 $(function() {
-    /* SKIP TO ENHANCED */
+    /* SKIP TO ENHANCED
     $('.skipto').skipTo();
 
-    /* CLICK FLYOUT */
+    /* BUTTON FLYOUT
     $('.flyout--click').clickFlyout({focusManagement:'first', closeOnEsc: true});
 
-    /* CLICK FLYOUT + HOVER  */
+    /* CLICK FLYOUT + HOVER
     $('.flyout--hover').hoverFlyout();
 
-    /* TOOLTIP */
+    /* TOOLTIP
     $('.tooltip').tooltip();
 
-    /* FAKE MENU */
+    /* FAKE MENU
     $('.fake-menu').clickFlyout({focusManagement:'first', closeOnEsc: true});
 
-    /* MENU */
+    /* MENU
     $('.menu').menu().on('menuSelect', '[role=menuitem]', function(e, data) {
         alert($(this).text());
     });
@@ -78,5 +99,5 @@ $(function() {
         $('.result-status').html('<p>1 result found</p>');
         $('main ol').empty().append('<li><a href="http://www.ebay.com">Item 1</a></li>');
     });
-    */
 });
+*/

@@ -13,62 +13,13 @@
         <header role="banner">
             <div id="eyebrow">
                 <div>
-                    <span id="profile" class="flyout flyout--click flyout--hover">
-                        <button class="flyout__trigger" type="button">Hi Ian <span aria-hidden="true" class="icon icon--arrow-down" /></button>
-                        <div class="flyout__overlay">
-                            <img src="../images/profile.jpg" alt="" />
-                            <ul role="list">
-                                <li><a href="http://www.ebay.com">My Collections</a></li>
-                                <li><a href="http://www.ebay.com">Account Settings</a></li>
-                                <li><a href="http://www.ebay.com">Sign Out</a></li>
-                            </ul>
-                        </div>
-                    </span>
-                    <span id="myebay" class="flyout flyout--hover">
-                        <a class="flyout__trigger" href="http://www.ebay.com">My eBay</a>
-                        <span class="flyout flyout--click">
-                            <button class="flyout__trigger clipped clipped--stealth" type="button">Expand My eBay</button>
-                            <div class="flyout__overlay">
-                                <ul role="list">
-                                    <li><a href="http://www.ebay.com">Summary</a></li>
-                                    <li><a href="http://www.ebay.com">Bids/Offers</a></li>
-                                    <li><a href="http://www.ebay.com">Watchlist</a></li>
-                                </ul>
-                            </div>
-                        </span>
-                    </span>
-                    <a href="http://cart.payments.ebay.com" id="cart" aria-label="cart">
-                        <span class="icon icon--cart"></span>
-                    </a>
+                    <button id="notifications" aria-label="Notifications" onclick="alert('You have no new notifications')">
+                        <span class="icon icon--notification"></span>
+                    </button>
                 </div>
             </div>
-            <div class="grid" id="eyeball">
-                <table role="presentation">
-                    <tr>
-                        <td>
-                            <h1><img src="../images/ebay-hires.png" alt="ebay" /></h1>
-                        </td>
-                        <td>
-                            <div class="flyout flyout--click">
-                                <button class="flyout__trigger" type="button">Shop by Category <span aria-hidden="true" class="icon icon--arrow-down" /></button>
-                                <div class="flyout__overlay">
-                                    <h3>Category 1</h3>
-                                    <ul>
-                                        <li><a href="http://www.ebay.com">Sub-Category 1</a></li>
-                                        <li><a href="http://www.ebay.com">Sub-Category 2</a></li>
-                                        <li><a href="http://www.ebay.com">Sub-Category 3</a></li>
-                                    </ul>
-                                    <h3>Category 2</h3>
-                                    <ul>
-                                        <li><a href="http://www.ebay.com">Sub-Category 1</a></li>
-                                        <li><a href="http://www.ebay.com">Sub-Category 2</a></li>
-                                        <li><a href="http://www.ebay.com">Sub-Category 3</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+            <div id="eyeball">
+                <h1><img src="../images/ebay-hires.png" alt="ebay" /></h1>
             </div>
         </header>
         <div>
@@ -193,4 +144,5 @@
         </footer>
     </body>
     <script src="../app.js"></script>
+    <script>$_mod.ready();</script>
 </html>
