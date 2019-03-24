@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v6.3.3/ds4/grid-full.min.css"/>
         <link rel="stylesheet" href="../app.css"/>
     </head>
-    <body>
+    <body class="hp">
         <span class="skipto"><a href="#mainContent" class="clipped clipped--stealth">Skip to main content</a></span>
         <header role="banner">
             <div id="eyebrow">
@@ -46,20 +46,26 @@
                             <h1><img src="../images/ebay-hires.png" alt="ebay" /></h1>
                         </td>
                         <td>
-                            <div class="flyout flyout--click">
-                                <button class="flyout__trigger" type="button">Shop by Category <span aria-hidden="true" class="icon icon--arrow-down" /></button>
-                                <div class="flyout__overlay">
+                            <div class="expander">
+                                <button class="expander__host" type="button">Shop by Category <span aria-hidden="true" class="icon icon--arrow-down" /></button>
+                                <div class="expander__content">
                                     <h3>Category 1</h3>
                                     <ul>
                                         <li><a href="http://www.ebay.com">Sub-Category 1</a></li>
                                         <li><a href="http://www.ebay.com">Sub-Category 2</a></li>
                                         <li><a href="http://www.ebay.com">Sub-Category 3</a></li>
+                                        <li><a href="http://www.ebay.com">Sub-Category 4</a></li>
+                                        <li><a href="http://www.ebay.com">Sub-Category 5</a></li>
+                                        <li><a href="http://www.ebay.com">Sub-Category 6</a></li>
                                     </ul>
                                     <h3>Category 2</h3>
                                     <ul>
                                         <li><a href="http://www.ebay.com">Sub-Category 1</a></li>
                                         <li><a href="http://www.ebay.com">Sub-Category 2</a></li>
                                         <li><a href="http://www.ebay.com">Sub-Category 3</a></li>
+                                        <li><a href="http://www.ebay.com">Sub-Category 4</a></li>
+                                        <li><a href="http://www.ebay.com">Sub-Category 5</a></li>
+                                        <li><a href="http://www.ebay.com">Sub-Category 6</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -190,4 +196,5 @@
         </footer>
     </body>
     <script src="../app.js"></script>
+    <script>$_mod.ready();</script>
 </html>

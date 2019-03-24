@@ -29,6 +29,7 @@ Some developers, on the other hand, like to start with the JavaScript first. Or 
 1. [Headings](user-content-headings)
 1. [Landmarks](user-content-landmarks)
 1. [Images](user-content-images)
+1. [Background Images](user-content-background-images)
 1. [Table Layout](user-content-table-layout)
 1. [Grid System](user-content-grid-system)
 1. [Cards](user-content-cards)
@@ -176,7 +177,7 @@ footer[role="contentinfo"] {
 
 ### Images
 
-1. Replace `<h1>eBay</h1>` with `<h1><img src="images/ebay-hires.png" /></h1>` (lack of alt text intentional for now)
+1. Replace `<header role="banner"><h1>eBay</h1></header>` with `<div><h1><img src="images/ebay-hires.png" /></h1></div>` (lack of alt text intentional for now)
 1. Demonstrate behaviour of missing alt text in screen reader (it reads image url/filename)
 1. Add `alt="ebay"` to h1 content image
 1. Demonstrate behaviour of alt text with screen reader (it now reads 'ebay' text)
@@ -184,13 +185,70 @@ footer[role="contentinfo"] {
 1. Wrap title in paragraph tag
 1. Demonstrate that voiceover no longer announces 'bullet' for each list item
 
-Note that the image alt text is the same as the title. Technically speaking these images can be classed as presentational, because if the images were not displayed, we still have the same text below (the title text). We leave the alt text in place for now. Yes, it's a redundant/duplicate navigation for screen reader users, but not technically 'non-accessible'. When we convert the item to a tile, in an upcoming step, we will set this value to blank.
-
-#### Discussion
+```html
+<div class="collections">
+    <ul>
+        <li>
+            <img src="images/mix-it-up.jpg" alt="Mix It Up" />
+            <p>Mix It Up - 17 items by statesidelife</p>
+        </li>
+        <li>
+            <img src="images/at-the-hearth.jpg" alt="At the Hearth" />
+            <p>At the Hearth - 9 items by designassembly</p>
+        </li>
+        <li>
+            <img src="images/give-thanks.jpg" alt="Give Thanks" />
+            <p>Give Thanks - 35 items by ebayhomeeditor</p>
+        </li></a>
+        <li>
+            <img src="images/guests-of-honour.jpg" alt="Guests of Honour" />
+            <p>Guests of Honour - 30 items by ebaydealseditor</p>
+        </li>
+    </ul>
+</div>
+```
 
 Now that we have content that goes below the fold, we can demonstrate some keyboard accessibility.
 
 1. Use spacebar, up arrow, down arrow, page up, page down, home and end keys to scroll page
+
+#### DISCUSSION!
+
+Note that the image alt text is the same as the title. Technically speaking these images can be classed as presentational, because if the images were not displayed, we still have the same text below (the title text). We leave the alt text in place for now. Yes, it's a redundant/duplicate navigation for screen reader users, but not technically 'non-accessible'. When we convert the item to a tile, in an upcoming step, we will set this value to blank.
+
+### Background Images
+
+Now let's try adding images in a different way, using CSS background images.
+
+```html
+<h2>Daily Deals</h2>
+<div>
+    <ul>
+        <li>
+            <span class="image" role="img" style="background-image: url('images/christmas-socks.jpg')" aria-label="Christmas Socks"></span>
+            <p>Christmas Socks - $4.99</p>
+        </li>
+        <li>
+            <span class="image" role="img" style="background-image: url('images/macbook-air.jpg')" aria-label="MacBook Air"></span>
+            <p>MacBook Air - $799.99</p>
+        </li>
+        <li>
+            <span class="image" role="img" style="background-image: url('images/xbox-one.jpg')" aria-label="Xbox One 500GB"></span>
+            <p>Xbox One 500GB - $169.99</p>
+        </li>
+        <li>
+            <span class="image" role="img" style="background-image: url('images/playstation-pro.jpg')" aria-label="Playstation 4 Pro"></span>
+            <p>Playstation 4 Pro - $419.99</p>
+        </li>
+    </ul>
+</div>
+```
+
+1. Disable images in Firefox browser and point out that foreground images show alt text, background images do not
+
+#### DISCUSSION
+
+How do we decide between using foreground images and background images. Imagine a Google or Bing image search that returned no images when CSS is disabled, or no alternative text for images. With foreground images we can avoid that situation. Important images should never require CSS or JavaScript!
 
 ### Table Layout
 
@@ -1202,7 +1260,7 @@ First of all, let's add the ebay eyebrow to our banner.
 </header>
 ```
 
-1. Append notifications button to eyebrow (see HTML below)
+1. Append notification button to eyebrow (see HTML below)
 1. Notice the aria-label. This is required for accessibility.
 1. Add a `title` attribute. Show how this "tooltip" is not keyboard accessible.
 1. Remove the `title` attribute. We will come back to an accessible tooltip later.
@@ -1234,6 +1292,10 @@ span.icon--notification {
 }
 ```
 
+But remember the issue we have with icons in high contrast mode? Critical icons should be created with foreground SVGs to avoid this issue.
+
+todo: add foreground svg below.
+
 #### DISCUSSION!
 
 Should we change the mouse cursor when it hovers over this icon button?
@@ -1243,13 +1305,12 @@ Should we change the mouse cursor when it hovers over this icon button?
 1. Add attribute `accesskey="n"` to the notifications button
 1. Use [accesskey](https://www.w3schools.com/tags/att_global_accesskey.asp) to activate shortcut (e.g. CTRL+ALT+N for Safari)
 1. VoiceOver will announce availability of access key
-1. But how do keyboard users know about this accesskey? Nooo, no the `title` attribute. We need a tooltip.
+
+#### DISCUSSION!
+
+But how do sighted keyboard users know about this access key? Nooo, not with the `title` attribute (it's not keyboard accessible, remember). We need a tooltip.
 
 ### Infotip
-
-todo
-
-### Fake Menu
 
 todo
 
