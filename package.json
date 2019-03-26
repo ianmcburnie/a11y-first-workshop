@@ -2,9 +2,11 @@
   "private": true,
   "scripts": {
     "start": "npm run build && parallelshell 'npm run serve' 'npm run watch'",
-    "serve": "browser-sync start -s --files icons.svg,index.html,app.css,app.js,hp/*.html,srp/*.html,reg/*.*,signin/*.*",
-    "build": "lasso browser.json --minify --out . --name app --html false",
-    "watch": "onchange main.js -- npm run build"
+    "serve": "browser-sync start -s --files icons.svg,index.html,myindex.html,app.css,myapp.css,app.js,myapp.js,hp/*.html,srp/*.html,reg/*.*,signin/*.*",
+    "build": "yarn build:app && yarn build:myapp",
+    "build:app": "lasso browser.json --minify --out . --name app --html false",
+    "build:myapp": "lasso myapp.browser.json --minify --out . --name myapp --html false",
+    "watch": "onchange 'main.js' 'mymain.js' -- npm run build"
   },
   "devDependencies": {
     "browser-sync": "^2",

@@ -11,6 +11,15 @@ function querySelectorAllToArray(selector, parentNode) {
 
 window.onload = function(e) {
 
+    /* STEP: ENHANCED SKIP-TO LINK */
+    querySelectorAllToArray('.skipto').forEach(function(el, i) {
+        el.addEventListener('click', function() {
+            var targetEl = document.querySelector(el.querySelector('a').getAttribute('href'));
+            targetEl.setAttribute('tabindex', '-1');
+            targetEl.focus();
+        });
+    });
+
     /* STEP: PAGE ERROR */
     var pageError = document.getElementById('page-error');
     if (pageError) {
@@ -60,13 +69,23 @@ window.onload = function(e) {
 
     /* STEP: BUTTON FLYOUT */
 
-    querySelectorAllToArray('.expander').forEach(function(el, i) {
+    querySelectorAllToArray('.expander--click').forEach(function(el, i) {
         const widget = new Expander(el, {
             collapseOnClickOut: true,
             collapseOnFocusOut: true,
             expandedClass: 'expander--expanded',
             expandOnClick: true,
             focusManagement: 'interactive'
+        });
+    });
+
+    /* STEP: LINK FLYOUT */
+
+    querySelectorAllToArray('.expander--hover').forEach(function(el, i) {
+        const widget = new Expander(el, {
+            collapseOnMouseOut: true,
+            expandedClass: 'expander--expanded',
+            expandOnHover: true
         });
     });
 }

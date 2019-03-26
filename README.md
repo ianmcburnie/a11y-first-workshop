@@ -6,11 +6,20 @@ Starting completely from scratch, this workshop will progressively build up the 
 
 No prior accessibility experience is necessary, but we assume some basic familiarity with HTML, CSS and JavaScript. If you get lost or lose your way, every step of every chapter has a "here's one I made earlier" that you can copy-and-paste from into your file.
 
+If you want to run through this workshop yourself, or follow along with the instructor, please follow these steps:
+
+1. Clone this repo to your local nodejs environment
+1. Run `yarn && yarn start` (or use `npm install && npm start` if you prefer)
+1. Open http://localhost:3000/myindex.html
+1. Edit files `myindex.html`, `myapp.css` and `mymain.js`. The browser will auto-refresh.
+
+## Table of Contents
+
 * [Chapter 1: Introduces Structure &amp; Semantics](user-content-chapter-1-introduces-structure-semantics)
 * [Chapter 2: Introduces Links](user-content-chapter-2-introduces-links)
-* [Chapter 3: Introduces Form Controls](user-content-chapter-3-introduces-form-controls)
-* [Chapter 4: Introduces Form Validation](user-content-chapter-4-introduces-form-validation)
-* [Chapter 5: Introduces Buttons](user-content-chapter-5-introduces-buttons)
+* [Chapter 3: Introduces Buttons](user-content-chapter-5-introduces-buttons)
+* [Chapter 4: Introduces Form Controls](user-content-chapter-3-introduces-form-controls)
+* [Chapter 5: Introduces Form Validation](user-content-chapter-4-introduces-form-validation)
 * [Chapter 6: Introduces ARIA Widgets](user-content-chapter-6-introduces-aria-widgets)
 * [Chapter 7: Introduces Data Tables](user-content-chapter-7-introduces-data-tables)
 
@@ -37,21 +46,23 @@ Some developers, on the other hand, like to start with the JavaScript first. Or 
 
 ### Blank Page
 
-We'll beging with our index page. The page content for this step is left intentionally blank.
+We'll begin with our `myindex.html` page. The page content for this step is left intentionally blank. It already contains some accessibility "gotchas", which we will begin to identify & address in the next step.
 
 ```html
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v7.0.2/ds4/skin.min.css"/>
-        <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v6.3.3/ds4/grid-full.min.css"/>
+        <meta charset="utf-8" />
+        <!-- uncomment the following 2 lines when instructed -->
+        <!-- <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v7.0.2/ds4/skin.min.css"/> -->
+        <!-- <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v6.3.3/ds4/grid-full.min.css"/> -->
         <link rel="stylesheet" href="app.css"/>
     </head>
     <body>
         <!-- intentionally blank -->
     </body>
-    <!-- uncomment the following line when instructed -->
-    <!-- <script src="app.js"></script>-->
+    <script src="myapp.js"></script>
+    <script>$_mod.ready();</script>
 </html>
 ```
 
@@ -59,10 +70,9 @@ We'll beging with our index page. The page content for this step is left intenti
 
 ### Meta Data
 
-Let's begin adding some meta data to the page.
+Let's begin adding some additional meta data to the page.
 
 1. Add `lang="en"` to the `html` tag
-1. Add `<meta charset="utf-8" />` to head
 1. Add `<meta name="viewport" content="width=device-width, initial-scale=1">` to head
 1. Add `<title>Meta - A11Y First Workshop</title>` to head
 1. Test page with screen reader, notice title is now announced
@@ -82,7 +92,7 @@ We have introduced 3 key pieces of 'meta' data:
 1. Add three paragraphs of content to the page (HTML below)
 1. Ensure VoiceOver web rotor settings include 'Static Text'.
 1. Navigate VO to web area (show that voiceover can read desktop and other desktop applications too, not just web pages)
-1. Open VoiceOover rotor and explore what it can find on the page (hint: nothing much yet! only the static paragraph text).
+1. Open VoiceOver rotor and explore what it can find on the page (hint: nothing much yet! only the static paragraph text).
 1. We ignore VO 'Web Spots' rotor as this is specific to Voiceover.
 
 <img src="images/settings-web-rotor.png" alt="Screenshot of the VoiceOver Web Rotor settings" />
@@ -117,9 +127,21 @@ We have introduced 3 key pieces of 'meta' data:
 </ul>
 ```
 
+Now open MacOS Accessibility Inspector and inspect the lists.
+
+<img src="images/mac-accessibility-inspector.png" alt="Screenshot of the MacOS Accessibility Inspector" />
+
+Compare with Firefox inspector
+
+<img src="images/firefox-accessibility-inspector.png" alt="Screenshot of the Firefox Accessibility Inspector" />
+
 #### Discussion!
 
 What's the difference between an unordered list and an ordered list?
+
+### Definition Lists
+
+todo
 
 ### Headings
 
@@ -181,7 +203,7 @@ footer[role="contentinfo"] {
 1. Demonstrate behaviour of missing alt text in screen reader (it reads image url/filename)
 1. Add `alt="ebay"` to h1 content image
 1. Demonstrate behaviour of alt text with screen reader (it now reads 'ebay' text)
-1. Add image before each collection and deal title, and for the time being set alt="collection/deal title" (we will set this to blank in a later section)
+1. Add image before each collection title, and for the time being set alt="collection title"
 1. Wrap title in paragraph tag
 1. Demonstrate that voiceover no longer announces 'bullet' for each list item
 
@@ -218,7 +240,7 @@ Note that the image alt text is the same as the title. Technically speaking thes
 
 ### Background Images
 
-Now let's try adding images in a different way, using CSS background images.
+Now let's try adding images in a different way, using CSS background images for the daily deals section.
 
 ```html
 <h2>Daily Deals</h2>
@@ -252,6 +274,8 @@ How do we decide between using foreground images and background images. Imagine 
 
 ### Table Layout
 
+Layout the collections and deals in tables.
+
 Demonstrate the problems with using table tags for layout.
 
 1. Replace the list of collections with a 4x4 table
@@ -260,22 +284,61 @@ Demonstrate the problems with using table tags for layout.
 1. Add role="presentation" to the two tables
 1. Demonstrate that screen reader now no longer announces table dimensions
 
+The final HTML should look like below:
+
+```html
+<div class="collections">
+    <table role="presentation">
+        <tr>
+            <td>
+                <img src="images/mix-it-up.jpg" alt="Mix It Up" />
+                <p>Mix It Up - 17 items by statesidelife</p>
+            </td>
+            <td>
+                <img src="images/at-the-hearth.jpg" alt="At the Hearth" />
+                <p>At the Hearth - 9 items by designassembly</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="images/give-thanks.jpg" alt="Give Thanks" />
+                <p>Give Thanks - 35 items by ebayhomeeditor</p>
+            </td>
+            <td>
+                <img src="images/guests-of-honour.jpg" alt="Guests of Honour" />
+                <p>Guests of Honour - 30 items by ebaydealseditor</p>
+            </td>
+        </tr>
+    </table>
+</div>
+<h2>Daily Deals</h2>
+<div>
+    <table role="presentation">
+        <tr>
+            <td>
+                <span class="image" role="img" style="background-image: url('images/christmas-socks.jpg')" aria-label="Christmas Socks"></span>
+                <p>Christmas Socks - $4.99</p>
+            </td>
+            <td>
+                <span class="image" role="img" style="background-image: url('images/macbook-air.jpg')" aria-label="MacBook Air"></span>
+                <p>MacBook Air - $799.99</p>
+            </td>
+            <td>
+                <span class="image" role="img" style="background-image: url('images/xbox-one.jpg')" aria-label="Xbox One 500GB"></span>
+                <p>Xbox One 500GB - $169.99</p>
+            </td>
+            <td>
+                <span class="image" role="img" style="background-image: url('images/playstation-pro.jpg')" aria-label="Playstation 4 Pro"></span>
+                <p>Playstation 4 Pro - $419.99</p>
+            </td>
+        </tr>
+    </table>
+</div>
+```
+
 ### Grid System
 
-Demonstrate that in some cases, CSS can effect semantics.
-
-1. Revert the table changes made in the previous step (i.e. back to a list)
-1. Add div wrapper container inside of body (presentational step, see CSS below)
-1. Add div wrapper container inside of footer (presentational step, see CSS below)
-1. Add class `.grid` to the `.collections` and `.deals`
-1. Add `grid__group grid__group--no-gutters grid__group--wrap` to the collections list
-1. Add `grid__group grid__group--no-gutters` to the deals list
-1. Wrap each collection list item in a `class="grid__cell grid__cell--one-half"`
-1. Demonstrate that voiceover no longer announces list semantics
-1. Add `role="list"` to the lists to restore list semantics
-1. Add `display: block` and `max-width: 100%` to images (see CSS below) so they scale responsively (not strictly needed for a11y purposes).
-
-Adding `list-type: none` (via grids css) to the lists means they are <a href="http://www.456bereastreet.com/archive/201109/screen_readers_list_items_and_list-stylenone/">no longer announced as a list in some screen readers</a>. We fix this issue by applying `role="list"` to each list.
+First of all, we are going to add a new DIV wrapper inside the body tag and footer tags. The following layout CSS will be needed:
 
 ```css
 body > div,
@@ -290,6 +353,71 @@ footer[role="contentinfo"] > div {
     max-width: 100%;
 }
 ```
+
+Demonstrate that in some cases, CSS can effect semantics.
+
+1. Revert the table changes made in the previous step (i.e. back to a list)
+1. Add div wrapper container inside of body (presentational step, see CSS below)
+1. Add div wrapper container inside of footer (presentational step, see CSS below)
+1. Add class `.grid` to the `.collections` and `.deals`
+1. Add `grid__group grid__group--no-gutters grid__group--wrap` to the collections list
+1. Add `grid__group grid__group--no-gutters` to the deals list
+1. Wrap each collection list item in a `class="grid__cell grid__cell--one-half"`
+1. Demonstrate that voiceover no longer announces list semantics
+1. Add `role="list"` to the lists to restore list semantics
+1. Add `display: block` and `max-width: 100%` to images (see CSS below) so they scale responsively (not strictly needed for a11y purposes).
+
+
+The final HTML should look like below:
+
+```html
+<div class="grid collections">
+    <ul class="grid__group grid__group--no-gutters grid__group--wrap" role="list">
+        <li class="grid__cell grid__cell--one-half">
+            <img src="images/mix-it-up.jpg" alt="Mix It Up" />
+            <p>Mix It Up - 17 items by statesidelife</p>
+        </li>
+        <li class="grid__cell grid__cell--one-half">
+            <img src="images/at-the-hearth.jpg" alt="At the Hearth" />
+            <p>At the Hearth - 9 items by designassembly</p>
+        </li>
+        <li class="grid__cell grid__cell--one-half">
+            <img src="images/give-thanks.jpg" alt="Give Thanks" />
+            <p>Give Thanks - 35 items by ebayhomeeditor</p>
+        </li>
+        <li class="grid__cell grid__cell--one-half">
+            <img src="images/guests-of-honour.jpg" alt="Guests of Honour" />
+            <p>Guests of Honour - 30 items by ebaydealseditor</p>
+        </li>
+    </ul>
+</div>
+
+<h2>Daily Deals</h2>
+<div class="grid deals">
+    <ul class="grid__group grid__group--no-gutters" role="list">
+        <li class="grid__cell grid__cell--one-fourth">
+            <span class="image" role="img" style="background-image: url('images/christmas-socks.jpg')" aria-label="Christmas Socks"></span>
+            <p>Christmas Socks - $4.99</p>
+        </li>
+        <li class="grid__cell grid__cell--one-fourth">
+            <img src="images/macbook-air.jpg" alt="MacBook Air"/>
+            <p>MacBook Air - $799.99</p>
+        </li>
+        <li class="grid__cell grid__cell--one-fourth">
+            <img src="images/xbox-one.jpg" alt="Xbox One 500GB"/>
+            <p>Xbox One 500GB - $169.99</p>
+        </li>
+        <li class="grid__cell grid__cell--one-fourth">
+            <img src="images/playstation-pro.jpg" alt="Playstation 4 Pro"/>
+            <p>Playstation 4 Pro - $419.99</p>
+        </li>
+    </ul>
+</div>
+```
+
+#### DISCUSSION!
+
+Adding `list-type: none` (via grids css) to the lists means they are <a href="http://www.456bereastreet.com/archive/201109/screen_readers_list_items_and_list-stylenone/">no longer announced as a list in some screen readers</a>. We fix this issue by applying `role="list"` to each list.
 
 ### Cards
 
@@ -529,16 +657,18 @@ This is an opportunity to recap, and build upon, headings, landmarks and links.
 
 ### Skip-To Link
 
-1. Add `<span class="skipto"><a href="#mainContent">Skip to main content</a></a>`
+1. Add `<span class="skipto"><a href="#mainContent">Skip to main content</a></span>` as first descendant of body
 1. Add `id="mainContent"` to main landmark
 1. Demo keyboard behaviour
 1. Add class `clipped clipped--stealth` to skip link
 1. Demo that skip link now only appears on keyboard focus
-1. Demo how screen reader focus does not get set
+1. Demo how screen reader focus does not get set on mainContent
 1. Add `tabindex="-1"` to main landmark
 1. Demo how screen reader focus is now set
 1. Demo that permanent tabindex on main element causes a focus outline when clicked with mouse or touch.
 1. Fix focus outline issue with CSS. This is perhaps the only time it is okay to remove focus outline.
+
+Final HTML:
 
 ```html
 <span class="skipto">
@@ -547,15 +677,6 @@ This is an opportunity to recap, and build upon, headings, landmarks and links.
 ```
 
 ```css
-.clipped--stealth:focus {
-    -webkit-clip-path: unset;
-    clip: unset;
-    clip-path: auto;
-    height: auto;
-    width: auto;
-    z-index: 1;
-}
-
 a[href='#mainContent'] {
     background-color: LightYellow;
     left: 0;
@@ -568,16 +689,26 @@ a[href='#mainContent'] {
 }
 ```
 
+#### DISCUSSION!
+
+An experimental `:focus-visible` pseudo-selector aims to tackle the issue of only adding a focus outline if focus is set with keyboard.
+
 ### CHECKPOINT: JavaScript
 
-At this point we will be introducing some JavaScript. So please create a JavaScript file and include it on your page. The `jquery-skip-to` plugin is also required.
+At this point we will be introducing some JavaScript. So please create a JavaScript file and include it on your page.
 
 ### Skip-To Link Enhanced
 
-Rather than adding permanent tabindex to main, it would be better to set a temporary tabindex using javascript. The tabindex can be set when the skipto link is clicked (we already know the target id), and the tabindex can be removed as soon as the target loses focus.
+Rather than adding a permanent tabindex to main, it would be better to set a temporary tabindex using JavaScript. The tabindex can be set when the skipto link is clicked, and then removed as soon as the target element loses focus.
 
 ```js
-$('.skipto').skipTo();
+querySelectorAllToArray('.skipto').forEach(function(el, i) {
+    el.addEventListener('click', function() {
+        var targetEl = document.querySelector(el.querySelector('a').getAttribute('href'));
+        targetEl.setAttribute('tabindex', '-1');
+        targetEl.focus();
+    });
+});
 ```
 
 ### Custom Focus
@@ -704,9 +835,269 @@ The `aria-current` property announces which link in the list matches the current
 
 A problem with fake-tabs is that they look *too* realstic. Keyboard users might try and use the arrow keys, rather than the TAB key.
 
-## Chapter 3: Introduces Form Controls
+## Chapter 3: Introduces Buttons
 
-Chapter 3 continues on with our sign in and registration pages.
+This chapter introduces basic button semantics and behaviour.
+
+### Button Text
+
+First of all, let's take care of some page layout, and wrap the logo in an "eyeball" block. This name will soon make sense ;-)
+
+```html
+<header role="banner">
+    <div id="eyeball">
+        <h1><img src="../images/ebay-hires.png" alt="ebay" /></h1>
+    </div>
+</header>
+```
+
+This CSS will give us the basic layout we need.
+
+```CSS
+#eyeball {
+    align-items: center;
+    display: flex;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+```
+
+Buttons may seem straightforward, after all we have a button tag that gives us everything we need. So why do some developers insist on using DIVS or LINKS? I really don't know.
+
+Final HTML of eyeball block:
+
+```HTML
+<div id="eyeball">
+    <div>
+        <h1><img src="../images/ebay-hires.png" alt="ebay" /></h1>
+    </div>
+    <div>
+        <button type="button" onclick="alert('Under construction')">Shop by Category</button>
+    </div>
+</div>
+```
+
+#### Discussion
+
+Why do we specify type of button?
+
+### Critical Icon
+
+Above the eyeball goes the, yes you guessed it, the "eyebrow":
+
+
+
+1. Append notification button to eyebrow (see HTML below)
+1. Notice the aria-label. This is required for accessibility.
+1. Add a `title` attribute. Show how this "tooltip" is not keyboard accessible.
+1. Remove the `title` attribute. We will come back to an accessible tooltip later.
+
+HTML:
+
+```html
+<div id="eyebrow">
+    <div>
+        <button id="notifications" aria-label="Notifications" onclick="alert('You have no new notifications')">
+            <span class="icon icon--notification"></span>
+        </button>
+    </div>
+</div>
+```
+
+CSS:
+
+```css
+button#notifications {
+    background: 0 none;
+    border: 0 none;
+}
+
+span.icon--notification {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzc2NzY3NiIgZD0iTTEyLjA0OCAyMy41OWMxLjIyOSAwIDIuMjI0LS45OTUgMi4yMjQtMi4xNjZoLTQuMzljLS4wNiAxLjE3MS45MzcgMi4xNjYgMi4xNjYgMi4xNjZ6bTExLjUzMi00LjU2NnMtMi4xNjYtMS43NTYtMy4zMzctMy4xMDJjLS45MzctMS4xMTItLjkzNy0yLjUxNy0uOTM3LTQuMzMyIDAtMi40LjA1OS01LjQ0NC0yLjY5My04LjQyOUMxNS40NDIgMS44NzMgMTQuMDM3IDEuMjg4IDEzLjEuOTk1IDEzLjA0LjQxIDEyLjUxNiAwIDExLjkzIDBjLS41ODYgMC0xLjA1NC40MS0xLjE3MS45OTUtLjk5NS4yOTMtMi4zNDEuODc4LTMuNTEyIDIuMTY2QzQuNDk2IDYuMTQ2IDQuNDk2IDkuMTkgNC41NTQgMTEuNTljMCAxLjgxNS4wNTkgMy4yMi0uOTM3IDQuMzMyQzIuNDQ2IDE3LjI2OC4zMzkgMTkuMDI0LjI4IDE5LjAyNGMtLjIzNC4xNzYtLjM1MS41MjctLjIzNC44Mi4xMTcuMjkzLjM1LjQ2OC43MDIuNDY4aDIyLjI0NGEuNzYuNzYgMCAwIDAgLjcwMi0uNDY4Yy4yMzQtLjI5My4xMTctLjY0NC0uMTE3LS44MmguMDAzem0tMTEuNTMyLS4xNzVoLTkuMjVhMzEuNjU2IDMxLjY1NiAwIDAgMCAxLjk5LTEuOTljMS4zNDctMS41MjIgMS4yODktMy4zMzcgMS4yODktNS4yNjggMC0yLjQtLjA2LTQuODU5IDIuMzQtNy40MzRDOS45NCAyLjQ1OSAxMS45OSAyLjIyNSAxMS45OSAyLjIyNWguMDU5czIuMDQ5LjIzNCAzLjU3IDEuOTMyYzIuMzQyIDIuNTc2IDIuMzQyIDUuMDM0IDIuMzQyIDcuNDM0IDAgMS45MzItLjA2IDMuNzQ2IDEuMjg4IDUuMjY4YTMxLjY1NiAzMS42NTYgMCAwIDAgMS45OSAxLjk5aC05LjE5eiIvPjwvc3ZnPg==');
+  height: 1rem;
+  width: 24px;
+}
+```
+
+But remember the issue we have with icons in high contrast mode? Critical icons should be created with foreground SVGs to avoid this issue.
+
+todo: add foreground svg below.
+
+#### DISCUSSION!
+
+Should we change the mouse cursor when it hovers over this icon button?
+
+### Access Key
+
+1. Add attribute `accesskey="n"` to the notifications button
+1. Use [accesskey](https://www.w3schools.com/tags/att_global_accesskey.asp) to activate shortcut (e.g. CTRL+ALT+N for Safari)
+1. VoiceOver will announce availability of access key
+
+#### DISCUSSION!
+
+But how do sighted keyboard users know about this access key? Nooo, not with the `title` attribute (it's not keyboard accessible, remember). We need a tooltip.
+
+## Chapter 4: Introduces Flyouts
+
+Flyouts are content that expands out from another element or page region.
+
+### Button Flyout
+
+The eBay shop by category button is a good example of a flyout that opens on click. Let's enhance the button that we added previously.
+
+Final HTML:
+
+```html
+<div class="expander">
+    <button class="expander__host" type="button">Shop by Category <span aria-hidden="true" class="icon icon--arrow-down" /></button>
+    <div class="expander__content">
+        <h3>Category 1</h3>
+        <ul>
+            <li><a href="http://www.ebay.com">Sub-Category 1</a></li>
+            <li><a href="http://www.ebay.com">Sub-Category 2</a></li>
+            <li><a href="http://www.ebay.com">Sub-Category 3</a></li>
+        </ul>
+        <h3>Category 2</h3>
+        <ul>
+            <li><a href="http://www.ebay.com">Sub-Category 1</a></li>
+            <li><a href="http://www.ebay.com">Sub-Category 2</a></li>
+            <li><a href="http://www.ebay.com">Sub-Category 3</a></li>
+        </ul>
+    </div>
+</div>
+```
+
+```css
+.expander {
+    position: relative;
+}
+
+.expander__content {
+    background-color: white;
+    display: none;
+    left: 0;
+    padding: 0.5em 1em;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.expander__content ul {
+    line-height: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.expander--expanded .expander__content {
+    display: block;
+}
+
+span.icon--arrow-down {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAxMyI+PHBhdGggZmlsbD0iIzc2NzY3NiIgZD0iTTExLjYwNCAxMi45MjFMMCAwaDIzLjIxNWwtNS44MDcgNi40NjJ6Ii8+PC9zdmc+');
+  height: 13px;
+  width: 24px;
+}
+```
+
+We utilise a makeup plugin for the expand/collapse behaviour.
+
+```js
+querySelectorAllToArray('.expander').forEach(function(el, i) {
+    const widget = new Expander(el, {
+        collapseOnClickOut: true,
+        collapseOnFocusOut: true,
+        expandedClass: 'expander--expanded',
+        expandOnClick: true,
+        focusManagement: 'interactive'
+    });
+});
+```
+
+### Link Flyout
+
+This section shows the problem of opening a flyout on hover on a link. It also shows a workaround.
+
+"Motors" list item before we make changes:
+
+```HTML
+<li>
+    <a href="http://www.ebay.com/motors">Motors</a>
+</li>
+```
+
+1. Using makeup-expander, add hover flyout behaviour to the "Motors" category link
+1. Demonstrate keyboard issue
+1. Convert it to a focus flyout
+1. Demonstrate that keyboard user now has to tab through flyout.
+1. Remove focus behaviour
+1. Add a hidden stealth button that allows keyboard user to expand the flyout with ENTER or SPACE.
+
+Final markup of "Motors" list item:
+
+```HTML
+<li class="expander expander--hover">
+    <a class="expander__host" href="http://www.ebay.com/motors">Motors</a>
+    <div class="expander__content">
+        <h3>Category 1</h3>
+        <ul>
+            <li><a href="http://www.ebay.com">Sub-Category 1</a></li>
+            <li><a href="http://www.ebay.com">Sub-Category 2</a></li>
+            <li><a href="http://www.ebay.com">Sub-Category 3</a></li>
+            <li><a href="http://www.ebay.com">Sub-Category 4</a></li>
+            <li><a href="http://www.ebay.com">Sub-Category 5</a></li>
+            <li><a href="http://www.ebay.com">Sub-Category 6</a></li>
+        </ul>
+        <h3>Category 2</h3>
+        <ul>
+            <li><a href="http://www.ebay.com">Sub-Category 1</a></li>
+            <li><a href="http://www.ebay.com">Sub-Category 2</a></li>
+            <li><a href="http://www.ebay.com">Sub-Category 3</a></li>
+            <li><a href="http://www.ebay.com">Sub-Category 4</a></li>
+            <li><a href="http://www.ebay.com">Sub-Category 5</a></li>
+            <li><a href="http://www.ebay.com">Sub-Category 6</a></li>
+        </ul>
+    </div>
+</li>
+```
+
+### Fake Menu
+
+todo
+
+### Tooltip
+
+NEEDS UPDATING FOR MAKEUPJS.
+
+1. Wrap shopping cart link in tooltip markup
+1. Tooltip text should be short.
+
+```html
+<span class="tooltip flyout">
+    <a accesskey="c" aria-describedby="tooltip-cart" class="tooltip flyout__trigger icon-cart" href="http://cart.payments.ebay.com" id="cart" aria-label="cart"></a>
+    <div class="flyout__overlay" id="tooltip-cart">Shopping Cart (Access Key: C)</div>
+</span>
+```
+
+```css
+.tooltip--expanded .flyout__overlay {
+    background-color: LightYellow;
+    display: block;
+}
+```
+
+```js
+$('.tooltip').hoverFlyout({expandedClass:'tooltip--expanded'}).focusFlyout({expandedClass:'tooltip--expanded'});
+```
+
+### Infotip
+
+todo
+
+
+## Chapter 5: Introduces Form Controls
+
+This chapter continues on with our sign in and registration pages.
 
 1. [Textbox](user-content-textbox)
 1. [Radio](user-content-radio)
@@ -996,9 +1387,9 @@ In voiceover the length of pause is configurable, see screenshot below.
 
 <img src="images/settings-voiceover-verbosity.png" alt="Screenshot of the Voiceover verbosity settings" />
 
-## Chapter 4: Introduces Form Validation
+## Chapter 6: Introduces Form Validation
 
-In Chapter 4 we continue with our sign and registration pages introducing server-side and client-side validation.
+This chapter continues with our sign and registration pages introducing server-side and client-side validation.
 
 1. [Required Field](user-content-required-field)
 1. [Page Error](user-content-page-error)
@@ -1241,254 +1632,11 @@ regForm.addEventListener('submit', function(e) {
 
 Remember that we would also need to render the inline errors on the client too!
 
-## Chapter 5: Introduces Buttons
 
-For Chapter 5, we move back to our homepage.
-
-### Critical Icon
-
-First of all, let's add the ebay eyebrow to our banner.
-
-```html
-<header role="banner">
-    <div id="eyebrow">
-        <!-- our buttons are going here -->
-    </div>
-    <div id="eyeball">
-        <h1><img src="../images/ebay-hires.png" alt="ebay" /></h1>
-    </div>
-</header>
-```
-
-1. Append notification button to eyebrow (see HTML below)
-1. Notice the aria-label. This is required for accessibility.
-1. Add a `title` attribute. Show how this "tooltip" is not keyboard accessible.
-1. Remove the `title` attribute. We will come back to an accessible tooltip later.
-
-HTML:
-
-```html
-<div id="eyebrow">
-    <div>
-        <button id="notifications" aria-label="Notifications" onclick="alert('You have no new notifications')">
-            <span class="icon icon--notification"></span>
-        </button>
-    </div>
-</div>
-```
-
-CSS:
-
-```css
-button#notifications {
-    background: 0 none;
-    border: 0 none;
-}
-
-span.icon--notification {
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzc2NzY3NiIgZD0iTTEyLjA0OCAyMy41OWMxLjIyOSAwIDIuMjI0LS45OTUgMi4yMjQtMi4xNjZoLTQuMzljLS4wNiAxLjE3MS45MzcgMi4xNjYgMi4xNjYgMi4xNjZ6bTExLjUzMi00LjU2NnMtMi4xNjYtMS43NTYtMy4zMzctMy4xMDJjLS45MzctMS4xMTItLjkzNy0yLjUxNy0uOTM3LTQuMzMyIDAtMi40LjA1OS01LjQ0NC0yLjY5My04LjQyOUMxNS40NDIgMS44NzMgMTQuMDM3IDEuMjg4IDEzLjEuOTk1IDEzLjA0LjQxIDEyLjUxNiAwIDExLjkzIDBjLS41ODYgMC0xLjA1NC40MS0xLjE3MS45OTUtLjk5NS4yOTMtMi4zNDEuODc4LTMuNTEyIDIuMTY2QzQuNDk2IDYuMTQ2IDQuNDk2IDkuMTkgNC41NTQgMTEuNTljMCAxLjgxNS4wNTkgMy4yMi0uOTM3IDQuMzMyQzIuNDQ2IDE3LjI2OC4zMzkgMTkuMDI0LjI4IDE5LjAyNGMtLjIzNC4xNzYtLjM1MS41MjctLjIzNC44Mi4xMTcuMjkzLjM1LjQ2OC43MDIuNDY4aDIyLjI0NGEuNzYuNzYgMCAwIDAgLjcwMi0uNDY4Yy4yMzQtLjI5My4xMTctLjY0NC0uMTE3LS44MmguMDAzem0tMTEuNTMyLS4xNzVoLTkuMjVhMzEuNjU2IDMxLjY1NiAwIDAgMCAxLjk5LTEuOTljMS4zNDctMS41MjIgMS4yODktMy4zMzcgMS4yODktNS4yNjggMC0yLjQtLjA2LTQuODU5IDIuMzQtNy40MzRDOS45NCAyLjQ1OSAxMS45OSAyLjIyNSAxMS45OSAyLjIyNWguMDU5czIuMDQ5LjIzNCAzLjU3IDEuOTMyYzIuMzQyIDIuNTc2IDIuMzQyIDUuMDM0IDIuMzQyIDcuNDM0IDAgMS45MzItLjA2IDMuNzQ2IDEuMjg4IDUuMjY4YTMxLjY1NiAzMS42NTYgMCAwIDAgMS45OSAxLjk5aC05LjE5eiIvPjwvc3ZnPg==');
-  height: 1rem;
-  width: 24px;
-}
-```
-
-But remember the issue we have with icons in high contrast mode? Critical icons should be created with foreground SVGs to avoid this issue.
-
-todo: add foreground svg below.
-
-#### DISCUSSION!
-
-Should we change the mouse cursor when it hovers over this icon button?
-
-### Access Key
-
-1. Add attribute `accesskey="n"` to the notifications button
-1. Use [accesskey](https://www.w3schools.com/tags/att_global_accesskey.asp) to activate shortcut (e.g. CTRL+ALT+N for Safari)
-1. VoiceOver will announce availability of access key
-
-#### DISCUSSION!
-
-But how do sighted keyboard users know about this access key? Nooo, not with the `title` attribute (it's not keyboard accessible, remember). We need a tooltip.
-
-### Infotip
-
-todo
-
-### Carousel Buttons
-
-todo
-
-### Pagination Buttons
-
-todo
-
-## Chapter 6: Introduces Flyouts
-
-First of all, let's add the eyebrow:
-
-```html
-<div id="eyebrow">
-    <div></div>
-</div>
-```
-
-### Button Flyout
-
-The eBay shop by category button is a good example of a flyout that opens on click.
-
-```html
-<div class="expander">
-    <button class="expander__host" type="button">Shop by Category <span aria-hidden="true" class="icon icon--arrow-down" /></button>
-    <div class="expander__content">
-        <h3>Category 1</h3>
-        <ul>
-            <li><a href="http://www.ebay.com">Sub-Category 1</a></li>
-            <li><a href="http://www.ebay.com">Sub-Category 2</a></li>
-            <li><a href="http://www.ebay.com">Sub-Category 3</a></li>
-        </ul>
-        <h3>Category 2</h3>
-        <ul>
-            <li><a href="http://www.ebay.com">Sub-Category 1</a></li>
-            <li><a href="http://www.ebay.com">Sub-Category 2</a></li>
-            <li><a href="http://www.ebay.com">Sub-Category 3</a></li>
-        </ul>
-    </div>
-</div>
-```
-
-```css
-.expander {
-    position: relative;
-}
-
-.expander__content {
-    background-color: white;
-    display: none;
-    left: 0;
-    padding: 0.5em 1em;
-    position: absolute;
-    white-space: nowrap;
-    z-index: 1;
-}
-
-.expander__content ul {
-    line-height: 2rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.expander--expanded .expander__content {
-    display: block;
-}
-```
-
-We add a new background icon:
-
-```CSS
-span.icon--arrow-down {
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAxMyI+PHBhdGggZmlsbD0iIzc2NzY3NiIgZD0iTTExLjYwNCAxMi45MjFMMCAwaDIzLjIxNWwtNS44MDcgNi40NjJ6Ii8+PC9zdmc+');
-  height: 13px;
-  width: 24px;
-}
-```
-
-```js
-querySelectorAllToArray('.expander').forEach(function(el, i) {
-    const widget = new Expander(el, {
-        collapseOnClickOut: true,
-        collapseOnFocusOut: true,
-        expandedClass: 'expander--expanded',
-        expandOnClick: true,
-        focusManagement: 'interactive'
-    });
-});
-```
-
-### Link Flyout
-
-NEEDS UPDATING FOR MAKEUPJS
-
-We show the problem of opening a flyout on hover on a link.
-
-1. Add a my ebay link to eyebrow
-1. Convert it to a hover flyout using jquery-hover-flyout
-1. Demonstrate keyboard issue
-1. Convert it to a focus flyout using jquery-focus-flyout
-1. Demonstrate that keyboard user now has to tab through flyout.
-1. Remove focus flyout behaviour
-1. Add a hidden jquery-click-flyout that allows keyboard user to expand the flyout with ENTER or SPACE.
-
-```html
-<span id="myebay" class="flyout flyout--hover">
-    <a class="flyout__trigger" href="http://www.ebay.com">My eBay</a>
-    <span class="flyout flyout--click">
-        <button class="flyout__trigger clipped clipped--stealth" type="button">Expand My eBay</button>
-        <div class="flyout__overlay">
-            <ul role="list">
-                <li><a href="http://www.ebay.com">Summary</a></li>
-                <li><a href="http://www.ebay.com">Bids/Offers</a></li>
-                <li><a href="http://www.ebay.com">Watchlist</a></li>
-            </ul>
-        </div>
-    </span>
-</span>
-```
-
-```css
-.flyout--hover .flyout__trigger[aria-expanded=true] + .flyout .flyout__overlay {
-    display: block;
-}
-
-.flyout--hover .flyout--click {
-    position: static;
-}
-
-.flyout--hover .flyout--click .flyout__trigger {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    display: block;
-    padding: 0.1em;
-}
-```
-
-```js
-$('.flyout--hover').hoverFlyout();
-```
-
-### Fake Menu
-
-todo
 
 ## Chapter 7: Introduces ARIA Widgets
 
-In Chapter 6 we move from our homepage example, to a search results page (SRP) example.
-
-### Tooltip
-
-NEEDS UPDATING FOR MAKEUPJS.
-
-1. Wrap shopping cart link in tooltip markup
-1. Tooltip text should be short.
-
-```html
-<span class="tooltip flyout">
-    <a accesskey="c" aria-describedby="tooltip-cart" class="tooltip flyout__trigger icon-cart" href="http://cart.payments.ebay.com" id="cart" aria-label="cart"></a>
-    <div class="flyout__overlay" id="tooltip-cart">Shopping Cart (Access Key: C)</div>
-</span>
-```
-
-```css
-.tooltip--expanded .flyout__overlay {
-    background-color: LightYellow;
-    display: block;
-}
-```
-
-```js
-$('.tooltip').hoverFlyout({expandedClass:'tooltip--expanded'}).focusFlyout({expandedClass:'tooltip--expanded'});
-```
+We now move from our homepage example, to a search results page (SRP) example.
 
 ### Menu
 
