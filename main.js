@@ -88,6 +88,18 @@ window.onload = function(e) {
             expandOnHover: true
         });
     });
+
+    /* STEP: TOOLTIP */
+
+    querySelectorAllToArray('.expander--hover-and-focus').forEach(function(el, i) {
+        const widget = new Expander(el, {
+            collapseOnFocusOut: true,
+            collapseOnMouseOut: true,
+            expandedClass: 'expander--expanded',
+            expandOnFocus: true,
+            expandOnHover: true
+        });
+    });
 }
 
 /* jQuery Plugins

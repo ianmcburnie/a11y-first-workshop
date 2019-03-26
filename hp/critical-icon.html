@@ -13,9 +13,13 @@
         <header role="banner">
             <div id="eyebrow">
                 <div>
-                    <button id="notifications" aria-label="Notifications" onclick="alert('You have no new notifications')">
-                        <span class="icon icon--notification"></span>
-                    </button>
+                    <div>
+                        <button id="notifications" aria-label="Notifications" onclick="alert('You have no new notifications')">
+                            <svg aria-hidden="true" focusable="false" width="16" height="16">
+                                <use xlink:href="../icons.svg#icon-notification"></use>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div id="eyeball">

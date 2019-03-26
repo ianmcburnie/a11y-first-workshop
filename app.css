@@ -159,6 +159,10 @@ body.identity [role="main"] {
 
 /* STEP: CRITICAL ICON */
 
+body.hp {
+    margin: 0;
+}
+
 #eyebrow {
     background-color: white;
     border-bottom: 1px solid #ccc;
@@ -171,7 +175,8 @@ body.identity [role="main"] {
     max-width: 1280px;
 }
 
-button#notifications {
+button#notifications,
+button.btn-plain {
     background: 0 none;
     border: 0 none;
 }
@@ -182,7 +187,80 @@ span.icon--notification {
   width: 1rem;
 }
 
-/* CHAPTER 4: FORM CONTROLS */
+/* STEP: ACCESS KEY */
+
+
+/* CHAPTER 4: FLYOUTS */
+
+/* STEP: BUTTON FLYOUT */
+
+.expander {
+    position: relative;
+}
+
+.expander__content {
+    background-color: white;
+    display: none;
+    padding: 0.5em 1em;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.expander__content ul {
+    list-style: none;
+    line-height: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.three-cols ul {
+    column-count: 3;
+}
+
+.expander__host[aria-expanded=true] + .expander__content {
+    display: block;
+}
+
+span.icon--arrow-down {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAxMyI+PHBhdGggZmlsbD0iIzc2NzY3NiIgZD0iTTExLjYwNCAxMi45MjFMMCAwaDIzLjIxNWwtNS44MDcgNi40NjJ6Ii8+PC9zdmc+');
+  height: 8px;
+  width: 8px;
+}
+
+/* STEP: LINK FLYOUT */
+
+.expander--expanded .expander--click .expander__content {
+    display: block;
+}
+
+/* STEP: FAKE MENU */
+
+.fake-menu {
+    position: relative;
+}
+
+.fake-menu__content {
+    background-color: white;
+    display: none;
+    left: 0;
+    padding: 0.5em 1em;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+
+
+/* STEP: TOOLTIP */
+
+.tooltip--expanded .flyout__overlay {
+    background-color: LightYellow;
+    display: block;
+}
+
+
+/* CHAPTER 5: FORM CONTROLS */
 
 /* STEP: TEXTBOX */
 
@@ -216,53 +294,6 @@ fieldset {
 
 .field__description--error {
     color: #dd1e31;
-}
-
-/* STEP: BUTTON FLYOUT */
-
-body.hp {
-    margin: 0;
-}
-
-.expander {
-    position: relative;
-}
-
-.expander__content {
-    background-color: white;
-    display: none;
-    left: 0;
-    padding: 0.5em 1em;
-    position: absolute;
-    white-space: nowrap;
-    z-index: 1;
-}
-
-.expander__content ul {
-    column-count: 3;
-    list-style: none;
-    line-height: 2rem;
-    margin: 0;
-    padding: 0;
-}
-
-.expander__host[aria-expanded=true] + .expander__content {
-    display: block;
-}
-
-span.icon--arrow-down {
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAxMyI+PHBhdGggZmlsbD0iIzc2NzY3NiIgZD0iTTExLjYwNCAxMi45MjFMMCAwaDIzLjIxNWwtNS44MDcgNi40NjJ6Ii8+PC9zdmc+');
-  height: 8px;
-  width: 8px;
-}
-
-/* STEP: LINK FLYOUT */
-
-/* STEP: TOOLTIP */
-
-.tooltip--expanded .flyout__overlay {
-    background-color: LightYellow;
-    display: block;
 }
 
 /* STEP: ARIA-LABELS */

@@ -57,7 +57,7 @@ We'll begin with our `myindex.html` page. The page content for this step is left
         <!-- uncomment the following 2 lines when instructed -->
         <!-- <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v7.0.2/ds4/skin.min.css"/> -->
         <!-- <link rel="stylesheet" href="https://ir.ebaystatic.com/cr/v/c1/skin/v6.3.3/ds4/grid-full.min.css"/> -->
-        <link rel="stylesheet" href="app.css"/>
+        <link rel="stylesheet" href="myapp.css"/>
     </head>
     <body>
         <!-- intentionally blank -->
@@ -884,23 +884,51 @@ Why do we specify type of button?
 
 ### Critical Icon
 
-Above the eyeball goes the, yes you guessed it, the "eyebrow":
-
-
-
-1. Append notification button to eyebrow (see HTML below)
-1. Notice the aria-label. This is required for accessibility.
-1. Add a `title` attribute. Show how this "tooltip" is not keyboard accessible.
-1. Remove the `title` attribute. We will come back to an accessible tooltip later.
-
-HTML:
+Above the eyeball goes the, yes you guessed it, the "eyebrow" block:
 
 ```html
 <div id="eyebrow">
     <div>
-        <button id="notifications" aria-label="Notifications" onclick="alert('You have no new notifications')">
-            <span class="icon icon--notification"></span>
-        </button>
+        <div>
+            <!-- critical icon button will go here -->
+        </div>
+    </div>
+</div>
+```
+
+Layout CSS:
+
+```css
+#eyebrow {
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+    padding: 0.25em 0;
+}
+
+#eyebrow > div {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1280px;
+}
+```
+
+1. Append notification button to eyebrow (see HTML below)
+1. Fix up the CSS layout
+1. Navigate to button with screen reader and notice missing label
+1. Add an aria-label and demonstrate screen reader and/or a11y inspector
+1. Add a `title` attribute. Show how this "tooltip" is not keyboard accessible.
+1. Remove the `title` attribute. We will come back to an accessible tooltip later.
+
+Eyebrow interim changes:
+
+```html
+<div id="eyebrow">
+    <div>
+        <div>
+            <button id="notifications" aria-label="Notifications" onclick="alert('You have no new notifications')">
+                <span class="icon icon--notification"></span>
+            </button>
+        </div>
     </div>
 </div>
 ```
@@ -920,9 +948,19 @@ span.icon--notification {
 }
 ```
 
-But remember the issue we have with icons in high contrast mode? Critical icons should be created with foreground SVGs to avoid this issue.
+1. Demonstrate Windows High Contast Mode. The icon dissapears.
+1. Replace the background icon with a foreground icon
 
-todo: add foreground svg below.
+Final markup:
+
+```HTML
+<button id="notifications" aria-label="Notifications" onclick="alert('You have no new notifications')">
+    <svg aria-hidden="true" focusable="false" width="16" height="16">
+        <use xlink:href="../icons.svg#icon-notification"></use>
+    </svg>
+</button>
+```
+
 
 #### DISCUSSION!
 
@@ -944,14 +982,19 @@ Flyouts are content that expands out from another element or page region.
 
 ### Button Flyout
 
-The eBay shop by category button is a good example of a flyout that opens on click. Let's enhance the button that we added previously.
+The eBay shop by category button is a good example of a flyout that opens on click. Let's enhance the "Shop by Category" button that we added previously.
+
+1. Walk through the additional markup required for a flyout: root, host & content.
+1. Discuss importance of DOM order for reading order and focus order
+1. Demonstrate how flyout should close after keyboard exits
+1. Add the 3 cols class. Discuss the temptation for developers to use grid semantics here and left/right arrow keys
 
 Final HTML:
 
 ```html
 <div class="expander">
     <button class="expander__host" type="button">Shop by Category <span aria-hidden="true" class="icon icon--arrow-down" /></button>
-    <div class="expander__content">
+    <div class="expander__content three-cols">
         <h3>Category 1</h3>
         <ul>
             <li><a href="http://www.ebay.com">Sub-Category 1</a></li>
@@ -994,6 +1037,10 @@ Final HTML:
     display: block;
 }
 
+.three-cols ul {
+    column-count: 3;
+}
+
 span.icon--arrow-down {
   background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAxMyI+PHBhdGggZmlsbD0iIzc2NzY3NiIgZD0iTTExLjYwNCAxMi45MjFMMCAwaDIzLjIxNWwtNS44MDcgNi40NjJ6Ii8+PC9zdmc+');
   height: 13px;
@@ -1017,7 +1064,7 @@ querySelectorAllToArray('.expander').forEach(function(el, i) {
 
 ### Link Flyout
 
-This section shows the problem of opening a flyout on hover on a link. It also shows a workaround.
+This section shows the problem of opening a flyout on hover on a link. It also shows a workaround that uses a stealth button.
 
 "Motors" list item before we make changes:
 
@@ -1027,19 +1074,18 @@ This section shows the problem of opening a flyout on hover on a link. It also s
 </li>
 ```
 
-1. Using makeup-expander, add hover flyout behaviour to the "Motors" category link
+1. Using makeup-expander, add hover flyout behaviour to the "Motors" category link (HTML below)
 1. Demonstrate keyboard issue
 1. Convert it to a focus flyout
 1. Demonstrate that keyboard user now has to tab through flyout.
 1. Remove focus behaviour
-1. Add a hidden stealth button that allows keyboard user to expand the flyout with ENTER or SPACE.
 
-Final markup of "Motors" list item:
+Interim markup of "Motors" list item:
 
 ```HTML
 <li class="expander expander--hover">
     <a class="expander__host" href="http://www.ebay.com/motors">Motors</a>
-    <div class="expander__content">
+    <div class="expander__content three-cols">
         <h3>Category 1</h3>
         <ul>
             <li><a href="http://www.ebay.com">Sub-Category 1</a></li>
@@ -1062,22 +1108,81 @@ Final markup of "Motors" list item:
 </li>
 ```
 
+1. Add a hidden stealth button (HTML below) that allows keyboard user to expand the flyout with ENTER or SPACE.
+
+Final markup:
+
+```HTML
+<li class="expander expander--hover">
+    <a class="expander__host" href="http://www.ebay.com/motors">Motors</a>
+    <span class="expander expander--click">
+        <button class="expander__host clipped clipped--stealth">Expand Motors</button>
+        <div class="expander__content three-cols">
+            <h3>Category 1</h3>
+            <ul>
+                <li><a href="http://www.ebay.com">Sub-Category 1</a></li>
+                <li><a href="http://www.ebay.com">Sub-Category 2</a></li>
+                <li><a href="http://www.ebay.com">Sub-Category 3</a></li>
+                <li><a href="http://www.ebay.com">Sub-Category 4</a></li>
+                <li><a href="http://www.ebay.com">Sub-Category 5</a></li>
+                <li><a href="http://www.ebay.com">Sub-Category 6</a></li>
+            </ul>
+            <h3>Category 2</h3>
+            <ul>
+                <li><a href="http://www.ebay.com">Sub-Category 1</a></li>
+                <li><a href="http://www.ebay.com">Sub-Category 2</a></li>
+                <li><a href="http://www.ebay.com">Sub-Category 3</a></li>
+                <li><a href="http://www.ebay.com">Sub-Category 4</a></li>
+                <li><a href="http://www.ebay.com">Sub-Category 5</a></li>
+                <li><a href="http://www.ebay.com">Sub-Category 6</a></li>
+            </ul>
+        </div>
+    </span>
+</li>
+```
+
 ### Fake Menu
 
-todo
+Eyebrow block before changes:
+
+
+```HTML
+<div id="eyebrow">
+    <div>
+        <button id="notifications" aria-label="Notifications" onclick="alert('You have no new notifications')">
+            <span class="icon icon--notification"></span>
+        </button>
+    </div>
+</div>
+```
+
+1. Add role=menu and demonstrate that VoiceOver now tells user this is a menu and which keys to use
+1. Remove role=menu
+
+Eyebrow block after all changes:
+
 
 ### Tooltip
 
-NEEDS UPDATING FOR MAKEUPJS.
+Notifications block before changes:
 
-1. Wrap shopping cart link in tooltip markup
-1. Tooltip text should be short.
+```HTML
+<div>
+    <button accesskey="n" id="notifications" aria-label="Notifications" onclick="alert('You have no new notifications')">
+        <span class="icon icon--notification"></span>
+    </button>
+</div>
+```
+
+1. Wrap notifications button in tooltip markup
 
 ```html
-<span class="tooltip flyout">
-    <a accesskey="c" aria-describedby="tooltip-cart" class="tooltip flyout__trigger icon-cart" href="http://cart.payments.ebay.com" id="cart" aria-label="cart"></a>
-    <div class="flyout__overlay" id="tooltip-cart">Shopping Cart (Access Key: C)</div>
-</span>
+<div class="expander expander--hover expander--focus">
+    <button accesskey="n" aria-describedby="tooltip" id="notifications" aria-label="Notifications" onclick="alert('You have no new notifications')">
+        <span class="icon icon--notification"></span>
+    </button>
+    <div class="expander__content" id="tooltip">Notifications (Access Key: N)</div>
+</div>
 ```
 
 ```css
@@ -1087,8 +1192,18 @@ NEEDS UPDATING FOR MAKEUPJS.
 }
 ```
 
+JavaScript:
+
 ```js
-$('.tooltip').hoverFlyout({expandedClass:'tooltip--expanded'}).focusFlyout({expandedClass:'tooltip--expanded'});
+querySelectorAllToArray('.expander--hover-and-focus').forEach(function(el, i) {
+    const widget = new Expander(el, {
+        collapseOnFocusOut: true,
+        collapseOnMouseOut: true,
+        expandedClass: 'expander--expanded',
+        expandOnFocus: true,
+        expandOnHover: true
+    });
+});
 ```
 
 ### Infotip
