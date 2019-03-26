@@ -18,10 +18,11 @@ If you want to run through this workshop yourself, or follow along with the inst
 * [Chapter 1: Introduces Structure &amp; Semantics](user-content-chapter-1-introduces-structure-semantics)
 * [Chapter 2: Introduces Links](user-content-chapter-2-introduces-links)
 * [Chapter 3: Introduces Buttons](user-content-chapter-5-introduces-buttons)
-* [Chapter 4: Introduces Form Controls](user-content-chapter-3-introduces-form-controls)
-* [Chapter 5: Introduces Form Validation](user-content-chapter-4-introduces-form-validation)
-* [Chapter 6: Introduces ARIA Widgets](user-content-chapter-6-introduces-aria-widgets)
-* [Chapter 7: Introduces Data Tables](user-content-chapter-7-introduces-data-tables)
+* [Chapter 4: Introduces Buttons](user-content-chapter-5-introduces-flyouts)
+* [Chapter 5: Introduces Form Controls](user-content-chapter-3-introduces-form-controls)
+* [Chapter 6: Introduces Form Validation](user-content-chapter-4-introduces-form-validation)
+* [Chapter 7: Introduces ARIA Widgets](user-content-chapter-6-introduces-aria-widgets)
+* [Chapter 8: Introduces Data Tables](user-content-chapter-7-introduces-data-tables)
 
 ## Chapter 1: Introduces Structure &amp; Semantics
 
